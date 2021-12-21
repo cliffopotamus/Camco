@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{03C98567-858F-4181-9595-6D23DADC5011}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CamcoForm</RootNamespace>
+    <AssemblyName>CamcoForm</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CamcoCustomers.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CamcoCustomers.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CamcoCustomers5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CamcoCustomers5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CamcoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CamcoDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CamcoDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CamcoDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CamcoDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CamcoDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CamcoDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CamcoDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CamcoDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CamcoDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CamcoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CamcoForm.Designer.cs">
+      <DependentUpon>CamcoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CamcoInvoices.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CamcoInvoices.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CamcoVendors.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CamcoVendors.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ComboBoxItems.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComboBoxItems.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerNameCombo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerNameCombo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerNameList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerNameList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvoiceForm.Designer.cs">
+      <DependentUpon>InvoiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewCustomerForm.Designer.cs">
+      <DependentUpon>NewCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewInvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewInvoiceForm.Designer.cs">
+      <DependentUpon>NewInvoiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewPurchaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewPurchaseForm.Designer.cs">
+      <DependentUpon>NewPurchaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewVendorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewVendorForm.Designer.cs">
+      <DependentUpon>NewVendorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseForm.Designer.cs">
+      <DependentUpon>PurchaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VendorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VendorForm.Designer.cs">
+      <DependentUpon>VendorForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CamcoForm.resx">
+      <DependentUpon>CamcoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvoiceForm.resx">
+      <DependentUpon>InvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewCustomerForm.resx">
+      <DependentUpon>NewCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewInvoiceForm.resx">
+      <DependentUpon>NewInvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewVendorForm.resx">
+      <DependentUpon>NewVendorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="PurchaseForm.resx">
+      <DependentUpon>PurchaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendorForm.resx">
+      <DependentUpon>VendorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="CamcoCustomers.xsc">
+      <DependentUpon>CamcoCustomers.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoCustomers.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CamcoCustomers.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CamcoCustomers.xss">
+      <DependentUpon>CamcoCustomers.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoCustomers5.xsc">
+      <DependentUpon>CamcoCustomers5.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoCustomers5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CamcoCustomers5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CamcoCustomers5.xss">
+      <DependentUpon>CamcoCustomers5.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet.xsc">
+      <DependentUpon>CamcoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CamcoDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CamcoDataSet.xss">
+      <DependentUpon>CamcoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet1.xsc">
+      <DependentUpon>CamcoDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CamcoDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CamcoDataSet1.xss">
+      <DependentUpon>CamcoDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet2.xsc">
+      <DependentUpon>CamcoDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CamcoDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CamcoDataSet2.xss">
+      <DependentUpon>CamcoDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet3.xsc">
+      <DependentUpon>CamcoDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CamcoDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CamcoDataSet3.xss">
+      <DependentUpon>CamcoDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet4.xsc">
+      <DependentUpon>CamcoDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CamcoDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CamcoDataSet4.xss">
+      <DependentUpon>CamcoDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoInvoices.xsc">
+      <DependentUpon>CamcoInvoices.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoInvoices.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CamcoInvoices.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CamcoInvoices.xss">
+      <DependentUpon>CamcoInvoices.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoVendors.xsc">
+      <DependentUpon>CamcoVendors.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoVendors.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CamcoVendors.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CamcoVendors.xss">
+      <DependentUpon>CamcoVendors.xsd</DependentUpon>
+    </None>
+    <None Include="ComboBoxItems.xsc">
+      <DependentUpon>ComboBoxItems.xsd</DependentUpon>
+    </None>
+    <None Include="ComboBoxItems.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ComboBoxItems.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ComboBoxItems.xss">
+      <DependentUpon>ComboBoxItems.xsd</DependentUpon>
+    </None>
+    <None Include="CustomerNameCombo.xsc">
+      <DependentUpon>CustomerNameCombo.xsd</DependentUpon>
+    </None>
+    <None Include="CustomerNameCombo.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CustomerNameCombo.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CustomerNameCombo.xss">
+      <DependentUpon>CustomerNameCombo.xsd</DependentUpon>
+    </None>
+    <None Include="CustomerNameList.xsc">
+      <DependentUpon>CustomerNameList.xsd</DependentUpon>
+    </None>
+    <None Include="CustomerNameList.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CustomerNameList.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CustomerNameList.xss">
+      <DependentUpon>CustomerNameList.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
