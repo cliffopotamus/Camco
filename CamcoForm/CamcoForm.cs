@@ -60,10 +60,76 @@ namespace CamcoForm
             newForm.Show();
         }
 
-       /* public CustomerForm GetAllValuesFromForm()
+        /* public NewCustomerForm GetAllValuesFromForm()
+         {
+             var custName = textCustomerName.Text;
+             var custPhoneNumber = textPhone.Text;
+             var custFaxNumber = textFax.Text;
+             var custAccountNo = textAccount.Text;
+             var custBillingAddress = textBillingAddress.Text;
+             var custBillingZipCode = textBillingZipCode.Text;
+             var custBillingState = textBillingState.Text;
+             var custShippingAddress = textCustomerShippingAddress.Text;
+             var custShippingZipCode = textCustomerShippingZip.Text;
+             var custShippingState = textCustomerShippingState.Text;
+
+             var cust = new Customer(custName, custPhoneNumber, custFaxNumber, custAccountNo, custBillingAddress, custBillingZipCode, custBillingState, custShippingAddress, custShippingZipCode, custShippingState);
+             return cust;
+         }
+
+        */
+        public void updateDB()
         {
-            var firstName = 
+            using (var DB = new CamcoEntities())
+            {
+                /* DB.Customers.Add() */
+                var Cust = new Customer();
+
+            }
         }
-    */
+
+
+
+
+        public bool CheckRequired(string text)
+        {
+            bool success = true;
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                success = false;
+                return success;
+            }
+            else
+            {
+                return success;
+            }
+
+
+
+        }
+
+        public static Customer RetrieveCustomerID(int custID)
+        {
+            using (var db = new CamcoEntities())
+            {
+                var cust = db.Customers.SingleOrDefault(x => x.CustomerID == custID);
+                return cust;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var testingButton = RetrieveListAccountID("C20");
+            var testingButton2 = RetrieveListAccountID("C10");
+        }
+
+        public static List<Customer> RetrieveListAccountID(string accID)
+        {
+            using (var db = new CamcoEntities())
+            {
+                List<Customer> cust = db.Customers.Where(x => x.AccountNo == accID).ToList();
+                return cust;
+            }
+        }
     }
 }

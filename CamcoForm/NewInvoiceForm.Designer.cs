@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.comboCustomerName = new System.Windows.Forms.ComboBox();
-            this.customerNameList = new CamcoForm.CustomerNameList();
             this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.customerNameList = new CamcoForm.CustomerNameList();
             this.customersTableAdapter = new CamcoForm.CustomerNameListTableAdapters.CustomersTableAdapter();
             this.labelComboCustomer = new System.Windows.Forms.Label();
             this.textSONumber = new System.Windows.Forms.TextBox();
@@ -40,16 +40,16 @@
             this.labelPONumber = new System.Windows.Forms.Label();
             this.textDate = new System.Windows.Forms.TextBox();
             this.labelDate = new System.Windows.Forms.Label();
-            this.textBillTo = new System.Windows.Forms.TextBox();
-            this.labelBillTo = new System.Windows.Forms.Label();
-            this.textShipTo = new System.Windows.Forms.TextBox();
+            this.textBillAddress = new System.Windows.Forms.TextBox();
+            this.labelBillAddress = new System.Windows.Forms.Label();
+            this.textShipAddress = new System.Windows.Forms.TextBox();
             this.labelShippingAddress = new System.Windows.Forms.Label();
             this.labelQuantity = new System.Windows.Forms.Label();
             this.textQuantity = new System.Windows.Forms.TextBox();
             this.labelItem = new System.Windows.Forms.Label();
             this.comboItem = new System.Windows.Forms.ComboBox();
-            this.comboBoxItems = new CamcoForm.ComboBoxItems();
             this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBoxItems = new CamcoForm.ComboBoxItems();
             this.inventoryTableAdapter = new CamcoForm.ComboBoxItemsTableAdapters.InventoryTableAdapter();
             this.labelItemDescription = new System.Windows.Forms.Label();
             this.labelInvoiceItem = new System.Windows.Forms.Label();
@@ -59,10 +59,24 @@
             this.labelLineItem = new System.Windows.Forms.Label();
             this.labelInvoiceTotal = new System.Windows.Forms.Label();
             this.textInvoiceTotal = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.customerNameList)).BeginInit();
+            this.textBillZip = new System.Windows.Forms.TextBox();
+            this.textBillCity = new System.Windows.Forms.TextBox();
+            this.textShipZip = new System.Windows.Forms.TextBox();
+            this.textShipCity = new System.Windows.Forms.TextBox();
+            this.labelBillZip = new System.Windows.Forms.Label();
+            this.labelShipCity = new System.Windows.Forms.Label();
+            this.labelBillCity = new System.Windows.Forms.Label();
+            this.labelShipZip = new System.Windows.Forms.Label();
+            this.labelShipState = new System.Windows.Forms.Label();
+            this.labelBillState = new System.Windows.Forms.Label();
+            this.textShipState = new System.Windows.Forms.TextBox();
+            this.textBillState = new System.Windows.Forms.TextBox();
+            this.btnFinish = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerNameList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxItems)).BeginInit();
             this.SuspendLayout();
             // 
             // comboCustomerName
@@ -70,20 +84,20 @@
             this.comboCustomerName.DataSource = this.customersBindingSource;
             this.comboCustomerName.DisplayMember = "CustomerName";
             this.comboCustomerName.FormattingEnabled = true;
-            this.comboCustomerName.Location = new System.Drawing.Point(67, 53);
+            this.comboCustomerName.Location = new System.Drawing.Point(32, 25);
             this.comboCustomerName.Name = "comboCustomerName";
             this.comboCustomerName.Size = new System.Drawing.Size(121, 21);
             this.comboCustomerName.TabIndex = 0;
-            // 
-            // customerNameList
-            // 
-            this.customerNameList.DataSetName = "CustomerNameList";
-            this.customerNameList.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // customersBindingSource
             // 
             this.customersBindingSource.DataMember = "Customers";
             this.customersBindingSource.DataSource = this.customerNameList;
+            // 
+            // customerNameList
+            // 
+            this.customerNameList.DataSetName = "CustomerNameList";
+            this.customerNameList.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // customersTableAdapter
             // 
@@ -92,7 +106,7 @@
             // labelComboCustomer
             // 
             this.labelComboCustomer.AutoSize = true;
-            this.labelComboCustomer.Location = new System.Drawing.Point(64, 37);
+            this.labelComboCustomer.Location = new System.Drawing.Point(28, 9);
             this.labelComboCustomer.Name = "labelComboCustomer";
             this.labelComboCustomer.Size = new System.Drawing.Size(82, 13);
             this.labelComboCustomer.TabIndex = 1;
@@ -100,7 +114,7 @@
             // 
             // textSONumber
             // 
-            this.textSONumber.Location = new System.Drawing.Point(238, 54);
+            this.textSONumber.Location = new System.Drawing.Point(179, 25);
             this.textSONumber.Name = "textSONumber";
             this.textSONumber.Size = new System.Drawing.Size(121, 20);
             this.textSONumber.TabIndex = 2;
@@ -108,7 +122,7 @@
             // labelSONumber
             // 
             this.labelSONumber.AutoSize = true;
-            this.labelSONumber.Location = new System.Drawing.Point(235, 38);
+            this.labelSONumber.Location = new System.Drawing.Point(176, 9);
             this.labelSONumber.Name = "labelSONumber";
             this.labelSONumber.Size = new System.Drawing.Size(62, 13);
             this.labelSONumber.TabIndex = 3;
@@ -116,7 +130,7 @@
             // 
             // textPONumber
             // 
-            this.textPONumber.Location = new System.Drawing.Point(417, 53);
+            this.textPONumber.Location = new System.Drawing.Point(322, 25);
             this.textPONumber.Name = "textPONumber";
             this.textPONumber.Size = new System.Drawing.Size(121, 20);
             this.textPONumber.TabIndex = 4;
@@ -124,7 +138,7 @@
             // labelPONumber
             // 
             this.labelPONumber.AutoSize = true;
-            this.labelPONumber.Location = new System.Drawing.Point(414, 37);
+            this.labelPONumber.Location = new System.Drawing.Point(319, 9);
             this.labelPONumber.Name = "labelPONumber";
             this.labelPONumber.Size = new System.Drawing.Size(62, 13);
             this.labelPONumber.TabIndex = 5;
@@ -132,7 +146,7 @@
             // 
             // textDate
             // 
-            this.textDate.Location = new System.Drawing.Point(595, 54);
+            this.textDate.Location = new System.Drawing.Point(465, 25);
             this.textDate.Name = "textDate";
             this.textDate.Size = new System.Drawing.Size(121, 20);
             this.textDate.TabIndex = 6;
@@ -140,41 +154,41 @@
             // labelDate
             // 
             this.labelDate.AutoSize = true;
-            this.labelDate.Location = new System.Drawing.Point(592, 37);
+            this.labelDate.Location = new System.Drawing.Point(462, 9);
             this.labelDate.Name = "labelDate";
             this.labelDate.Size = new System.Drawing.Size(84, 13);
             this.labelDate.TabIndex = 7;
             this.labelDate.Text = "Date Scheduled";
             // 
-            // textBillTo
+            // textBillAddress
             // 
-            this.textBillTo.Location = new System.Drawing.Point(67, 97);
-            this.textBillTo.Multiline = true;
-            this.textBillTo.Name = "textBillTo";
-            this.textBillTo.Size = new System.Drawing.Size(121, 20);
-            this.textBillTo.TabIndex = 8;
+            this.textBillAddress.Location = new System.Drawing.Point(38, 78);
+            this.textBillAddress.Multiline = true;
+            this.textBillAddress.Name = "textBillAddress";
+            this.textBillAddress.Size = new System.Drawing.Size(121, 25);
+            this.textBillAddress.TabIndex = 8;
             // 
-            // labelBillTo
+            // labelBillAddress
             // 
-            this.labelBillTo.AutoSize = true;
-            this.labelBillTo.Location = new System.Drawing.Point(64, 81);
-            this.labelBillTo.Name = "labelBillTo";
-            this.labelBillTo.Size = new System.Drawing.Size(75, 13);
-            this.labelBillTo.TabIndex = 9;
-            this.labelBillTo.Text = "Billing Address";
+            this.labelBillAddress.AutoSize = true;
+            this.labelBillAddress.Location = new System.Drawing.Point(35, 62);
+            this.labelBillAddress.Name = "labelBillAddress";
+            this.labelBillAddress.Size = new System.Drawing.Size(75, 13);
+            this.labelBillAddress.TabIndex = 9;
+            this.labelBillAddress.Text = "Billing Address";
             // 
-            // textShipTo
+            // textShipAddress
             // 
-            this.textShipTo.Location = new System.Drawing.Point(238, 97);
-            this.textShipTo.Multiline = true;
-            this.textShipTo.Name = "textShipTo";
-            this.textShipTo.Size = new System.Drawing.Size(121, 20);
-            this.textShipTo.TabIndex = 10;
+            this.textShipAddress.Location = new System.Drawing.Point(38, 132);
+            this.textShipAddress.Multiline = true;
+            this.textShipAddress.Name = "textShipAddress";
+            this.textShipAddress.Size = new System.Drawing.Size(121, 25);
+            this.textShipAddress.TabIndex = 10;
             // 
             // labelShippingAddress
             // 
             this.labelShippingAddress.AutoSize = true;
-            this.labelShippingAddress.Location = new System.Drawing.Point(235, 81);
+            this.labelShippingAddress.Location = new System.Drawing.Point(42, 118);
             this.labelShippingAddress.Name = "labelShippingAddress";
             this.labelShippingAddress.Size = new System.Drawing.Size(89, 13);
             this.labelShippingAddress.TabIndex = 11;
@@ -183,7 +197,7 @@
             // labelQuantity
             // 
             this.labelQuantity.AutoSize = true;
-            this.labelQuantity.Location = new System.Drawing.Point(64, 179);
+            this.labelQuantity.Location = new System.Drawing.Point(35, 179);
             this.labelQuantity.Name = "labelQuantity";
             this.labelQuantity.Size = new System.Drawing.Size(46, 13);
             this.labelQuantity.TabIndex = 12;
@@ -191,7 +205,7 @@
             // 
             // textQuantity
             // 
-            this.textQuantity.Location = new System.Drawing.Point(67, 195);
+            this.textQuantity.Location = new System.Drawing.Point(32, 194);
             this.textQuantity.Multiline = true;
             this.textQuantity.Name = "textQuantity";
             this.textQuantity.Size = new System.Drawing.Size(43, 20);
@@ -200,7 +214,7 @@
             // labelItem
             // 
             this.labelItem.AutoSize = true;
-            this.labelItem.Location = new System.Drawing.Point(142, 179);
+            this.labelItem.Location = new System.Drawing.Point(104, 179);
             this.labelItem.Name = "labelItem";
             this.labelItem.Size = new System.Drawing.Size(27, 13);
             this.labelItem.TabIndex = 14;
@@ -211,20 +225,20 @@
             this.comboItem.DataSource = this.inventoryBindingSource;
             this.comboItem.DisplayMember = "ProductName";
             this.comboItem.FormattingEnabled = true;
-            this.comboItem.Location = new System.Drawing.Point(145, 194);
+            this.comboItem.Location = new System.Drawing.Point(107, 193);
             this.comboItem.Name = "comboItem";
-            this.comboItem.Size = new System.Drawing.Size(110, 21);
+            this.comboItem.Size = new System.Drawing.Size(241, 21);
             this.comboItem.TabIndex = 15;
-            // 
-            // comboBoxItems
-            // 
-            this.comboBoxItems.DataSetName = "ComboBoxItems";
-            this.comboBoxItems.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // inventoryBindingSource
             // 
             this.inventoryBindingSource.DataMember = "Inventory";
             this.inventoryBindingSource.DataSource = this.comboBoxItems;
+            // 
+            // comboBoxItems
+            // 
+            this.comboBoxItems.DataSetName = "ComboBoxItems";
+            this.comboBoxItems.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // inventoryTableAdapter
             // 
@@ -233,7 +247,7 @@
             // labelItemDescription
             // 
             this.labelItemDescription.AutoSize = true;
-            this.labelItemDescription.Location = new System.Drawing.Point(241, 236);
+            this.labelItemDescription.Location = new System.Drawing.Point(217, 236);
             this.labelItemDescription.Name = "labelItemDescription";
             this.labelItemDescription.Size = new System.Drawing.Size(83, 13);
             this.labelItemDescription.TabIndex = 16;
@@ -242,7 +256,7 @@
             // labelInvoiceItem
             // 
             this.labelInvoiceItem.AutoSize = true;
-            this.labelInvoiceItem.Location = new System.Drawing.Point(142, 236);
+            this.labelInvoiceItem.Location = new System.Drawing.Point(126, 236);
             this.labelInvoiceItem.Name = "labelInvoiceItem";
             this.labelInvoiceItem.Size = new System.Drawing.Size(27, 13);
             this.labelInvoiceItem.TabIndex = 17;
@@ -278,7 +292,7 @@
             // labelLineItem
             // 
             this.labelLineItem.AutoSize = true;
-            this.labelLineItem.Location = new System.Drawing.Point(64, 236);
+            this.labelLineItem.Location = new System.Drawing.Point(35, 236);
             this.labelLineItem.Name = "labelLineItem";
             this.labelLineItem.Size = new System.Drawing.Size(67, 13);
             this.labelLineItem.TabIndex = 21;
@@ -287,7 +301,7 @@
             // labelInvoiceTotal
             // 
             this.labelInvoiceTotal.AutoSize = true;
-            this.labelInvoiceTotal.Location = new System.Drawing.Point(635, 428);
+            this.labelInvoiceTotal.Location = new System.Drawing.Point(505, 425);
             this.labelInvoiceTotal.Name = "labelInvoiceTotal";
             this.labelInvoiceTotal.Size = new System.Drawing.Size(72, 13);
             this.labelInvoiceTotal.TabIndex = 22;
@@ -295,17 +309,152 @@
             // 
             // textInvoiceTotal
             // 
-            this.textInvoiceTotal.Location = new System.Drawing.Point(713, 425);
+            this.textInvoiceTotal.Location = new System.Drawing.Point(583, 422);
             this.textInvoiceTotal.Multiline = true;
             this.textInvoiceTotal.Name = "textInvoiceTotal";
             this.textInvoiceTotal.Size = new System.Drawing.Size(43, 20);
             this.textInvoiceTotal.TabIndex = 23;
+            // 
+            // textBillZip
+            // 
+            this.textBillZip.Location = new System.Drawing.Point(322, 78);
+            this.textBillZip.Multiline = true;
+            this.textBillZip.Name = "textBillZip";
+            this.textBillZip.Size = new System.Drawing.Size(121, 25);
+            this.textBillZip.TabIndex = 24;
+            // 
+            // textBillCity
+            // 
+            this.textBillCity.Location = new System.Drawing.Point(182, 78);
+            this.textBillCity.Multiline = true;
+            this.textBillCity.Name = "textBillCity";
+            this.textBillCity.Size = new System.Drawing.Size(121, 25);
+            this.textBillCity.TabIndex = 25;
+            // 
+            // textShipZip
+            // 
+            this.textShipZip.Location = new System.Drawing.Point(322, 132);
+            this.textShipZip.Multiline = true;
+            this.textShipZip.Name = "textShipZip";
+            this.textShipZip.Size = new System.Drawing.Size(121, 25);
+            this.textShipZip.TabIndex = 26;
+            // 
+            // textShipCity
+            // 
+            this.textShipCity.Location = new System.Drawing.Point(182, 134);
+            this.textShipCity.Multiline = true;
+            this.textShipCity.Name = "textShipCity";
+            this.textShipCity.Size = new System.Drawing.Size(121, 25);
+            this.textShipCity.TabIndex = 27;
+            // 
+            // labelBillZip
+            // 
+            this.labelBillZip.AutoSize = true;
+            this.labelBillZip.Location = new System.Drawing.Point(319, 62);
+            this.labelBillZip.Name = "labelBillZip";
+            this.labelBillZip.Size = new System.Drawing.Size(52, 13);
+            this.labelBillZip.TabIndex = 28;
+            this.labelBillZip.Text = "Billing Zip";
+            // 
+            // labelShipCity
+            // 
+            this.labelShipCity.AutoSize = true;
+            this.labelShipCity.Location = new System.Drawing.Point(187, 118);
+            this.labelShipCity.Name = "labelShipCity";
+            this.labelShipCity.Size = new System.Drawing.Size(68, 13);
+            this.labelShipCity.TabIndex = 29;
+            this.labelShipCity.Text = "Shipping City";
+            // 
+            // labelBillCity
+            // 
+            this.labelBillCity.AutoSize = true;
+            this.labelBillCity.Location = new System.Drawing.Point(184, 62);
+            this.labelBillCity.Name = "labelBillCity";
+            this.labelBillCity.Size = new System.Drawing.Size(54, 13);
+            this.labelBillCity.TabIndex = 30;
+            this.labelBillCity.Text = "Billing City";
+            // 
+            // labelShipZip
+            // 
+            this.labelShipZip.AutoSize = true;
+            this.labelShipZip.Location = new System.Drawing.Point(319, 118);
+            this.labelShipZip.Name = "labelShipZip";
+            this.labelShipZip.Size = new System.Drawing.Size(66, 13);
+            this.labelShipZip.TabIndex = 31;
+            this.labelShipZip.Text = "Shipping Zip";
+            // 
+            // labelShipState
+            // 
+            this.labelShipState.AutoSize = true;
+            this.labelShipState.Location = new System.Drawing.Point(453, 118);
+            this.labelShipState.Name = "labelShipState";
+            this.labelShipState.Size = new System.Drawing.Size(76, 13);
+            this.labelShipState.TabIndex = 32;
+            this.labelShipState.Text = "Shipping State";
+            // 
+            // labelBillState
+            // 
+            this.labelBillState.AutoSize = true;
+            this.labelBillState.Location = new System.Drawing.Point(453, 62);
+            this.labelBillState.Name = "labelBillState";
+            this.labelBillState.Size = new System.Drawing.Size(62, 13);
+            this.labelBillState.TabIndex = 33;
+            this.labelBillState.Text = "Billing State";
+            // 
+            // textShipState
+            // 
+            this.textShipState.Location = new System.Drawing.Point(456, 134);
+            this.textShipState.Multiline = true;
+            this.textShipState.Name = "textShipState";
+            this.textShipState.Size = new System.Drawing.Size(121, 25);
+            this.textShipState.TabIndex = 34;
+            // 
+            // textBillState
+            // 
+            this.textBillState.Location = new System.Drawing.Point(456, 78);
+            this.textBillState.Multiline = true;
+            this.textBillState.Name = "textBillState";
+            this.textBillState.Size = new System.Drawing.Size(121, 25);
+            this.textBillState.TabIndex = 35;
+            // 
+            // btnFinish
+            // 
+            this.btnFinish.Location = new System.Drawing.Point(646, 418);
+            this.btnFinish.Name = "btnFinish";
+            this.btnFinish.Size = new System.Drawing.Size(56, 27);
+            this.btnFinish.TabIndex = 36;
+            this.btnFinish.Text = "Finish";
+            this.btnFinish.UseVisualStyleBackColor = true;
+            this.btnFinish.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(722, 418);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(56, 27);
+            this.btnCancel.TabIndex = 37;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // NewInvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnFinish);
+            this.Controls.Add(this.textBillState);
+            this.Controls.Add(this.textShipState);
+            this.Controls.Add(this.labelBillState);
+            this.Controls.Add(this.labelShipState);
+            this.Controls.Add(this.labelShipZip);
+            this.Controls.Add(this.labelBillCity);
+            this.Controls.Add(this.labelShipCity);
+            this.Controls.Add(this.labelBillZip);
+            this.Controls.Add(this.textShipCity);
+            this.Controls.Add(this.textShipZip);
+            this.Controls.Add(this.textBillCity);
+            this.Controls.Add(this.textBillZip);
             this.Controls.Add(this.textInvoiceTotal);
             this.Controls.Add(this.labelInvoiceTotal);
             this.Controls.Add(this.labelLineItem);
@@ -319,9 +468,9 @@
             this.Controls.Add(this.textQuantity);
             this.Controls.Add(this.labelQuantity);
             this.Controls.Add(this.labelShippingAddress);
-            this.Controls.Add(this.textShipTo);
-            this.Controls.Add(this.labelBillTo);
-            this.Controls.Add(this.textBillTo);
+            this.Controls.Add(this.textShipAddress);
+            this.Controls.Add(this.labelBillAddress);
+            this.Controls.Add(this.textBillAddress);
             this.Controls.Add(this.labelDate);
             this.Controls.Add(this.textDate);
             this.Controls.Add(this.labelPONumber);
@@ -333,10 +482,10 @@
             this.Name = "NewInvoiceForm";
             this.Text = "NewInvoiceForm";
             this.Load += new System.EventHandler(this.NewInvoiceForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.customerNameList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerNameList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxItems)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,9 +504,9 @@
         private System.Windows.Forms.Label labelPONumber;
         private System.Windows.Forms.TextBox textDate;
         private System.Windows.Forms.Label labelDate;
-        private System.Windows.Forms.TextBox textBillTo;
-        private System.Windows.Forms.Label labelBillTo;
-        private System.Windows.Forms.TextBox textShipTo;
+        private System.Windows.Forms.TextBox textBillAddress;
+        private System.Windows.Forms.Label labelBillAddress;
+        private System.Windows.Forms.TextBox textShipAddress;
         private System.Windows.Forms.Label labelShippingAddress;
         private System.Windows.Forms.Label labelQuantity;
         private System.Windows.Forms.TextBox textQuantity;
@@ -374,5 +523,19 @@
         private System.Windows.Forms.Label labelLineItem;
         private System.Windows.Forms.Label labelInvoiceTotal;
         private System.Windows.Forms.TextBox textInvoiceTotal;
+        private System.Windows.Forms.TextBox textBillZip;
+        private System.Windows.Forms.TextBox textBillCity;
+        private System.Windows.Forms.TextBox textShipZip;
+        private System.Windows.Forms.TextBox textShipCity;
+        private System.Windows.Forms.Label labelBillZip;
+        private System.Windows.Forms.Label labelShipCity;
+        private System.Windows.Forms.Label labelBillCity;
+        private System.Windows.Forms.Label labelShipZip;
+        private System.Windows.Forms.Label labelShipState;
+        private System.Windows.Forms.Label labelBillState;
+        private System.Windows.Forms.TextBox textShipState;
+        private System.Windows.Forms.TextBox textBillState;
+        private System.Windows.Forms.Button btnFinish;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

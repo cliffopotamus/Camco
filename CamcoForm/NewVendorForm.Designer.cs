@@ -35,13 +35,13 @@
             this.labelState = new System.Windows.Forms.Label();
             this.labelPhone = new System.Windows.Forms.Label();
             this.labelFax = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textName = new System.Windows.Forms.TextBox();
+            this.textPhone = new System.Windows.Forms.TextBox();
+            this.textFax = new System.Windows.Forms.TextBox();
+            this.textZip = new System.Windows.Forms.TextBox();
+            this.textState = new System.Windows.Forms.TextBox();
+            this.textCity = new System.Windows.Forms.TextBox();
+            this.textAddress = new System.Windows.Forms.TextBox();
             this.labelFinish = new System.Windows.Forms.Button();
             this.labelCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -109,54 +109,54 @@
             this.labelFax.TabIndex = 6;
             this.labelFax.Text = "Fax Number";
             // 
-            // textBox1
+            // textName
             // 
-            this.textBox1.Location = new System.Drawing.Point(64, 100);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(123, 20);
-            this.textBox1.TabIndex = 7;
+            this.textName.Location = new System.Drawing.Point(64, 100);
+            this.textName.Name = "textName";
+            this.textName.Size = new System.Drawing.Size(123, 20);
+            this.textName.TabIndex = 7;
             // 
-            // textBox2
+            // textPhone
             // 
-            this.textBox2.Location = new System.Drawing.Point(244, 100);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(123, 20);
-            this.textBox2.TabIndex = 8;
+            this.textPhone.Location = new System.Drawing.Point(244, 100);
+            this.textPhone.Name = "textPhone";
+            this.textPhone.Size = new System.Drawing.Size(123, 20);
+            this.textPhone.TabIndex = 8;
             // 
-            // textBox3
+            // textFax
             // 
-            this.textBox3.Location = new System.Drawing.Point(415, 100);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(123, 20);
-            this.textBox3.TabIndex = 9;
+            this.textFax.Location = new System.Drawing.Point(415, 100);
+            this.textFax.Name = "textFax";
+            this.textFax.Size = new System.Drawing.Size(123, 20);
+            this.textFax.TabIndex = 9;
             // 
-            // textBox5
+            // textZip
             // 
-            this.textBox5.Location = new System.Drawing.Point(244, 203);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(62, 20);
-            this.textBox5.TabIndex = 11;
+            this.textZip.Location = new System.Drawing.Point(244, 203);
+            this.textZip.Name = "textZip";
+            this.textZip.Size = new System.Drawing.Size(62, 20);
+            this.textZip.TabIndex = 11;
             // 
-            // textBox6
+            // textState
             // 
-            this.textBox6.Location = new System.Drawing.Point(606, 203);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(46, 20);
-            this.textBox6.TabIndex = 12;
+            this.textState.Location = new System.Drawing.Point(606, 203);
+            this.textState.Name = "textState";
+            this.textState.Size = new System.Drawing.Size(46, 20);
+            this.textState.TabIndex = 12;
             // 
-            // textBox7
+            // textCity
             // 
-            this.textBox7.Location = new System.Drawing.Point(415, 203);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(123, 20);
-            this.textBox7.TabIndex = 13;
+            this.textCity.Location = new System.Drawing.Point(415, 203);
+            this.textCity.Name = "textCity";
+            this.textCity.Size = new System.Drawing.Size(123, 20);
+            this.textCity.TabIndex = 13;
             // 
-            // textBox8
+            // textAddress
             // 
-            this.textBox8.Location = new System.Drawing.Point(64, 203);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(123, 20);
-            this.textBox8.TabIndex = 14;
+            this.textAddress.Location = new System.Drawing.Point(64, 203);
+            this.textAddress.Name = "textAddress";
+            this.textAddress.Size = new System.Drawing.Size(123, 20);
+            this.textAddress.TabIndex = 14;
             // 
             // labelFinish
             // 
@@ -185,13 +185,13 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.labelCancel);
             this.Controls.Add(this.labelFinish);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textAddress);
+            this.Controls.Add(this.textCity);
+            this.Controls.Add(this.textState);
+            this.Controls.Add(this.textZip);
+            this.Controls.Add(this.textFax);
+            this.Controls.Add(this.textPhone);
+            this.Controls.Add(this.textName);
             this.Controls.Add(this.labelFax);
             this.Controls.Add(this.labelPhone);
             this.Controls.Add(this.labelState);
@@ -215,13 +215,13 @@
         private System.Windows.Forms.Label labelState;
         private System.Windows.Forms.Label labelPhone;
         private System.Windows.Forms.Label labelFax;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textName;
+        private System.Windows.Forms.TextBox textPhone;
+        private System.Windows.Forms.TextBox textFax;
+        private System.Windows.Forms.TextBox textZip;
+        private System.Windows.Forms.TextBox textState;
+        private System.Windows.Forms.TextBox textCity;
+        private System.Windows.Forms.TextBox textAddress;
         private System.Windows.Forms.Button labelFinish;
         private System.Windows.Forms.Button labelCancel;
     }

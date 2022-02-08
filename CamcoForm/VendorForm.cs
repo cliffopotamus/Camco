@@ -45,5 +45,11 @@ namespace CamcoForm
         {
             
         }
+
+        private void BtnEditVendor_Click(object sender, EventArgs e)
+        {
+            var newForm = new EditVendorForm();
+            newForm.Show();
+        }
     }
 }

@@ -41,10 +41,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BtnNewVendor = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.camcoDataSet = new CamcoForm.CamcoDataSet();
-            this.camcoVendors = new CamcoForm.CamcoVendors();
-            this.vendorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vendorsTableAdapter = new CamcoForm.CamcoVendorsTableAdapters.VendorsTableAdapter();
             this.vendorIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vendorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vendorAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,13 +48,19 @@
             this.vendorStateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vendorZipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vendorPhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.camcoVendors = new CamcoForm.CamcoVendors();
+            this.camcoDataSet = new CamcoForm.CamcoDataSet();
+            this.vendorsTableAdapter = new CamcoForm.CamcoVendorsTableAdapters.VendorsTableAdapter();
+            this.BtnEditVendor = new System.Windows.Forms.Button();
+            this.BtnDeleteVendor = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.camcoVendors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vendorsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoVendors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -223,25 +225,6 @@
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // camcoDataSet
-            // 
-            this.camcoDataSet.DataSetName = "CamcoDataSet";
-            this.camcoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // camcoVendors
-            // 
-            this.camcoVendors.DataSetName = "CamcoVendors";
-            this.camcoVendors.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vendorsBindingSource
-            // 
-            this.vendorsBindingSource.DataMember = "Vendors";
-            this.vendorsBindingSource.DataSource = this.camcoVendors;
-            // 
-            // vendorsTableAdapter
-            // 
-            this.vendorsTableAdapter.ClearBeforeFill = true;
-            // 
             // vendorIDDataGridViewTextBoxColumn
             // 
             this.vendorIDDataGridViewTextBoxColumn.DataPropertyName = "VendorID";
@@ -291,12 +274,52 @@
             this.vendorPhoneDataGridViewTextBoxColumn.Name = "vendorPhoneDataGridViewTextBoxColumn";
             this.vendorPhoneDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // vendorsBindingSource
+            // 
+            this.vendorsBindingSource.DataMember = "Vendors";
+            this.vendorsBindingSource.DataSource = this.camcoVendors;
+            // 
+            // camcoVendors
+            // 
+            this.camcoVendors.DataSetName = "CamcoVendors";
+            this.camcoVendors.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // camcoDataSet
+            // 
+            this.camcoDataSet.DataSetName = "CamcoDataSet";
+            this.camcoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vendorsTableAdapter
+            // 
+            this.vendorsTableAdapter.ClearBeforeFill = true;
+            // 
+            // BtnEditVendor
+            // 
+            this.BtnEditVendor.Location = new System.Drawing.Point(438, 55);
+            this.BtnEditVendor.Name = "BtnEditVendor";
+            this.BtnEditVendor.Size = new System.Drawing.Size(103, 30);
+            this.BtnEditVendor.TabIndex = 4;
+            this.BtnEditVendor.Text = "Edit Vendor";
+            this.BtnEditVendor.UseVisualStyleBackColor = true;
+            this.BtnEditVendor.Click += new System.EventHandler(this.BtnEditVendor_Click);
+            // 
+            // BtnDeleteVendor
+            // 
+            this.BtnDeleteVendor.Location = new System.Drawing.Point(668, 55);
+            this.BtnDeleteVendor.Name = "BtnDeleteVendor";
+            this.BtnDeleteVendor.Size = new System.Drawing.Size(103, 30);
+            this.BtnDeleteVendor.TabIndex = 5;
+            this.BtnDeleteVendor.Text = "Delete Vendor";
+            this.BtnDeleteVendor.UseVisualStyleBackColor = true;
+            // 
             // VendorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(935, 538);
+            this.Controls.Add(this.BtnDeleteVendor);
+            this.Controls.Add(this.BtnEditVendor);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.BtnNewVendor);
             this.Controls.Add(this.panel1);
@@ -310,9 +333,9 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.camcoVendors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vendorsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoVendors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -341,5 +364,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn vendorStateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn vendorZipDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn vendorPhoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button BtnEditVendor;
+        private System.Windows.Forms.Button BtnDeleteVendor;
     }
 }

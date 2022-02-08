@@ -25,15 +25,61 @@ namespace CamcoForm
 
         }
 
+        public static List<Customer> RetrieveListAccountID(string accID)
+        {
+            using (var db = new CamcoEntities())
+            {
+                List<Customer> cust = db.Customers.Where(x => x.AccountNo == accID).ToList();
+                return cust;
+            }
+        }
+
+        public class CustomerModel
+        {
+            public string name;
+            public string account;
+            public string billingAddress;
+            public string billingCity;
+            public string billingZip;
+            public string billingState;
+            public string shippingAddress;
+            public string shippingCity;
+            public string shippingState;
+            public string shippingZip;
+        }
+
+        public void deleteDB(CustomerModel Cust)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                var accIDList = RetrieveListAccountID(Cust.account);
+                DB.Customers.RemoveRange(accIDList);
+                DB.SaveChanges();
+                this.customersTableAdapter.Fill(this.camcoCustomers5.Customers);
+            }
+        }
+
         private void BtnNewCustomer_Click(object sender, EventArgs e)
         {
-            var newForm = new NewCustomerForm();
+            NewCustomerForm newForm = new NewCustomerForm();
             newForm.Show();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnDeleteCustomer_Click(object sender, EventArgs e)
+        {
+            var newForm = new DeleteCustomer();
+            newForm.Show();
+        }
+
+        private void btnEditCustomer_Click(object sender, EventArgs e)
+        {
+            EditCustomerForm newForm = new EditCustomerForm();
+            newForm.Show();
         }
     }
 }

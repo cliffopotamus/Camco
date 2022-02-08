@@ -17,12 +17,54 @@ namespace CamcoForm
             InitializeComponent();
         }
 
+        public bool CheckRequired(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public VendorModel GetAllValuesFromForm()
+        {
+            VendorModel Vendor = new VendorModel();
+            Vendor.name = textName.Text;
+            Vendor.phoneNumber = textPhone.Text;
+            Vendor.faxNumber = textFax.Text;
+            Vendor.address = textAddress.Text;
+            Vendor.city = textCity.Text;
+            Vendor.state = textState.Text;
+            return Vendor;
+        }
+
+        public class VendorModel
+        {
+            public string name;
+            public string phoneNumber;
+            public string faxNumber;
+            public string address;
+            public string zipCode;
+            public string city;
+            public string state;
+        }
+
         private void labelFinish_Click(object sender, EventArgs e)
         {
-            string message = "Customer has been added to the database.";
+            var nameFailure = CheckRequired(textName.Text);
+            var addressFailure = CheckRequired(textAddress.Text);
+            var zipCodeFailure = CheckRequired(textZip.Text);
+            var cityFailure = CheckRequired(textCity.Text);
+            var stateFailure = CheckRequired(textState.Text);
 
+            if ((nameFailure == false) && (addressFailure == false) && (zipCodeFailure == false) && (cityFailure == false) && (stateFailure == false))
+            {
+                VendorModel placeholderValues = GetAllValuesFromForm();
 
-            MessageBox.Show(message);
+            }
         }
 
         private void labelCancel_Click(object sender, EventArgs e)

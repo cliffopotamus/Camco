@@ -25,5 +25,10 @@ namespace CamcoForm
             this.customersTableAdapter.Fill(this.customerNameList.Customers);
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
