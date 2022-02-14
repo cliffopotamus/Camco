@@ -59,6 +59,7 @@
             this.customersTableAdapter = new CamcoForm.CamcoCustomers5TableAdapters.CustomersTableAdapter();
             this.btnEditCustomer = new System.Windows.Forms.Button();
             this.btnDeleteCustomer = new System.Windows.Forms.Button();
+            this.btnInventory = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -70,6 +71,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.panel1.Controls.Add(this.btnInventory);
             this.panel1.Controls.Add(this.BtnPurchases);
             this.panel1.Controls.Add(this.BtnInvoices);
             this.panel1.Controls.Add(this.BtnVendors);
@@ -97,6 +99,7 @@
             this.BtnPurchases.Text = "Purchases";
             this.BtnPurchases.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnPurchases.UseVisualStyleBackColor = true;
+            this.BtnPurchases.Click += new System.EventHandler(this.BtnPurchases_Click);
             // 
             // BtnInvoices
             // 
@@ -113,6 +116,7 @@
             this.BtnInvoices.Text = "Invoices";
             this.BtnInvoices.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnInvoices.UseVisualStyleBackColor = true;
+            this.BtnInvoices.Click += new System.EventHandler(this.BtnInvoices_Click);
             // 
             // BtnVendors
             // 
@@ -130,6 +134,7 @@
             this.BtnVendors.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnVendors.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnVendors.UseVisualStyleBackColor = true;
+            this.BtnVendors.Click += new System.EventHandler(this.BtnVendors_Click);
             // 
             // BtnCustomers
             // 
@@ -147,6 +152,7 @@
             this.BtnCustomers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCustomers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCustomers.UseVisualStyleBackColor = true;
+            this.BtnCustomers.Click += new System.EventHandler(this.BtnCustomers_Click);
             // 
             // BtnDashboard
             // 
@@ -363,6 +369,23 @@
             this.btnDeleteCustomer.UseVisualStyleBackColor = false;
             this.btnDeleteCustomer.Click += new System.EventHandler(this.btnDeleteCustomer_Click);
             // 
+            // btnInventory
+            // 
+            this.btnInventory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInventory.FlatAppearance.BorderSize = 0;
+            this.btnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInventory.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnInventory.Image = ((System.Drawing.Image)(resources.GetObject("btnInventory.Image")));
+            this.btnInventory.Location = new System.Drawing.Point(0, 354);
+            this.btnInventory.Name = "btnInventory";
+            this.btnInventory.Size = new System.Drawing.Size(186, 42);
+            this.btnInventory.TabIndex = 2;
+            this.btnInventory.Text = "Inventory";
+            this.btnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInventory.UseVisualStyleBackColor = true;
+            this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
+            // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,5 +444,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn accountNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnEditCustomer;
         private System.Windows.Forms.Button btnDeleteCustomer;
+        private System.Windows.Forms.Button btnInventory;
     }
 }

@@ -38,7 +38,33 @@ namespace CamcoForm
             Vendor.address = textAddress.Text;
             Vendor.city = textCity.Text;
             Vendor.state = textState.Text;
+            Vendor.accountNo = textAccountNo.Text;
             return Vendor;
+        }
+
+        public Vendor convertToDB(VendorModel placeholder)
+        {
+            Vendor inputToDB = new Vendor();
+            inputToDB.VendorName = placeholder.name;
+            inputToDB.VendorAddress = placeholder.address;
+            inputToDB.VendorCity = placeholder.city;
+            inputToDB.VendorZip = placeholder.zipCode;
+            inputToDB.VendorState = placeholder.state;
+            inputToDB.VendorPhone = placeholder.phoneNumber;
+            inputToDB.VendorFax = placeholder.faxNumber;
+            inputToDB.VendorAccountNo = placeholder.accountNo;
+            return inputToDB;
+        }
+
+        public void updateDB(VendorModel Vendors)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                Vendor convertedVendor = new Vendor();
+                convertedVendor = convertToDB(Vendors);
+                DB.Vendors.Add(convertedVendor);
+                DB.SaveChanges();
+            }
         }
 
         public class VendorModel
@@ -50,6 +76,7 @@ namespace CamcoForm
             public string zipCode;
             public string city;
             public string state;
+            public string accountNo;
         }
 
         private void labelFinish_Click(object sender, EventArgs e)
@@ -59,11 +86,20 @@ namespace CamcoForm
             var zipCodeFailure = CheckRequired(textZip.Text);
             var cityFailure = CheckRequired(textCity.Text);
             var stateFailure = CheckRequired(textState.Text);
+            var accountNoFailure = CheckRequired(textAccountNo.Text);
 
-            if ((nameFailure == false) && (addressFailure == false) && (zipCodeFailure == false) && (cityFailure == false) && (stateFailure == false))
+            if ((nameFailure == false) && (addressFailure == false) && (zipCodeFailure == false) && (cityFailure == false) && (stateFailure == false) && (accountNoFailure == false))
             {
                 VendorModel placeholderValues = GetAllValuesFromForm();
-
+                updateDB(placeholderValues);
+                string successBox = "Success";
+                MessageBox.Show(successBox);
+                this.Close();
+            }
+            else
+            {
+                string errorName = "Error";
+                MessageBox.Show(errorName);
             }
         }
 
@@ -83,6 +119,11 @@ namespace CamcoForm
                 //DO SOMETHING //
             }
             
+        }
+
+        private void NewVendorForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

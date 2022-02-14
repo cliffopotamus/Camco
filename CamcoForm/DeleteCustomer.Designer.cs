@@ -40,6 +40,7 @@
             this.textDeleteCustomer.Name = "textDeleteCustomer";
             this.textDeleteCustomer.Size = new System.Drawing.Size(186, 20);
             this.textDeleteCustomer.TabIndex = 0;
+            this.textDeleteCustomer.TextChanged += new System.EventHandler(this.textDeleteCustomer_TextChanged);
             // 
             // labelDeleteAccountNo
             // 
@@ -49,6 +50,7 @@
             this.labelDeleteAccountNo.Size = new System.Drawing.Size(115, 13);
             this.labelDeleteAccountNo.TabIndex = 1;
             this.labelDeleteAccountNo.Text = "Enter Account Number";
+            this.labelDeleteAccountNo.Click += new System.EventHandler(this.labelDeleteAccountNo_Click);
             // 
             // btnDeleteCustomer
             // 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textCustomerName = new System.Windows.Forms.TextBox();
             this.textPhone = new System.Windows.Forms.TextBox();
             this.textCustomerBillingState = new System.Windows.Forms.TextBox();
@@ -54,6 +55,12 @@
             this.textCustomerBillingCity = new System.Windows.Forms.TextBox();
             this.textBillingCity = new System.Windows.Forms.Label();
             this.textShippingCity = new System.Windows.Forms.Label();
+            this.textCustomerID = new System.Windows.Forms.TextBox();
+            this.camcoCustomers = new CamcoForm.CamcoCustomers();
+            this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.customersTableAdapter = new CamcoForm.CamcoCustomersTableAdapters.CustomersTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // textCustomerName
@@ -269,11 +276,35 @@
             this.textShippingCity.TabIndex = 25;
             this.textShippingCity.Text = "Shipping City";
             // 
+            // textCustomerID
+            // 
+            this.textCustomerID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customersBindingSource, "CustomerID", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
+            this.textCustomerID.Location = new System.Drawing.Point(49, 397);
+            this.textCustomerID.Name = "textCustomerID";
+            this.textCustomerID.Size = new System.Drawing.Size(85, 20);
+            this.textCustomerID.TabIndex = 26;
+            this.textCustomerID.Visible = false;
+            // 
+            // camcoCustomers
+            // 
+            this.camcoCustomers.DataSetName = "CamcoCustomers";
+            this.camcoCustomers.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // customersBindingSource
+            // 
+            this.customersBindingSource.DataMember = "Customers";
+            this.customersBindingSource.DataSource = this.camcoCustomers;
+            // 
+            // customersTableAdapter
+            // 
+            this.customersTableAdapter.ClearBeforeFill = true;
+            // 
             // NewCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textCustomerID);
             this.Controls.Add(this.textShippingCity);
             this.Controls.Add(this.textBillingCity);
             this.Controls.Add(this.textCustomerBillingCity);
@@ -303,6 +334,8 @@
             this.Name = "NewCustomerForm";
             this.Text = "NewCustomerForm";
             this.Load += new System.EventHandler(this.NewCustomerForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.camcoCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,5 +369,9 @@
         private System.Windows.Forms.TextBox textCustomerBillingCity;
         private System.Windows.Forms.Label textBillingCity;
         private System.Windows.Forms.Label textShippingCity;
+        private System.Windows.Forms.TextBox textCustomerID;
+        private CamcoCustomers camcoCustomers;
+        private System.Windows.Forms.BindingSource customersBindingSource;
+        private CamcoCustomersTableAdapters.CustomersTableAdapter customersTableAdapter;
     }
 }

@@ -44,6 +44,8 @@
             this.textAddress = new System.Windows.Forms.TextBox();
             this.labelFinish = new System.Windows.Forms.Button();
             this.labelCancel = new System.Windows.Forms.Button();
+            this.textAccountNo = new System.Windows.Forms.TextBox();
+            this.labelAccountNo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelVendorAddress
@@ -178,11 +180,29 @@
             this.labelCancel.UseVisualStyleBackColor = true;
             this.labelCancel.Click += new System.EventHandler(this.labelCancel_Click);
             // 
+            // textAccountNo
+            // 
+            this.textAccountNo.Location = new System.Drawing.Point(590, 100);
+            this.textAccountNo.Name = "textAccountNo";
+            this.textAccountNo.Size = new System.Drawing.Size(62, 20);
+            this.textAccountNo.TabIndex = 17;
+            // 
+            // labelAccountNo
+            // 
+            this.labelAccountNo.AutoSize = true;
+            this.labelAccountNo.Location = new System.Drawing.Point(587, 84);
+            this.labelAccountNo.Name = "labelAccountNo";
+            this.labelAccountNo.Size = new System.Drawing.Size(67, 13);
+            this.labelAccountNo.TabIndex = 18;
+            this.labelAccountNo.Text = "Account No.";
+            // 
             // NewVendorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelAccountNo);
+            this.Controls.Add(this.textAccountNo);
             this.Controls.Add(this.labelCancel);
             this.Controls.Add(this.labelFinish);
             this.Controls.Add(this.textAddress);
@@ -201,6 +221,7 @@
             this.Controls.Add(this.labelVendorAddress);
             this.Name = "NewVendorForm";
             this.Text = "NewVendorForm";
+            this.Load += new System.EventHandler(this.NewVendorForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,5 +245,7 @@
         private System.Windows.Forms.TextBox textAddress;
         private System.Windows.Forms.Button labelFinish;
         private System.Windows.Forms.Button labelCancel;
+        private System.Windows.Forms.TextBox textAccountNo;
+        private System.Windows.Forms.Label labelAccountNo;
     }
 }

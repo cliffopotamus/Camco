@@ -162,7 +162,7 @@
             // 
             // textBillAddress
             // 
-            this.textBillAddress.Location = new System.Drawing.Point(38, 78);
+            this.textBillAddress.Location = new System.Drawing.Point(31, 78);
             this.textBillAddress.Multiline = true;
             this.textBillAddress.Name = "textBillAddress";
             this.textBillAddress.Size = new System.Drawing.Size(121, 25);
@@ -171,7 +171,7 @@
             // labelBillAddress
             // 
             this.labelBillAddress.AutoSize = true;
-            this.labelBillAddress.Location = new System.Drawing.Point(35, 62);
+            this.labelBillAddress.Location = new System.Drawing.Point(29, 62);
             this.labelBillAddress.Name = "labelBillAddress";
             this.labelBillAddress.Size = new System.Drawing.Size(75, 13);
             this.labelBillAddress.TabIndex = 9;
@@ -179,7 +179,7 @@
             // 
             // textShipAddress
             // 
-            this.textShipAddress.Location = new System.Drawing.Point(38, 132);
+            this.textShipAddress.Location = new System.Drawing.Point(31, 132);
             this.textShipAddress.Multiline = true;
             this.textShipAddress.Name = "textShipAddress";
             this.textShipAddress.Size = new System.Drawing.Size(121, 25);
@@ -188,7 +188,7 @@
             // labelShippingAddress
             // 
             this.labelShippingAddress.AutoSize = true;
-            this.labelShippingAddress.Location = new System.Drawing.Point(42, 118);
+            this.labelShippingAddress.Location = new System.Drawing.Point(28, 118);
             this.labelShippingAddress.Name = "labelShippingAddress";
             this.labelShippingAddress.Size = new System.Drawing.Size(89, 13);
             this.labelShippingAddress.TabIndex = 11;
@@ -197,7 +197,7 @@
             // labelQuantity
             // 
             this.labelQuantity.AutoSize = true;
-            this.labelQuantity.Location = new System.Drawing.Point(35, 179);
+            this.labelQuantity.Location = new System.Drawing.Point(28, 169);
             this.labelQuantity.Name = "labelQuantity";
             this.labelQuantity.Size = new System.Drawing.Size(46, 13);
             this.labelQuantity.TabIndex = 12;
@@ -205,7 +205,7 @@
             // 
             // textQuantity
             // 
-            this.textQuantity.Location = new System.Drawing.Point(32, 194);
+            this.textQuantity.Location = new System.Drawing.Point(31, 185);
             this.textQuantity.Multiline = true;
             this.textQuantity.Name = "textQuantity";
             this.textQuantity.Size = new System.Drawing.Size(43, 20);
@@ -214,7 +214,7 @@
             // labelItem
             // 
             this.labelItem.AutoSize = true;
-            this.labelItem.Location = new System.Drawing.Point(104, 179);
+            this.labelItem.Location = new System.Drawing.Point(104, 169);
             this.labelItem.Name = "labelItem";
             this.labelItem.Size = new System.Drawing.Size(27, 13);
             this.labelItem.TabIndex = 14;
@@ -225,7 +225,7 @@
             this.comboItem.DataSource = this.inventoryBindingSource;
             this.comboItem.DisplayMember = "ProductName";
             this.comboItem.FormattingEnabled = true;
-            this.comboItem.Location = new System.Drawing.Point(107, 193);
+            this.comboItem.Location = new System.Drawing.Point(107, 185);
             this.comboItem.Name = "comboItem";
             this.comboItem.Size = new System.Drawing.Size(241, 21);
             this.comboItem.TabIndex = 15;
@@ -247,7 +247,7 @@
             // labelItemDescription
             // 
             this.labelItemDescription.AutoSize = true;
-            this.labelItemDescription.Location = new System.Drawing.Point(217, 236);
+            this.labelItemDescription.Location = new System.Drawing.Point(155, 220);
             this.labelItemDescription.Name = "labelItemDescription";
             this.labelItemDescription.Size = new System.Drawing.Size(83, 13);
             this.labelItemDescription.TabIndex = 16;
@@ -256,7 +256,7 @@
             // labelInvoiceItem
             // 
             this.labelInvoiceItem.AutoSize = true;
-            this.labelInvoiceItem.Location = new System.Drawing.Point(126, 236);
+            this.labelInvoiceItem.Location = new System.Drawing.Point(104, 220);
             this.labelInvoiceItem.Name = "labelInvoiceItem";
             this.labelInvoiceItem.Size = new System.Drawing.Size(27, 13);
             this.labelInvoiceItem.TabIndex = 17;
@@ -265,7 +265,7 @@
             // labelUnitPrice
             // 
             this.labelUnitPrice.AutoSize = true;
-            this.labelUnitPrice.Location = new System.Drawing.Point(393, 236);
+            this.labelUnitPrice.Location = new System.Drawing.Point(295, 220);
             this.labelUnitPrice.Name = "labelUnitPrice";
             this.labelUnitPrice.Size = new System.Drawing.Size(53, 13);
             this.labelUnitPrice.TabIndex = 18;
@@ -274,7 +274,7 @@
             // labelTotalPrice
             // 
             this.labelTotalPrice.AutoSize = true;
-            this.labelTotalPrice.Location = new System.Drawing.Point(505, 236);
+            this.labelTotalPrice.Location = new System.Drawing.Point(405, 220);
             this.labelTotalPrice.Name = "labelTotalPrice";
             this.labelTotalPrice.Size = new System.Drawing.Size(58, 13);
             this.labelTotalPrice.TabIndex = 19;
@@ -283,7 +283,7 @@
             // labelInvoiceDate
             // 
             this.labelInvoiceDate.AutoSize = true;
-            this.labelInvoiceDate.Location = new System.Drawing.Point(618, 236);
+            this.labelInvoiceDate.Location = new System.Drawing.Point(505, 220);
             this.labelInvoiceDate.Name = "labelInvoiceDate";
             this.labelInvoiceDate.Size = new System.Drawing.Size(84, 13);
             this.labelInvoiceDate.TabIndex = 20;
@@ -292,7 +292,7 @@
             // labelLineItem
             // 
             this.labelLineItem.AutoSize = true;
-            this.labelLineItem.Location = new System.Drawing.Point(35, 236);
+            this.labelLineItem.Location = new System.Drawing.Point(28, 220);
             this.labelLineItem.Name = "labelLineItem";
             this.labelLineItem.Size = new System.Drawing.Size(67, 13);
             this.labelLineItem.TabIndex = 21;

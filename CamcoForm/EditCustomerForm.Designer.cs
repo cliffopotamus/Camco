@@ -59,6 +59,7 @@
             this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.camcoDataSet5 = new CamcoForm.CamcoDataSet5();
             this.customersTableAdapter = new CamcoForm.CamcoDataSet5TableAdapters.CustomersTableAdapter();
+            this.textCustomerID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet5)).BeginInit();
             this.SuspendLayout();
@@ -300,11 +301,21 @@
             // 
             this.customersTableAdapter.ClearBeforeFill = true;
             // 
+            // textCustomerID
+            // 
+            this.textCustomerID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customersBindingSource, "CustomerID", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
+            this.textCustomerID.Location = new System.Drawing.Point(81, 396);
+            this.textCustomerID.Name = "textCustomerID";
+            this.textCustomerID.Size = new System.Drawing.Size(85, 20);
+            this.textCustomerID.TabIndex = 53;
+            this.textCustomerID.Visible = false;
+            // 
             // EditCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textCustomerID);
             this.Controls.Add(this.comboCustomerName);
             this.Controls.Add(this.textShippingCity);
             this.Controls.Add(this.textBillingCity);
@@ -374,5 +385,6 @@
         private CamcoDataSet5 camcoDataSet5;
         private System.Windows.Forms.BindingSource customersBindingSource;
         private CamcoDataSet5TableAdapters.CustomersTableAdapter customersTableAdapter;
+        private System.Windows.Forms.TextBox textCustomerID;
     }
 }

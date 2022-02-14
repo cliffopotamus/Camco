@@ -29,25 +29,15 @@ namespace CamcoForm
             public string shippingCity;
             public string shippingState;
             public string shippingZip;
+            public string customerID;
         }
 
-      /* public static List<Customer> RetrieveListAccountID(string accID)
-        {
-            using (var db = new CamcoEntities())
-            {
-                List<Customer> custList = db.Customers.Where(x => x.AccountNo == accID).ToList();
-                return custList;
-            }
-        }
-        */
 
         public void deleteDB(CustomerModel Cust)
         {
-           /* List<Customer> accIDList = RetrieveListAccountID(Cust.account);*/
+
             using (var DB = new CamcoEntities())
             {
-                /*List<Customer> accIDList = RetrieveListAccountID(Cust.account);
-                 Customer delConvertedCustomer = delConvertToDB(accIDList); */
                 List<Customer> custList = DB.Customers.Where(x => x.AccountNo == Cust.account).ToList();
                 DB.Customers.RemoveRange(custList);
                 DB.SaveChanges();
@@ -95,6 +85,16 @@ namespace CamcoForm
         }
 
         private void DeleteCustomer_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelDeleteAccountNo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textDeleteCustomer_TextChanged(object sender, EventArgs e)
         {
 
         }

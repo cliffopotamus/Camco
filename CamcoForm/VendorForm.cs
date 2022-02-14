@@ -51,5 +51,11 @@ namespace CamcoForm
             var newForm = new EditVendorForm();
             newForm.Show();
         }
+
+        private void BtnDeleteVendor_Click(object sender, EventArgs e)
+        {
+            var newForm = new DeleteVendorForm();
+            newForm.Show();
+        }
     }
 }

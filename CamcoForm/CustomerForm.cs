@@ -81,5 +81,33 @@ namespace CamcoForm
             EditCustomerForm newForm = new EditCustomerForm();
             newForm.Show();
         }
+
+        private void BtnCustomers_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnVendors_Click(object sender, EventArgs e)
+        {
+            var newForm = new VendorForm();
+            newForm.Show();
+        }
+
+        private void BtnInvoices_Click(object sender, EventArgs e)
+        {
+            var newForm = new InvoiceForm();
+            newForm.Show();
+        }
+
+        private void BtnPurchases_Click(object sender, EventArgs e)
+        {
+            var newForm = new PurchaseForm();
+            newForm.Show();
+        }
+
+        private void btnInventory_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

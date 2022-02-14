@@ -159,6 +159,12 @@
     <Compile Include="DeleteCustomer.Designer.cs">
       <DependentUpon>DeleteCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeleteVendorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteVendorForm.Designer.cs">
+      <DependentUpon>DeleteVendorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +275,9 @@
     <EmbeddedResource Include="DeleteCustomer.resx">
       <DependentUpon>DeleteCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DeleteVendorForm.resx">
+      <DependentUpon>DeleteVendorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditCustomer.resx">
       <DependentUpon>EditCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -289,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewInvoiceForm.resx">
       <DependentUpon>NewInvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewPurchaseForm.resx">
+      <DependentUpon>NewPurchaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewVendorForm.resx">
       <DependentUpon>NewVendorForm.cs</DependentUpon>

@@ -21,5 +21,7 @@ namespace CamcoForm
         public string VendorState { get; set; }
         public string VendorZip { get; set; }
         public string VendorPhone { get; set; }
+        public string VendorFax { get; set; }
+        public string VendorAccountNo { get; set; }
     }
 }

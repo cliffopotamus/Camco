@@ -62,6 +62,7 @@ namespace CamcoForm
             public string shippingState;
             public string shippingZip;
             public int customerID;
+
         }
 
         public bool CheckRequired(string text)
@@ -89,6 +90,7 @@ namespace CamcoForm
             Cust.shippingCity = textCustomerShippingCity.Text;
             Cust.shippingZip = textCustomerShippingZip.Text;
             Cust.shippingState = textCustomerShippingState.Text;
+            /*test*/
             return Cust;
         }
 
