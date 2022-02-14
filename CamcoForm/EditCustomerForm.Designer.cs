@@ -308,7 +308,6 @@
             this.textCustomerID.Name = "textCustomerID";
             this.textCustomerID.Size = new System.Drawing.Size(85, 20);
             this.textCustomerID.TabIndex = 53;
-            this.textCustomerID.Visible = false;
             // 
             // EditCustomerForm
             // 

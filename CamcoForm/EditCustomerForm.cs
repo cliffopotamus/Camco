@@ -90,7 +90,7 @@ namespace CamcoForm
             Cust.shippingCity = textCustomerShippingCity.Text;
             Cust.shippingZip = textCustomerShippingZip.Text;
             Cust.shippingState = textCustomerShippingState.Text;
-            /*test*/
+            Cust.customerID = Convert.ToInt32(textCustomerID.Text);
             return Cust;
         }
 
@@ -112,10 +112,8 @@ namespace CamcoForm
                     result.CustomerBillCity = Cust.billingCity;
                     result.CustomerBillState = Cust.billingState;
                     result.CustomerBillZipCode = Cust.billingZip;
+                    result.CustomerID = Cust.customerID;
                     DB.SaveChanges();
-                    string message2 = result.CustomerBillState;
-                    MessageBox.Show(message2);
-
                 }
             }       
         }
@@ -171,6 +169,7 @@ namespace CamcoForm
             textCustomerBillingState.Text = placeholder.CustomerBillState;
             textCustomerBillingZipCode.Text = placeholder.CustomerBillZipCode;
             textAccount.Text = placeholder.AccountNo;
+            textCustomerID.Text = placeholder.CustomerID.ToString();
             return cust;
         }
 
