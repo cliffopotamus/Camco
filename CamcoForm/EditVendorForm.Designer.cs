@@ -45,6 +45,7 @@
             this.comboVendor = new System.Windows.Forms.ComboBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonFinish = new System.Windows.Forms.Button();
+            this.textVendorID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textAddress
@@ -167,6 +168,7 @@
             this.comboVendor.Size = new System.Drawing.Size(121, 21);
             this.comboVendor.TabIndex = 29;
             this.comboVendor.Text = "Select Vendor";
+            this.comboVendor.SelectedIndexChanged += new System.EventHandler(this.comboVendor_SelectedIndexChanged);
             // 
             // buttonCancel
             // 
@@ -176,6 +178,7 @@
             this.buttonCancel.TabIndex = 49;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonFinish
             // 
@@ -185,12 +188,21 @@
             this.buttonFinish.TabIndex = 48;
             this.buttonFinish.Text = "Finish";
             this.buttonFinish.UseVisualStyleBackColor = true;
+            this.buttonFinish.Click += new System.EventHandler(this.buttonFinish_Click);
+            // 
+            // textVendorID
+            // 
+            this.textVendorID.Location = new System.Drawing.Point(81, 392);
+            this.textVendorID.Name = "textVendorID";
+            this.textVendorID.Size = new System.Drawing.Size(85, 20);
+            this.textVendorID.TabIndex = 54;
             // 
             // EditVendorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textVendorID);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonFinish);
             this.Controls.Add(this.comboVendor);
@@ -210,6 +222,7 @@
             this.Controls.Add(this.labelVendorAddress);
             this.Name = "EditVendorForm";
             this.Text = "EditVendorForm";
+            this.Load += new System.EventHandler(this.EditVendorForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,5 +247,6 @@
         private System.Windows.Forms.ComboBox comboVendor;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonFinish;
+        private System.Windows.Forms.TextBox textVendorID;
     }
 }

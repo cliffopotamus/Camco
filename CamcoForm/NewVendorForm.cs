@@ -38,7 +38,6 @@ namespace CamcoForm
             Vendor.address = textAddress.Text;
             Vendor.city = textCity.Text;
             Vendor.state = textState.Text;
-            Vendor.accountNo = textAccountNo.Text;
             return Vendor;
         }
 
@@ -52,7 +51,6 @@ namespace CamcoForm
             inputToDB.VendorState = placeholder.state;
             inputToDB.VendorPhone = placeholder.phoneNumber;
             inputToDB.VendorFax = placeholder.faxNumber;
-            inputToDB.VendorAccountNo = placeholder.accountNo;
             return inputToDB;
         }
 
@@ -76,7 +74,6 @@ namespace CamcoForm
             public string zipCode;
             public string city;
             public string state;
-            public string accountNo;
         }
 
         private void labelFinish_Click(object sender, EventArgs e)
@@ -123,6 +120,8 @@ namespace CamcoForm
 
         private void NewVendorForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'camcoVendors.Vendors' table. You can move, or remove it, as needed.
+            this.vendorsTableAdapter.Fill(this.camcoVendors.Vendors);
 
         }
     }

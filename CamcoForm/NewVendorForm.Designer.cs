@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelVendorAddress = new System.Windows.Forms.Label();
             this.labelVendorName = new System.Windows.Forms.Label();
             this.labelZipCode = new System.Windows.Forms.Label();
@@ -46,6 +47,12 @@
             this.labelCancel = new System.Windows.Forms.Button();
             this.textAccountNo = new System.Windows.Forms.TextBox();
             this.labelAccountNo = new System.Windows.Forms.Label();
+            this.textVendorID = new System.Windows.Forms.TextBox();
+            this.camcoVendors = new CamcoForm.CamcoVendors();
+            this.vendorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vendorsTableAdapter = new CamcoForm.CamcoVendorsTableAdapters.VendorsTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoVendors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // labelVendorAddress
@@ -196,11 +203,35 @@
             this.labelAccountNo.TabIndex = 18;
             this.labelAccountNo.Text = "Account No.";
             // 
+            // textVendorID
+            // 
+            this.textVendorID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vendorsBindingSource, "VendorID", true));
+            this.textVendorID.Location = new System.Drawing.Point(60, 385);
+            this.textVendorID.Name = "textVendorID";
+            this.textVendorID.Size = new System.Drawing.Size(46, 20);
+            this.textVendorID.TabIndex = 19;
+            this.textVendorID.Visible = false;
+            // 
+            // camcoVendors
+            // 
+            this.camcoVendors.DataSetName = "CamcoVendors";
+            this.camcoVendors.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vendorsBindingSource
+            // 
+            this.vendorsBindingSource.DataMember = "Vendors";
+            this.vendorsBindingSource.DataSource = this.camcoVendors;
+            // 
+            // vendorsTableAdapter
+            // 
+            this.vendorsTableAdapter.ClearBeforeFill = true;
+            // 
             // NewVendorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textVendorID);
             this.Controls.Add(this.labelAccountNo);
             this.Controls.Add(this.textAccountNo);
             this.Controls.Add(this.labelCancel);
@@ -222,6 +253,8 @@
             this.Name = "NewVendorForm";
             this.Text = "NewVendorForm";
             this.Load += new System.EventHandler(this.NewVendorForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.camcoVendors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,5 +280,9 @@
         private System.Windows.Forms.Button labelCancel;
         private System.Windows.Forms.TextBox textAccountNo;
         private System.Windows.Forms.Label labelAccountNo;
+        private System.Windows.Forms.TextBox textVendorID;
+        private CamcoVendors camcoVendors;
+        private System.Windows.Forms.BindingSource vendorsBindingSource;
+        private CamcoVendorsTableAdapters.VendorsTableAdapter vendorsTableAdapter;
     }
 }
