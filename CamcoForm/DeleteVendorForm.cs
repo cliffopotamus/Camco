@@ -15,6 +15,32 @@ namespace CamcoForm
         public DeleteVendorForm()
         {
             InitializeComponent();
+            PopulateCombo();
+        }
+
+        public class VendorBox
+        {
+            public int ID;
+            public string DisplayName;
+
+            public VendorBox(int pID, string pName)
+            {
+                ID = pID;
+                DisplayName = pName;
+            }
+
+            public override string ToString()
+            {
+                return DisplayName;
+            }
+        }
+
+        private void PopulateCombo()
+        {
+            VendorBox c1 = new VendorBox(4, "Testing");
+            VendorBox c2 = new VendorBox(5, "test2");
+            comboDeleteVendor.Items.Add(c1);
+            comboDeleteVendor.Items.Add(c2);
         }
 
         public class VendorModel
@@ -26,21 +52,37 @@ namespace CamcoForm
             public string zipCode;
             public string city;
             public string state;
-            public string accountNo;
+            public int vendorID;
         }
 
-        public VendorModel getAccIDFromForm()
+        public static Vendor retrieveVendorID(int vendorID)
         {
-            VendorModel Vendors = new VendorModel();
-            Vendors.accountNo = textDeleteVendor.Text;
-            return Vendors;
+            using (var DB = new CamcoEntities())
+            {
+                var vendors = DB.Vendors.SingleOrDefault(x => x.VendorID == vendorID);
+                return vendors;
+            }
+        }
+
+        public VendorModel fillVendorID(Vendor placeholder)
+        {
+            VendorModel vend = new VendorModel();
+            textVendorID.Text = placeholder.VendorID.ToString();
+            return vend;
+        }
+
+        public VendorModel setVendorID()
+        {
+            VendorModel vend = new VendorModel();
+            vend.vendorID = Convert.ToInt32(textVendorID.Text);
+            return vend;
         }
 
         public void deleteDB(VendorModel placeholderVendors)
         {
             using (var DB = new CamcoEntities())
             {
-                List<Vendor> vendorList = DB.Vendors.Where(x => x.VendorAccountNo == placeholderVendors.accountNo).ToList();
+                List<Vendor> vendorList = DB.Vendors.Where(x => x.VendorID == placeholderVendors.vendorID).ToList();
                 DB.Vendors.RemoveRange(vendorList);
                 DB.SaveChanges();
             }
@@ -55,8 +97,9 @@ namespace CamcoForm
 
             if (result == DialogResult.Yes)
             {
-                VendorModel userAccID = getAccIDFromForm();
-                deleteDB(userAccID);
+                VendorModel newVendorID = setVendorID();
+                deleteDB(newVendorID);
+                this.Close();
             }
 
             if (result == DialogResult.No)
@@ -67,6 +110,13 @@ namespace CamcoForm
 
         private void DeleteVendorForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'camcoVendors.Vendors' table. You can move, or remove it, as needed.
+            this.vendorsTableAdapter.Fill(this.camcoVendors.Vendors);
+
+        }
+
+        private void btnDeleteCancel_Click(object sender, EventArgs e)
+        {
             string message = "Are you sure you want to cancel?";
             string title = "Close Window";
             MessageBoxButtons closeButtons = MessageBoxButtons.YesNo;
@@ -76,6 +126,14 @@ namespace CamcoForm
             {
                 this.Close();
             }
+        }
+
+        private void comboDeleteVendor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            VendorBox vb = (VendorBox)comboDeleteVendor.SelectedItem;
+            var ID = vb.ID;
+            var name = vb.DisplayName;
+            textVendorID.Text = ID.ToString();
         }
     }
 }

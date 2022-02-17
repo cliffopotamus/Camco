@@ -28,10 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnDeleteCancel = new System.Windows.Forms.Button();
             this.btnDeleteVendor = new System.Windows.Forms.Button();
             this.labelDeleteAccountNo = new System.Windows.Forms.Label();
-            this.textDeleteVendor = new System.Windows.Forms.TextBox();
+            this.comboDeleteVendor = new System.Windows.Forms.ComboBox();
+            this.vendorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.camcoVendors = new CamcoForm.CamcoVendors();
+            this.vendorsTableAdapter = new CamcoForm.CamcoVendorsTableAdapters.VendorsTableAdapter();
+            this.textVendorID = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoVendors)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDeleteCancel
@@ -42,6 +49,7 @@
             this.btnDeleteCancel.TabIndex = 7;
             this.btnDeleteCancel.Text = "Cancel";
             this.btnDeleteCancel.UseVisualStyleBackColor = true;
+            this.btnDeleteCancel.Click += new System.EventHandler(this.btnDeleteCancel_Click);
             // 
             // btnDeleteVendor
             // 
@@ -58,29 +66,55 @@
             this.labelDeleteAccountNo.AutoSize = true;
             this.labelDeleteAccountNo.Location = new System.Drawing.Point(313, 183);
             this.labelDeleteAccountNo.Name = "labelDeleteAccountNo";
-            this.labelDeleteAccountNo.Size = new System.Drawing.Size(115, 13);
+            this.labelDeleteAccountNo.Size = new System.Drawing.Size(74, 13);
             this.labelDeleteAccountNo.TabIndex = 5;
-            this.labelDeleteAccountNo.Text = "Enter Account Number";
+            this.labelDeleteAccountNo.Text = "Select Vendor";
             // 
-            // textDeleteVendor
+            // comboDeleteVendor
             // 
-            this.textDeleteVendor.Location = new System.Drawing.Point(309, 205);
-            this.textDeleteVendor.Name = "textDeleteVendor";
-            this.textDeleteVendor.Size = new System.Drawing.Size(186, 20);
-            this.textDeleteVendor.TabIndex = 4;
+            this.comboDeleteVendor.FormattingEnabled = true;
+            this.comboDeleteVendor.Location = new System.Drawing.Point(316, 199);
+            this.comboDeleteVendor.Name = "comboDeleteVendor";
+            this.comboDeleteVendor.Size = new System.Drawing.Size(172, 21);
+            this.comboDeleteVendor.TabIndex = 8;
+            this.comboDeleteVendor.SelectedIndexChanged += new System.EventHandler(this.comboDeleteVendor_SelectedIndexChanged);
+            // 
+            // vendorsBindingSource
+            // 
+            this.vendorsBindingSource.DataMember = "Vendors";
+            this.vendorsBindingSource.DataSource = this.camcoVendors;
+            // 
+            // camcoVendors
+            // 
+            this.camcoVendors.DataSetName = "CamcoVendors";
+            this.camcoVendors.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vendorsTableAdapter
+            // 
+            this.vendorsTableAdapter.ClearBeforeFill = true;
+            // 
+            // textVendorID
+            // 
+            this.textVendorID.Location = new System.Drawing.Point(106, 342);
+            this.textVendorID.Name = "textVendorID";
+            this.textVendorID.Size = new System.Drawing.Size(83, 20);
+            this.textVendorID.TabIndex = 9;
             // 
             // DeleteVendorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textVendorID);
+            this.Controls.Add(this.comboDeleteVendor);
             this.Controls.Add(this.btnDeleteCancel);
             this.Controls.Add(this.btnDeleteVendor);
             this.Controls.Add(this.labelDeleteAccountNo);
-            this.Controls.Add(this.textDeleteVendor);
             this.Name = "DeleteVendorForm";
             this.Text = "DeleteVendorForm";
             this.Load += new System.EventHandler(this.DeleteVendorForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.vendorsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoVendors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -91,6 +125,10 @@
         private System.Windows.Forms.Button btnDeleteCancel;
         private System.Windows.Forms.Button btnDeleteVendor;
         private System.Windows.Forms.Label labelDeleteAccountNo;
-        private System.Windows.Forms.TextBox textDeleteVendor;
+        private System.Windows.Forms.ComboBox comboDeleteVendor;
+        private CamcoVendors camcoVendors;
+        private System.Windows.Forms.BindingSource vendorsBindingSource;
+        private CamcoVendorsTableAdapters.VendorsTableAdapter vendorsTableAdapter;
+        private System.Windows.Forms.TextBox textVendorID;
     }
 }
