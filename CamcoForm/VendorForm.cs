@@ -27,6 +27,7 @@ namespace CamcoForm
             // TODO: This line of code loads data into the 'camcoVendors.Vendors' table. You can move, or remove it, as needed.
             this.vendorsTableAdapter.Fill(this.camcoVendors.Vendors);
 
+
         }
 
         private void BtnNewVendor_Click(object sender, EventArgs e)

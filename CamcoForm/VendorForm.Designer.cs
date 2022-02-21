@@ -54,6 +54,7 @@
             this.vendorsTableAdapter = new CamcoForm.CamcoVendorsTableAdapters.VendorsTableAdapter();
             this.BtnEditVendor = new System.Windows.Forms.Button();
             this.BtnDeleteVendor = new System.Windows.Forms.Button();
+            this.BtnInventory = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -66,6 +67,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.panel1.Controls.Add(this.BtnInventory);
             this.panel1.Controls.Add(this.BtnPurchases);
             this.panel1.Controls.Add(this.BtnInvoices);
             this.panel1.Controls.Add(this.BtnVendors);
@@ -313,6 +315,22 @@
             this.BtnDeleteVendor.UseVisualStyleBackColor = true;
             this.BtnDeleteVendor.Click += new System.EventHandler(this.BtnDeleteVendor_Click);
             // 
+            // BtnInventory
+            // 
+            this.BtnInventory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnInventory.FlatAppearance.BorderSize = 0;
+            this.BtnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnInventory.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold);
+            this.BtnInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.BtnInventory.Image = ((System.Drawing.Image)(resources.GetObject("BtnInventory.Image")));
+            this.BtnInventory.Location = new System.Drawing.Point(0, 354);
+            this.BtnInventory.Name = "BtnInventory";
+            this.BtnInventory.Size = new System.Drawing.Size(186, 42);
+            this.BtnInventory.TabIndex = 4;
+            this.BtnInventory.Text = "Inventory";
+            this.BtnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnInventory.UseVisualStyleBackColor = true;
+            // 
             // VendorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -367,5 +385,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn vendorPhoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button BtnEditVendor;
         private System.Windows.Forms.Button BtnDeleteVendor;
+        private System.Windows.Forms.Button BtnInventory;
     }
 }

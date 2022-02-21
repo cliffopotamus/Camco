@@ -74,6 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BillOfMaterialsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillOfMaterialsForm.Designer.cs">
+      <DependentUpon>BillOfMaterialsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CamcoCustomers.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -226,6 +232,12 @@
     <Compile Include="NewCustomerForm.Designer.cs">
       <DependentUpon>NewCustomerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewInventoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewInventoryForm.Designer.cs">
+      <DependentUpon>NewInventoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewInvoiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,6 +279,12 @@
     <Compile Include="VendorForm.Designer.cs">
       <DependentUpon>VendorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WorkOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkOrderForm.Designer.cs">
+      <DependentUpon>WorkOrderForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CamcoForm.resx">
       <DependentUpon>CamcoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -297,6 +315,9 @@
     <EmbeddedResource Include="NewCustomerForm.resx">
       <DependentUpon>NewCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewInventoryForm.resx">
+      <DependentUpon>NewInventoryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewInvoiceForm.resx">
       <DependentUpon>NewInvoiceForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -320,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VendorForm.resx">
       <DependentUpon>VendorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkOrderForm.resx">
+      <DependentUpon>WorkOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="CamcoCustomers.xsc">
       <DependentUpon>CamcoCustomers.xsd</DependentUpon>

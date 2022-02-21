@@ -131,5 +131,11 @@ namespace CamcoForm
                 return cust;
             }
         }
+
+        private void BtnInventory_Click(object sender, EventArgs e)
+        {
+            var newForm = new NewInventoryForm();
+            newForm.Show();
+        }
     }
 }
