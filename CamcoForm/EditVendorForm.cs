@@ -94,7 +94,7 @@ namespace CamcoForm
             inputToDB.VendorZip = placeholder.zipCode;
             inputToDB.VendorState = placeholder.state;
             inputToDB.VendorPhone = placeholder.phoneNumber;
-            inputToDB.VendorFax = placeholder.faxNumber;
+           /* inputToDB.VendorFax = placeholder.faxNumber;*/
             inputToDB.VendorID = placeholder.vendorID;
             return inputToDB;
         }
@@ -113,7 +113,7 @@ namespace CamcoForm
                     result.VendorZip = Vendors.zipCode;
                     result.VendorState = Vendors.state;
                     result.VendorPhone = Vendors.phoneNumber;
-                    result.VendorFax = Vendors.faxNumber;
+                 /*   result.VendorFax = Vendors.faxNumber;*/
                     result.VendorID = Vendors.vendorID;
                     DB.SaveChanges();
                 }
@@ -130,7 +130,7 @@ namespace CamcoForm
             textState.Text = placeholder.VendorState;
             textZip.Text = placeholder.VendorZip;
             textPhone.Text = placeholder.VendorPhone;
-            textFax.Text = placeholder.VendorFax;
+          /*  textFax.Text = placeholder.VendorFax; */
             textVendorID.Text = placeholder.VendorID.ToString();
             return Vendor;
         }

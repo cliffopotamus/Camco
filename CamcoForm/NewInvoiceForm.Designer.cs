@@ -49,8 +49,6 @@
             this.labelItem = new System.Windows.Forms.Label();
             this.comboItem = new System.Windows.Forms.ComboBox();
             this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBoxItems = new CamcoForm.ComboBoxItems();
-            this.inventoryTableAdapter = new CamcoForm.ComboBoxItemsTableAdapters.InventoryTableAdapter();
             this.labelItemDescription = new System.Windows.Forms.Label();
             this.labelInvoiceItem = new System.Windows.Forms.Label();
             this.labelUnitPrice = new System.Windows.Forms.Label();
@@ -76,7 +74,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerNameList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxItems)).BeginInit();
             this.SuspendLayout();
             // 
             // comboCustomerName
@@ -233,16 +230,13 @@
             // inventoryBindingSource
             // 
             this.inventoryBindingSource.DataMember = "Inventory";
-            this.inventoryBindingSource.DataSource = this.comboBoxItems;
             // 
             // comboBoxItems
             // 
-            this.comboBoxItems.DataSetName = "ComboBoxItems";
-            this.comboBoxItems.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+
             // 
             // inventoryTableAdapter
             // 
-            this.inventoryTableAdapter.ClearBeforeFill = true;
             // 
             // labelItemDescription
             // 
@@ -485,7 +479,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerNameList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxItems)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -512,9 +505,7 @@
         private System.Windows.Forms.TextBox textQuantity;
         private System.Windows.Forms.Label labelItem;
         private System.Windows.Forms.ComboBox comboItem;
-        private ComboBoxItems comboBoxItems;
         private System.Windows.Forms.BindingSource inventoryBindingSource;
-        private ComboBoxItemsTableAdapters.InventoryTableAdapter inventoryTableAdapter;
         private System.Windows.Forms.Label labelItemDescription;
         private System.Windows.Forms.Label labelInvoiceItem;
         private System.Windows.Forms.Label labelUnitPrice;

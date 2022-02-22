@@ -18,6 +18,7 @@ namespace CamcoForm
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
         public Nullable<int> ProductQuantity { get; set; }
-        public string ProductLocation { get; set; }
+        public decimal UnitCost { get; set; }
+        public decimal TotalCost { get; set; }
     }
 }

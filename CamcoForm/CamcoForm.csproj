@@ -126,6 +126,11 @@
     <Compile Include="CamcoForm.Designer.cs">
       <DependentUpon>CamcoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CamcoInventory.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CamcoInventory.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CamcoInvoices.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -135,11 +140,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CamcoVendors.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ComboBoxItems.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ComboBoxItems.xsd</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -183,6 +183,12 @@
     </Compile>
     <Compile Include="EditCustomerForm.Designer.cs">
       <DependentUpon>EditCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditProductForm.Designer.cs">
+      <DependentUpon>EditProductForm.cs</DependentUpon>
     </Compile>
     <Compile Include="EditVendorForm.cs">
       <SubType>Form</SubType>
@@ -243,6 +249,12 @@
     </Compile>
     <Compile Include="NewInvoiceForm.Designer.cs">
       <DependentUpon>NewInvoiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewProductForm.Designer.cs">
+      <DependentUpon>NewProductForm.cs</DependentUpon>
     </Compile>
     <Compile Include="NewPurchaseForm.cs">
       <SubType>Form</SubType>
@@ -320,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewInvoiceForm.resx">
       <DependentUpon>NewInvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewProductForm.resx">
+      <DependentUpon>NewProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewPurchaseForm.resx">
       <DependentUpon>NewPurchaseForm.cs</DependentUpon>
@@ -433,6 +448,17 @@
     <None Include="CamcoDataSet5.xss">
       <DependentUpon>CamcoDataSet5.xsd</DependentUpon>
     </None>
+    <None Include="CamcoInventory.xsc">
+      <DependentUpon>CamcoInventory.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoInventory.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CamcoInventory.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CamcoInventory.xss">
+      <DependentUpon>CamcoInventory.xsd</DependentUpon>
+    </None>
     <None Include="CamcoInvoices.xsc">
       <DependentUpon>CamcoInvoices.xsd</DependentUpon>
     </None>
@@ -454,17 +480,6 @@
     </None>
     <None Include="CamcoVendors.xss">
       <DependentUpon>CamcoVendors.xsd</DependentUpon>
-    </None>
-    <None Include="ComboBoxItems.xsc">
-      <DependentUpon>ComboBoxItems.xsd</DependentUpon>
-    </None>
-    <None Include="ComboBoxItems.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ComboBoxItems.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ComboBoxItems.xss">
-      <DependentUpon>ComboBoxItems.xsd</DependentUpon>
     </None>
     <None Include="CustomerNameCombo.xsc">
       <DependentUpon>CustomerNameCombo.xsd</DependentUpon>

@@ -41,22 +41,20 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnBillOfMaterials = new System.Windows.Forms.Button();
             this.btnWorkOrder = new System.Windows.Forms.Button();
-            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboInventory = new System.Windows.Forms.ComboBox();
+            this.btnProduct = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.camcoInventory = new CamcoForm.CamcoInventory();
             this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBoxItems = new CamcoForm.ComboBoxItems();
-            this.inventoryTableAdapter = new CamcoForm.ComboBoxItemsTableAdapters.InventoryTableAdapter();
+            this.inventoryTableAdapter = new CamcoForm.CamcoInventoryTableAdapters.InventoryTableAdapter();
+            this.btnEditProduct = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoInventory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxItems)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -214,31 +212,9 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(228, 123);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(202, 21);
-            this.comboBox1.TabIndex = 2;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productNameDataGridViewTextBoxColumn,
-            this.productDescriptionDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.inventoryBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(219, 202);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(646, 278);
-            this.dataGridView1.TabIndex = 3;
-            // 
             // btnBillOfMaterials
             // 
-            this.btnBillOfMaterials.Location = new System.Drawing.Point(446, 46);
+            this.btnBillOfMaterials.Location = new System.Drawing.Point(576, 47);
             this.btnBillOfMaterials.Name = "btnBillOfMaterials";
             this.btnBillOfMaterials.Size = new System.Drawing.Size(125, 69);
             this.btnBillOfMaterials.TabIndex = 4;
@@ -248,7 +224,7 @@
             // 
             // btnWorkOrder
             // 
-            this.btnWorkOrder.Location = new System.Drawing.Point(616, 46);
+            this.btnWorkOrder.Location = new System.Drawing.Point(738, 47);
             this.btnWorkOrder.Name = "btnWorkOrder";
             this.btnWorkOrder.Size = new System.Drawing.Size(140, 69);
             this.btnWorkOrder.TabIndex = 5;
@@ -256,37 +232,56 @@
             this.btnWorkOrder.UseVisualStyleBackColor = true;
             this.btnWorkOrder.Click += new System.EventHandler(this.btnWorkOrder_Click);
             // 
-            // productNameDataGridViewTextBoxColumn
+            // comboInventory
             // 
-            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.HeaderText = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
+            this.comboInventory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboInventory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.comboInventory.FormattingEnabled = true;
+            this.comboInventory.Location = new System.Drawing.Point(256, 144);
+            this.comboInventory.Name = "comboInventory";
+            this.comboInventory.Size = new System.Drawing.Size(204, 21);
+            this.comboInventory.TabIndex = 7;
             // 
-            // productDescriptionDataGridViewTextBoxColumn
+            // btnProduct
             // 
-            this.productDescriptionDataGridViewTextBoxColumn.DataPropertyName = "Product Description";
-            this.productDescriptionDataGridViewTextBoxColumn.HeaderText = "Product Description";
-            this.productDescriptionDataGridViewTextBoxColumn.Name = "productDescriptionDataGridViewTextBoxColumn";
+            this.btnProduct.Location = new System.Drawing.Point(222, 46);
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Size = new System.Drawing.Size(129, 70);
+            this.btnProduct.TabIndex = 8;
+            this.btnProduct.Text = "Add Product";
+            this.btnProduct.UseVisualStyleBackColor = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
-            // quantityDataGridViewTextBoxColumn
+            // richTextBox1
             // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.richTextBox1.Location = new System.Drawing.Point(257, 188);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(522, 66);
+            this.richTextBox1.TabIndex = 9;
+            this.richTextBox1.Text = "";
+            // 
+            // camcoInventory
+            // 
+            this.camcoInventory.DataSetName = "CamcoInventory";
+            this.camcoInventory.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // inventoryBindingSource
             // 
             this.inventoryBindingSource.DataMember = "Inventory";
-            this.inventoryBindingSource.DataSource = this.comboBoxItems;
-            // 
-            // comboBoxItems
-            // 
-            this.comboBoxItems.DataSetName = "ComboBoxItems";
-            this.comboBoxItems.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.inventoryBindingSource.DataSource = this.camcoInventory;
             // 
             // inventoryTableAdapter
             // 
             this.inventoryTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnEditProduct
+            // 
+            this.btnEditProduct.Location = new System.Drawing.Point(402, 46);
+            this.btnEditProduct.Name = "btnEditProduct";
+            this.btnEditProduct.Size = new System.Drawing.Size(129, 70);
+            this.btnEditProduct.TabIndex = 10;
+            this.btnEditProduct.Text = "Edit Product";
+            this.btnEditProduct.UseVisualStyleBackColor = true;
             // 
             // NewInventoryForm
             // 
@@ -294,10 +289,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(935, 538);
+            this.Controls.Add(this.btnEditProduct);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.btnProduct);
+            this.Controls.Add(this.comboInventory);
             this.Controls.Add(this.btnWorkOrder);
             this.Controls.Add(this.btnBillOfMaterials);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.panel1);
             this.Name = "NewInventoryForm";
             this.Text = "NewInventoryForm";
@@ -306,9 +303,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoInventory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxItems)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -326,15 +322,15 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private ComboBoxItems comboBoxItems;
-        private System.Windows.Forms.BindingSource inventoryBindingSource;
-        private ComboBoxItemsTableAdapters.InventoryTableAdapter inventoryTableAdapter;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productDescriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnBillOfMaterials;
         private System.Windows.Forms.Button btnWorkOrder;
+        private System.Windows.Forms.ComboBox comboInventory;
+        private System.Windows.Forms.Button btnProduct;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private CamcoInventory camcoInventory;
+        private System.Windows.Forms.BindingSource inventoryBindingSource;
+        private CamcoInventoryTableAdapters.InventoryTableAdapter inventoryTableAdapter;
+        private System.Windows.Forms.Button btnEditProduct;
     }
 }

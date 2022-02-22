@@ -133,7 +133,8 @@
           <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ProductQuantity" Type="Int32" />
-          <Property Name="ProductLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitCost" Type="Decimal" Nullable="false" />
+          <Property Name="TotalCost" Type="Decimal" Nullable="false" />
         </EntityType>
         <EntityType Name="InvoiceLineItem">
           <Key>
@@ -236,7 +237,6 @@
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
                 <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
-                <ScalarProperty Name="ProductLocation" ColumnName="ProductLocation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

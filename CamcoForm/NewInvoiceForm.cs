@@ -19,8 +19,7 @@ namespace CamcoForm
 
         private void NewInvoiceForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'comboBoxItems.Inventory' table. You can move, or remove it, as needed.
-            this.inventoryTableAdapter.Fill(this.comboBoxItems.Inventory);
+            // TODO: This line of code loads data into the 'comboBoxItems.Inventory' table. You can move, or remove it, as needed
             // TODO: This line of code loads data into the 'customerNameList.Customers' table. You can move, or remove it, as needed.
             this.customersTableAdapter.Fill(this.customerNameList.Customers);
 

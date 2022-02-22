@@ -50,7 +50,7 @@ namespace CamcoForm
             inputToDB.VendorZip = placeholder.zipCode;
             inputToDB.VendorState = placeholder.state;
             inputToDB.VendorPhone = placeholder.phoneNumber;
-            inputToDB.VendorFax = placeholder.faxNumber;
+           /* inputToDB.VendorFax = placeholder.faxNumber;*/
             return inputToDB;
         }
 

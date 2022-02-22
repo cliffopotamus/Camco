@@ -20,9 +20,9 @@ namespace CamcoForm {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("ComboBoxItems")]
+    [global::System.Xml.Serialization.XmlRootAttribute("CamcoInventory")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class ComboBoxItems : global::System.Data.DataSet {
+    public partial class CamcoInventory : global::System.Data.DataSet {
         
         private InventoryDataTable tableInventory;
         
@@ -30,7 +30,7 @@ namespace CamcoForm {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public ComboBoxItems() {
+        public CamcoInventory() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace CamcoForm {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected ComboBoxItems(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected CamcoInventory(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace CamcoForm {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            ComboBoxItems cln = ((ComboBoxItems)(base.Clone()));
+            CamcoInventory cln = ((CamcoInventory)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace CamcoForm {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "ComboBoxItems";
+            this.DataSetName = "CamcoInventory";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/ComboBoxItems.xsd";
+            this.Namespace = "http://tempuri.org/CamcoInventory.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableInventory = new InventoryDataTable();
@@ -225,7 +225,7 @@ namespace CamcoForm {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            ComboBoxItems ds = new ComboBoxItems();
+            CamcoInventory ds = new CamcoInventory();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -279,15 +279,15 @@ namespace CamcoForm {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class InventoryDataTable : global::System.Data.TypedTableBase<InventoryRow> {
             
-            private global::System.Data.DataColumn columnProduct_Name;
+            private global::System.Data.DataColumn columnProductNo;
             
-            private global::System.Data.DataColumn columnProduct_Description;
+            private global::System.Data.DataColumn columnProductName;
             
-            private global::System.Data.DataColumn columnQuantity;
+            private global::System.Data.DataColumn columnProductDescription;
             
-            private global::System.Data.DataColumn columnCost;
+            private global::System.Data.DataColumn columnProductQuantity;
             
-            private global::System.Data.DataColumn columnTotal_Value;
+            private global::System.Data.DataColumn columnProductLocation;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -324,41 +324,41 @@ namespace CamcoForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Product_NameColumn {
+            public global::System.Data.DataColumn ProductNoColumn {
                 get {
-                    return this.columnProduct_Name;
+                    return this.columnProductNo;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Product_DescriptionColumn {
+            public global::System.Data.DataColumn ProductNameColumn {
                 get {
-                    return this.columnProduct_Description;
+                    return this.columnProductName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn QuantityColumn {
+            public global::System.Data.DataColumn ProductDescriptionColumn {
                 get {
-                    return this.columnQuantity;
+                    return this.columnProductDescription;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CostColumn {
+            public global::System.Data.DataColumn ProductQuantityColumn {
                 get {
-                    return this.columnCost;
+                    return this.columnProductQuantity;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Total_ValueColumn {
+            public global::System.Data.DataColumn ProductLocationColumn {
                 get {
-                    return this.columnTotal_Value;
+                    return this.columnProductLocation;
                 }
             }
             
@@ -399,17 +399,24 @@ namespace CamcoForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InventoryRow AddInventoryRow(string Product_Name, string Product_Description, string Quantity, string Cost, string Total_Value) {
+            public InventoryRow AddInventoryRow(string ProductName, string ProductDescription, int ProductQuantity, string ProductLocation) {
                 InventoryRow rowInventoryRow = ((InventoryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Product_Name,
-                        Product_Description,
-                        Quantity,
-                        Cost,
-                        Total_Value};
+                        null,
+                        ProductName,
+                        ProductDescription,
+                        ProductQuantity,
+                        ProductLocation};
                 rowInventoryRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInventoryRow);
                 return rowInventoryRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public InventoryRow FindByProductNo(int ProductNo) {
+                return ((InventoryRow)(this.Rows.Find(new object[] {
+                            ProductNo})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -429,27 +436,37 @@ namespace CamcoForm {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnProduct_Name = base.Columns["Product Name"];
-                this.columnProduct_Description = base.Columns["Product Description"];
-                this.columnQuantity = base.Columns["Quantity"];
-                this.columnCost = base.Columns["Cost"];
-                this.columnTotal_Value = base.Columns["Total Value"];
+                this.columnProductNo = base.Columns["ProductNo"];
+                this.columnProductName = base.Columns["ProductName"];
+                this.columnProductDescription = base.Columns["ProductDescription"];
+                this.columnProductQuantity = base.Columns["ProductQuantity"];
+                this.columnProductLocation = base.Columns["ProductLocation"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnProduct_Name = new global::System.Data.DataColumn("Product Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnProduct_Name);
-                this.columnProduct_Description = new global::System.Data.DataColumn("Product Description", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnProduct_Description);
-                this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQuantity);
-                this.columnCost = new global::System.Data.DataColumn("Cost", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCost);
-                this.columnTotal_Value = new global::System.Data.DataColumn("Total Value", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotal_Value);
-                this.columnProduct_Name.MaxLength = 50;
+                this.columnProductNo = new global::System.Data.DataColumn("ProductNo", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProductNo);
+                this.columnProductName = new global::System.Data.DataColumn("ProductName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProductName);
+                this.columnProductDescription = new global::System.Data.DataColumn("ProductDescription", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProductDescription);
+                this.columnProductQuantity = new global::System.Data.DataColumn("ProductQuantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProductQuantity);
+                this.columnProductLocation = new global::System.Data.DataColumn("ProductLocation", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProductLocation);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnProductNo}, true));
+                this.columnProductNo.AutoIncrement = true;
+                this.columnProductNo.AutoIncrementSeed = -1;
+                this.columnProductNo.AutoIncrementStep = -1;
+                this.columnProductNo.AllowDBNull = false;
+                this.columnProductNo.ReadOnly = true;
+                this.columnProductNo.Unique = true;
+                this.columnProductName.MaxLength = 50;
+                this.columnProductDescription.MaxLength = 100;
+                this.columnProductLocation.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -517,7 +534,7 @@ namespace CamcoForm {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ComboBoxItems ds = new ComboBoxItems();
+                CamcoInventory ds = new CamcoInventory();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -592,142 +609,125 @@ namespace CamcoForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Product_Name {
+            public int ProductNo {
+                get {
+                    return ((int)(this[this.tableInventory.ProductNoColumn]));
+                }
+                set {
+                    this[this.tableInventory.ProductNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ProductName {
                 get {
                     try {
-                        return ((string)(this[this.tableInventory.Product_NameColumn]));
+                        return ((string)(this[this.tableInventory.ProductNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Product Name\' in table \'Inventory\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProductName\' in table \'Inventory\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableInventory.Product_NameColumn] = value;
+                    this[this.tableInventory.ProductNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Product_Description {
+            public string ProductDescription {
                 get {
                     try {
-                        return ((string)(this[this.tableInventory.Product_DescriptionColumn]));
+                        return ((string)(this[this.tableInventory.ProductDescriptionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Product Description\' in table \'Inventory\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProductDescription\' in table \'Inventory\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableInventory.Product_DescriptionColumn] = value;
+                    this[this.tableInventory.ProductDescriptionColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Quantity {
+            public int ProductQuantity {
                 get {
                     try {
-                        return ((string)(this[this.tableInventory.QuantityColumn]));
+                        return ((int)(this[this.tableInventory.ProductQuantityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Quantity\' in table \'Inventory\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProductQuantity\' in table \'Inventory\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableInventory.QuantityColumn] = value;
+                    this[this.tableInventory.ProductQuantityColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Cost {
+            public string ProductLocation {
                 get {
                     try {
-                        return ((string)(this[this.tableInventory.CostColumn]));
+                        return ((string)(this[this.tableInventory.ProductLocationColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Cost\' in table \'Inventory\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProductLocation\' in table \'Inventory\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableInventory.CostColumn] = value;
+                    this[this.tableInventory.ProductLocationColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Total_Value {
-                get {
-                    try {
-                        return ((string)(this[this.tableInventory.Total_ValueColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Total Value\' in table \'Inventory\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableInventory.Total_ValueColumn] = value;
-                }
+            public bool IsProductNameNull() {
+                return this.IsNull(this.tableInventory.ProductNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsProduct_NameNull() {
-                return this.IsNull(this.tableInventory.Product_NameColumn);
+            public void SetProductNameNull() {
+                this[this.tableInventory.ProductNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetProduct_NameNull() {
-                this[this.tableInventory.Product_NameColumn] = global::System.Convert.DBNull;
+            public bool IsProductDescriptionNull() {
+                return this.IsNull(this.tableInventory.ProductDescriptionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsProduct_DescriptionNull() {
-                return this.IsNull(this.tableInventory.Product_DescriptionColumn);
+            public void SetProductDescriptionNull() {
+                this[this.tableInventory.ProductDescriptionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetProduct_DescriptionNull() {
-                this[this.tableInventory.Product_DescriptionColumn] = global::System.Convert.DBNull;
+            public bool IsProductQuantityNull() {
+                return this.IsNull(this.tableInventory.ProductQuantityColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsQuantityNull() {
-                return this.IsNull(this.tableInventory.QuantityColumn);
+            public void SetProductQuantityNull() {
+                this[this.tableInventory.ProductQuantityColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetQuantityNull() {
-                this[this.tableInventory.QuantityColumn] = global::System.Convert.DBNull;
+            public bool IsProductLocationNull() {
+                return this.IsNull(this.tableInventory.ProductLocationColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCostNull() {
-                return this.IsNull(this.tableInventory.CostColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCostNull() {
-                this[this.tableInventory.CostColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTotal_ValueNull() {
-                return this.IsNull(this.tableInventory.Total_ValueColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTotal_ValueNull() {
-                this[this.tableInventory.Total_ValueColumn] = global::System.Convert.DBNull;
+            public void SetProductLocationNull() {
+                this[this.tableInventory.ProductLocationColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -766,7 +766,7 @@ namespace CamcoForm {
         }
     }
 }
-namespace CamcoForm.ComboBoxItemsTableAdapters {
+namespace CamcoForm.CamcoInventoryTableAdapters {
     
     
     /// <summary>
@@ -890,13 +890,53 @@ namespace CamcoForm.ComboBoxItemsTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Inventory";
-            tableMapping.ColumnMappings.Add("ProductName", "Product Name");
+            tableMapping.ColumnMappings.Add("ProductNo", "ProductNo");
+            tableMapping.ColumnMappings.Add("ProductName", "ProductName");
+            tableMapping.ColumnMappings.Add("ProductDescription", "ProductDescription");
+            tableMapping.ColumnMappings.Add("ProductQuantity", "ProductQuantity");
+            tableMapping.ColumnMappings.Add("ProductLocation", "ProductLocation");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Inventory] WHERE (([ProductNo] = @Original_ProductNo) AND ((@IsNull_ProductName = 1 AND [ProductName] IS NULL) OR ([ProductName] = @Original_ProductName)) AND ((@IsNull_ProductDescription = 1 AND [ProductDescription] IS NULL) OR ([ProductDescription] = @Original_ProductDescription)) AND ((@IsNull_ProductQuantity = 1 AND [ProductQuantity] IS NULL) OR ([ProductQuantity] = @Original_ProductQuantity)) AND ((@IsNull_ProductLocation = 1 AND [ProductLocation] IS NULL) OR ([ProductLocation] = @Original_ProductLocation)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ProductName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ProductDescription", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductDescription", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductDescription", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductDescription", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ProductQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductQuantity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductQuantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ProductLocation", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductLocation", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductLocation", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductLocation", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Inventory] ([ProductName]) VALUES (@ProductName)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Inventory] ([ProductName], [ProductDescription], [ProductQuantity], [ProductLocation]) VALUES (@ProductName, @ProductDescription, @ProductQuantity, @ProductLocation);
+SELECT ProductNo, ProductName, ProductDescription, ProductQuantity, ProductLocation FROM Inventory WHERE (ProductNo = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductDescription", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductDescription", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductQuantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductLocation", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductLocation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Inventory] SET [ProductName] = @ProductName, [ProductDescription] = @ProductDescription, [ProductQuantity] = @ProductQuantity, [ProductLocation] = @ProductLocation WHERE (([ProductNo] = @Original_ProductNo) AND ((@IsNull_ProductName = 1 AND [ProductName] IS NULL) OR ([ProductName] = @Original_ProductName)) AND ((@IsNull_ProductDescription = 1 AND [ProductDescription] IS NULL) OR ([ProductDescription] = @Original_ProductDescription)) AND ((@IsNull_ProductQuantity = 1 AND [ProductQuantity] IS NULL) OR ([ProductQuantity] = @Original_ProductQuantity)) AND ((@IsNull_ProductLocation = 1 AND [ProductLocation] IS NULL) OR ([ProductLocation] = @Original_ProductLocation)));
+SELECT ProductNo, ProductName, ProductDescription, ProductQuantity, ProductLocation FROM Inventory WHERE (ProductNo = @ProductNo)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductDescription", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductDescription", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductQuantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductLocation", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductLocation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ProductName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ProductDescription", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductDescription", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductDescription", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductDescription", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ProductQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductQuantity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductQuantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ProductLocation", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductLocation", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductLocation", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductLocation", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProductNo", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ProductNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -912,7 +952,8 @@ namespace CamcoForm.ComboBoxItemsTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ProductName FROM dbo.Inventory";
+            this._commandCollection[0].CommandText = "SELECT ProductNo, ProductName, ProductDescription, ProductQuantity, ProductLocati" +
+                "on FROM dbo.Inventory";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -920,7 +961,7 @@ namespace CamcoForm.ComboBoxItemsTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ComboBoxItems.InventoryDataTable dataTable) {
+        public virtual int Fill(CamcoInventory.InventoryDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -933,9 +974,9 @@ namespace CamcoForm.ComboBoxItemsTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ComboBoxItems.InventoryDataTable GetData() {
+        public virtual CamcoInventory.InventoryDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            ComboBoxItems.InventoryDataTable dataTable = new ComboBoxItems.InventoryDataTable();
+            CamcoInventory.InventoryDataTable dataTable = new CamcoInventory.InventoryDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -943,14 +984,14 @@ namespace CamcoForm.ComboBoxItemsTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ComboBoxItems.InventoryDataTable dataTable) {
+        public virtual int Update(CamcoInventory.InventoryDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ComboBoxItems dataSet) {
+        public virtual int Update(CamcoInventory dataSet) {
             return this.Adapter.Update(dataSet, "Inventory");
         }
         
@@ -972,13 +1013,85 @@ namespace CamcoForm.ComboBoxItemsTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_ProductNo, string Original_ProductName, string Original_ProductDescription, global::System.Nullable<int> Original_ProductQuantity, string Original_ProductLocation) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ProductNo));
+            if ((Original_ProductName == null)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_ProductName));
+            }
+            if ((Original_ProductDescription == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_ProductDescription));
+            }
+            if ((Original_ProductQuantity.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_ProductQuantity.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ProductLocation == null)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_ProductLocation));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string ProductName) {
+        public virtual int Insert(string ProductName, string ProductDescription, global::System.Nullable<int> ProductQuantity, string ProductLocation) {
             if ((ProductName == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ProductName));
+            }
+            if ((ProductDescription == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(ProductDescription));
+            }
+            if ((ProductQuantity.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(ProductQuantity.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((ProductLocation == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(ProductLocation));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -994,6 +1107,93 @@ namespace CamcoForm.ComboBoxItemsTableAdapters {
                     this.Adapter.InsertCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string ProductName, string ProductDescription, global::System.Nullable<int> ProductQuantity, string ProductLocation, int Original_ProductNo, string Original_ProductName, string Original_ProductDescription, global::System.Nullable<int> Original_ProductQuantity, string Original_ProductLocation, int ProductNo) {
+            if ((ProductName == null)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(ProductName));
+            }
+            if ((ProductDescription == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(ProductDescription));
+            }
+            if ((ProductQuantity.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(ProductQuantity.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((ProductLocation == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(ProductLocation));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ProductNo));
+            if ((Original_ProductName == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_ProductName));
+            }
+            if ((Original_ProductDescription == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_ProductDescription));
+            }
+            if ((Original_ProductQuantity.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_ProductQuantity.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ProductLocation == null)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_ProductLocation));
+            }
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(ProductNo));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string ProductName, string ProductDescription, global::System.Nullable<int> ProductQuantity, string ProductLocation, int Original_ProductNo, string Original_ProductName, string Original_ProductDescription, global::System.Nullable<int> Original_ProductQuantity, string Original_ProductLocation) {
+            return this.Update(ProductName, ProductDescription, ProductQuantity, ProductLocation, Original_ProductNo, Original_ProductName, Original_ProductDescription, Original_ProductQuantity, Original_ProductLocation, Original_ProductNo);
         }
     }
     
@@ -1088,7 +1288,7 @@ namespace CamcoForm.ComboBoxItemsTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(ComboBoxItems dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(CamcoInventory dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._inventoryTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -1107,7 +1307,7 @@ namespace CamcoForm.ComboBoxItemsTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(ComboBoxItems dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(CamcoInventory dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._inventoryTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -1125,7 +1325,7 @@ namespace CamcoForm.ComboBoxItemsTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(ComboBoxItems dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(CamcoInventory dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._inventoryTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -1167,7 +1367,7 @@ namespace CamcoForm.ComboBoxItemsTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(ComboBoxItems dataSet) {
+        public virtual int UpdateAll(CamcoInventory dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
