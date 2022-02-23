@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 15 for Windows Desktop
+VisualStudioVersion = 15.0.28307.1738
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamcoForm", "CamcoForm\CamcoForm.csproj", "{03C98567-858F-4181-9595-6D23DADC5011}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03C98567-858F-4181-9595-6D23DADC5011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03C98567-858F-4181-9595-6D23DADC5011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03C98567-858F-4181-9595-6D23DADC5011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03C98567-858F-4181-9595-6D23DADC5011}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E81880D2-B492-405B-8463-6A889CB22C97}
+	EndGlobalSection
+EndGlobal

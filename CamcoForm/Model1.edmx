@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CamcoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerShipAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerBillAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerBillCity" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CustomerShipCity" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerBillZipCode" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CustomerShipZipCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerPhone" Type="varchar" MaxLength="25" />
+          <Property Name="CustomerFax" Type="varchar" MaxLength="25" />
+          <Property Name="CustomerBillState" Type="varchar" MaxLength="10" />
+          <Property Name="CustomerShipState" Type="varchar" MaxLength="10" />
+          <Property Name="AccountNo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="ProductNo" />
+          </Key>
+          <Property Name="ProductNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" />
+          <Property Name="ProductDescription" Type="varchar" MaxLength="100" />
+          <Property Name="ProductQuantity" Type="int" />
+          <Property Name="UnitCost" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TotalCost" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="InvoiceLineItems">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceSequence" Type="int" Nullable="false" />
+          <Property Name="ProductDescription" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProductQuantity" Type="int" Nullable="false" />
+          <Property Name="ProductPrice" Type="money" Nullable="false" />
+          <Property Name="ProductExtension" Type="money" Nullable="false" />
+          <Property Name="InvoiceTotal" Type="money" Nullable="false" />
+          <Property Name="ProductNo" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Invoices">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="InvoiceDate" Type="date" Nullable="false" />
+          <Property Name="InvoiceTotal" Type="money" />
+          <Property Name="InvoicePO" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="PurchaseID" />
+          </Key>
+          <Property Name="PurchaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorID" Type="int" Nullable="false" />
+          <Property Name="VendorName" Type="varchar" MaxLength="50" />
+          <Property Name="PurchaseDate" Type="varchar" MaxLength="50" />
+          <Property Name="PurchaseTotal" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderLineItems">
+          <Key>
+            <PropertyRef Name="PurchaseID" />
+          </Key>
+          <Property Name="PurchaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorID" Type="int" Nullable="false" />
+          <Property Name="VendorName" Type="varchar" MaxLength="50" />
+          <Property Name="PurchaseSequence" Type="int" />
+          <Property Name="ProductNo" Type="int" />
+          <Property Name="ProductDescription" Type="varchar" MaxLength="100" />
+          <Property Name="ProductQuantity" Type="int" />
+          <Property Name="ProductPrice" Type="money" />
+          <Property Name="ProductExtension" Type="money" />
+          <Property Name="PurchaseTotal" Type="money" />
+        </EntityType>
+        <EntityType Name="Vendors">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="VendorAddress" Type="varchar" MaxLength="100" />
+          <Property Name="VendorCity" Type="varchar" MaxLength="100" />
+          <Property Name="VendorState" Type="varchar" MaxLength="100" />
+          <Property Name="VendorZip" Type="varchar" MaxLength="100" />
+          <Property Name="VendorPhone" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="CamcoModelStoreContainer">
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvoiceLineItems" EntityType="Self.InvoiceLineItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrderLineItems" EntityType="Self.PurchaseOrderLineItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CamcoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerShipAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerBillAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerBillCity" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerShipCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerBillZipCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerShipZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerPhone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerFax" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerBillState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerShipState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="ProductNo" />
+          </Key>
+          <Property Name="ProductNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProductQuantity" Type="Int32" />
+          <Property Name="UnitCost" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TotalCost" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="InvoiceLineItem">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceSequence" Type="Int32" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductQuantity" Type="Int32" Nullable="false" />
+          <Property Name="ProductPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ProductExtension" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="InvoiceTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ProductNo" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="InvoiceTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="InvoicePO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="PurchaseID" />
+          </Key>
+          <Property Name="PurchaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorID" Type="Int32" Nullable="false" />
+          <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseTotal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderLineItem">
+          <Key>
+            <PropertyRef Name="PurchaseID" />
+          </Key>
+          <Property Name="PurchaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorID" Type="Int32" Nullable="false" />
+          <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseSequence" Type="Int32" />
+          <Property Name="ProductNo" Type="Int32" />
+          <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProductQuantity" Type="Int32" />
+          <Property Name="ProductPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ProductExtension" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PurchaseTotal" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VendorAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VendorCity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VendorState" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VendorZip" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VendorPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="CamcoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Inventories" EntityType="Self.Inventory" />
+          <EntitySet Name="InvoiceLineItems" EntityType="Self.InvoiceLineItem" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+          <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrder" />
+          <EntitySet Name="PurchaseOrderLineItems" EntityType="Self.PurchaseOrderLineItem" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendor" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CamcoModelStoreContainer" CdmEntityContainer="CamcoEntities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="CamcoModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerShipAddress" ColumnName="CustomerShipAddress" />
+                <ScalarProperty Name="CustomerBillAddress" ColumnName="CustomerBillAddress" />
+                <ScalarProperty Name="CustomerBillCity" ColumnName="CustomerBillCity" />
+                <ScalarProperty Name="CustomerShipCity" ColumnName="CustomerShipCity" />
+                <ScalarProperty Name="CustomerBillZipCode" ColumnName="CustomerBillZipCode" />
+                <ScalarProperty Name="CustomerShipZipCode" ColumnName="CustomerShipZipCode" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="CustomerFax" ColumnName="CustomerFax" />
+                <ScalarProperty Name="CustomerBillState" ColumnName="CustomerBillState" />
+                <ScalarProperty Name="CustomerShipState" ColumnName="CustomerShipState" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventories">
+            <EntityTypeMapping TypeName="CamcoModel.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+                <ScalarProperty Name="ProductNo" ColumnName="ProductNo" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceLineItems">
+            <EntityTypeMapping TypeName="CamcoModel.InvoiceLineItem">
+              <MappingFragment StoreEntitySet="InvoiceLineItems">
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="InvoiceSequence" ColumnName="InvoiceSequence" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="ProductExtension" ColumnName="ProductExtension" />
+                <ScalarProperty Name="InvoiceTotal" ColumnName="InvoiceTotal" />
+                <ScalarProperty Name="ProductNo" ColumnName="ProductNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="CamcoModel.Invoice">
+              <MappingFragment StoreEntitySet="Invoices">
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="InvoiceTotal" ColumnName="InvoiceTotal" />
+                <ScalarProperty Name="InvoicePO" ColumnName="InvoicePO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrders">
+            <EntityTypeMapping TypeName="CamcoModel.PurchaseOrder">
+              <MappingFragment StoreEntitySet="PurchaseOrder">
+                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="PurchaseTotal" ColumnName="PurchaseTotal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderLineItems">
+            <EntityTypeMapping TypeName="CamcoModel.PurchaseOrderLineItem">
+              <MappingFragment StoreEntitySet="PurchaseOrderLineItems">
+                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="PurchaseSequence" ColumnName="PurchaseSequence" />
+                <ScalarProperty Name="ProductNo" ColumnName="ProductNo" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="ProductExtension" ColumnName="ProductExtension" />
+                <ScalarProperty Name="PurchaseTotal" ColumnName="PurchaseTotal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="CamcoModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendors">
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="VendorAddress" ColumnName="VendorAddress" />
+                <ScalarProperty Name="VendorCity" ColumnName="VendorCity" />
+                <ScalarProperty Name="VendorState" ColumnName="VendorState" />
+                <ScalarProperty Name="VendorZip" ColumnName="VendorZip" />
+                <ScalarProperty Name="VendorPhone" ColumnName="VendorPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
