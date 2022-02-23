@@ -65,7 +65,7 @@ namespace CamcoForm
             prod.name = textProductName.Text;
             prod.description = textProductDescription.Text;
             prod.quantity = Convert.ToInt32(textQuantity.Text);
-            prod.unitCost = Convert.ToDecimal(textUnitCost.Text);
+            prod.unitCost = Int32.TryParse(textUnitCost.Text);
             prod.totalCost = Convert.ToDecimal(textTotalCost.Text);
             return prod;
         }
