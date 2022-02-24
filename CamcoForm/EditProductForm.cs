@@ -65,8 +65,8 @@ namespace CamcoForm
             prod.name = textProductName.Text;
             prod.description = textProductDescription.Text;
             prod.quantity = Convert.ToInt32(textQuantity.Text);
-            prod.unitCost = Int32.TryParse(textUnitCost.Text);
-            prod.totalCost = Convert.ToDecimal(textTotalCost.Text);
+            prod.unitCost = Convert.ToDecimal(textUnitCost.Text);
+            prod.totalCost = Convert.ToDecimal((Convert.ToDecimal(textUnitCost.Text)) * (Convert.ToDecimal(textQuantity.Text)));
             return prod;
         }
 
@@ -150,7 +150,7 @@ namespace CamcoForm
                 {
                     InventoryModel placeholderValues = GetAllValuesFromForm();
                     editDB(placeholderValues);
-                    string successBox = "Success";
+                    string successBox = textUnitCost.Text;
                     MessageBox.Show(successBox);
                     this.Close();
                 }

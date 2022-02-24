@@ -41,13 +41,13 @@
             this.textTotalCost = new System.Windows.Forms.TextBox();
             this.textProductName = new System.Windows.Forms.TextBox();
             this.textProductID = new System.Windows.Forms.TextBox();
-            this.realInventory = new CamcoForm.RealInventory();
             this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.realInventory = new CamcoForm.RealInventory();
             this.inventoryTableAdapter = new CamcoForm.RealInventoryTableAdapters.InventoryTableAdapter();
             this.comboProduct = new System.Windows.Forms.ComboBox();
             this.labelQuantity = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.realInventory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.realInventory)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -149,15 +149,15 @@
             this.textProductID.Size = new System.Drawing.Size(92, 20);
             this.textProductID.TabIndex = 23;
             // 
-            // realInventory
-            // 
-            this.realInventory.DataSetName = "RealInventory";
-            this.realInventory.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // inventoryBindingSource
             // 
             this.inventoryBindingSource.DataMember = "Inventory";
             this.inventoryBindingSource.DataSource = this.realInventory;
+            // 
+            // realInventory
+            // 
+            this.realInventory.DataSetName = "RealInventory";
+            this.realInventory.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // inventoryTableAdapter
             // 
@@ -203,8 +203,8 @@
             this.Name = "EditProductForm";
             this.Text = "EditProductForm";
             this.Load += new System.EventHandler(this.EditProductForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.realInventory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.realInventory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
