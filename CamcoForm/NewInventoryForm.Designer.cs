@@ -47,30 +47,28 @@
             this.btnProduct = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.camcoInventory = new CamcoForm.CamcoInventory();
-            this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.inventoryTableAdapter = new CamcoForm.CamcoInventoryTableAdapters.InventoryTableAdapter();
             this.btnEditProduct = new System.Windows.Forms.Button();
-            this.inventoryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btnDeleteProduct = new System.Windows.Forms.Button();
-            this.dataGridViewInventory = new System.Windows.Forms.DataGridView();
-            this.productNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.inventoryBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.realInventory = new CamcoForm.RealInventory();
-            this.inventoryTableAdapter1 = new CamcoForm.RealInventoryTableAdapters.InventoryTableAdapter();
-            this.inventoryBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewDBTable = new System.Windows.Forms.DataGridView();
+            this.productNoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productDescriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productQuantityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitCostDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalCostDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.camcoDataSet7 = new CamcoForm.CamcoDataSet7();
+            this.inventoryTableAdapter1 = new CamcoForm.CamcoDataSet7TableAdapters.InventoryTableAdapter();
+            this.inventoryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camcoInventory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDBTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInventory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.realInventory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -257,6 +255,7 @@
             this.comboInventory.Name = "comboInventory";
             this.comboInventory.Size = new System.Drawing.Size(204, 21);
             this.comboInventory.TabIndex = 7;
+            this.comboInventory.SelectedIndexChanged += new System.EventHandler(this.comboInventory_SelectedIndexChanged);
             // 
             // btnProduct
             // 
@@ -281,11 +280,6 @@
             this.camcoInventory.DataSetName = "CamcoInventory";
             this.camcoInventory.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // inventoryBindingSource
-            // 
-            this.inventoryBindingSource.DataMember = "Inventory";
-            this.inventoryBindingSource.DataSource = this.camcoInventory;
-            // 
             // inventoryTableAdapter
             // 
             this.inventoryTableAdapter.ClearBeforeFill = true;
@@ -300,11 +294,6 @@
             this.btnEditProduct.UseVisualStyleBackColor = true;
             this.btnEditProduct.Click += new System.EventHandler(this.btnEditProduct_Click);
             // 
-            // inventoryBindingSource1
-            // 
-            this.inventoryBindingSource1.DataMember = "Inventory";
-            this.inventoryBindingSource1.DataSource = this.camcoInventory;
-            // 
             // btnDeleteProduct
             // 
             this.btnDeleteProduct.Location = new System.Drawing.Point(222, 131);
@@ -315,64 +304,77 @@
             this.btnDeleteProduct.UseVisualStyleBackColor = true;
             this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
-            // dataGridViewInventory
+            // dataGridViewDBTable
             // 
-            this.dataGridViewInventory.AutoGenerateColumns = false;
-            this.dataGridViewInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewInventory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productNoDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn1,
-            this.productDescriptionDataGridViewTextBoxColumn,
-            this.productQuantityDataGridViewTextBoxColumn});
-            this.dataGridViewInventory.DataSource = this.inventoryBindingSource3;
-            this.dataGridViewInventory.Location = new System.Drawing.Point(222, 393);
-            this.dataGridViewInventory.Name = "dataGridViewInventory";
-            this.dataGridViewInventory.Size = new System.Drawing.Size(504, 109);
-            this.dataGridViewInventory.TabIndex = 12;
+            this.dataGridViewDBTable.AutoGenerateColumns = false;
+            this.dataGridViewDBTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDBTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.productNoDataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.productDescriptionDataGridViewTextBoxColumn1,
+            this.productQuantityDataGridViewTextBoxColumn1,
+            this.unitCostDataGridViewTextBoxColumn1,
+            this.totalCostDataGridViewTextBoxColumn1});
+            this.dataGridViewDBTable.DataSource = this.inventoryBindingSource;
+            this.dataGridViewDBTable.Location = new System.Drawing.Point(222, 377);
+            this.dataGridViewDBTable.Name = "dataGridViewDBTable";
+            this.dataGridViewDBTable.Size = new System.Drawing.Size(644, 149);
+            this.dataGridViewDBTable.TabIndex = 13;
             // 
-            // productNoDataGridViewTextBoxColumn
+            // productNoDataGridViewTextBoxColumn1
             // 
-            this.productNoDataGridViewTextBoxColumn.DataPropertyName = "ProductNo";
-            this.productNoDataGridViewTextBoxColumn.HeaderText = "ProductNo";
-            this.productNoDataGridViewTextBoxColumn.Name = "productNoDataGridViewTextBoxColumn";
-            this.productNoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productNoDataGridViewTextBoxColumn1.DataPropertyName = "ProductNo";
+            this.productNoDataGridViewTextBoxColumn1.HeaderText = "ProductNo";
+            this.productNoDataGridViewTextBoxColumn1.Name = "productNoDataGridViewTextBoxColumn1";
+            this.productNoDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ProductName";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ProductName";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "ProductName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "ProductName";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // productDescriptionDataGridViewTextBoxColumn
+            // productDescriptionDataGridViewTextBoxColumn1
             // 
-            this.productDescriptionDataGridViewTextBoxColumn.DataPropertyName = "ProductDescription";
-            this.productDescriptionDataGridViewTextBoxColumn.HeaderText = "ProductDescription";
-            this.productDescriptionDataGridViewTextBoxColumn.Name = "productDescriptionDataGridViewTextBoxColumn";
+            this.productDescriptionDataGridViewTextBoxColumn1.DataPropertyName = "ProductDescription";
+            this.productDescriptionDataGridViewTextBoxColumn1.HeaderText = "ProductDescription";
+            this.productDescriptionDataGridViewTextBoxColumn1.Name = "productDescriptionDataGridViewTextBoxColumn1";
             // 
-            // productQuantityDataGridViewTextBoxColumn
+            // productQuantityDataGridViewTextBoxColumn1
             // 
-            this.productQuantityDataGridViewTextBoxColumn.DataPropertyName = "ProductQuantity";
-            this.productQuantityDataGridViewTextBoxColumn.HeaderText = "ProductQuantity";
-            this.productQuantityDataGridViewTextBoxColumn.Name = "productQuantityDataGridViewTextBoxColumn";
+            this.productQuantityDataGridViewTextBoxColumn1.DataPropertyName = "ProductQuantity";
+            this.productQuantityDataGridViewTextBoxColumn1.HeaderText = "ProductQuantity";
+            this.productQuantityDataGridViewTextBoxColumn1.Name = "productQuantityDataGridViewTextBoxColumn1";
             // 
-            // inventoryBindingSource2
+            // unitCostDataGridViewTextBoxColumn1
             // 
-            this.inventoryBindingSource2.DataMember = "Inventory";
-            this.inventoryBindingSource2.DataSource = this.realInventory;
+            this.unitCostDataGridViewTextBoxColumn1.DataPropertyName = "UnitCost";
+            this.unitCostDataGridViewTextBoxColumn1.HeaderText = "UnitCost";
+            this.unitCostDataGridViewTextBoxColumn1.Name = "unitCostDataGridViewTextBoxColumn1";
             // 
-            // realInventory
+            // totalCostDataGridViewTextBoxColumn1
             // 
-            this.realInventory.DataSetName = "RealInventory";
-            this.realInventory.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.totalCostDataGridViewTextBoxColumn1.DataPropertyName = "TotalCost";
+            this.totalCostDataGridViewTextBoxColumn1.HeaderText = "TotalCost";
+            this.totalCostDataGridViewTextBoxColumn1.Name = "totalCostDataGridViewTextBoxColumn1";
+            // 
+            // inventoryBindingSource
+            // 
+            this.inventoryBindingSource.DataMember = "Inventory";
+            this.inventoryBindingSource.DataSource = this.camcoDataSet7;
+            // 
+            // camcoDataSet7
+            // 
+            this.camcoDataSet7.DataSetName = "CamcoDataSet7";
+            this.camcoDataSet7.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // inventoryTableAdapter1
             // 
             this.inventoryTableAdapter1.ClearBeforeFill = true;
             // 
-            // inventoryBindingSource3
+            // inventoryBindingSource1
             // 
-            this.inventoryBindingSource3.DataMember = "Inventory";
-            this.inventoryBindingSource3.DataSource = this.camcoInventory;
+            this.inventoryBindingSource1.DataSource = typeof(CamcoForm.Inventory);
             // 
             // NewInventoryForm
             // 
@@ -380,7 +382,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(935, 538);
-            this.Controls.Add(this.dataGridViewInventory);
+            this.Controls.Add(this.dataGridViewDBTable);
             this.Controls.Add(this.btnDeleteProduct);
             this.Controls.Add(this.btnEditProduct);
             this.Controls.Add(this.richTextBox1);
@@ -397,12 +399,10 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.camcoInventory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDBTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInventory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.realInventory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -427,19 +427,19 @@
         private System.Windows.Forms.Button btnProduct;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private CamcoInventory camcoInventory;
-        private System.Windows.Forms.BindingSource inventoryBindingSource;
         private CamcoInventoryTableAdapters.InventoryTableAdapter inventoryTableAdapter;
         private System.Windows.Forms.Button btnEditProduct;
-        private System.Windows.Forms.BindingSource inventoryBindingSource1;
         private System.Windows.Forms.Button btnDeleteProduct;
-        private System.Windows.Forms.DataGridView dataGridViewInventory;
-        private RealInventory realInventory;
-        private System.Windows.Forms.BindingSource inventoryBindingSource2;
-        private RealInventoryTableAdapters.InventoryTableAdapter inventoryTableAdapter1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productNoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productDescriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productQuantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource inventoryBindingSource3;
+        private System.Windows.Forms.BindingSource inventoryBindingSource1;
+        private System.Windows.Forms.DataGridView dataGridViewDBTable;
+        private CamcoDataSet7 camcoDataSet7;
+        private System.Windows.Forms.BindingSource inventoryBindingSource;
+        private CamcoDataSet7TableAdapters.InventoryTableAdapter inventoryTableAdapter1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productNoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productDescriptionDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productQuantityDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitCostDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalCostDataGridViewTextBoxColumn1;
     }
 }

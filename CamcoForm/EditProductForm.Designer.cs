@@ -42,12 +42,11 @@
             this.textProductName = new System.Windows.Forms.TextBox();
             this.textProductID = new System.Windows.Forms.TextBox();
             this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.realInventory = new CamcoForm.RealInventory();
-            this.inventoryTableAdapter = new CamcoForm.RealInventoryTableAdapters.InventoryTableAdapter();
-            this.comboProduct = new System.Windows.Forms.ComboBox();
+            this.comboInventory = new System.Windows.Forms.ComboBox();
             this.labelQuantity = new System.Windows.Forms.Label();
+            this.inventoryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.realInventory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -119,6 +118,7 @@
             this.textQuantity.Name = "textQuantity";
             this.textQuantity.Size = new System.Drawing.Size(146, 20);
             this.textQuantity.TabIndex = 15;
+            this.textQuantity.TextChanged += new System.EventHandler(this.textQuantity_TextChanged);
             // 
             // textUnitCost
             // 
@@ -126,6 +126,7 @@
             this.textUnitCost.Name = "textUnitCost";
             this.textUnitCost.Size = new System.Drawing.Size(146, 20);
             this.textUnitCost.TabIndex = 14;
+            this.textUnitCost.TextChanged += new System.EventHandler(this.textUnitCost_TextChanged);
             // 
             // textTotalCost
             // 
@@ -143,7 +144,7 @@
             // 
             // textProductID
             // 
-            this.textProductID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.inventoryBindingSource, "ProductNo", true));
+            this.textProductID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.inventoryBindingSource1, "ProductNo", true));
             this.textProductID.Location = new System.Drawing.Point(72, 395);
             this.textProductID.Name = "textProductID";
             this.textProductID.Size = new System.Drawing.Size(92, 20);
@@ -152,25 +153,15 @@
             // inventoryBindingSource
             // 
             this.inventoryBindingSource.DataMember = "Inventory";
-            this.inventoryBindingSource.DataSource = this.realInventory;
             // 
-            // realInventory
+            // comboInventory
             // 
-            this.realInventory.DataSetName = "RealInventory";
-            this.realInventory.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // inventoryTableAdapter
-            // 
-            this.inventoryTableAdapter.ClearBeforeFill = true;
-            // 
-            // comboProduct
-            // 
-            this.comboProduct.FormattingEnabled = true;
-            this.comboProduct.Location = new System.Drawing.Point(426, 59);
-            this.comboProduct.Name = "comboProduct";
-            this.comboProduct.Size = new System.Drawing.Size(168, 21);
-            this.comboProduct.TabIndex = 24;
-            this.comboProduct.SelectedIndexChanged += new System.EventHandler(this.comboProduct_SelectedIndexChanged);
+            this.comboInventory.FormattingEnabled = true;
+            this.comboInventory.Location = new System.Drawing.Point(426, 59);
+            this.comboInventory.Name = "comboInventory";
+            this.comboInventory.Size = new System.Drawing.Size(168, 21);
+            this.comboInventory.TabIndex = 24;
+            this.comboInventory.SelectedIndexChanged += new System.EventHandler(this.comboProduct_SelectedIndexChanged);
             // 
             // labelQuantity
             // 
@@ -181,13 +172,17 @@
             this.labelQuantity.TabIndex = 25;
             this.labelQuantity.Text = "Quantity";
             // 
+            // inventoryBindingSource1
+            // 
+            this.inventoryBindingSource1.DataSource = typeof(CamcoForm.Inventory);
+            // 
             // EditProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.labelQuantity);
-            this.Controls.Add(this.comboProduct);
+            this.Controls.Add(this.comboInventory);
             this.Controls.Add(this.textProductID);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnFinish);
@@ -204,7 +199,7 @@
             this.Text = "EditProductForm";
             this.Load += new System.EventHandler(this.EditProductForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.realInventory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,10 +219,9 @@
         private System.Windows.Forms.TextBox textTotalCost;
         private System.Windows.Forms.TextBox textProductName;
         private System.Windows.Forms.TextBox textProductID;
-        private RealInventory realInventory;
         private System.Windows.Forms.BindingSource inventoryBindingSource;
-        private RealInventoryTableAdapters.InventoryTableAdapter inventoryTableAdapter;
-        private System.Windows.Forms.ComboBox comboProduct;
+        private System.Windows.Forms.ComboBox comboInventory;
         private System.Windows.Forms.Label labelQuantity;
+        private System.Windows.Forms.BindingSource inventoryBindingSource1;
     }
 }

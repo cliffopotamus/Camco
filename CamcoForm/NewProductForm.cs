@@ -35,11 +35,13 @@ namespace CamcoForm
         public InventoryModel GetAllValuesFromForm()
         {
             var prod = new InventoryModel();
+            var decimalUnitCost = Convert.ToDecimal(textUnitCost.Text);
+            var decimalQuantity = Convert.ToInt32(textQuantity.Text);
             prod.name = textProductName.Text;
             prod.description = textProductDescription.Text;
             prod.quantity = Convert.ToInt32(textQuantity.Text);
             prod.unitCost = Convert.ToDecimal(textUnitCost.Text);
-            prod.totalCost = Convert.ToDecimal(textTotalCost.Text);
+            prod.totalCost = decimalUnitCost * decimalQuantity;
             return prod;
         }
 
@@ -89,6 +91,7 @@ namespace CamcoForm
             {
                 textTotalCost.Text = (Convert.ToDecimal(textUnitCost.Text) * Convert.ToInt32(textQuantity.Text)).ToString();
                 var placeholderValues = GetAllValuesFromForm();
+                updateDB(placeholderValues);
                 string successBox = "Success";
                 MessageBox.Show(successBox);
                 this.Close();

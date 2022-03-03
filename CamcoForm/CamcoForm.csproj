@@ -120,11 +120,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CamcoDataSet5.xsd</DependentUpon>
     </Compile>
+    <Compile Include="CamcoDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CamcoDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CamcoDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CamcoDataSet7.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CamcoForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CamcoForm.Designer.cs">
       <DependentUpon>CamcoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CamcoInventory.cs">
+      <DependentUpon>CamcoInventory.xsd</DependentUpon>
     </Compile>
     <Compile Include="CamcoInventory.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -201,12 +214,6 @@
     </Compile>
     <Compile Include="EditVendorForm.Designer.cs">
       <DependentUpon>EditVendorForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -288,11 +295,6 @@
     <Compile Include="PurchaseOrderLineItem.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="RealInventory.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RealInventory.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Vendor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -334,9 +336,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditVendorForm.resx">
       <DependentUpon>EditVendorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InvoiceForm.resx">
       <DependentUpon>InvoiceForm.cs</DependentUpon>
@@ -465,6 +464,28 @@
     <None Include="CamcoDataSet5.xss">
       <DependentUpon>CamcoDataSet5.xsd</DependentUpon>
     </None>
+    <None Include="CamcoDataSet6.xsc">
+      <DependentUpon>CamcoDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CamcoDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CamcoDataSet6.xss">
+      <DependentUpon>CamcoDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet7.xsc">
+      <DependentUpon>CamcoDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CamcoDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CamcoDataSet7.xss">
+      <DependentUpon>CamcoDataSet7.xsd</DependentUpon>
+    </None>
     <None Include="CamcoInventory.xsc">
       <DependentUpon>CamcoInventory.xsd</DependentUpon>
     </None>
@@ -528,6 +549,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Inventory.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -537,17 +559,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="RealInventory.xsc">
-      <DependentUpon>RealInventory.xsd</DependentUpon>
-    </None>
-    <None Include="RealInventory.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>RealInventory.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="RealInventory.xss">
-      <DependentUpon>RealInventory.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -579,9 +590,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
