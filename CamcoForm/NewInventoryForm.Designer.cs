@@ -45,7 +45,7 @@
             this.btnWorkOrder = new System.Windows.Forms.Button();
             this.comboInventory = new System.Windows.Forms.ComboBox();
             this.btnProduct = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxInventory = new System.Windows.Forms.RichTextBox();
             this.camcoInventory = new CamcoForm.CamcoInventory();
             this.inventoryTableAdapter = new CamcoForm.CamcoInventoryTableAdapters.InventoryTableAdapter();
             this.btnEditProduct = new System.Windows.Forms.Button();
@@ -267,13 +267,14 @@
             this.btnProduct.UseVisualStyleBackColor = true;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
-            // richTextBox1
+            // richTextBoxInventory
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(222, 303);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(522, 66);
-            this.richTextBox1.TabIndex = 9;
-            this.richTextBox1.Text = "";
+            this.richTextBoxInventory.Location = new System.Drawing.Point(222, 303);
+            this.richTextBoxInventory.Name = "richTextBoxInventory";
+            this.richTextBoxInventory.Size = new System.Drawing.Size(522, 66);
+            this.richTextBoxInventory.TabIndex = 9;
+            this.richTextBoxInventory.Text = "";
+            this.richTextBoxInventory.TextChanged += new System.EventHandler(this.richTextBoxInventory_TextChanged);
             // 
             // camcoInventory
             // 
@@ -385,7 +386,7 @@
             this.Controls.Add(this.dataGridViewDBTable);
             this.Controls.Add(this.btnDeleteProduct);
             this.Controls.Add(this.btnEditProduct);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.richTextBoxInventory);
             this.Controls.Add(this.btnProduct);
             this.Controls.Add(this.comboInventory);
             this.Controls.Add(this.btnWorkOrder);
@@ -425,7 +426,7 @@
         private System.Windows.Forms.Button btnWorkOrder;
         private System.Windows.Forms.ComboBox comboInventory;
         private System.Windows.Forms.Button btnProduct;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxInventory;
         private CamcoInventory camcoInventory;
         private CamcoInventoryTableAdapters.InventoryTableAdapter inventoryTableAdapter;
         private System.Windows.Forms.Button btnEditProduct;

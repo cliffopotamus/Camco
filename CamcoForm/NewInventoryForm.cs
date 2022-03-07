@@ -232,6 +232,20 @@ namespace CamcoForm
             public int productID;
         }
 
+
+        public void editRichTextBox(string placeholder)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName == placeholder);
+
+                if (result != null)
+                {
+                }
+
+            }
+        }
+
         private void btnBillOfMaterials_Click(object sender, EventArgs e)
         {
             var newForm = new BillOfMaterialsForm();
@@ -293,7 +307,17 @@ namespace CamcoForm
 
         private void comboInventory_SelectedIndexChanged(object sender, EventArgs e)
         {
+            using (var DB = new CamcoEntities())
+            {
+                if (comboInventory.Text == DB.Inventories.)
 
+            }
+                
+
+        }
+
+        private void richTextBoxInventory_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

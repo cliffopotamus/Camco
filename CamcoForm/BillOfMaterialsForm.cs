@@ -16,5 +16,10 @@ namespace CamcoForm
         {
             InitializeComponent();
         }
+
+        private void finishedGood_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

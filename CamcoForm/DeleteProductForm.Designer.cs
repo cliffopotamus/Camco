@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.textProductID = new System.Windows.Forms.TextBox();
-            this.comboDeleteProduct = new System.Windows.Forms.ComboBox();
+            this.comboInventory = new System.Windows.Forms.ComboBox();
             this.btnDeleteCancel = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.labelDeleteProductID = new System.Windows.Forms.Label();
@@ -42,14 +42,14 @@
             this.textProductID.Size = new System.Drawing.Size(83, 20);
             this.textProductID.TabIndex = 14;
             // 
-            // comboDeleteProduct
+            // comboInventory
             // 
-            this.comboDeleteProduct.FormattingEnabled = true;
-            this.comboDeleteProduct.Location = new System.Drawing.Point(306, 186);
-            this.comboDeleteProduct.Name = "comboDeleteProduct";
-            this.comboDeleteProduct.Size = new System.Drawing.Size(172, 21);
-            this.comboDeleteProduct.TabIndex = 13;
-            this.comboDeleteProduct.SelectedIndexChanged += new System.EventHandler(this.comboDeleteProduct_SelectedIndexChanged);
+            this.comboInventory.FormattingEnabled = true;
+            this.comboInventory.Location = new System.Drawing.Point(306, 186);
+            this.comboInventory.Name = "comboInventory";
+            this.comboInventory.Size = new System.Drawing.Size(172, 21);
+            this.comboInventory.TabIndex = 13;
+            this.comboInventory.SelectedIndexChanged += new System.EventHandler(this.comboDeleteProduct_SelectedIndexChanged);
             // 
             // btnDeleteCancel
             // 
@@ -86,7 +86,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.textProductID);
-            this.Controls.Add(this.comboDeleteProduct);
+            this.Controls.Add(this.comboInventory);
             this.Controls.Add(this.btnDeleteCancel);
             this.Controls.Add(this.btnDeleteProduct);
             this.Controls.Add(this.labelDeleteProductID);
@@ -101,7 +101,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox textProductID;
-        private System.Windows.Forms.ComboBox comboDeleteProduct;
+        private System.Windows.Forms.ComboBox comboInventory;
         private System.Windows.Forms.Button btnDeleteCancel;
         private System.Windows.Forms.Button btnDeleteProduct;
         private System.Windows.Forms.Label labelDeleteProductID;

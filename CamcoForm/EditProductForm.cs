@@ -326,8 +326,6 @@ namespace CamcoForm
                 {
                     InventoryModel placeholderValues = GetAllValuesFromForm();
                     editDB(placeholderValues);
-                    string successBox = textTotalCost.Text;
-                    MessageBox.Show(successBox);
                     this.Close();
                 }
 

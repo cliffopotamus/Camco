@@ -77,6 +77,7 @@
             this.labelTotalCost.Size = new System.Drawing.Size(55, 13);
             this.labelTotalCost.TabIndex = 20;
             this.labelTotalCost.Text = "Total Cost";
+            this.labelTotalCost.Visible = false;
             // 
             // labelUnitCost
             // 
@@ -134,6 +135,7 @@
             this.textTotalCost.Name = "textTotalCost";
             this.textTotalCost.Size = new System.Drawing.Size(146, 20);
             this.textTotalCost.TabIndex = 13;
+            this.textTotalCost.Visible = false;
             // 
             // textProductName
             // 

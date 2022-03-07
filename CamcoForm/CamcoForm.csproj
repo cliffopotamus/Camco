@@ -310,6 +310,9 @@
     <Compile Include="WorkOrderForm.Designer.cs">
       <DependentUpon>WorkOrderForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BillOfMaterialsForm.resx">
+      <DependentUpon>BillOfMaterialsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CamcoForm.resx">
       <DependentUpon>CamcoForm.cs</DependentUpon>
     </EmbeddedResource>

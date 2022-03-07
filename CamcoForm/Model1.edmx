@@ -133,8 +133,8 @@
           <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ProductQuantity" Type="Int32" />
-          <Property Name="UnitCost" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="TotalCost" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="UnitCost" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalCost" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="InvoiceLineItem">
           <Key>
