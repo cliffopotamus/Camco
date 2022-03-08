@@ -40,6 +40,8 @@
             this.labelTotalCost = new System.Windows.Forms.Label();
             this.btnFinish = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.textSalesPrice = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textProductName
@@ -51,14 +53,14 @@
             // 
             // textTotalCost
             // 
-            this.textTotalCost.Location = new System.Drawing.Point(61, 357);
+            this.textTotalCost.Location = new System.Drawing.Point(331, 375);
             this.textTotalCost.Name = "textTotalCost";
             this.textTotalCost.Size = new System.Drawing.Size(146, 20);
             this.textTotalCost.TabIndex = 1;
             // 
             // textUnitCost
             // 
-            this.textUnitCost.Location = new System.Drawing.Point(61, 284);
+            this.textUnitCost.Location = new System.Drawing.Point(61, 268);
             this.textUnitCost.Name = "textUnitCost";
             this.textUnitCost.Size = new System.Drawing.Size(146, 20);
             this.textUnitCost.TabIndex = 2;
@@ -107,7 +109,7 @@
             // labelUnitCost
             // 
             this.labelUnitCost.AutoSize = true;
-            this.labelUnitCost.Location = new System.Drawing.Point(58, 268);
+            this.labelUnitCost.Location = new System.Drawing.Point(58, 252);
             this.labelUnitCost.Name = "labelUnitCost";
             this.labelUnitCost.Size = new System.Drawing.Size(50, 13);
             this.labelUnitCost.TabIndex = 8;
@@ -116,7 +118,7 @@
             // labelTotalCost
             // 
             this.labelTotalCost.AutoSize = true;
-            this.labelTotalCost.Location = new System.Drawing.Point(58, 341);
+            this.labelTotalCost.Location = new System.Drawing.Point(328, 357);
             this.labelTotalCost.Name = "labelTotalCost";
             this.labelTotalCost.Size = new System.Drawing.Size(55, 13);
             this.labelTotalCost.TabIndex = 9;
@@ -142,11 +144,29 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // textSalesPrice
+            // 
+            this.textSalesPrice.Location = new System.Drawing.Point(61, 341);
+            this.textSalesPrice.Name = "textSalesPrice";
+            this.textSalesPrice.Size = new System.Drawing.Size(146, 20);
+            this.textSalesPrice.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(58, 325);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Sales Price";
+            // 
             // NewProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textSalesPrice);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnFinish);
             this.Controls.Add(this.labelTotalCost);
@@ -181,5 +201,7 @@
         private System.Windows.Forms.Label labelTotalCost;
         private System.Windows.Forms.Button btnFinish;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox textSalesPrice;
+        private System.Windows.Forms.Label label1;
     }
 }

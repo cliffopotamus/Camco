@@ -31,8 +31,9 @@
           <Property Name="ProductName" Type="varchar" MaxLength="50" />
           <Property Name="ProductDescription" Type="varchar" MaxLength="100" />
           <Property Name="ProductQuantity" Type="int" />
-          <Property Name="UnitCost" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="TotalCost" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="UnitCost" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalCost" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SalesPrice" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="InvoiceLineItems">
           <Key>
@@ -135,6 +136,7 @@
           <Property Name="ProductQuantity" Type="Int32" />
           <Property Name="UnitCost" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="TotalCost" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SalesPrice" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="InvoiceLineItem">
           <Key>
@@ -233,6 +235,7 @@
           <EntitySetMapping Name="Inventories">
             <EntityTypeMapping TypeName="CamcoModel.Inventory">
               <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="SalesPrice" ColumnName="SalesPrice" />
                 <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
                 <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
                 <ScalarProperty Name="ProductNo" ColumnName="ProductNo" />

@@ -47,7 +47,7 @@
             this.labelQuantity = new System.Windows.Forms.Label();
             this.textQuantity = new System.Windows.Forms.TextBox();
             this.labelItem = new System.Windows.Forms.Label();
-            this.comboItem = new System.Windows.Forms.ComboBox();
+            this.comboInventory = new System.Windows.Forms.ComboBox();
             this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelItemDescription = new System.Windows.Forms.Label();
             this.labelInvoiceItem = new System.Windows.Forms.Label();
@@ -217,26 +217,19 @@
             this.labelItem.TabIndex = 14;
             this.labelItem.Text = "Item";
             // 
-            // comboItem
+            // comboInventory
             // 
-            this.comboItem.DataSource = this.inventoryBindingSource;
-            this.comboItem.DisplayMember = "ProductName";
-            this.comboItem.FormattingEnabled = true;
-            this.comboItem.Location = new System.Drawing.Point(107, 185);
-            this.comboItem.Name = "comboItem";
-            this.comboItem.Size = new System.Drawing.Size(241, 21);
-            this.comboItem.TabIndex = 15;
+            this.comboInventory.DataSource = this.inventoryBindingSource;
+            this.comboInventory.DisplayMember = "ProductName";
+            this.comboInventory.FormattingEnabled = true;
+            this.comboInventory.Location = new System.Drawing.Point(107, 185);
+            this.comboInventory.Name = "comboInventory";
+            this.comboInventory.Size = new System.Drawing.Size(241, 21);
+            this.comboInventory.TabIndex = 15;
             // 
             // inventoryBindingSource
             // 
             this.inventoryBindingSource.DataMember = "Inventory";
-            // 
-            // comboBoxItems
-            // 
-
-            // 
-            // inventoryTableAdapter
-            // 
             // 
             // labelItemDescription
             // 
@@ -419,7 +412,6 @@
             this.btnFinish.TabIndex = 36;
             this.btnFinish.Text = "Finish";
             this.btnFinish.UseVisualStyleBackColor = true;
-            this.btnFinish.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnCancel
             // 
@@ -457,7 +449,7 @@
             this.Controls.Add(this.labelUnitPrice);
             this.Controls.Add(this.labelInvoiceItem);
             this.Controls.Add(this.labelItemDescription);
-            this.Controls.Add(this.comboItem);
+            this.Controls.Add(this.comboInventory);
             this.Controls.Add(this.labelItem);
             this.Controls.Add(this.textQuantity);
             this.Controls.Add(this.labelQuantity);
@@ -504,7 +496,7 @@
         private System.Windows.Forms.Label labelQuantity;
         private System.Windows.Forms.TextBox textQuantity;
         private System.Windows.Forms.Label labelItem;
-        private System.Windows.Forms.ComboBox comboItem;
+        private System.Windows.Forms.ComboBox comboInventory;
         private System.Windows.Forms.BindingSource inventoryBindingSource;
         private System.Windows.Forms.Label labelItemDescription;
         private System.Windows.Forms.Label labelInvoiceItem;

@@ -222,6 +222,7 @@ namespace CamcoForm
             public decimal unitCost;
             public decimal totalCost;
             public int productID;
+            public decimal salesPrice;
         }
 
         public InventoryModel setProductID()

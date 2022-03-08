@@ -20,6 +20,8 @@ namespace CamcoForm
 
         private void NewInventoryForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'camcoDataSet8.Inventory' table. You can move, or remove it, as needed.
+            this.inventoryTableAdapter2.Fill(this.camcoDataSet8.Inventory);
             // TODO: This line of code loads data into the 'camcoDataSet7.Inventory' table. You can move, or remove it, as needed.
             this.inventoryTableAdapter1.Fill(this.camcoDataSet7.Inventory);
             // TODO: This line of code loads data into the 'realInventory.Inventory' table. You can move, or remove it, as needed.
@@ -233,14 +235,18 @@ namespace CamcoForm
         }
 
 
-        public void editRichTextBox(string placeholder)
+        public void editRichTextBox(string prodName)
         {
             using (var DB = new CamcoEntities())
             {
-                Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName == placeholder);
+                Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName == prodName);
 
                 if (result != null)
-                {
+                {  
+                    /* if statement for kits here*/
+
+                    var text = "Quantity: " + result.ProductQuantity.ToString() + Environment.NewLine + "Unit Cost: " + result.UnitCost.ToString() + Environment.NewLine + "Sales Price: " + result.SalesPrice.ToString();
+                    richTextBoxInventory.Text = text;
                 }
 
             }
@@ -307,13 +313,7 @@ namespace CamcoForm
 
         private void comboInventory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (var DB = new CamcoEntities())
-            {
-                if (comboInventory.Text == DB.Inventories.)
-
-            }
-                
-
+            editRichTextBox(comboInventory.Text);
         }
 
         private void richTextBoxInventory_TextChanged(object sender, EventArgs e)

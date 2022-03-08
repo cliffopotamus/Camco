@@ -41,12 +41,14 @@
             this.textTotalCost = new System.Windows.Forms.TextBox();
             this.textProductName = new System.Windows.Forms.TextBox();
             this.textProductID = new System.Windows.Forms.TextBox();
+            this.inventoryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboInventory = new System.Windows.Forms.ComboBox();
             this.labelQuantity = new System.Windows.Forms.Label();
-            this.inventoryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
+            this.textSalesPrice = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -72,7 +74,7 @@
             // labelTotalCost
             // 
             this.labelTotalCost.AutoSize = true;
-            this.labelTotalCost.Location = new System.Drawing.Point(69, 341);
+            this.labelTotalCost.Location = new System.Drawing.Point(304, 344);
             this.labelTotalCost.Name = "labelTotalCost";
             this.labelTotalCost.Size = new System.Drawing.Size(55, 13);
             this.labelTotalCost.TabIndex = 20;
@@ -82,7 +84,7 @@
             // labelUnitCost
             // 
             this.labelUnitCost.AutoSize = true;
-            this.labelUnitCost.Location = new System.Drawing.Point(69, 268);
+            this.labelUnitCost.Location = new System.Drawing.Point(69, 254);
             this.labelUnitCost.Name = "labelUnitCost";
             this.labelUnitCost.Size = new System.Drawing.Size(50, 13);
             this.labelUnitCost.TabIndex = 19;
@@ -123,7 +125,7 @@
             // 
             // textUnitCost
             // 
-            this.textUnitCost.Location = new System.Drawing.Point(72, 284);
+            this.textUnitCost.Location = new System.Drawing.Point(72, 270);
             this.textUnitCost.Name = "textUnitCost";
             this.textUnitCost.Size = new System.Drawing.Size(146, 20);
             this.textUnitCost.TabIndex = 14;
@@ -131,7 +133,7 @@
             // 
             // textTotalCost
             // 
-            this.textTotalCost.Location = new System.Drawing.Point(72, 357);
+            this.textTotalCost.Location = new System.Drawing.Point(307, 360);
             this.textTotalCost.Name = "textTotalCost";
             this.textTotalCost.Size = new System.Drawing.Size(146, 20);
             this.textTotalCost.TabIndex = 13;
@@ -147,10 +149,14 @@
             // textProductID
             // 
             this.textProductID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.inventoryBindingSource1, "ProductNo", true));
-            this.textProductID.Location = new System.Drawing.Point(72, 395);
+            this.textProductID.Location = new System.Drawing.Point(316, 399);
             this.textProductID.Name = "textProductID";
             this.textProductID.Size = new System.Drawing.Size(92, 20);
             this.textProductID.TabIndex = 23;
+            // 
+            // inventoryBindingSource1
+            // 
+            this.inventoryBindingSource1.DataSource = typeof(CamcoForm.Inventory);
             // 
             // inventoryBindingSource
             // 
@@ -168,21 +174,35 @@
             // labelQuantity
             // 
             this.labelQuantity.AutoSize = true;
-            this.labelQuantity.Location = new System.Drawing.Point(73, 190);
+            this.labelQuantity.Location = new System.Drawing.Point(69, 190);
             this.labelQuantity.Name = "labelQuantity";
             this.labelQuantity.Size = new System.Drawing.Size(46, 13);
             this.labelQuantity.TabIndex = 25;
             this.labelQuantity.Text = "Quantity";
             // 
-            // inventoryBindingSource1
+            // textSalesPrice
             // 
-            this.inventoryBindingSource1.DataSource = typeof(CamcoForm.Inventory);
+            this.textSalesPrice.Location = new System.Drawing.Point(72, 337);
+            this.textSalesPrice.Name = "textSalesPrice";
+            this.textSalesPrice.Size = new System.Drawing.Size(146, 20);
+            this.textSalesPrice.TabIndex = 26;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(69, 321);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Sales Price";
             // 
             // EditProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textSalesPrice);
             this.Controls.Add(this.labelQuantity);
             this.Controls.Add(this.comboInventory);
             this.Controls.Add(this.textProductID);
@@ -200,8 +220,8 @@
             this.Name = "EditProductForm";
             this.Text = "EditProductForm";
             this.Load += new System.EventHandler(this.EditProductForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,5 +245,7 @@
         private System.Windows.Forms.ComboBox comboInventory;
         private System.Windows.Forms.Label labelQuantity;
         private System.Windows.Forms.BindingSource inventoryBindingSource1;
+        private System.Windows.Forms.TextBox textSalesPrice;
+        private System.Windows.Forms.Label label1;
     }
 }

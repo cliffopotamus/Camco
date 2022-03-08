@@ -20,5 +20,6 @@ namespace CamcoForm
         public Nullable<int> ProductQuantity { get; set; }
         public Nullable<decimal> UnitCost { get; set; }
         public Nullable<decimal> TotalCost { get; set; }
+        public Nullable<decimal> SalesPrice { get; set; }
     }
 }

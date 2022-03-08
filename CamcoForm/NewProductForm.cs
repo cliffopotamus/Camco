@@ -30,6 +30,7 @@ namespace CamcoForm
             public decimal unitCost;
             public decimal totalCost;
             public int productID;
+            public decimal salesPrice;
         }
 
         public InventoryModel GetAllValuesFromForm()
@@ -42,6 +43,7 @@ namespace CamcoForm
             prod.quantity = Convert.ToInt32(textQuantity.Text);
             prod.unitCost = Convert.ToDecimal(textUnitCost.Text);
             prod.totalCost = decimalUnitCost * decimalQuantity;
+            prod.salesPrice = Convert.ToDecimal(textSalesPrice.Text);
             return prod;
         }
 
@@ -53,6 +55,7 @@ namespace CamcoForm
             inputToDB.ProductQuantity = placeholder.quantity;
             inputToDB.UnitCost = placeholder.unitCost;
             inputToDB.TotalCost = placeholder.totalCost;
+            inputToDB.SalesPrice = placeholder.salesPrice;
             return inputToDB;
         }
 

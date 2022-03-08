@@ -50,25 +50,27 @@
             this.inventoryTableAdapter = new CamcoForm.CamcoInventoryTableAdapters.InventoryTableAdapter();
             this.btnEditProduct = new System.Windows.Forms.Button();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
-            this.dataGridViewDBTable = new System.Windows.Forms.DataGridView();
-            this.productNoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productDescriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productQuantityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitCostDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalCostDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.camcoDataSet7 = new CamcoForm.CamcoDataSet7();
             this.inventoryTableAdapter1 = new CamcoForm.CamcoDataSet7TableAdapters.InventoryTableAdapter();
-            this.inventoryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.camcoDataSet8 = new CamcoForm.CamcoDataSet8();
+            this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.inventoryTableAdapter2 = new CamcoForm.CamcoDataSet8TableAdapters.InventoryTableAdapter();
+            this.productNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salesPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camcoInventory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDBTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -228,9 +230,9 @@
             // 
             // btnBillOfMaterials
             // 
-            this.btnBillOfMaterials.Location = new System.Drawing.Point(576, 47);
+            this.btnBillOfMaterials.Location = new System.Drawing.Point(578, 45);
             this.btnBillOfMaterials.Name = "btnBillOfMaterials";
-            this.btnBillOfMaterials.Size = new System.Drawing.Size(125, 69);
+            this.btnBillOfMaterials.Size = new System.Drawing.Size(100, 40);
             this.btnBillOfMaterials.TabIndex = 4;
             this.btnBillOfMaterials.Text = "Bill of Materials";
             this.btnBillOfMaterials.UseVisualStyleBackColor = true;
@@ -238,9 +240,9 @@
             // 
             // btnWorkOrder
             // 
-            this.btnWorkOrder.Location = new System.Drawing.Point(738, 47);
+            this.btnWorkOrder.Location = new System.Drawing.Point(697, 45);
             this.btnWorkOrder.Name = "btnWorkOrder";
-            this.btnWorkOrder.Size = new System.Drawing.Size(140, 69);
+            this.btnWorkOrder.Size = new System.Drawing.Size(100, 40);
             this.btnWorkOrder.TabIndex = 5;
             this.btnWorkOrder.Text = "Work Order";
             this.btnWorkOrder.UseVisualStyleBackColor = true;
@@ -251,7 +253,7 @@
             this.comboInventory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboInventory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.comboInventory.FormattingEnabled = true;
-            this.comboInventory.Location = new System.Drawing.Point(222, 259);
+            this.comboInventory.Location = new System.Drawing.Point(192, 102);
             this.comboInventory.Name = "comboInventory";
             this.comboInventory.Size = new System.Drawing.Size(204, 21);
             this.comboInventory.TabIndex = 7;
@@ -261,7 +263,7 @@
             // 
             this.btnProduct.Location = new System.Drawing.Point(222, 46);
             this.btnProduct.Name = "btnProduct";
-            this.btnProduct.Size = new System.Drawing.Size(129, 70);
+            this.btnProduct.Size = new System.Drawing.Size(100, 40);
             this.btnProduct.TabIndex = 8;
             this.btnProduct.Text = "Add Product";
             this.btnProduct.UseVisualStyleBackColor = true;
@@ -269,9 +271,9 @@
             // 
             // richTextBoxInventory
             // 
-            this.richTextBoxInventory.Location = new System.Drawing.Point(222, 303);
+            this.richTextBoxInventory.Location = new System.Drawing.Point(192, 144);
             this.richTextBoxInventory.Name = "richTextBoxInventory";
-            this.richTextBoxInventory.Size = new System.Drawing.Size(522, 66);
+            this.richTextBoxInventory.Size = new System.Drawing.Size(204, 66);
             this.richTextBoxInventory.TabIndex = 9;
             this.richTextBoxInventory.Text = "";
             this.richTextBoxInventory.TextChanged += new System.EventHandler(this.richTextBoxInventory_TextChanged);
@@ -287,9 +289,9 @@
             // 
             // btnEditProduct
             // 
-            this.btnEditProduct.Location = new System.Drawing.Point(402, 46);
+            this.btnEditProduct.Location = new System.Drawing.Point(337, 45);
             this.btnEditProduct.Name = "btnEditProduct";
-            this.btnEditProduct.Size = new System.Drawing.Size(129, 70);
+            this.btnEditProduct.Size = new System.Drawing.Size(100, 40);
             this.btnEditProduct.TabIndex = 10;
             this.btnEditProduct.Text = "Edit Product";
             this.btnEditProduct.UseVisualStyleBackColor = true;
@@ -297,72 +299,13 @@
             // 
             // btnDeleteProduct
             // 
-            this.btnDeleteProduct.Location = new System.Drawing.Point(222, 131);
+            this.btnDeleteProduct.Location = new System.Drawing.Point(456, 45);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
-            this.btnDeleteProduct.Size = new System.Drawing.Size(129, 70);
+            this.btnDeleteProduct.Size = new System.Drawing.Size(100, 40);
             this.btnDeleteProduct.TabIndex = 11;
             this.btnDeleteProduct.Text = "Delete Product";
             this.btnDeleteProduct.UseVisualStyleBackColor = true;
             this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
-            // 
-            // dataGridViewDBTable
-            // 
-            this.dataGridViewDBTable.AutoGenerateColumns = false;
-            this.dataGridViewDBTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDBTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productNoDataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.productDescriptionDataGridViewTextBoxColumn1,
-            this.productQuantityDataGridViewTextBoxColumn1,
-            this.unitCostDataGridViewTextBoxColumn1,
-            this.totalCostDataGridViewTextBoxColumn1});
-            this.dataGridViewDBTable.DataSource = this.inventoryBindingSource;
-            this.dataGridViewDBTable.Location = new System.Drawing.Point(222, 377);
-            this.dataGridViewDBTable.Name = "dataGridViewDBTable";
-            this.dataGridViewDBTable.Size = new System.Drawing.Size(644, 149);
-            this.dataGridViewDBTable.TabIndex = 13;
-            // 
-            // productNoDataGridViewTextBoxColumn1
-            // 
-            this.productNoDataGridViewTextBoxColumn1.DataPropertyName = "ProductNo";
-            this.productNoDataGridViewTextBoxColumn1.HeaderText = "ProductNo";
-            this.productNoDataGridViewTextBoxColumn1.Name = "productNoDataGridViewTextBoxColumn1";
-            this.productNoDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "ProductName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "ProductName";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // productDescriptionDataGridViewTextBoxColumn1
-            // 
-            this.productDescriptionDataGridViewTextBoxColumn1.DataPropertyName = "ProductDescription";
-            this.productDescriptionDataGridViewTextBoxColumn1.HeaderText = "ProductDescription";
-            this.productDescriptionDataGridViewTextBoxColumn1.Name = "productDescriptionDataGridViewTextBoxColumn1";
-            // 
-            // productQuantityDataGridViewTextBoxColumn1
-            // 
-            this.productQuantityDataGridViewTextBoxColumn1.DataPropertyName = "ProductQuantity";
-            this.productQuantityDataGridViewTextBoxColumn1.HeaderText = "ProductQuantity";
-            this.productQuantityDataGridViewTextBoxColumn1.Name = "productQuantityDataGridViewTextBoxColumn1";
-            // 
-            // unitCostDataGridViewTextBoxColumn1
-            // 
-            this.unitCostDataGridViewTextBoxColumn1.DataPropertyName = "UnitCost";
-            this.unitCostDataGridViewTextBoxColumn1.HeaderText = "UnitCost";
-            this.unitCostDataGridViewTextBoxColumn1.Name = "unitCostDataGridViewTextBoxColumn1";
-            // 
-            // totalCostDataGridViewTextBoxColumn1
-            // 
-            this.totalCostDataGridViewTextBoxColumn1.DataPropertyName = "TotalCost";
-            this.totalCostDataGridViewTextBoxColumn1.HeaderText = "TotalCost";
-            this.totalCostDataGridViewTextBoxColumn1.Name = "totalCostDataGridViewTextBoxColumn1";
-            // 
-            // inventoryBindingSource
-            // 
-            this.inventoryBindingSource.DataMember = "Inventory";
-            this.inventoryBindingSource.DataSource = this.camcoDataSet7;
             // 
             // camcoDataSet7
             // 
@@ -373,9 +316,80 @@
             // 
             this.inventoryTableAdapter1.ClearBeforeFill = true;
             // 
-            // inventoryBindingSource1
+            // dataGridView1
             // 
-            this.inventoryBindingSource1.DataSource = typeof(CamcoForm.Inventory);
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.productNoDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn1,
+            this.productDescriptionDataGridViewTextBoxColumn,
+            this.productQuantityDataGridViewTextBoxColumn,
+            this.unitCostDataGridViewTextBoxColumn,
+            this.totalCostDataGridViewTextBoxColumn,
+            this.salesPriceDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.inventoryBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(192, 232);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(740, 294);
+            this.dataGridView1.TabIndex = 12;
+            // 
+            // camcoDataSet8
+            // 
+            this.camcoDataSet8.DataSetName = "CamcoDataSet8";
+            this.camcoDataSet8.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // inventoryBindingSource
+            // 
+            this.inventoryBindingSource.DataMember = "Inventory";
+            this.inventoryBindingSource.DataSource = this.camcoDataSet8;
+            // 
+            // inventoryTableAdapter2
+            // 
+            this.inventoryTableAdapter2.ClearBeforeFill = true;
+            // 
+            // productNoDataGridViewTextBoxColumn
+            // 
+            this.productNoDataGridViewTextBoxColumn.DataPropertyName = "ProductNo";
+            this.productNoDataGridViewTextBoxColumn.HeaderText = "ProductNo";
+            this.productNoDataGridViewTextBoxColumn.Name = "productNoDataGridViewTextBoxColumn";
+            this.productNoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ProductName";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ProductName";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // productDescriptionDataGridViewTextBoxColumn
+            // 
+            this.productDescriptionDataGridViewTextBoxColumn.DataPropertyName = "ProductDescription";
+            this.productDescriptionDataGridViewTextBoxColumn.HeaderText = "ProductDescription";
+            this.productDescriptionDataGridViewTextBoxColumn.Name = "productDescriptionDataGridViewTextBoxColumn";
+            // 
+            // productQuantityDataGridViewTextBoxColumn
+            // 
+            this.productQuantityDataGridViewTextBoxColumn.DataPropertyName = "ProductQuantity";
+            this.productQuantityDataGridViewTextBoxColumn.HeaderText = "ProductQuantity";
+            this.productQuantityDataGridViewTextBoxColumn.Name = "productQuantityDataGridViewTextBoxColumn";
+            // 
+            // unitCostDataGridViewTextBoxColumn
+            // 
+            this.unitCostDataGridViewTextBoxColumn.DataPropertyName = "UnitCost";
+            this.unitCostDataGridViewTextBoxColumn.HeaderText = "UnitCost";
+            this.unitCostDataGridViewTextBoxColumn.Name = "unitCostDataGridViewTextBoxColumn";
+            // 
+            // totalCostDataGridViewTextBoxColumn
+            // 
+            this.totalCostDataGridViewTextBoxColumn.DataPropertyName = "TotalCost";
+            this.totalCostDataGridViewTextBoxColumn.HeaderText = "TotalCost";
+            this.totalCostDataGridViewTextBoxColumn.Name = "totalCostDataGridViewTextBoxColumn";
+            // 
+            // salesPriceDataGridViewTextBoxColumn
+            // 
+            this.salesPriceDataGridViewTextBoxColumn.DataPropertyName = "SalesPrice";
+            this.salesPriceDataGridViewTextBoxColumn.HeaderText = "SalesPrice";
+            this.salesPriceDataGridViewTextBoxColumn.Name = "salesPriceDataGridViewTextBoxColumn";
             // 
             // NewInventoryForm
             // 
@@ -383,7 +397,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(935, 538);
-            this.Controls.Add(this.dataGridViewDBTable);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnDeleteProduct);
             this.Controls.Add(this.btnEditProduct);
             this.Controls.Add(this.richTextBoxInventory);
@@ -400,10 +414,10 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.camcoInventory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDBTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -431,16 +445,18 @@
         private CamcoInventoryTableAdapters.InventoryTableAdapter inventoryTableAdapter;
         private System.Windows.Forms.Button btnEditProduct;
         private System.Windows.Forms.Button btnDeleteProduct;
-        private System.Windows.Forms.BindingSource inventoryBindingSource1;
-        private System.Windows.Forms.DataGridView dataGridViewDBTable;
         private CamcoDataSet7 camcoDataSet7;
-        private System.Windows.Forms.BindingSource inventoryBindingSource;
         private CamcoDataSet7TableAdapters.InventoryTableAdapter inventoryTableAdapter1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productNoDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productDescriptionDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productQuantityDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitCostDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalCostDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private CamcoDataSet8 camcoDataSet8;
+        private System.Windows.Forms.BindingSource inventoryBindingSource;
+        private CamcoDataSet8TableAdapters.InventoryTableAdapter inventoryTableAdapter2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productDescriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productQuantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitCostDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalCostDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn salesPriceDataGridViewTextBoxColumn;
     }
 }

@@ -228,6 +228,7 @@ namespace CamcoForm
             public decimal unitCost;
             public decimal totalCost;
             public int productID;
+            public decimal salesPrice;
         }
 
         public InventoryModel GetAllValuesFromForm()
@@ -241,6 +242,7 @@ namespace CamcoForm
             prod.unitCost = Convert.ToDecimal(textUnitCost.Text);
             prod.totalCost = decimalUnitCost * decimalQuantity;
             prod.productID = Convert.ToInt32(textProductID.Text);
+            prod.salesPrice = Convert.ToDecimal(textSalesPrice.Text);
             return prod;
         }
 
@@ -253,6 +255,7 @@ namespace CamcoForm
             inputToDB.UnitCost = placeholder.unitCost;
             inputToDB.TotalCost = placeholder.totalCost;
             inputToDB.ProductNo = placeholder.productID;
+            inputToDB.SalesPrice = placeholder.salesPrice;
             return inputToDB;
         }
 
@@ -270,6 +273,7 @@ namespace CamcoForm
                     result.ProductNo = Inven.productID;
                     result.UnitCost = Inven.unitCost;
                     result.TotalCost = Inven.totalCost;
+                    result.SalesPrice = Inven.salesPrice;
                     DB.SaveChanges();
                 }
             }
@@ -284,6 +288,7 @@ namespace CamcoForm
             textUnitCost.Text = placeholder.UnitCost.ToString();
             textTotalCost.Text = ((Convert.ToDecimal(placeholder.UnitCost)) * (Convert.ToInt32(placeholder.ProductQuantity))).ToString();
             textProductID.Text = placeholder.ProductNo.ToString();
+            textSalesPrice.Text = placeholder.SalesPrice.ToString();
             return inven;
         }
 
