@@ -319,6 +319,7 @@ namespace CamcoForm
             var descriptionFailure = CheckRequired(textProductDescription.Text);
             var quantityFailure = CheckRequired(textQuantity.Text);
             var unitCostFailure = CheckRequired(textUnitCost.Text);
+            var salesPriceFailure = CheckRequired(textSalesPrice.Text);
 
             string message = "Do you want to edit this product?";
             string title = "Close Window";
@@ -327,7 +328,7 @@ namespace CamcoForm
 
             if (result == DialogResult.Yes)
             {
-                if ((nameFailure == false) && (descriptionFailure == false) && (quantityFailure == false) && (unitCostFailure == false))
+                if ((nameFailure == false) && (descriptionFailure == false) && (quantityFailure == false) && (unitCostFailure == false) && (salesPriceFailure == false))
                 {
                     InventoryModel placeholderValues = GetAllValuesFromForm();
                     editDB(placeholderValues);

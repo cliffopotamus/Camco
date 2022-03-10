@@ -89,8 +89,9 @@ namespace CamcoForm
             var quantityFailure = CheckRequired(textQuantity.Text);
             var unitCostFailure = CheckRequired(textUnitCost.Text);
             var totalCostFailure = CheckRequired(textTotalCost.Text);
+            var salesPriceFailure = CheckRequired(textSalesPrice.Text);
 
-            if ((nameFailure == false) && (descriptionFailure == false) && (quantityFailure == false) && (unitCostFailure == false))
+            if ((nameFailure == false) && (descriptionFailure == false) && (quantityFailure == false) && (unitCostFailure == false) && (salesPriceFailure == false))
             {
                 textTotalCost.Text = (Convert.ToDecimal(textUnitCost.Text) * Convert.ToInt32(textQuantity.Text)).ToString();
                 var placeholderValues = GetAllValuesFromForm();

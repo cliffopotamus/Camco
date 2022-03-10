@@ -53,9 +53,6 @@
             this.camcoDataSet7 = new CamcoForm.CamcoDataSet7();
             this.inventoryTableAdapter1 = new CamcoForm.CamcoDataSet7TableAdapters.InventoryTableAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.camcoDataSet8 = new CamcoForm.CamcoDataSet8();
-            this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.inventoryTableAdapter2 = new CamcoForm.CamcoDataSet8TableAdapters.InventoryTableAdapter();
             this.productNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,14 +60,17 @@
             this.unitCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salesPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.camcoDataSet8 = new CamcoForm.CamcoDataSet8();
+            this.inventoryTableAdapter2 = new CamcoForm.CamcoDataSet8TableAdapters.InventoryTableAdapter();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camcoInventory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet8)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -250,8 +250,8 @@
             // 
             // comboInventory
             // 
-            this.comboInventory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboInventory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.comboInventory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboInventory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboInventory.FormattingEnabled = true;
             this.comboInventory.Location = new System.Drawing.Point(192, 102);
             this.comboInventory.Name = "comboInventory";
@@ -334,20 +334,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(740, 294);
             this.dataGridView1.TabIndex = 12;
             // 
-            // camcoDataSet8
-            // 
-            this.camcoDataSet8.DataSetName = "CamcoDataSet8";
-            this.camcoDataSet8.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // inventoryBindingSource
-            // 
-            this.inventoryBindingSource.DataMember = "Inventory";
-            this.inventoryBindingSource.DataSource = this.camcoDataSet8;
-            // 
-            // inventoryTableAdapter2
-            // 
-            this.inventoryTableAdapter2.ClearBeforeFill = true;
-            // 
             // productNoDataGridViewTextBoxColumn
             // 
             this.productNoDataGridViewTextBoxColumn.DataPropertyName = "ProductNo";
@@ -391,6 +377,20 @@
             this.salesPriceDataGridViewTextBoxColumn.HeaderText = "SalesPrice";
             this.salesPriceDataGridViewTextBoxColumn.Name = "salesPriceDataGridViewTextBoxColumn";
             // 
+            // inventoryBindingSource
+            // 
+            this.inventoryBindingSource.DataMember = "Inventory";
+            this.inventoryBindingSource.DataSource = this.camcoDataSet8;
+            // 
+            // camcoDataSet8
+            // 
+            this.camcoDataSet8.DataSetName = "CamcoDataSet8";
+            this.camcoDataSet8.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // inventoryTableAdapter2
+            // 
+            this.inventoryTableAdapter2.ClearBeforeFill = true;
+            // 
             // NewInventoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -416,8 +416,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.camcoInventory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet8)).EndInit();
             this.ResumeLayout(false);
 
         }
