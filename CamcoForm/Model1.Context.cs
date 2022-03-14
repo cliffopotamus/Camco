@@ -32,5 +32,6 @@ namespace CamcoForm
         public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
         public virtual DbSet<PurchaseOrderLineItem> PurchaseOrderLineItems { get; set; }
         public virtual DbSet<Vendor> Vendors { get; set; }
+        public virtual DbSet<Kit> Kits { get; set; }
     }
 }

@@ -12,6 +12,7 @@
         <EntityTypeShape EntityType="CamcoModel.PurchaseOrder" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CamcoModel.PurchaseOrderLineItem" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CamcoModel.Vendor" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CamcoModel.Kit" Width="1.5" PointX="9.125" PointY="2.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

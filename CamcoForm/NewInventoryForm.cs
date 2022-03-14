@@ -233,7 +233,15 @@ namespace CamcoForm
             public float totalCost;
             public int productID;
         }
-
+        
+        public class KitModel
+        {
+            public string name;
+            public int quantity;
+            public decimal salesPrice;
+            public decimal unitCost;
+            public int kitID;
+        }
 
         public void editRichTextBox(string prodName)
         {

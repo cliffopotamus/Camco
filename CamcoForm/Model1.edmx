@@ -58,6 +58,16 @@
           <Property Name="InvoiceTotal" Type="money" />
           <Property Name="InvoicePO" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <EntityType Name="Kit">
+          <Key>
+            <PropertyRef Name="KitID" />
+          </Key>
+          <Property Name="KitID" Type="int" Nullable="false" />
+          <Property Name="Kit Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Sales Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Unit Cost" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
             <PropertyRef Name="PurchaseID" />
@@ -100,6 +110,7 @@
           <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InvoiceLineItems" EntityType="Self.InvoiceLineItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Invoices" EntityType="Self.Invoices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kit" EntityType="Self.Kit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseOrderLineItems" EntityType="Self.PurchaseOrderLineItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
@@ -206,7 +217,18 @@
           <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrder" />
           <EntitySet Name="PurchaseOrderLineItems" EntityType="Self.PurchaseOrderLineItem" />
           <EntitySet Name="Vendors" EntityType="Self.Vendor" />
+          <EntitySet Name="Kits" EntityType="CamcoModel.Kit" />
         </EntityContainer>
+        <EntityType Name="Kit">
+          <Key>
+            <PropertyRef Name="KitID" />
+          </Key>
+          <Property Name="KitID" Type="Int32" Nullable="false" />
+          <Property Name="Kit_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Sales_Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Unit_Cost" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -307,6 +329,17 @@
                 <ScalarProperty Name="VendorState" ColumnName="VendorState" />
                 <ScalarProperty Name="VendorZip" ColumnName="VendorZip" />
                 <ScalarProperty Name="VendorPhone" ColumnName="VendorPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kits">
+            <EntityTypeMapping TypeName="CamcoModel.Kit">
+              <MappingFragment StoreEntitySet="Kit">
+                <ScalarProperty Name="Unit_Cost" ColumnName="Unit Cost" />
+                <ScalarProperty Name="Sales_Price" ColumnName="Sales Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Kit_Name" ColumnName="Kit Name" />
+                <ScalarProperty Name="KitID" ColumnName="KitID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

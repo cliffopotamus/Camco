@@ -22,6 +22,16 @@ namespace CamcoForm
 
         }
 
+        public class KitModel
+        {
+            public string name;
+            public int quantity;
+            public decimal salesPrice;
+            public int kitID;
+            public decimal unitCost;
+
+        }
+
         public class InventoryModel
         {
             public string name;

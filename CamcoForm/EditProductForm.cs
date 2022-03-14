@@ -231,6 +231,15 @@ namespace CamcoForm
             public decimal salesPrice;
         }
 
+        public class KitModel
+        {
+            public string name;
+            public int quantity;
+            public int kitID;
+            public decimal salesPrice;
+            public decimal unitCost;
+        }
+
         public InventoryModel GetAllValuesFromForm()
         {
             var prod = new InventoryModel();
