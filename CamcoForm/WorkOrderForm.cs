@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace CamcoForm
 {
@@ -63,14 +64,58 @@ namespace CamcoForm
                 switch (kitName)
                 {
                     case "DI-38 Drop-in Anchors":
-                        richTextBoxKits.Text = "hello";
+                        String[] DI38Kit = new string[4];
+                        DI38Kit[0] = "1box";
+                        DI38Kit[1] = "Drop-in 38";
+                        DI38Kit[2] = "Mdrill12";
+                        DI38Kit[3] = "38Stool";
+                        
+                        for (int i = 0; i < 4; i++)
+                        {
+                            var temp = DI38Kit[i];
+
+                            Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName.ToLower() == temp.ToLower());
+
+                            if (result != null)
+                            {
+                                richTextBoxKits.AppendText("Product: " + result.ProductName + Environment.NewLine + "Quantity: " + result.ProductQuantity.ToString() + Environment.NewLine + "Unit Cost: " + result.UnitCost.ToString() + Environment.NewLine + "Sales Price: " + result.SalesPrice.ToString() + Environment.NewLine + Environment.NewLine);
+                            }
+
+                            else
+                            {
+                                richTextBoxKits.AppendText("Error");
+                            }
+                        }
+
                         break;
 
                     case "DWS-6 Drywall Screw":
-                        richTextBoxKits.Text = "goodbye";
+                        String[] DWS6Kit = new string[4];
+                        DWS6Kit[0] = "1box";
+                        DWS6Kit[1] = "DWS61";
+                        DWS6Kit[2] = "DWS6158";
+                        DWS6Kit[3] = "PBit2";
+                        DWS6Kit[4] = "Mbholder";
+                        
+                        for (int i = 0; i < 5; i++)
+                        {
+                            var temp = DWS6Kit[i];
+
+                            Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName.ToLower() == temp.ToLower());
+
+                            if (result != null)
+                            {
+                                richTextBoxKits.AppendText("Product: " + result.ProductName + Environment.NewLine + "Quantity: " + result.ProductQuantity.ToString() + Environment.NewLine + "Unit Cost: " + result.UnitCost.ToString() + Environment.NewLine + "Sales Price: " + result.SalesPrice.ToString() + Environment.NewLine + Environment.NewLine);
+                            }
+
+                            else
+                            {
+                                richTextBoxKits.AppendText("Error");
+                            }
+                        }
+
                         break;
                 }
-
 
             }
         }
