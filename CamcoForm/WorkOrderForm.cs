@@ -645,7 +645,7 @@ namespace CamcoForm
 
                         for (int i = 0; i < 5; i++)
                         {
-                            var temp = MK1812Kit[7];
+                            var temp = MK1812Kit[i];
 
                             Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName.ToLower() == temp.ToLower());
 
@@ -661,6 +661,31 @@ namespace CamcoForm
                         }
 
                         break;
+
+                  /*  case "NW-12":
+                        String[] NW12Kit = new string[12];
+                        
+
+
+
+                        for (int i = 0; i < 11; i++)
+                        {
+                            var temp = NW12Kit[i];
+
+                            Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName.ToLower() == temp.ToLower());
+
+                            if (result != null)
+                            {
+                                richTextBoxKits.AppendText("Product: " + result.ProductName + Environment.NewLine + "Quantity: " + result.ProductQuantity.ToString() + Environment.NewLine + "Unit Cost: " + result.UnitCost.ToString() + Environment.NewLine + "Sales Price: " + result.SalesPrice.ToString() + Environment.NewLine + Environment.NewLine);
+                            }
+
+                            else
+                            {
+                                richTextBoxKits.AppendText("Error");
+                            }
+                        }
+
+                        break; */
 
                     case "NW-832-1032":
                         String[] NW8321032Kit = new string[28];
