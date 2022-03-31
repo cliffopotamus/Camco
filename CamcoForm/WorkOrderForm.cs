@@ -32,9 +32,9 @@ namespace CamcoForm
             KitBox k9 = new KitBox(9, "FA-316 Flanged");
             KitBox k10 = new KitBox(10, "FA-316FH PH-6");
             KitBox k11 = new KitBox(11, "FA-316FHPH");
-            KitBox k12 = new KitBox(12, "FA316-6 Flanged");
+            KitBox k12 = new KitBox(12, "FA-316-6 Flanged");
             KitBox k13 = new KitBox(13, "FA-1420 Flanged");
-            KitBox k14 = new KitBox(14, "FA-1420 HW \"Big Red\" Flanged");
+            KitBox k14 = new KitBox(14, "FA-1420 HWH \"Big Red\" Flanged");
             KitBox k15 = new KitBox(15, "FA-5016 Flanged");
             KitBox k16 = new KitBox(16, "FA-5016 HWH Flanged");
             KitBox k17 = new KitBox(17, "GF-1816");
@@ -61,7 +61,7 @@ namespace CamcoForm
             KitBox k38 = new KitBox(38, "TK-10-5834");
             KitBox k39 = new KitBox(39, "TK-12");
             KitBox k40 = new KitBox(40, "TK-14");
-            KitBox k41 = new KitBox(41, "Tk-141");
+            KitBox k41 = new KitBox(41, "TK-141");
             KitBox k42 = new KitBox(42, "TSHZ-1010");
             KitBox k43 = new KitBox(43, "W-100 Plated washers");
             KitBox k44 = new KitBox(44, "WE-383");
@@ -155,6 +155,7 @@ namespace CamcoForm
                         DI38Kit[1] = "Drop-in 38";
                         DI38Kit[2] = "Mdrill12";
                         DI38Kit[3] = "38Stool";
+                        richTextBoxKits.Text = "";
                         
                         for (int i = 0; i < 4; i++)
                         {
@@ -182,7 +183,8 @@ namespace CamcoForm
                         DWS6Kit[2] = "DWS6158";
                         DWS6Kit[3] = "PBit2";
                         DWS6Kit[4] = "Mbholder";
-                        
+                        richTextBoxKits.Text = "";
+
                         for (int i = 0; i < 5; i++)
                         {
                             var temp = DWS6Kit[i];
@@ -209,6 +211,7 @@ namespace CamcoForm
                         DWS8Kit[2] = "DWS8-3";
                         DWS8Kit[3] = "PBit2";
                         DWS8Kit[4] = "Mbholder";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 5; i++)
                         {
@@ -229,12 +232,12 @@ namespace CamcoForm
 
                         break;
 
-                    case "EZ-5 Plastic anchors":
+                    case "EZ-5 Metal anchor":
                         String[] EZ5Kit = new string[3];
                         EZ5Kit[0] = "1box";
                         EZ5Kit[1] = "Manchor";
                         EZ5Kit[2] = "Cpan8-114";
-
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 3; i++)
                         {
@@ -260,7 +263,7 @@ namespace CamcoForm
                         EZ2Kit[0] = "2box";
                         EZ2Kit[1] = "Panchor-white";
                         EZ2Kit[2] = "pflat634";
-
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 3; i++)
                         {
@@ -287,6 +290,7 @@ namespace CamcoForm
                         F400HWHKit[1] = "BAnchor141";
                         F400HWHKit[2] = "Zip10-1";
                         F400HWHKit[3] = "Mdrill14";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 4; i++)
                         {
@@ -307,12 +311,13 @@ namespace CamcoForm
 
                         break;
 
-                    case "F-400H Flanged":
+                    case "F-400 Flanged":
                         String[] F400Kit = new string[4];
                         F400Kit[0] = "2box";
                         F400Kit[1] = "BAnchor141";
                         F400Kit[2] = "Cpan10-1T";
                         F400Kit[3] = "Mdrill14";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 4; i++)
                         {
@@ -337,8 +342,9 @@ namespace CamcoForm
                         String[] FA316Kit = new string[4];
                         FA316Kit[0] = "2box";
                         FA316Kit[1] = "Panc316-78R";
-                        FA316Kit[2] = "ZCpan8-1";
-                        FA316Kit[3] = "Mdrill1316";
+                        FA316Kit[2] = "Cpan8-1";
+                        FA316Kit[3] = "Mdrill316";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 4; i++)
                         {
@@ -365,6 +371,7 @@ namespace CamcoForm
                         FA316FHKit[1] = "pflat634";
                         FA316FHKit[2] = "Panc316-78R";
                         FA316FHKit[3] = "Mdrill316";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 4; i++)
                         {
@@ -391,6 +398,7 @@ namespace CamcoForm
                         FA316FHPHKit[1] = "pflat8-1";
                         FA316FHPHKit[2] = "Panc316-78R";
                         FA316FHPHKit[3] = "Mdrill316";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 4; i++)
                         {
@@ -417,6 +425,7 @@ namespace CamcoForm
                         FA3166Kit[1] = "Panc316-78R";
                         FA3166Kit[2] = "Cpan634";
                         FA3166Kit[3] = "Mdrill316";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 4; i++)
                         {
@@ -443,6 +452,7 @@ namespace CamcoForm
                         FA1420Kit[1] = "Cpan10-1T";
                         FA1420Kit[2] = "RANChor14-1";
                         FA1420Kit[3] = "Mdrill14";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 4; i++)
                         {
@@ -469,6 +479,7 @@ namespace CamcoForm
                         FA1420HWHKit[1] = "Zip10-1";
                         FA1420HWHKit[2] = "RANChor14-1";
                         FA1420HWHKit[3] = "Mdrill14";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 4; i++)
                         {
@@ -495,10 +506,38 @@ namespace CamcoForm
                         FA5016Kit[1] = "Panch-516-114B";
                         FA5016Kit[2] = "Cpan-12-114";
                         FA5016Kit[3] = "Mdrill516";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 4; i++)
                         {
                             var temp = FA5016Kit[i];
+
+                            Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName.ToLower() == temp.ToLower());
+
+                            if (result != null)
+                            {
+                                richTextBoxKits.AppendText("Product: " + result.ProductName + Environment.NewLine + "Quantity: " + result.ProductQuantity.ToString() + Environment.NewLine + "Unit Cost: " + result.UnitCost.ToString() + Environment.NewLine + "Sales Price: " + result.SalesPrice.ToString() + Environment.NewLine + Environment.NewLine);
+                            }
+
+                            else
+                            {
+                                richTextBoxKits.AppendText("Error");
+                            }
+                        }
+
+                        break;
+
+                    case "FA-5016 HWH Flanged":
+                        String[] FA5016HWHKit = new string[4];
+                        FA5016HWHKit[0] = "2box";
+                        FA5016HWHKit[1] = "Panch-516-114B";
+                        FA5016HWHKit[2] = "Zip12-114";
+                        FA5016HWHKit[3] = "Mdrill516";
+                        richTextBoxKits.Text = "";
+
+                        for (int i = 0; i < 4; i++)
+                        {
+                            var temp = FA5016HWHKit[i];
 
                             Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName.ToLower() == temp.ToLower());
 
@@ -526,6 +565,7 @@ namespace CamcoForm
                         GF1816Kit[6] = "GF1428ST";
                         GF1816Kit[7] = "316-str64-12";
                         GF1816Kit[8] = "GF-516-64-13";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 9; i++)
                         {
@@ -555,6 +595,7 @@ namespace CamcoForm
                         H78Kit[4] = "Zip8-114";
                         H78Kit[5] = "Zip8-112";
                         H78Kit[6] = "JC-2";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 7; i++)
                         {
@@ -585,6 +626,7 @@ namespace CamcoForm
                         HC14Kit[5] = "HC-600-016";
                         HC14Kit[6] = "HC-600-020";
                         HC14Kit[7] = "HC-600-028";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 8; i++)
                         {
@@ -613,6 +655,7 @@ namespace CamcoForm
                         LS30Kit[3] = "LAGS-38-2";
                         LS30Kit[4] = "LAGS-38-212";
                         LS30Kit[5] = "LAGS-38-3";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 6; i++)
                         {
@@ -642,8 +685,9 @@ namespace CamcoForm
                         MK1812Kit[4] = "MK-516-112";
                         MK1812Kit[5] = "MK-38-112L";
                         MK1812Kit[6] = "MK12-2L";
+                        richTextBoxKits.Text = "";
 
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < 7; i++)
                         {
                             var temp = MK1812Kit[i];
 
@@ -717,7 +761,7 @@ namespace CamcoForm
                         NW8321032Kit[25] = "1032SLW10";
                         NW8321032Kit[26] = "SAEFW10";
                         NW8321032Kit[27] = "1032114MS";
-
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 28; i++)
                         {
@@ -744,7 +788,8 @@ namespace CamcoForm
                         NY80Kit[1] = "NLIstop-14";
                         NY80Kit[2] = "NLIstop-516";
                         NY80Kit[3] = "NLIstop-38";
-                        NY80Kit[4] = "MNLIstop-12";
+                        NY80Kit[4] = "NLIstop-12";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 5; i++)
                         {
@@ -777,6 +822,7 @@ namespace CamcoForm
                         SB316Kit[7] = "10242MS";
                         SB316Kit[8] = "1024MSN";
                         SB316Kit[9] = "SAEFW10";
+                        richTextBoxKits.Text = "";
 
 
                         for (int i = 0; i < 10; i++)
@@ -810,6 +856,7 @@ namespace CamcoForm
                         SB632Kit[7] = "632-2MS";
                         SB632Kit[8] = "632MSN";
                         SB632Kit[9] = "SAEF632-6";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 10; i++)
                         {
@@ -842,6 +889,7 @@ namespace CamcoForm
                         SB832Kit[7] = "832-2MS";
                         SB832Kit[8] = "832MSN";
                         SB832Kit[9] = "SAEF832-8";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 10; i++)
                         {
@@ -874,6 +922,7 @@ namespace CamcoForm
                         SB1032Kit[7] = "10322MS";
                         SB1032Kit[8] = "1032SLW10";
                         SB1032Kit[9] = "SAEFW10";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 10; i++)
                         {
@@ -905,6 +954,7 @@ namespace CamcoForm
                         SB1420Kit[6] = "MS14-2";
                         SB1420Kit[7] = "HFN14";
                         SB1420Kit[8] = "SAEFW14";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 9; i++)
                         {
@@ -925,7 +975,40 @@ namespace CamcoForm
 
                         break;
 
-                    case "SB-3816":
+                    case "SBH-1420":
+                        String[] SBH1420Kit = new string[10];
+                        SBH1420Kit[0] = "USSFW14";
+                        SBH1420Kit[1] = "HFN14";
+                        SBH1420Kit[2] = "KLN14";
+                        SBH1420Kit[3] = "SLW14";
+                        SBH1420Kit[4] = "FW14-1";
+                        SBH1420Kit[5] = "TB14-34";
+                        SBH1420Kit[6] = "TB14-1";
+                        SBH1420Kit[7] = "TB14-112";
+                        SBH1420Kit[8] = "TB14-2";
+                        SBH1420Kit[9] = "2box";
+                        richTextBoxKits.Text = "";
+
+                        for (int i = 0; i < 10; i++)
+                        {
+                            var temp = SBH1420Kit[i];
+
+                            Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName.ToLower() == temp.ToLower());
+
+                            if (result != null)
+                            {
+                                richTextBoxKits.AppendText("Product: " + result.ProductName + Environment.NewLine + "Quantity: " + result.ProductQuantity.ToString() + Environment.NewLine + "Unit Cost: " + result.UnitCost.ToString() + Environment.NewLine + "Sales Price: " + result.SalesPrice.ToString() + Environment.NewLine + Environment.NewLine);
+                            }
+
+                            else
+                            {
+                                richTextBoxKits.AppendText("Error");
+                            }
+                        }
+
+                        break;
+
+                    case "SBH-3816":
                         String[] SB3816Kit = new string[10];
                         SB3816Kit[0] = "USSFW38";
                         SB3816Kit[1] = "2box";
@@ -937,6 +1020,7 @@ namespace CamcoForm
                         SB3816Kit[7] = "KLN38";
                         SB3816Kit[8] = "SLW38";
                         SB3816Kit[9] = "FW38-112";
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i <10; i++)
                         {
@@ -969,7 +1053,7 @@ namespace CamcoForm
                         SBH5018Kit[7] = "KLN516";
                         SBH5018Kit[8] = "SLW516";
                         SBH5018Kit[9] = "FW516-114";
-
+                        richTextBoxKits.Text = "";
 
 
                         for (int i = 0; i < 10; i++)
@@ -992,17 +1076,18 @@ namespace CamcoForm
                         break;
 
                     case "SLW-358":
-                        String[] SLW358Kit = new string[6];
+                        String[] SLW358Kit = new string[7];
                         SLW358Kit[0] = "6box";
                         SLW358Kit[1] = "SAEFW10";
                         SLW358Kit[2] = "SLW14";
                         SLW358Kit[3] = "SLW516";
                         SLW358Kit[4] = "SLW38";
                         SLW358Kit[5] = "SLW58";
+                        SLW358Kit[6] = "SLW12";
+                        richTextBoxKits.Text = "";
 
 
-
-                        for (int i = 0; i < 6; i++)
+                        for (int i = 0; i < 7; i++)
                         {
                             var temp = SLW358Kit[i];
 
@@ -1046,9 +1131,9 @@ namespace CamcoForm
                         SS500Kit[20] = "1032NF38";
                         SS500Kit[21] = "1032NF12";
                         SS500Kit[22] = "6box";
+                        richTextBoxKits.Text = "";
 
-
-                        for (int i = 0; i < 10; i++)
+                        for (int i = 0; i < 23; i++)
                         {
                             var temp = SS500Kit[i];
 
@@ -1074,9 +1159,9 @@ namespace CamcoForm
                         TK8Kit[2] = "TEK8-34";
                         TK8Kit[3] = "TEK8-1";
                         TK8Kit[4] = "TEK8-114";
-                        TK8Kit[5] = "TEK78-112";
+                        TK8Kit[5] = "TEK8-112";
                         TK8Kit[6] = "JC-2";
-
+                        richTextBoxKits.Text = "";
 
 
 
@@ -1108,7 +1193,8 @@ namespace CamcoForm
                         TK10Kit[4] = "Tek10-114";
                         TK10Kit[5] = "Tek10-112";
                         TK10Kit[6] = "JC-15";
- 
+                        richTextBoxKits.Text = "";
+
                         for (int i = 0; i < 7; i++)
                         {
                             var temp = TK10Kit[i];
@@ -1137,6 +1223,7 @@ namespace CamcoForm
                         TK12Kit[4] = "Tek12-112";
                         TK12Kit[5] = "Tek12-2";
                         TK12Kit[6] = "JC-15";
+                        richTextBoxKits.Text = "";
 
 
                         for (int i = 0; i < 7; i++)
@@ -1164,7 +1251,7 @@ namespace CamcoForm
                         TK105834Kit[1] = "JC-15";
                         TK105834Kit[2] = "TEK1058";
                         TK105834Kit[3] = "TEK1034";
-
+                        richTextBoxKits.Text = "";
 
 
                         for (int i = 0; i < 4; i++)
@@ -1195,7 +1282,7 @@ namespace CamcoForm
                         TK14Kit[4] = "Tek14-112";
                         TK14Kit[5] = "Tek14-2";
                         TK14Kit[6] = "JC-30";
-
+                        richTextBoxKits.Text = "";
 
 
 
@@ -1223,7 +1310,7 @@ namespace CamcoForm
                         TK141Kit[0] = "6box";
                         TK141Kit[1] = "Tek14-1";
                         TK141Kit[2] = "JC-30";
-
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 3; i++)
                         {
@@ -1253,7 +1340,7 @@ namespace CamcoForm
                         TSHZ1010Kit[4] = "ZIP10-112";
                         TSHZ1010Kit[5] = "ZIP102";
                         TSHZ1010Kit[6] = "6box";
-
+                        richTextBoxKits.Text = "";
 
 
 
@@ -1294,7 +1381,7 @@ namespace CamcoForm
                         W100Kit[13] = "FW516-114";
                         W100Kit[14] = "USSFW12";
                         W100Kit[15] = "USSFW38";
-
+                        richTextBoxKits.Text = "";
 
 
                         for (int i = 0; i < 16; i++)
@@ -1323,7 +1410,7 @@ namespace CamcoForm
                         WE383Kit[2] = "SAEFW38";
                         WE383Kit[3] = "WedgeAnc-38-3";
                         WE383Kit[4] = "Mdrill38";
-
+                        richTextBoxKits.Text = "";
 
                         for (int i = 0; i < 5; i++)
                         {

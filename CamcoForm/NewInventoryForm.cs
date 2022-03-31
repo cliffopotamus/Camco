@@ -743,6 +743,7 @@ namespace CamcoForm
             using (var DB = new CamcoEntities())
             {
                 Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName == prodName);
+                
 
                 if (result != null)
                 {  

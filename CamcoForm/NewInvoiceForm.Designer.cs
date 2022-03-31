@@ -71,9 +71,17 @@
             this.textBillState = new System.Windows.Forms.TextBox();
             this.btnFinish = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerNameList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboCustomerName
@@ -219,8 +227,6 @@
             // 
             // comboInventory
             // 
-            this.comboInventory.DataSource = this.inventoryBindingSource;
-            this.comboInventory.DisplayMember = "ProductName";
             this.comboInventory.FormattingEnabled = true;
             this.comboInventory.Location = new System.Drawing.Point(107, 185);
             this.comboInventory.Name = "comboInventory";
@@ -252,7 +258,7 @@
             // labelUnitPrice
             // 
             this.labelUnitPrice.AutoSize = true;
-            this.labelUnitPrice.Location = new System.Drawing.Point(295, 220);
+            this.labelUnitPrice.Location = new System.Drawing.Point(328, 220);
             this.labelUnitPrice.Name = "labelUnitPrice";
             this.labelUnitPrice.Size = new System.Drawing.Size(53, 13);
             this.labelUnitPrice.TabIndex = 18;
@@ -288,7 +294,7 @@
             // labelInvoiceTotal
             // 
             this.labelInvoiceTotal.AutoSize = true;
-            this.labelInvoiceTotal.Location = new System.Drawing.Point(505, 425);
+            this.labelInvoiceTotal.Location = new System.Drawing.Point(574, 406);
             this.labelInvoiceTotal.Name = "labelInvoiceTotal";
             this.labelInvoiceTotal.Size = new System.Drawing.Size(72, 13);
             this.labelInvoiceTotal.TabIndex = 22;
@@ -422,11 +428,64 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Quantity,
+            this.Item,
+            this.ItemDescription,
+            this.UnitPrice,
+            this.TotalPrice});
+            this.dataGridView1.Location = new System.Drawing.Point(31, 249);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(537, 189);
+            this.dataGridView1.TabIndex = 38;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.Quantity);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(366, 185);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(68, 21);
+            this.btnAdd.TabIndex = 39;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            // 
+            // ItemDescription
+            // 
+            this.ItemDescription.HeaderText = "Item Description";
+            this.ItemDescription.Name = "ItemDescription";
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "Unit Price";
+            this.UnitPrice.Name = "UnitPrice";
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.HeaderText = "Total Price";
+            this.TotalPrice.Name = "TotalPrice";
+            // 
             // NewInvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnFinish);
             this.Controls.Add(this.textBillState);
@@ -471,6 +530,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerNameList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,5 +580,12 @@
         private System.Windows.Forms.TextBox textBillState;
         private System.Windows.Forms.Button btnFinish;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
     }
 }
