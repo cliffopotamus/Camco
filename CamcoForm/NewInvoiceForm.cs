@@ -719,8 +719,6 @@ namespace CamcoForm
 
         public void AddRow(SalesItem salesRow)
         {
-            
-
             using (var DB = new CamcoEntities())
             {
                 Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName == salesRow.DisplayName);
@@ -739,6 +737,41 @@ namespace CamcoForm
             }
         }
 
+        public void EditRow(SalesItem salesRow, DataGridViewCellValidatingEventArgs e)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName == salesRow.DisplayName);
+                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value is int)
+                {
+                    decimal totalPrice = result.SalesPrice.GetValueOrDefault() *Convert.ToInt32(e.FormattedValue.ToString());
+                    dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
+                    String message = totalPrice.ToString();
+                    MessageBox.Show(message);
+                }
+
+                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value is decimal)
+                {
+                    decimal totalPrice = salesRow.quantity * Convert.ToDecimal(e.FormattedValue.ToString());
+                    dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
+                    String message = totalPrice.ToString();
+                    MessageBox.Show(message);
+                }
+            }
+
+        }
+
+
+        private bool editQuantity(int quantity)
+        {
+            return true;
+        }
+
+        private bool editPrice(decimal money)
+        {
+            return true;
+        }
+
         public class InventoryBox
         {
             public int ID;
@@ -755,7 +788,6 @@ namespace CamcoForm
                 return DisplayName;
             }
 
-
             private void button1_Click(object sender, EventArgs e)
             {
 
@@ -766,11 +798,7 @@ namespace CamcoForm
         {
             int itemQuantity = Int32.Parse(textQuantity.Text);
             SalesItem addedItem = new SalesItem(itemQuantity, comboInventory.Text);
-
             AddRow(addedItem);
-
-
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -779,6 +807,37 @@ namespace CamcoForm
             dataGridView1.DataSource = ds;
         }
 
+        private const int ColQuantIndex = 0;
+        private const int ColPriceIndex = 3;
+
+        public bool ValidateCell(DataGridViewCellValidatingEventArgs e)
+        {
+            bool result = true;
+
+            switch (e.ColumnIndex)
+            {
+                case ColQuantIndex:
+                    result = editQuantity(Convert.ToInt32(e.FormattedValue));
+                    break;
+
+                case ColPriceIndex:
+                    result = editPrice(Convert.ToDecimal(e.FormattedValue));
+                    break;
+            }
+            return result;
+        }
+
+        private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            ValidateCell(e);
+            SalesItem itemToedit = new SalesItem(Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()), dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
+            EditRow(itemToedit, e);
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
     }
 }
 
