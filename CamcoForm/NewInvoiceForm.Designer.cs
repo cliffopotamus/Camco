@@ -72,12 +72,12 @@
             this.btnFinish = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerNameList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
@@ -445,6 +445,16 @@
             this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(366, 185);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(68, 21);
+            this.btnAdd.TabIndex = 39;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // Quantity
             // 
             this.Quantity.HeaderText = "Quantity";
@@ -454,11 +464,13 @@
             // 
             this.Item.HeaderText = "Item";
             this.Item.Name = "Item";
+            this.Item.ReadOnly = true;
             // 
             // ItemDescription
             // 
             this.ItemDescription.HeaderText = "Item Description";
             this.ItemDescription.Name = "ItemDescription";
+            this.ItemDescription.ReadOnly = true;
             // 
             // UnitPrice
             // 
@@ -469,16 +481,7 @@
             // 
             this.TotalPrice.HeaderText = "Total Price";
             this.TotalPrice.Name = "TotalPrice";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(366, 185);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(68, 21);
-            this.btnAdd.TabIndex = 39;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.TotalPrice.ReadOnly = true;
             // 
             // NewInvoiceForm
             // 

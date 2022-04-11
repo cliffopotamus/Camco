@@ -746,16 +746,12 @@ namespace CamcoForm
                 {
                     decimal totalPrice = result.SalesPrice.GetValueOrDefault() *Convert.ToInt32(e.FormattedValue.ToString());
                     dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
-                    String message = totalPrice.ToString();
-                    MessageBox.Show(message);
                 }
 
                 if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value is decimal)
                 {
                     decimal totalPrice = salesRow.quantity * Convert.ToDecimal(e.FormattedValue.ToString());
                     dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
-                    String message = totalPrice.ToString();
-                    MessageBox.Show(message);
                 }
             }
 
@@ -829,9 +825,21 @@ namespace CamcoForm
 
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            ValidateCell(e);
-            SalesItem itemToedit = new SalesItem(Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()), dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
-            EditRow(itemToedit, e);
+            /*var result = ValidateCell(e);
+
+
+            if (true)
+            {
+                SalesItem itemToedit = new SalesItem(Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()), dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
+                EditRow(itemToedit, e);
+            }
+
+            else
+            {
+                String message = "Validation failed.";
+                MessageBox.Show(message);
+            }
+            */
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
