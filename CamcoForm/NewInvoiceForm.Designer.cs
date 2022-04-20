@@ -49,12 +49,6 @@
             this.labelItem = new System.Windows.Forms.Label();
             this.comboInventory = new System.Windows.Forms.ComboBox();
             this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.labelItemDescription = new System.Windows.Forms.Label();
-            this.labelInvoiceItem = new System.Windows.Forms.Label();
-            this.labelUnitPrice = new System.Windows.Forms.Label();
-            this.labelTotalPrice = new System.Windows.Forms.Label();
-            this.labelInvoiceDate = new System.Windows.Forms.Label();
-            this.labelLineItem = new System.Windows.Forms.Label();
             this.labelInvoiceTotal = new System.Windows.Forms.Label();
             this.textInvoiceTotal = new System.Windows.Forms.TextBox();
             this.textBillZip = new System.Windows.Forms.TextBox();
@@ -72,12 +66,13 @@
             this.btnFinish = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.textCustID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerNameList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
@@ -93,6 +88,7 @@
             this.comboCustomerName.Name = "comboCustomerName";
             this.comboCustomerName.Size = new System.Drawing.Size(121, 21);
             this.comboCustomerName.TabIndex = 0;
+            this.comboCustomerName.SelectedValueChanged += new System.EventHandler(this.comboCustomerName_SelectedValueChanged);
             // 
             // customersBindingSource
             // 
@@ -119,7 +115,7 @@
             // 
             // textSONumber
             // 
-            this.textSONumber.Location = new System.Drawing.Point(179, 25);
+            this.textSONumber.Location = new System.Drawing.Point(182, 25);
             this.textSONumber.Name = "textSONumber";
             this.textSONumber.Size = new System.Drawing.Size(121, 20);
             this.textSONumber.TabIndex = 2;
@@ -151,7 +147,7 @@
             // 
             // textDate
             // 
-            this.textDate.Location = new System.Drawing.Point(465, 25);
+            this.textDate.Location = new System.Drawing.Point(456, 26);
             this.textDate.Name = "textDate";
             this.textDate.Size = new System.Drawing.Size(121, 20);
             this.textDate.TabIndex = 6;
@@ -236,60 +232,6 @@
             // inventoryBindingSource
             // 
             this.inventoryBindingSource.DataMember = "Inventory";
-            // 
-            // labelItemDescription
-            // 
-            this.labelItemDescription.AutoSize = true;
-            this.labelItemDescription.Location = new System.Drawing.Point(155, 220);
-            this.labelItemDescription.Name = "labelItemDescription";
-            this.labelItemDescription.Size = new System.Drawing.Size(83, 13);
-            this.labelItemDescription.TabIndex = 16;
-            this.labelItemDescription.Text = "Item Description";
-            // 
-            // labelInvoiceItem
-            // 
-            this.labelInvoiceItem.AutoSize = true;
-            this.labelInvoiceItem.Location = new System.Drawing.Point(104, 220);
-            this.labelInvoiceItem.Name = "labelInvoiceItem";
-            this.labelInvoiceItem.Size = new System.Drawing.Size(27, 13);
-            this.labelInvoiceItem.TabIndex = 17;
-            this.labelInvoiceItem.Text = "Item";
-            // 
-            // labelUnitPrice
-            // 
-            this.labelUnitPrice.AutoSize = true;
-            this.labelUnitPrice.Location = new System.Drawing.Point(328, 220);
-            this.labelUnitPrice.Name = "labelUnitPrice";
-            this.labelUnitPrice.Size = new System.Drawing.Size(53, 13);
-            this.labelUnitPrice.TabIndex = 18;
-            this.labelUnitPrice.Text = "Unit Price";
-            // 
-            // labelTotalPrice
-            // 
-            this.labelTotalPrice.AutoSize = true;
-            this.labelTotalPrice.Location = new System.Drawing.Point(405, 220);
-            this.labelTotalPrice.Name = "labelTotalPrice";
-            this.labelTotalPrice.Size = new System.Drawing.Size(58, 13);
-            this.labelTotalPrice.TabIndex = 19;
-            this.labelTotalPrice.Text = "Total Price";
-            // 
-            // labelInvoiceDate
-            // 
-            this.labelInvoiceDate.AutoSize = true;
-            this.labelInvoiceDate.Location = new System.Drawing.Point(505, 220);
-            this.labelInvoiceDate.Name = "labelInvoiceDate";
-            this.labelInvoiceDate.Size = new System.Drawing.Size(84, 13);
-            this.labelInvoiceDate.TabIndex = 20;
-            this.labelInvoiceDate.Text = "Date Scheduled";
-            // 
-            // labelLineItem
-            // 
-            this.labelLineItem.AutoSize = true;
-            this.labelLineItem.Location = new System.Drawing.Point(28, 220);
-            this.labelLineItem.Name = "labelLineItem";
-            this.labelLineItem.Size = new System.Drawing.Size(67, 13);
-            this.labelLineItem.TabIndex = 21;
-            this.labelLineItem.Text = "Line Number";
             // 
             // labelInvoiceTotal
             // 
@@ -418,6 +360,7 @@
             this.btnFinish.TabIndex = 36;
             this.btnFinish.Text = "Finish";
             this.btnFinish.UseVisualStyleBackColor = true;
+            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 
             // btnCancel
             // 
@@ -427,6 +370,7 @@
             this.btnCancel.TabIndex = 37;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // dataGridView1
             // 
@@ -445,16 +389,6 @@
             this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(366, 185);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(68, 21);
-            this.btnAdd.TabIndex = 39;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
             // Quantity
             // 
             this.Quantity.HeaderText = "Quantity";
@@ -468,26 +402,44 @@
             // 
             // ItemDescription
             // 
-            this.ItemDescription.HeaderText = "Item Description";
+            this.ItemDescription.HeaderText = "ItemDescription";
             this.ItemDescription.Name = "ItemDescription";
             this.ItemDescription.ReadOnly = true;
             // 
             // UnitPrice
             // 
-            this.UnitPrice.HeaderText = "Unit Price";
+            this.UnitPrice.HeaderText = "UnitPrice";
             this.UnitPrice.Name = "UnitPrice";
             // 
             // TotalPrice
             // 
-            this.TotalPrice.HeaderText = "Total Price";
+            this.TotalPrice.HeaderText = "TotalPrice";
             this.TotalPrice.Name = "TotalPrice";
             this.TotalPrice.ReadOnly = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(366, 185);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(68, 21);
+            this.btnAdd.TabIndex = 39;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // textCustID
+            // 
+            this.textCustID.Location = new System.Drawing.Point(660, 106);
+            this.textCustID.Name = "textCustID";
+            this.textCustID.Size = new System.Drawing.Size(117, 20);
+            this.textCustID.TabIndex = 40;
             // 
             // NewInvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(876, 529);
+            this.Controls.Add(this.textCustID);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnCancel);
@@ -506,12 +458,6 @@
             this.Controls.Add(this.textBillZip);
             this.Controls.Add(this.textInvoiceTotal);
             this.Controls.Add(this.labelInvoiceTotal);
-            this.Controls.Add(this.labelLineItem);
-            this.Controls.Add(this.labelInvoiceDate);
-            this.Controls.Add(this.labelTotalPrice);
-            this.Controls.Add(this.labelUnitPrice);
-            this.Controls.Add(this.labelInvoiceItem);
-            this.Controls.Add(this.labelItemDescription);
             this.Controls.Add(this.comboInventory);
             this.Controls.Add(this.labelItem);
             this.Controls.Add(this.textQuantity);
@@ -525,9 +471,9 @@
             this.Controls.Add(this.labelPONumber);
             this.Controls.Add(this.textPONumber);
             this.Controls.Add(this.labelSONumber);
-            this.Controls.Add(this.textSONumber);
             this.Controls.Add(this.labelComboCustomer);
             this.Controls.Add(this.comboCustomerName);
+            this.Controls.Add(this.textSONumber);
             this.Name = "NewInvoiceForm";
             this.Text = "NewInvoiceForm";
             this.Load += new System.EventHandler(this.NewInvoiceForm_Load);
@@ -562,12 +508,6 @@
         private System.Windows.Forms.Label labelItem;
         private System.Windows.Forms.ComboBox comboInventory;
         private System.Windows.Forms.BindingSource inventoryBindingSource;
-        private System.Windows.Forms.Label labelItemDescription;
-        private System.Windows.Forms.Label labelInvoiceItem;
-        private System.Windows.Forms.Label labelUnitPrice;
-        private System.Windows.Forms.Label labelTotalPrice;
-        private System.Windows.Forms.Label labelInvoiceDate;
-        private System.Windows.Forms.Label labelLineItem;
         private System.Windows.Forms.Label labelInvoiceTotal;
         private System.Windows.Forms.TextBox textInvoiceTotal;
         private System.Windows.Forms.TextBox textBillZip;
@@ -591,5 +531,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
+        private System.Windows.Forms.TextBox textCustID;
     }
 }

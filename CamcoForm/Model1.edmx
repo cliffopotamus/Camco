@@ -37,16 +37,17 @@
         </EntityType>
         <EntityType Name="InvoiceLineItems">
           <Key>
-            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="InvoiceSequence" />
           </Key>
-          <Property Name="InvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="InvoiceSequence" Type="int" Nullable="false" />
-          <Property Name="ProductDescription" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="InvoiceSequence" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceSO" Type="int" Nullable="false" />
+          <Property Name="ProductDescription" Type="varchar" MaxLength="100" />
           <Property Name="ProductQuantity" Type="int" Nullable="false" />
-          <Property Name="ProductPrice" Type="money" Nullable="false" />
-          <Property Name="ProductExtension" Type="money" Nullable="false" />
+          <Property Name="ProductPrice" Type="money" />
+          <Property Name="ProductExtension" Type="money" />
           <Property Name="InvoiceTotal" Type="money" Nullable="false" />
           <Property Name="ProductNo" Type="nchar" MaxLength="50" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Invoices">
           <Key>
@@ -55,8 +56,9 @@
           <Property Name="InvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerID" Type="int" Nullable="false" />
           <Property Name="InvoiceDate" Type="date" Nullable="false" />
-          <Property Name="InvoiceTotal" Type="money" />
-          <Property Name="InvoicePO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="InvoiceTotal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="InvoicePO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="InvoiceSO" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Kit">
           <Key>
@@ -151,16 +153,17 @@
         </EntityType>
         <EntityType Name="InvoiceLineItem">
           <Key>
-            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="InvoiceSequence" />
           </Key>
-          <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="InvoiceSequence" Type="Int32" Nullable="false" />
-          <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InvoiceSequence" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ProductQuantity" Type="Int32" Nullable="false" />
-          <Property Name="ProductPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="ProductExtension" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ProductPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ProductExtension" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="InvoiceTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="ProductNo" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="InvoiceSO" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Invoice">
           <Key>
@@ -169,8 +172,9 @@
           <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustomerID" Type="Int32" Nullable="false" />
           <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="InvoiceTotal" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="InvoicePO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InvoiceTotal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="InvoicePO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InvoiceSO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
@@ -270,8 +274,9 @@
           <EntitySetMapping Name="InvoiceLineItems">
             <EntityTypeMapping TypeName="CamcoModel.InvoiceLineItem">
               <MappingFragment StoreEntitySet="InvoiceLineItems">
-                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
                 <ScalarProperty Name="InvoiceSequence" ColumnName="InvoiceSequence" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="InvoiceSO" ColumnName="InvoiceSO" />
                 <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
                 <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
                 <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
@@ -284,6 +289,7 @@
           <EntitySetMapping Name="Invoices">
             <EntityTypeMapping TypeName="CamcoModel.Invoice">
               <MappingFragment StoreEntitySet="Invoices">
+                <ScalarProperty Name="InvoiceSO" ColumnName="InvoiceSO" />
                 <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />

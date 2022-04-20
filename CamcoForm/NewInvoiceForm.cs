@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace CamcoForm
 {
@@ -24,7 +25,6 @@ namespace CamcoForm
             // TODO: This line of code loads data into the 'comboBoxItems.Inventory' table. You can move, or remove it, as needed
             // TODO: This line of code loads data into the 'customerNameList.Customers' table. You can move, or remove it, as needed.
             this.customersTableAdapter.Fill(this.customerNameList.Customers);
-
         }
 
         private void PopulateCombos()
@@ -739,19 +739,28 @@ namespace CamcoForm
 
         public void EditRow(SalesItem salesRow, DataGridViewCellValidatingEventArgs e)
         {
-            using (var DB = new CamcoEntities())
+            int number;
+            int intValue = convertToInt(e.FormattedValue.ToString());
+            decimal decValue = convertToDecimal(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
             {
-                Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName == salesRow.DisplayName);
-                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value is int)
+                if (int.TryParse(e.FormattedValue.ToString(), out number))
                 {
-                    decimal totalPrice = result.SalesPrice.GetValueOrDefault() *Convert.ToInt32(e.FormattedValue.ToString());
+                    decimal totalPrice = convertToDecimal(dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString()) * convertToInt(e.FormattedValue.ToString());
                     dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
+                    textInvoiceTotal.Text = dataGridView1.Rows.Cast<DataGridViewRow>().AsEnumerable().Sum(t => Convert.ToDecimal(t.Cells[4].Value)).ToString();
                 }
 
-                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value is decimal)
+                /*  if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value is decimal)
+                  {
+                      decimal totalPrice = convertToInt(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()) * convertToDecimal(e.FormattedValue.ToString());
+                      dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
+                  }  */
+
+                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex] == dataGridView1.Rows[e.RowIndex].Cells[3])
                 {
-                    decimal totalPrice = salesRow.quantity * Convert.ToDecimal(e.FormattedValue.ToString());
+                    decimal totalPrice = convertToInt(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()) * convertToDecimal(e.FormattedValue.ToString());
                     dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
+                    textInvoiceTotal.Text = dataGridView1.Rows.Cast<DataGridViewRow>().AsEnumerable().Sum(t => Convert.ToDecimal(t.Cells[4].Value)).ToString();
                 }
             }
 
@@ -790,6 +799,20 @@ namespace CamcoForm
             }
         }
 
+        public void getCustomerID(string custName)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                Customer result = DB.Customers.SingleOrDefault(c => c.CustomerName == custName);
+
+                if (result != null)
+                {
+                    textCustID.Text = result.CustomerID.ToString();
+                }
+
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             int itemQuantity = Int32.Parse(textQuantity.Text);
@@ -799,8 +822,6 @@ namespace CamcoForm
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var ds = new BindingList<SalesItem>();
-            dataGridView1.DataSource = ds;
         }
 
         private const int ColQuantIndex = 0;
@@ -813,38 +834,177 @@ namespace CamcoForm
             switch (e.ColumnIndex)
             {
                 case ColQuantIndex:
-                    result = editQuantity(Convert.ToInt32(e.FormattedValue));
+                    int intValue = convertToInt(e.FormattedValue.ToString());
+                    result = editQuantity(intValue);
                     break;
 
                 case ColPriceIndex:
-                    result = editPrice(Convert.ToDecimal(e.FormattedValue));
+                    decimal decimalValue = convertToDecimal(e.FormattedValue.ToString());
+                    result = editPrice(decimalValue);
                     break;
             }
             return result;
         }
 
-        private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        public int convertToInt(string placeholder)
         {
-            /*var result = ValidateCell(e);
+            int number;
+            bool success = int.TryParse(placeholder, out number);
 
-
-            if (true)
+            if (success)
             {
-                SalesItem itemToedit = new SalesItem(Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()), dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
-                EditRow(itemToedit, e);
+                return number;
             }
 
             else
             {
-                String message = "Validation failed.";
+                return 0;
+            }
+        }
+
+        public decimal convertToDecimal(string placeholder)
+        {
+            decimal number;
+            bool success = decimal.TryParse(placeholder, out number);
+
+            if (success)
+            {
+                return number;
+            }
+
+            else
+            {
+                return 0;
+            }
+        }
+
+        public bool validateDate(string placeholder)
+        {
+            DateTime date;
+            bool success = DateTime.TryParse(placeholder, out date);
+
+            if (success)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+        }
+
+        private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            var result = ValidateCell(e);
+            var eValue = e.FormattedValue.ToString();
+
+
+            if (true)
+            {
+                if (String.IsNullOrEmpty(eValue))
+                {
+
+                }
+                else
+                {
+                    /* insert tryparse methods in itemToEdit */
+                    SalesItem itemToedit = new SalesItem(convertToInt(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()), dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
+                    EditRow(itemToedit, e);
+                }
+            }
+
+            else
+            {
+                string message = "Validation failed.";
                 MessageBox.Show(message);
             }
-            */
+            
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            string message = "Are you sure you want to cancel?";
+            string title = "Close Window";
+            MessageBoxButtons closeButtons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, closeButtons);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        public Invoice convertInvoiceToDB()
+        {
+            Invoice placeholder = new Invoice();
+            placeholder.InvoiceSO = textSONumber.Text;
+            placeholder.InvoicePO = textPONumber.Text;
+            placeholder.CustomerID = convertToInt(textCustID.Text);
+            placeholder.InvoiceTotal = convertToDecimal(textInvoiceTotal.Text);
+            bool boolDate = validateDate(textDate.Text);
+            DateTime date;
+            if (boolDate)
+            {
+                placeholder.InvoiceDate = DateTime.Parse(textDate.Text);
+            }
+            else
+            {
+                string error = "Error: invalid date entered.";
+                MessageBox.Show(error);
+            }
+            return placeholder;
+        }
+
+        public void updateInvoiceDB(Invoice placeholder)
+        {
+            using (var db = new CamcoEntities())
+            {
+                db.Invoices.Add(placeholder);
+                db.SaveChanges();
+            }
+        }
+
+        public InvoiceLineItem convertLineToDB(int i)
+        {
+            InvoiceLineItem placeholder = new InvoiceLineItem();
+            placeholder.ProductName = dataGridView1.Rows[i].Cells["Item"].Value.ToString();
+            placeholder.ProductDescription = dataGridView1.Rows[i].Cells["ItemDescription"].Value.ToString();
+            placeholder.ProductQuantity = convertToInt(dataGridView1.Rows[i].Cells["Quantity"].Value.ToString());
+            placeholder.ProductPrice = convertToDecimal(dataGridView1.Rows[i].Cells["UnitPrice"].Value.ToString());
+            placeholder.ProductExtension = convertToDecimal(dataGridView1.Rows[i].Cells["TotalPrice"].Value.ToString());
+            placeholder.InvoiceSO = convertToInt(textSONumber.Text);
+            return placeholder;
+        }
+
+        public void updateLineDB(InvoiceLineItem placeholder)
+        {
+            using (var db = new CamcoEntities())
+            {
+                db.InvoiceLineItems.Add(placeholder);
+                db.SaveChanges();
+            }
+        }
+        
+        private void btnFinish_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+            {
+                var valueToUpdate = convertLineToDB(i);
+                updateLineDB(valueToUpdate);
+            }
+            var secondValueToUpdate = convertInvoiceToDB();
+            updateInvoiceDB(secondValueToUpdate);
+        }
+
+        private void comboCustomerName_SelectedValueChanged(object sender, EventArgs e)
+        {
+            getCustomerID(comboCustomerName.Text);
         }
     }
 }

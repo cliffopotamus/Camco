@@ -19,5 +19,6 @@ namespace CamcoForm
         public System.DateTime InvoiceDate { get; set; }
         public Nullable<decimal> InvoiceTotal { get; set; }
         public string InvoicePO { get; set; }
+        public string InvoiceSO { get; set; }
     }
 }

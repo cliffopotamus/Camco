@@ -14,13 +14,14 @@ namespace CamcoForm
     
     public partial class InvoiceLineItem
     {
-        public int InvoiceID { get; set; }
         public int InvoiceSequence { get; set; }
         public string ProductDescription { get; set; }
         public int ProductQuantity { get; set; }
-        public decimal ProductPrice { get; set; }
-        public decimal ProductExtension { get; set; }
+        public Nullable<decimal> ProductPrice { get; set; }
+        public Nullable<decimal> ProductExtension { get; set; }
         public decimal InvoiceTotal { get; set; }
         public string ProductNo { get; set; }
+        public int InvoiceSO { get; set; }
+        public string ProductName { get; set; }
     }
 }

@@ -41,20 +41,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.camcoInvoices = new CamcoForm.CamcoInvoices();
-            this.invoicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.invoicesTableAdapter = new CamcoForm.CamcoInvoicesTableAdapters.InvoicesTableAdapter();
             this.invoiceIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invoiceDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invoiceTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invoicePODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.camcoInvoices = new CamcoForm.CamcoInvoices();
+            this.invoicesTableAdapter = new CamcoForm.CamcoInvoicesTableAdapters.InvoicesTableAdapter();
+            this.invoicesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.camcoInvoices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoInvoices)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnNewInvoice
@@ -207,26 +209,12 @@
             this.invoiceDateDataGridViewTextBoxColumn,
             this.invoiceTotalDataGridViewTextBoxColumn,
             this.invoicePODataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.invoicesBindingSource;
+            this.dataGridView1.DataSource = this.invoicesBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(231, 164);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(562, 304);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // camcoInvoices
-            // 
-            this.camcoInvoices.DataSetName = "CamcoInvoices";
-            this.camcoInvoices.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // invoicesBindingSource
-            // 
-            this.invoicesBindingSource.DataMember = "Invoices";
-            this.invoicesBindingSource.DataSource = this.camcoInvoices;
-            // 
-            // invoicesTableAdapter
-            // 
-            this.invoicesTableAdapter.ClearBeforeFill = true;
             // 
             // invoiceIDDataGridViewTextBoxColumn
             // 
@@ -263,6 +251,25 @@
             this.invoicePODataGridViewTextBoxColumn.Name = "invoicePODataGridViewTextBoxColumn";
             this.invoicePODataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // invoicesBindingSource
+            // 
+            this.invoicesBindingSource.DataMember = "Invoices";
+            this.invoicesBindingSource.DataSource = this.camcoInvoices;
+            // 
+            // camcoInvoices
+            // 
+            this.camcoInvoices.DataSetName = "CamcoInvoices";
+            this.camcoInvoices.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // invoicesTableAdapter
+            // 
+            this.invoicesTableAdapter.ClearBeforeFill = true;
+            // 
+            // invoicesBindingSource1
+            // 
+            this.invoicesBindingSource1.DataMember = "Invoices";
+            this.invoicesBindingSource1.DataSource = this.camcoInvoices;
+            // 
             // InvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -280,8 +287,9 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.camcoInvoices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoInvoices)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -307,5 +315,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn invoiceDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn invoiceTotalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn invoicePODataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource invoicesBindingSource1;
     }
 }
