@@ -20,5 +20,6 @@ namespace CamcoForm
         public Nullable<decimal> InvoiceTotal { get; set; }
         public string InvoicePO { get; set; }
         public string InvoiceSO { get; set; }
+        public string CustomerName { get; set; }
     }
 }

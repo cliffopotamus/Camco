@@ -59,6 +59,7 @@
           <Property Name="InvoiceTotal" Type="decimal" Precision="18" Scale="2" />
           <Property Name="InvoicePO" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="InvoiceSO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Kit">
           <Key>
@@ -175,6 +176,7 @@
           <Property Name="InvoiceTotal" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="InvoicePO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="InvoiceSO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
@@ -289,6 +291,7 @@
           <EntitySetMapping Name="Invoices">
             <EntityTypeMapping TypeName="CamcoModel.Invoice">
               <MappingFragment StoreEntitySet="Invoices">
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
                 <ScalarProperty Name="InvoiceSO" ColumnName="InvoiceSO" />
                 <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />

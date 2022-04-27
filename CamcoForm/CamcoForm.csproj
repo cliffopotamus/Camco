@@ -135,6 +135,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CamcoDataSet8.xsd</DependentUpon>
     </Compile>
+    <Compile Include="CamcoDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CamcoDataSet9.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CamcoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -516,6 +521,17 @@
     </None>
     <None Include="CamcoDataSet8.xss">
       <DependentUpon>CamcoDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet9.xsc">
+      <DependentUpon>CamcoDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CamcoDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CamcoDataSet9.xss">
+      <DependentUpon>CamcoDataSet9.xsd</DependentUpon>
     </None>
     <None Include="CamcoInventory.xsc">
       <DependentUpon>CamcoInventory.xsd</DependentUpon>

@@ -18,7 +18,9 @@ namespace CamcoForm
             InitializeComponent();
             PopulateCombos();
             textInvoiceTotal.Text = "0";
+            textDate.Text = DateTime.Today.ToString("MM/dd/yyyy");
         }
+ 
 
         private void NewInvoiceForm_Load(object sender, EventArgs e)
         {
@@ -813,6 +815,32 @@ namespace CamcoForm
             }
         }
 
+        public void setAddress(int custID)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                Customer result = DB.Customers.SingleOrDefault(x => x.CustomerID == custID);
+                textBillAddress.Text = result.CustomerBillAddress;
+                textBillCity.Text = result.CustomerBillCity;
+                textBillZip.Text = result.CustomerBillZipCode;
+                textBillState.Text = result.CustomerBillState;
+                textShipAddress.Text = result.CustomerShipAddress;
+                textShipCity.Text = result.CustomerShipCity;
+                textShipZip.Text = result.CustomerShipZipCode;
+                textShipState.Text = result.CustomerShipState;
+            }
+        }
+
+        public void setDetails(string invoiceSO)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                Invoice result = DB.Invoices.SingleOrDefault(x => x.InvoiceSO == invoiceSO);
+                textPONumber.Text = result.InvoicePO;
+                textSONumber.Text = result.InvoiceSO;
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             int itemQuantity = Int32.Parse(textQuantity.Text);
@@ -888,6 +916,18 @@ namespace CamcoForm
                 return true;
             }
 
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool CheckRequired(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                return true;
+            }
             else
             {
                 return false;
@@ -993,18 +1033,32 @@ namespace CamcoForm
         
         private void btnFinish_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+            var custFailure = CheckRequired(comboCustomerName.Text);
+            var POFailure = CheckRequired(textPONumber.Text);
+            var SOFailure = CheckRequired(textSONumber.Text);
+            var dateFailure = CheckRequired(textDate.Text);
+
+            if ((custFailure == false) && (POFailure == false) && (SOFailure == false) && (dateFailure == false))
             {
-                var valueToUpdate = convertLineToDB(i);
-                updateLineDB(valueToUpdate);
+                for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+                {
+                    var valueToUpdate = convertLineToDB(i);
+                    updateLineDB(valueToUpdate);
+                }
+                var secondValueToUpdate = convertInvoiceToDB();
+                updateInvoiceDB(secondValueToUpdate);
             }
-            var secondValueToUpdate = convertInvoiceToDB();
-            updateInvoiceDB(secondValueToUpdate);
         }
 
         private void comboCustomerName_SelectedValueChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void comboCustomerName_SelectedIndexChanged(object sender, EventArgs e)
+        {
             getCustomerID(comboCustomerName.Text);
+            setAddress(convertToInt(textCustID.Text));
         }
     }
 }

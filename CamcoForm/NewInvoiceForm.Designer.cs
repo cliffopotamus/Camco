@@ -81,6 +81,7 @@
             // 
             // comboCustomerName
             // 
+            this.comboCustomerName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboCustomerName.DataSource = this.customersBindingSource;
             this.comboCustomerName.DisplayMember = "CustomerName";
             this.comboCustomerName.FormattingEnabled = true;
@@ -88,6 +89,7 @@
             this.comboCustomerName.Name = "comboCustomerName";
             this.comboCustomerName.Size = new System.Drawing.Size(121, 21);
             this.comboCustomerName.TabIndex = 0;
+            this.comboCustomerName.SelectedIndexChanged += new System.EventHandler(this.comboCustomerName_SelectedIndexChanged);
             this.comboCustomerName.SelectedValueChanged += new System.EventHandler(this.comboCustomerName_SelectedValueChanged);
             // 
             // customersBindingSource

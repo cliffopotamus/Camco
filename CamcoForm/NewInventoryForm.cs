@@ -823,5 +823,10 @@ namespace CamcoForm
         private void richTextBoxInventory_TextChanged(object sender, EventArgs e)
         {
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Refresh();
+        }
     }
 }
