@@ -49,18 +49,26 @@ namespace CamcoForm
                     NewInvoiceForm frm = new NewInvoiceForm();
                     frm.setAddress(result.CustomerID);
                     frm.setDetails(result.InvoiceSO);
+                    frm.editModeBool();
                     /* need to add datagridview rows */
                     using (var DB2 = new CamcoEntities())
                     {
-                        /* access InvoiceLineItems DB to add rows to DGV in NewInvoiceForm 
-                        InvoiceLineItem result2 = DB.InvoiceLineItems.Any(c => c.InvoiceSO == result2SO); */
+                        int textBoxSO = frm.convertToInt(frm.getSO());
+                        /* access InvoiceLineItems DB to add rows to DGV in NewInvoiceForm */
+                        List<InvoiceLineItem> result2 = DB.InvoiceLineItems.Where(c => c.InvoiceSO == textBoxSO).ToList();
 
-
+                        if (result != null)
+                        {
+                            for (int i = 0; i < result2.Count; i++)
+                            {
+                                var addToDGV = frm.createSalesItem(result2[i].ProductQuantity, result2[i].ProductName);
+                                frm.AddRow(addToDGV);
+                            }
+                        }
+                        var newForm = new NewInvoiceForm();
+                        frm.Show();
                     }
-                   var newForm = new NewInvoiceForm();
-                   frm.Show();
                 }
-
                 else
                 {
                     string message = "The SO you have entered is invalid or does not exist.";

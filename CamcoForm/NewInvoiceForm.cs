@@ -13,12 +13,19 @@ namespace CamcoForm
 {
     public partial class NewInvoiceForm : Form
     {
+        private bool editMode = false;
+
         public NewInvoiceForm()
         {
             InitializeComponent();
             PopulateCombos();
             textInvoiceTotal.Text = "0";
             textDate.Text = DateTime.Today.ToString("MM/dd/yyyy");
+        }
+
+        public string getSO()
+        {
+            return textSONumber.Text;
         }
  
 
@@ -719,6 +726,12 @@ namespace CamcoForm
             }
         }
 
+        public SalesItem createSalesItem(int quant, string name)
+        {
+            SalesItem addedItem = new SalesItem(quant, name);
+            return addedItem;
+        }
+
         public void AddRow(SalesItem salesRow)
         {
             using (var DB = new CamcoEntities())
@@ -987,8 +1000,8 @@ namespace CamcoForm
             placeholder.InvoicePO = textPONumber.Text;
             placeholder.CustomerID = convertToInt(textCustID.Text);
             placeholder.InvoiceTotal = convertToDecimal(textInvoiceTotal.Text);
+            placeholder.CustomerName = comboCustomerName.Text;
             bool boolDate = validateDate(textDate.Text);
-            DateTime date;
             if (boolDate)
             {
                 placeholder.InvoiceDate = DateTime.Parse(textDate.Text);
@@ -1030,6 +1043,45 @@ namespace CamcoForm
                 db.SaveChanges();
             }
         }
+
+        public void removeOldLineDB()
+        {
+            using (var DB = new CamcoEntities())
+            {
+                int intSO = convertToInt(textSONumber.Text);
+               List<InvoiceLineItem> result = DB.InvoiceLineItems.Where(x => x.InvoiceSO == intSO).ToList();
+                
+               if (result != null)
+                {
+                    for (int i =0; i < result.Count; i++)
+                    {
+                        DB.InvoiceLineItems.Remove(result[i]);
+                        DB.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        public void removeOldInvoiceDB()
+        {
+            using (var DB = new CamcoEntities())
+            {
+                int intSO = convertToInt(textSONumber.Text);
+                Invoice result = DB.Invoices.SingleOrDefault(x => x.InvoiceSO == textSONumber.Text);
+
+                if (result != null)
+                {
+                    DB.Invoices.Remove(result);
+                    DB.SaveChanges();
+                }
+            }
+        }
+
+        public bool editModeBool()
+        {
+            editMode = true;
+            return editMode;
+        }
         
         private void btnFinish_Click(object sender, EventArgs e)
         {
@@ -1040,12 +1092,19 @@ namespace CamcoForm
 
             if ((custFailure == false) && (POFailure == false) && (SOFailure == false) && (dateFailure == false))
             {
+                if (editMode == true)
+                {
+                    removeOldLineDB();
+                }
+
                 for (int i = 0; i < dataGridView1.RowCount - 1; i++)
                 {
                     var valueToUpdate = convertLineToDB(i);
                     updateLineDB(valueToUpdate);
                 }
+                
                 var secondValueToUpdate = convertInvoiceToDB();
+                removeOldInvoiceDB();
                 updateInvoiceDB(secondValueToUpdate);
             }
         }
