@@ -830,6 +830,7 @@ namespace CamcoForm
 
         public void setAddress(int custID)
         {
+            textCustID.Text = custID.ToString();
             using (var DB = new CamcoEntities())
             {
                 Customer result = DB.Customers.SingleOrDefault(x => x.CustomerID == custID);
@@ -1106,6 +1107,7 @@ namespace CamcoForm
                 var secondValueToUpdate = convertInvoiceToDB();
                 removeOldInvoiceDB();
                 updateInvoiceDB(secondValueToUpdate);
+                this.Close();
             }
         }
 

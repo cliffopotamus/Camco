@@ -35,7 +35,7 @@ namespace CamcoForm
 
         private void btnRefreshInvoice_Click(object sender, EventArgs e)
         {
-            dataGridView1.Refresh();
+          dataGridView1.Refresh();
         }
 
         private void btnEnterSO_Click(object sender, EventArgs e)
@@ -47,6 +47,7 @@ namespace CamcoForm
                 if (result != null)
                 {
                     NewInvoiceForm frm = new NewInvoiceForm();
+                    
                     frm.setAddress(result.CustomerID);
                     frm.setDetails(result.InvoiceSO);
                     frm.editModeBool();
@@ -59,6 +60,7 @@ namespace CamcoForm
 
                         if (result != null)
                         {
+                            /* where i used frm.removelinedb */
                             for (int i = 0; i < result2.Count; i++)
                             {
                                 var addToDGV = frm.createSalesItem(result2[i].ProductQuantity, result2[i].ProductName);
@@ -75,6 +77,28 @@ namespace CamcoForm
                     MessageBox.Show(message);
                 }
             }
+        }
+
+        private void btnPickInvoice_Click(object sender, EventArgs e)
+        {
+            PickInvoice newForm = new PickInvoice();
+            newForm.setDetails(dataGridView1.CurrentRow.Cells[5].Value.ToString());
+
+            using (var db = new CamcoEntities())
+            {
+                int textBoxSO = newForm.convertToInt(newForm.getSO());
+                List<InvoiceLineItem> result = db.InvoiceLineItems.Where(x => x.InvoiceSO == textBoxSO).ToList();
+
+                if (result != null)
+                {
+                    for (int i = 0; i < result.Count; i++)
+                    {
+                        var addToDGV = newForm.createSalesItem(result[i].ProductQuantity, result[i].ProductName);
+                        newForm.AddRow(addToDGV);
+                    }
+                }
+            }
+            newForm.Show();
         }
     }
 }

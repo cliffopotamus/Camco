@@ -74,6 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\..\source\repos\CamcoFormMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\..\..\source\repos\CamcoFormMaster.Designer.cs">
+      <DependentUpon>CamcoFormMaster.cs</DependentUpon>
+    </Compile>
     <Compile Include="BillOfMaterialsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,12 +145,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CamcoDataSet9.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="CamcoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CamcoForm.Designer.cs">
-      <DependentUpon>CamcoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CamcoInventory.cs">
       <DependentUpon>CamcoInventory.xsd</DependentUpon>
@@ -294,6 +294,15 @@
     <Compile Include="NewVendorForm.Designer.cs">
       <DependentUpon>NewVendorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Picking.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PickInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PickInvoice.Designer.cs">
+      <DependentUpon>PickInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseForm.cs">
@@ -329,11 +338,11 @@
     <Compile Include="WorkOrderForm.Designer.cs">
       <DependentUpon>WorkOrderForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="..\..\..\..\source\repos\CamcoFormMaster.resx">
+      <DependentUpon>CamcoFormMaster.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BillOfMaterialsForm.resx">
       <DependentUpon>BillOfMaterialsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CamcoForm.resx">
-      <DependentUpon>CamcoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
@@ -379,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewVendorForm.resx">
       <DependentUpon>NewVendorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PickInvoice.resx">
+      <DependentUpon>PickInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

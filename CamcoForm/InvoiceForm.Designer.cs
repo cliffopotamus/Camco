@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvoiceForm));
             this.btnNewInvoice = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnPicking = new System.Windows.Forms.Button();
             this.BtnPurchases = new System.Windows.Forms.Button();
             this.BtnInvoices = new System.Windows.Forms.Button();
             this.BtnVendors = new System.Windows.Forms.Button();
@@ -43,9 +45,6 @@
             this.camcoInvoices = new CamcoForm.CamcoInvoices();
             this.invoicesTableAdapter = new CamcoForm.CamcoInvoicesTableAdapters.InvoicesTableAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.camcoDataSet9 = new CamcoForm.CamcoDataSet9();
-            this.invoicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.invoicesTableAdapter1 = new CamcoForm.CamcoDataSet9TableAdapters.InvoicesTableAdapter();
             this.invoiceIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invoiceDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,18 +52,20 @@
             this.invoicePODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invoiceSODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.camcoDataSet9 = new CamcoForm.CamcoDataSet9();
+            this.invoicesTableAdapter1 = new CamcoForm.CamcoDataSet9TableAdapters.InvoicesTableAdapter();
             this.btnRefreshInvoice = new System.Windows.Forms.Button();
             this.textEnterSO = new System.Windows.Forms.TextBox();
             this.btnEnterSO = new System.Windows.Forms.Button();
-            this.btnPicking = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnPickInvoice = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camcoInvoices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet9)).BeginInit();
             this.SuspendLayout();
             // 
             // btnNewInvoice
@@ -93,6 +94,38 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(186, 538);
             this.panel1.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(0, 396);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(186, 42);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Purchases";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // btnPicking
+            // 
+            this.btnPicking.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPicking.FlatAppearance.BorderSize = 0;
+            this.btnPicking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPicking.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPicking.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnPicking.Image = ((System.Drawing.Image)(resources.GetObject("btnPicking.Image")));
+            this.btnPicking.Location = new System.Drawing.Point(0, 354);
+            this.btnPicking.Name = "btnPicking";
+            this.btnPicking.Size = new System.Drawing.Size(186, 42);
+            this.btnPicking.TabIndex = 2;
+            this.btnPicking.Text = "Picking";
+            this.btnPicking.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPicking.UseVisualStyleBackColor = true;
             // 
             // BtnPurchases
             // 
@@ -218,6 +251,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -234,20 +268,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(716, 325);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // camcoDataSet9
-            // 
-            this.camcoDataSet9.DataSetName = "CamcoDataSet9";
-            this.camcoDataSet9.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // invoicesBindingSource
-            // 
-            this.invoicesBindingSource.DataMember = "Invoices";
-            this.invoicesBindingSource.DataSource = this.camcoDataSet9;
-            // 
-            // invoicesTableAdapter1
-            // 
-            this.invoicesTableAdapter1.ClearBeforeFill = true;
             // 
             // invoiceIDDataGridViewTextBoxColumn
             // 
@@ -298,6 +318,20 @@
             this.customerNameDataGridViewTextBoxColumn.Name = "customerNameDataGridViewTextBoxColumn";
             this.customerNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // invoicesBindingSource
+            // 
+            this.invoicesBindingSource.DataMember = "Invoices";
+            this.invoicesBindingSource.DataSource = this.camcoDataSet9;
+            // 
+            // camcoDataSet9
+            // 
+            this.camcoDataSet9.DataSetName = "CamcoDataSet9";
+            this.camcoDataSet9.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // invoicesTableAdapter1
+            // 
+            this.invoicesTableAdapter1.ClearBeforeFill = true;
+            // 
             // btnRefreshInvoice
             // 
             this.btnRefreshInvoice.Location = new System.Drawing.Point(449, 68);
@@ -325,37 +359,15 @@
             this.btnEnterSO.UseVisualStyleBackColor = true;
             this.btnEnterSO.Click += new System.EventHandler(this.btnEnterSO_Click);
             // 
-            // btnPicking
+            // btnPickInvoice
             // 
-            this.btnPicking.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPicking.FlatAppearance.BorderSize = 0;
-            this.btnPicking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPicking.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnPicking.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnPicking.Image = ((System.Drawing.Image)(resources.GetObject("btnPicking.Image")));
-            this.btnPicking.Location = new System.Drawing.Point(0, 354);
-            this.btnPicking.Name = "btnPicking";
-            this.btnPicking.Size = new System.Drawing.Size(186, 42);
-            this.btnPicking.TabIndex = 2;
-            this.btnPicking.Text = "Picking";
-            this.btnPicking.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPicking.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(0, 396);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(186, 42);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Purchases";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnPickInvoice.Location = new System.Drawing.Point(607, 68);
+            this.btnPickInvoice.Name = "btnPickInvoice";
+            this.btnPickInvoice.Size = new System.Drawing.Size(118, 30);
+            this.btnPickInvoice.TabIndex = 7;
+            this.btnPickInvoice.Text = "Pick Invoice";
+            this.btnPickInvoice.UseVisualStyleBackColor = true;
+            this.btnPickInvoice.Click += new System.EventHandler(this.btnPickInvoice_Click);
             // 
             // InvoiceForm
             // 
@@ -363,6 +375,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(935, 538);
+            this.Controls.Add(this.btnPickInvoice);
             this.Controls.Add(this.btnEnterSO);
             this.Controls.Add(this.textEnterSO);
             this.Controls.Add(this.btnRefreshInvoice);
@@ -378,8 +391,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.camcoInvoices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -415,5 +428,6 @@
         private System.Windows.Forms.Button btnPicking;
         private System.Windows.Forms.TextBox textEnterSO;
         private System.Windows.Forms.Button btnEnterSO;
+        private System.Windows.Forms.Button btnPickInvoice;
     }
 }
