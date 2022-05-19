@@ -83,18 +83,43 @@ namespace CamcoForm
         {
             PickInvoice newForm = new PickInvoice();
             newForm.setDetails(dataGridView1.CurrentRow.Cells[5].Value.ToString());
+            newForm.setPO(dataGridView1.CurrentRow.Cells[4].Value.ToString());
 
             using (var db = new CamcoEntities())
             {
                 int textBoxSO = newForm.convertToInt(newForm.getSO());
-                List<InvoiceLineItem> result = db.InvoiceLineItems.Where(x => x.InvoiceSO == textBoxSO).ToList();
+                List<Picking> result = db.Pickings.Where(x => x.InvoiceSO == textBoxSO).ToList();
 
                 if (result != null)
                 {
+                    
                     for (int i = 0; i < result.Count; i++)
-                    {
-                        var addToDGV = newForm.createSalesItem(result[i].ProductQuantity, result[i].ProductName);
+                    {   
+                        var addToDGV = newForm.createSalesItem(result[i].Quantity, result[i].ProductName);
                         newForm.AddRow(addToDGV);
+                        newForm.setRemainingDGV(i);
+                    }
+                }
+            }
+            newForm.Show();
+        }
+
+        private void btnShipInvoice_Click(object sender, EventArgs e)
+        {
+            ShippingForm newForm = new ShippingForm();
+            newForm.setSO(dataGridView1.CurrentRow.Cells[5].Value.ToString());
+            newForm.setPO(dataGridView1.CurrentRow.Cells[4].Value.ToString());
+
+            using (var DB = new CamcoEntities())
+            {
+                int textBoxSO = newForm.convertToInt(newForm.getSO());
+                List<Shipping> result = DB.Shippings.Where(x => x.InvoiceSO == textBoxSO).ToList();
+
+                if (result != null)
+                {
+                    for (int i =0; i < result.Count; i++)
+                    {
+                        newForm.AddRow(i);
                     }
                 }
             }

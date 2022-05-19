@@ -12,16 +12,14 @@ namespace CamcoForm
     using System;
     using System.Collections.Generic;
     
-    public partial class InvoiceLineItem
+    public partial class Shipping
     {
-        public int InvoiceSequence { get; set; }
-        public string ProductDescription { get; set; }
-        public int ProductQuantity { get; set; }
-        public Nullable<decimal> ProductPrice { get; set; }
-        public Nullable<decimal> ProductExtension { get; set; }
-        public decimal InvoiceTotal { get; set; }
-        public string ProductNo { get; set; }
-        public int InvoiceSO { get; set; }
+        public int ShipID { get; set; }
+        public Nullable<int> InvoiceSO { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public Nullable<int> QuantityPicked { get; set; }
+        public Nullable<int> QuantityRemaining { get; set; }
+        public Nullable<bool> PackingList { get; set; }
         public string ProductName { get; set; }
         public string InvoicePO { get; set; }
     }

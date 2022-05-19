@@ -1,6 +1,6 @@
 ﻿namespace CamcoForm
 {
-    partial class PickInvoice
+    partial class ShippingForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,88 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textSONumber = new System.Windows.Forms.TextBox();
-            this.labelSO = new System.Windows.Forms.Label();
-            this.labelPONumber = new System.Windows.Forms.Label();
-            this.textPONumber = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textInvoiceTotal = new System.Windows.Forms.TextBox();
-            this.btnCommit = new System.Windows.Forms.Button();
+            this.textInvoiceSO = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textInvoicePO = new System.Windows.Forms.TextBox();
+            this.ShipID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InvoiceSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InvoicePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantityPicked = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantityRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Commit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Finished = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textSONumber
-            // 
-            this.textSONumber.Location = new System.Drawing.Point(41, 44);
-            this.textSONumber.Name = "textSONumber";
-            this.textSONumber.Size = new System.Drawing.Size(100, 20);
-            this.textSONumber.TabIndex = 0;
-            // 
-            // labelSO
-            // 
-            this.labelSO.AutoSize = true;
-            this.labelSO.Location = new System.Drawing.Point(38, 28);
-            this.labelSO.Name = "labelSO";
-            this.labelSO.Size = new System.Drawing.Size(62, 13);
-            this.labelSO.TabIndex = 1;
-            this.labelSO.Text = "SO Number";
-            // 
-            // labelPONumber
-            // 
-            this.labelPONumber.AutoSize = true;
-            this.labelPONumber.Location = new System.Drawing.Point(173, 28);
-            this.labelPONumber.Name = "labelPONumber";
-            this.labelPONumber.Size = new System.Drawing.Size(62, 13);
-            this.labelPONumber.TabIndex = 2;
-            this.labelPONumber.Text = "PO Number";
-            // 
-            // textPONumber
-            // 
-            this.textPONumber.Location = new System.Drawing.Point(176, 44);
-            this.textPONumber.Name = "textPONumber";
-            this.textPONumber.Size = new System.Drawing.Size(100, 20);
-            this.textPONumber.TabIndex = 3;
-            // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ShipID,
             this.InvoiceSO,
             this.InvoicePO,
             this.Quantity,
             this.ProductName,
             this.QuantityPicked,
             this.QuantityRemaining,
-            this.Commit});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 150);
+            this.Finished});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 141);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(643, 264);
-            this.dataGridView1.TabIndex = 4;
-            this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
+            this.dataGridView1.Size = new System.Drawing.Size(643, 297);
+            this.dataGridView1.TabIndex = 0;
             // 
-            // textInvoiceTotal
+            // textInvoiceSO
             // 
-            this.textInvoiceTotal.Location = new System.Drawing.Point(603, 76);
-            this.textInvoiceTotal.Name = "textInvoiceTotal";
-            this.textInvoiceTotal.Size = new System.Drawing.Size(100, 20);
-            this.textInvoiceTotal.TabIndex = 5;
+            this.textInvoiceSO.Location = new System.Drawing.Point(672, 376);
+            this.textInvoiceSO.Name = "textInvoiceSO";
+            this.textInvoiceSO.Size = new System.Drawing.Size(100, 20);
+            this.textInvoiceSO.TabIndex = 1;
+            this.textInvoiceSO.Visible = false;
             // 
-            // btnCommit
+            // textBox1
             // 
-            this.btnCommit.Location = new System.Drawing.Point(677, 415);
-            this.btnCommit.Name = "btnCommit";
-            this.btnCommit.Size = new System.Drawing.Size(75, 23);
-            this.btnCommit.TabIndex = 6;
-            this.btnCommit.Text = "Commit";
-            this.btnCommit.UseVisualStyleBackColor = true;
-            this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
+            this.textBox1.Location = new System.Drawing.Point(50, 32);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(119, 20);
+            this.textBox1.TabIndex = 2;
+            // 
+            // textInvoicePO
+            // 
+            this.textInvoicePO.Location = new System.Drawing.Point(672, 350);
+            this.textInvoicePO.Name = "textInvoicePO";
+            this.textInvoicePO.Size = new System.Drawing.Size(100, 20);
+            this.textInvoicePO.TabIndex = 3;
+            this.textInvoicePO.Visible = false;
+            // 
+            // ShipID
+            // 
+            this.ShipID.HeaderText = "ShipID";
+            this.ShipID.Name = "ShipID";
+            this.ShipID.ReadOnly = true;
             // 
             // InvoiceSO
             // 
@@ -121,6 +100,7 @@
             // 
             this.InvoicePO.HeaderText = "InvoicePO";
             this.InvoicePO.Name = "InvoicePO";
+            this.InvoicePO.ReadOnly = true;
             // 
             // Quantity
             // 
@@ -138,6 +118,7 @@
             // 
             this.QuantityPicked.HeaderText = "QuantityPicked";
             this.QuantityPicked.Name = "QuantityPicked";
+            this.QuantityPicked.ReadOnly = true;
             // 
             // QuantityRemaining
             // 
@@ -145,26 +126,23 @@
             this.QuantityRemaining.Name = "QuantityRemaining";
             this.QuantityRemaining.ReadOnly = true;
             // 
-            // Commit
+            // Finished
             // 
-            this.Commit.HeaderText = "Commit";
-            this.Commit.Name = "Commit";
+            this.Finished.HeaderText = "Finished";
+            this.Finished.Name = "Finished";
             // 
-            // PickInvoice
+            // ShippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnCommit);
-            this.Controls.Add(this.textInvoiceTotal);
+            this.Controls.Add(this.textInvoicePO);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textInvoiceSO);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textPONumber);
-            this.Controls.Add(this.labelPONumber);
-            this.Controls.Add(this.labelSO);
-            this.Controls.Add(this.textSONumber);
-            this.Name = "PickInvoice";
-            this.Text = "PickInvoice";
-            this.Load += new System.EventHandler(this.PickInvoice_Load);
+            this.Name = "ShippingForm";
+            this.Text = "ShippingForm";
+            this.Load += new System.EventHandler(this.ShippingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -173,19 +151,17 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textSONumber;
-        private System.Windows.Forms.Label labelSO;
-        private System.Windows.Forms.Label labelPONumber;
-        private System.Windows.Forms.TextBox textPONumber;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textInvoiceTotal;
-        private System.Windows.Forms.Button btnCommit;
+        private System.Windows.Forms.TextBox textInvoiceSO;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShipID;
         private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceSO;
         private System.Windows.Forms.DataGridViewTextBoxColumn InvoicePO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityPicked;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityRemaining;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Commit;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Finished;
+        private System.Windows.Forms.TextBox textInvoicePO;
     }
 }

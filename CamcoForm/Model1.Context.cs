@@ -34,5 +34,6 @@ namespace CamcoForm
         public virtual DbSet<Vendor> Vendors { get; set; }
         public virtual DbSet<Kit> Kits { get; set; }
         public virtual DbSet<Picking> Pickings { get; set; }
+        public virtual DbSet<Shipping> Shippings { get; set; }
     }
 }

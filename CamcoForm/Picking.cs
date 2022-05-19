@@ -18,8 +18,9 @@ namespace CamcoForm
         public int InvoiceSO { get; set; }
         public int Quantity { get; set; }
         public string ProductName { get; set; }
-        public int QuantityPicked { get; set; }
-        public int QuantityRemaining { get; set; }
-        public bool Commit { get; set; }
+        public Nullable<int> QuantityPicked { get; set; }
+        public Nullable<int> QuantityRemaining { get; set; }
+        public Nullable<bool> Commit { get; set; }
+        public string InvoicePO { get; set; }
     }
 }

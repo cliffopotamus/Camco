@@ -59,6 +59,7 @@
             this.textEnterSO = new System.Windows.Forms.TextBox();
             this.btnEnterSO = new System.Windows.Forms.Button();
             this.btnPickInvoice = new System.Windows.Forms.Button();
+            this.btnShipInvoice = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -369,12 +370,23 @@
             this.btnPickInvoice.UseVisualStyleBackColor = true;
             this.btnPickInvoice.Click += new System.EventHandler(this.btnPickInvoice_Click);
             // 
+            // btnShipInvoice
+            // 
+            this.btnShipInvoice.Location = new System.Drawing.Point(758, 68);
+            this.btnShipInvoice.Name = "btnShipInvoice";
+            this.btnShipInvoice.Size = new System.Drawing.Size(118, 30);
+            this.btnShipInvoice.TabIndex = 8;
+            this.btnShipInvoice.Text = "Ship Invoice";
+            this.btnShipInvoice.UseVisualStyleBackColor = true;
+            this.btnShipInvoice.Click += new System.EventHandler(this.btnShipInvoice_Click);
+            // 
             // InvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(935, 538);
+            this.Controls.Add(this.btnShipInvoice);
             this.Controls.Add(this.btnPickInvoice);
             this.Controls.Add(this.btnEnterSO);
             this.Controls.Add(this.textEnterSO);
@@ -429,5 +441,6 @@
         private System.Windows.Forms.TextBox textEnterSO;
         private System.Windows.Forms.Button btnEnterSO;
         private System.Windows.Forms.Button btnPickInvoice;
+        private System.Windows.Forms.Button btnShipInvoice;
     }
 }

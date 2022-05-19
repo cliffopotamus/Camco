@@ -36,6 +36,38 @@ namespace CamcoForm
             this.customersTableAdapter.Fill(this.customerNameList.Customers);
         }
 
+        public class PickingModel
+        {
+            public int InvoiceSO;
+            public int quantity;
+            public string productName;
+            public int quantityPicked;
+            public int quantityRemaining;
+            public bool commit;
+            public string InvoicePO;
+        }
+
+        public Picking convertToDB(int i)
+        {
+            Picking placeholder = new Picking();
+            placeholder.InvoiceSO = convertToInt(textSONumber.Text);
+            placeholder.Quantity = convertToInt(dataGridView1.Rows[i].Cells[0].Value.ToString());
+            placeholder.ProductName = dataGridView1.Rows[i].Cells[1].Value.ToString();
+            placeholder.InvoicePO = textPONumber.Text;
+            /* placeholder.Commit = Convert.ToBoolean(dataGridView1.Rows[i].Cells[5].Value);*/
+            return placeholder;
+        }
+
+        public void updatePickDB(Picking placeholder)
+        {
+            /* error here */
+            using (var db = new CamcoEntities())
+            {
+                db.Pickings.Add(placeholder);
+                db.SaveChanges();
+            }
+        }
+
         private void PopulateCombos()
         {
             InventoryBox c1 = new InventoryBox(1, "FW316-1");
@@ -1033,6 +1065,7 @@ namespace CamcoForm
             placeholder.ProductPrice = convertToDecimal(dataGridView1.Rows[i].Cells["UnitPrice"].Value.ToString());
             placeholder.ProductExtension = convertToDecimal(dataGridView1.Rows[i].Cells["TotalPrice"].Value.ToString());
             placeholder.InvoiceSO = convertToInt(textSONumber.Text);
+            placeholder.InvoicePO = textPONumber.Text;
             return placeholder;
         }
 
@@ -1042,6 +1075,24 @@ namespace CamcoForm
             {
                 db.InvoiceLineItems.Add(placeholder);
                 db.SaveChanges();
+            }
+        }
+
+        public void removePickDB()
+        {
+            using (var DB = new CamcoEntities())
+            {
+                int intSO = convertToInt(textSONumber.Text);
+                List<Picking> result = DB.Pickings.Where(x => x.InvoiceSO == intSO).ToList();
+
+                if (result != null)
+                {
+                    for (int i =0; i <result.Count; i++)
+                    {
+                        DB.Pickings.Remove(result[i]);
+                        DB.SaveChanges();
+                    }
+                }
             }
         }
 
@@ -1096,12 +1147,15 @@ namespace CamcoForm
                 if (editMode == true)
                 {
                     removeOldLineDB();
+                    removePickDB();
                 }
 
                 for (int i = 0; i < dataGridView1.RowCount - 1; i++)
                 {
                     var valueToUpdate = convertLineToDB(i);
                     updateLineDB(valueToUpdate);
+                    var pickingItems = convertToDB(i);
+                    updatePickDB(pickingItems);
                 }
                 
                 var secondValueToUpdate = convertInvoiceToDB();

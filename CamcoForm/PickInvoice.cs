@@ -28,6 +28,17 @@ namespace CamcoForm
             public int quantityPicked;
             public int quantityRemaining;
             public bool commit;
+            public string InvoicePO;
+        }
+
+        public class ShippingModel
+        {
+            public int InvoiceSO;
+            public int quantity;
+            public int quantityPicked;
+            public int quantityRemaining;
+            public bool packingList;
+            public string InvoicePO;
         }
 
         private bool editQuantity(int quantity)
@@ -59,21 +70,62 @@ namespace CamcoForm
 
         }
 
-        public void updateRemainingQuantity(int i)
+        
+        public Shipping convertPickToShipping(Picking placeholder)
         {
-            dataGridView1.Rows[i].Cells[4].Value = convertToInt(dataGridView1.Rows[i].Cells[1].Value.ToString()) - convertToInt(dataGridView1.Rows[i].Cells[3].Value.ToString());
+            Shipping ship = new Shipping();
+            ship.InvoiceSO = placeholder.InvoiceSO;
+            ship.Quantity = placeholder.Quantity;
+            ship.InvoicePO = placeholder.InvoicePO;
+            ship.QuantityPicked = placeholder.QuantityPicked;
+            ship.QuantityRemaining = placeholder.QuantityRemaining;
+            return ship;
         }
         
+        public void setRemainingDGV(int i)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                int intSO = convertToInt(textSONumber.Text);
+                List<Picking> result = DB.Pickings.Where(x => x.InvoiceSO == intSO).ToList();
 
-        public Picking convertToDB(int i)
+                if (result != null)
+                {
+                    string stringRemaining = result[i].QuantityRemaining.ToString();
+                    if (string.IsNullOrEmpty(stringRemaining))
+                    {
+                        dataGridView1.Rows[i].Cells[4].Value = result[i].Quantity;
+                    }
+
+                    else
+                    {
+                        dataGridView1.Rows[i].Cells[4].Value = result[i].QuantityRemaining;
+                    }
+                }
+            }
+        }
+
+        public void updateShipDB(Shipping placeholder)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                /* check shipping in DB, cant access here */
+                DB.Shippings.Add(placeholder);
+                DB.SaveChanges();
+            }
+        }
+
+        public Picking convertPickToDB(int i)
         {
             Picking placeholder = new Picking();
             placeholder.InvoiceSO = convertToInt(textSONumber.Text);
             placeholder.Quantity = convertToInt(dataGridView1.Rows[i].Cells[1].Value.ToString());
             placeholder.ProductName = dataGridView1.Rows[i].Cells[2].Value.ToString();
             placeholder.QuantityPicked = convertToInt(dataGridView1.Rows[i].Cells[3].Value.ToString());
+            dataGridView1.Rows[i].Cells[4].Value = convertToInt(dataGridView1.Rows[i].Cells[1].Value.ToString()) - convertToInt(dataGridView1.Rows[i].Cells[3].Value.ToString());
             placeholder.QuantityRemaining = convertToInt(dataGridView1.Rows[i].Cells[4].Value.ToString());
             placeholder.Commit = Convert.ToBoolean(dataGridView1.Rows[i].Cells[5].Value);
+            placeholder.InvoicePO = textPONumber.Text;
             return placeholder;
         }
 
@@ -81,7 +133,7 @@ namespace CamcoForm
         {
             if (placeholder.Commit == true)
             {
-                int subtractFromInventory = placeholder.QuantityPicked;
+                int subtractFromInventory =(int) placeholder.QuantityPicked;
 
                 using (var DB = new CamcoEntities())
                 {
@@ -102,14 +154,14 @@ namespace CamcoForm
                             string errorMsg = "Error: Pick quantity exceeds inventory amount.";
                             MessageBox.Show(errorMsg);
                         }
-
+                       /* method to add each result to the shipping model, then set placeholder.commit = false*/
                     }
                 }
             }
 
             else
             {
-
+                
             }
         }
 
@@ -121,6 +173,34 @@ namespace CamcoForm
                 db.Pickings.Add(placeholder);
                 db.SaveChanges();
             }
+        }
+
+        public void removePickDB()
+        {
+            using (var DB = new CamcoEntities())
+            {
+                int intSO = convertToInt(textSONumber.Text);
+                List<Picking> result = DB.Pickings.Where(x => x.InvoiceSO == intSO).ToList();
+
+                if (result != null)
+                {
+                    for (int i = 0; i < result.Count; i++)
+                    {
+                        DB.Pickings.Remove(result[i]);
+                        DB.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        public string getPO()
+        {
+            return textPONumber.Text;
+        }
+
+        public void setPO(string placeholder)
+        {
+            textPONumber.Text = placeholder;
         }
 
         public void setDetails(string invoiceSO)
@@ -174,9 +254,26 @@ namespace CamcoForm
 
                 if (result != null)
                 {
-                    dataGridView1.Rows.Add(textSONumber.Text,salesRow.quantity, salesRow.DisplayName);
+                    dataGridView1.Rows.Add(textSONumber.Text, textPONumber.Text, salesRow.quantity, salesRow.DisplayName);
                 }
             }
+        }
+
+        public bool invalidQuantity(int i)
+        {
+            bool invalidQuantity = true;
+            if (convertToInt(dataGridView1.Rows[i].Cells[3].Value.ToString()) > convertToInt(dataGridView1.Rows[i].Cells[4].Value.ToString()))
+            {
+                string error = "Error: Quantity picked exceeds remaining amount in order.";
+                MessageBox.Show(error);
+                return invalidQuantity;
+            }
+
+            else
+            {
+               invalidQuantity = false;
+            }
+            return invalidQuantity;
         }
 
 
@@ -232,11 +329,23 @@ namespace CamcoForm
 
         private void btnCommit_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
-                updateRemainingQuantity(i);
-                updatePickDB(convertToDB(i));
+                if (invalidQuantity(i) == false)
+                {
+                    /* need to figure out how to readd */
+                    removePickDB();
+                    var placeholder = convertPickToDB(i);
+                    updatePickDB(placeholder);
 
+                    if (placeholder.Commit == true)
+                    {
+                        updateInventory(placeholder);
+                        var convertedShip = convertPickToShipping(placeholder);
+                        updateShipDB(convertedShip);
+                    }
+                    this.Close();
+                }
             }
         }
 
@@ -253,6 +362,8 @@ namespace CamcoForm
                     string errorMes = "No value entered";
                     MessageBox.Show(errorMes);
                 }
+
+                
 
                 else
                 {
