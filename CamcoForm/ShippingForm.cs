@@ -20,6 +20,11 @@ namespace CamcoForm
         private void ShippingForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'camcoDataSet10.Shipping' table. You can move, or remove it, as needed.
+            using (var DB = new CamcoEntities())
+            {
+
+            }
+
         }
 
         public int convertToInt(string placeholder)
@@ -64,9 +69,90 @@ namespace CamcoForm
 
                 if (result != null)
                 {
-                  dataGridView1.Rows.Add(result[i].ShipID, result[i].InvoiceSO, result[i].InvoicePO, result[i].Quantity, result[i].ProductName, result[i].QuantityPicked, result[i].QuantityRemaining);
+                  dataGridView1.Rows.Add(result[i].ShipID, result[i].InvoiceSO, result[i].InvoicePO, result[i].Quantity, result[i].ProductName, result[i].QuantityPicked, result[i].QuantityRemaining, result[i].DateScheduled);
                 }
             }
+
+        }
+
+        public void setCustomerID()
+        {
+            using (var DB = new CamcoEntities())
+            {
+                Invoice result = DB.Invoices.SingleOrDefault(x => x.InvoiceSO == textInvoiceSO.Text);
+
+                if (result != null)
+                {
+                    textCustomerID.Text = result.CustomerID.ToString();
+                }
+            }
+        }
+
+        public void editRichBill()
+        {
+            using (var DB = new CamcoEntities())
+            {
+                int custID = convertToInt(textCustomerID.Text);
+                Customer result = DB.Customers.SingleOrDefault(x => x.CustomerID == custID);
+
+                if (result != null)
+                {
+                    richTextBill.Text = result.CustomerBillAddress + Environment.NewLine + result.CustomerBillCity + ", " + result.CustomerBillState + result.CustomerBillZipCode;
+                }
+            }
+        }
+
+        public void editRichShip()
+        {
+            using (var DB = new CamcoEntities())
+            {
+                int custID = convertToInt(textCustomerID.Text);
+                Customer result = DB.Customers.SingleOrDefault(x => x.CustomerID == custID);
+
+                if (result != null)
+                {
+                    richTextShip.Text = result.CustomerShipAddress + Environment.NewLine + result.CustomerBillCity + ", " + result.CustomerBillState + result.CustomerBillZipCode;
+                }
+            }
+        }
+
+        public void editInvoiceTotal()
+        {
+            using (var DB = new CamcoEntities())
+            {
+                Invoice result = DB.Invoices.SingleOrDefault(x => x.InvoiceSO == textInvoiceSO.Text);
+
+                if (result != null)
+                {
+                    textInvoiceTotal.Text = result.InvoiceTotal.ToString();
+                }
+            }
+        }
+
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(bmp, 0, 0);
+        }
+
+        Bitmap bmp;
+
+        private void btnPackingList_Click(object sender, EventArgs e)
+        {
+           Graphics graphic = this.CreateGraphics();
+           bmp = new Bitmap(this.Size.Width, this.Size.Height, graphic);
+            Graphics mg = Graphics.FromImage(bmp);
+            mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void textInvoicePO_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

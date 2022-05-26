@@ -92,7 +92,7 @@ namespace CamcoForm
 
                 if (result != null)
                 {
-                    
+
                     for (int i = 0; i < result.Count; i++)
                     {   
                         var addToDGV = newForm.createSalesItem(result[i].Quantity, result[i].ProductName);
@@ -109,6 +109,10 @@ namespace CamcoForm
             ShippingForm newForm = new ShippingForm();
             newForm.setSO(dataGridView1.CurrentRow.Cells[5].Value.ToString());
             newForm.setPO(dataGridView1.CurrentRow.Cells[4].Value.ToString());
+            newForm.setCustomerID();
+            newForm.editRichBill();
+            newForm.editRichShip();
+            newForm.editInvoiceTotal();
 
             using (var DB = new CamcoEntities())
             {

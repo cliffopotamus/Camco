@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnFinish = new System.Windows.Forms.Button();
             this.textState = new System.Windows.Forms.TextBox();
@@ -35,14 +36,8 @@
             this.labelCity = new System.Windows.Forms.Label();
             this.labelZip = new System.Windows.Forms.Label();
             this.textCity = new System.Windows.Forms.TextBox();
-            this.textBillZip = new System.Windows.Forms.TextBox();
-            this.labelLineItem = new System.Windows.Forms.Label();
-            this.labelInvoiceDate = new System.Windows.Forms.Label();
-            this.labelTotalPrice = new System.Windows.Forms.Label();
-            this.labelUnitPrice = new System.Windows.Forms.Label();
-            this.labelInvoiceItem = new System.Windows.Forms.Label();
-            this.labelItemDescription = new System.Windows.Forms.Label();
-            this.comboItem = new System.Windows.Forms.ComboBox();
+            this.textZip = new System.Windows.Forms.TextBox();
+            this.comboInventory = new System.Windows.Forms.ComboBox();
             this.labelItem = new System.Windows.Forms.Label();
             this.textQuantity = new System.Windows.Forms.TextBox();
             this.labelQuantity = new System.Windows.Forms.Label();
@@ -56,6 +51,22 @@
             this.textSONumber = new System.Windows.Forms.TextBox();
             this.labelComboVendor = new System.Windows.Forms.Label();
             this.comboVendorName = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textTotalPrice = new System.Windows.Forms.TextBox();
+            this.labelTotalPrice = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.textVendorID = new System.Windows.Forms.TextBox();
+            this.camcoDataSet11 = new CamcoForm.CamcoDataSet11();
+            this.vendorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vendorsTableAdapter = new CamcoForm.CamcoDataSet11TableAdapters.VendorsTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -119,81 +130,27 @@
             this.textCity.Size = new System.Drawing.Size(121, 25);
             this.textCity.TabIndex = 61;
             // 
-            // textBillZip
+            // textZip
             // 
-            this.textBillZip.Location = new System.Drawing.Point(319, 76);
-            this.textBillZip.Multiline = true;
-            this.textBillZip.Name = "textBillZip";
-            this.textBillZip.Size = new System.Drawing.Size(121, 25);
-            this.textBillZip.TabIndex = 60;
+            this.textZip.Location = new System.Drawing.Point(319, 76);
+            this.textZip.Multiline = true;
+            this.textZip.Name = "textZip";
+            this.textZip.Size = new System.Drawing.Size(121, 25);
+            this.textZip.TabIndex = 60;
             // 
-            // labelLineItem
+            // comboInventory
             // 
-            this.labelLineItem.AutoSize = true;
-            this.labelLineItem.Location = new System.Drawing.Point(32, 234);
-            this.labelLineItem.Name = "labelLineItem";
-            this.labelLineItem.Size = new System.Drawing.Size(67, 13);
-            this.labelLineItem.TabIndex = 59;
-            this.labelLineItem.Text = "Line Number";
-            // 
-            // labelInvoiceDate
-            // 
-            this.labelInvoiceDate.AutoSize = true;
-            this.labelInvoiceDate.Location = new System.Drawing.Point(615, 234);
-            this.labelInvoiceDate.Name = "labelInvoiceDate";
-            this.labelInvoiceDate.Size = new System.Drawing.Size(84, 13);
-            this.labelInvoiceDate.TabIndex = 58;
-            this.labelInvoiceDate.Text = "Date Scheduled";
-            // 
-            // labelTotalPrice
-            // 
-            this.labelTotalPrice.AutoSize = true;
-            this.labelTotalPrice.Location = new System.Drawing.Point(502, 234);
-            this.labelTotalPrice.Name = "labelTotalPrice";
-            this.labelTotalPrice.Size = new System.Drawing.Size(58, 13);
-            this.labelTotalPrice.TabIndex = 57;
-            this.labelTotalPrice.Text = "Total Price";
-            // 
-            // labelUnitPrice
-            // 
-            this.labelUnitPrice.AutoSize = true;
-            this.labelUnitPrice.Location = new System.Drawing.Point(390, 234);
-            this.labelUnitPrice.Name = "labelUnitPrice";
-            this.labelUnitPrice.Size = new System.Drawing.Size(53, 13);
-            this.labelUnitPrice.TabIndex = 56;
-            this.labelUnitPrice.Text = "Unit Price";
-            // 
-            // labelInvoiceItem
-            // 
-            this.labelInvoiceItem.AutoSize = true;
-            this.labelInvoiceItem.Location = new System.Drawing.Point(123, 234);
-            this.labelInvoiceItem.Name = "labelInvoiceItem";
-            this.labelInvoiceItem.Size = new System.Drawing.Size(27, 13);
-            this.labelInvoiceItem.TabIndex = 55;
-            this.labelInvoiceItem.Text = "Item";
-            // 
-            // labelItemDescription
-            // 
-            this.labelItemDescription.AutoSize = true;
-            this.labelItemDescription.Location = new System.Drawing.Point(214, 234);
-            this.labelItemDescription.Name = "labelItemDescription";
-            this.labelItemDescription.Size = new System.Drawing.Size(83, 13);
-            this.labelItemDescription.TabIndex = 54;
-            this.labelItemDescription.Text = "Item Description";
-            // 
-            // comboItem
-            // 
-            this.comboItem.DisplayMember = "ProductName";
-            this.comboItem.FormattingEnabled = true;
-            this.comboItem.Location = new System.Drawing.Point(104, 191);
-            this.comboItem.Name = "comboItem";
-            this.comboItem.Size = new System.Drawing.Size(241, 21);
-            this.comboItem.TabIndex = 53;
+            this.comboInventory.DisplayMember = "ProductName";
+            this.comboInventory.FormattingEnabled = true;
+            this.comboInventory.Location = new System.Drawing.Point(125, 141);
+            this.comboInventory.Name = "comboInventory";
+            this.comboInventory.Size = new System.Drawing.Size(241, 21);
+            this.comboInventory.TabIndex = 53;
             // 
             // labelItem
             // 
             this.labelItem.AutoSize = true;
-            this.labelItem.Location = new System.Drawing.Point(101, 177);
+            this.labelItem.Location = new System.Drawing.Point(123, 126);
             this.labelItem.Name = "labelItem";
             this.labelItem.Size = new System.Drawing.Size(27, 13);
             this.labelItem.TabIndex = 52;
@@ -201,7 +158,7 @@
             // 
             // textQuantity
             // 
-            this.textQuantity.Location = new System.Drawing.Point(29, 192);
+            this.textQuantity.Location = new System.Drawing.Point(34, 142);
             this.textQuantity.Multiline = true;
             this.textQuantity.Name = "textQuantity";
             this.textQuantity.Size = new System.Drawing.Size(43, 20);
@@ -228,7 +185,7 @@
             // 
             // textAddress
             // 
-            this.textAddress.Location = new System.Drawing.Point(35, 76);
+            this.textAddress.Location = new System.Drawing.Point(29, 76);
             this.textAddress.Multiline = true;
             this.textAddress.Name = "textAddress";
             this.textAddress.Size = new System.Drawing.Size(121, 25);
@@ -293,18 +250,111 @@
             // 
             // comboVendorName
             // 
-            this.comboVendorName.DisplayMember = "CustomerName";
+            this.comboVendorName.DataSource = this.vendorsBindingSource;
+            this.comboVendorName.DisplayMember = "VendorName";
             this.comboVendorName.FormattingEnabled = true;
             this.comboVendorName.Location = new System.Drawing.Point(29, 23);
             this.comboVendorName.Name = "comboVendorName";
             this.comboVendorName.Size = new System.Drawing.Size(121, 21);
             this.comboVendorName.TabIndex = 38;
+            this.comboVendorName.SelectedIndexChanged += new System.EventHandler(this.comboVendorName_SelectedIndexChanged);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Quantity,
+            this.Item,
+            this.ItemDescription,
+            this.UnitPrice,
+            this.TotalPrice});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 182);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(542, 213);
+            this.dataGridView1.TabIndex = 74;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            // 
+            // ItemDescription
+            // 
+            this.ItemDescription.HeaderText = "ItemDescription";
+            this.ItemDescription.Name = "ItemDescription";
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "UnitPrice";
+            this.UnitPrice.Name = "UnitPrice";
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.HeaderText = "TotalPrice";
+            this.TotalPrice.Name = "TotalPrice";
+            // 
+            // textTotalPrice
+            // 
+            this.textTotalPrice.Location = new System.Drawing.Point(579, 399);
+            this.textTotalPrice.Name = "textTotalPrice";
+            this.textTotalPrice.Size = new System.Drawing.Size(55, 20);
+            this.textTotalPrice.TabIndex = 75;
+            // 
+            // labelTotalPrice
+            // 
+            this.labelTotalPrice.AutoSize = true;
+            this.labelTotalPrice.Location = new System.Drawing.Point(576, 382);
+            this.labelTotalPrice.Name = "labelTotalPrice";
+            this.labelTotalPrice.Size = new System.Drawing.Size(58, 13);
+            this.labelTotalPrice.TabIndex = 76;
+            this.labelTotalPrice.Text = "Total Price";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(384, 139);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 77;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // textVendorID
+            // 
+            this.textVendorID.Location = new System.Drawing.Point(658, 169);
+            this.textVendorID.Name = "textVendorID";
+            this.textVendorID.Size = new System.Drawing.Size(100, 20);
+            this.textVendorID.TabIndex = 78;
+            // 
+            // camcoDataSet11
+            // 
+            this.camcoDataSet11.DataSetName = "CamcoDataSet11";
+            this.camcoDataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vendorsBindingSource
+            // 
+            this.vendorsBindingSource.DataMember = "Vendors";
+            this.vendorsBindingSource.DataSource = this.camcoDataSet11;
+            // 
+            // vendorsTableAdapter
+            // 
+            this.vendorsTableAdapter.ClearBeforeFill = true;
             // 
             // NewPurchaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textVendorID);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.labelTotalPrice);
+            this.Controls.Add(this.textTotalPrice);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnFinish);
             this.Controls.Add(this.textState);
@@ -312,14 +362,8 @@
             this.Controls.Add(this.labelCity);
             this.Controls.Add(this.labelZip);
             this.Controls.Add(this.textCity);
-            this.Controls.Add(this.textBillZip);
-            this.Controls.Add(this.labelLineItem);
-            this.Controls.Add(this.labelInvoiceDate);
-            this.Controls.Add(this.labelTotalPrice);
-            this.Controls.Add(this.labelUnitPrice);
-            this.Controls.Add(this.labelInvoiceItem);
-            this.Controls.Add(this.labelItemDescription);
-            this.Controls.Add(this.comboItem);
+            this.Controls.Add(this.textZip);
+            this.Controls.Add(this.comboInventory);
             this.Controls.Add(this.labelItem);
             this.Controls.Add(this.textQuantity);
             this.Controls.Add(this.labelQuantity);
@@ -335,6 +379,10 @@
             this.Controls.Add(this.comboVendorName);
             this.Name = "NewPurchaseForm";
             this.Text = "NewPurchaseForm";
+            this.Load += new System.EventHandler(this.NewPurchaseForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vendorsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,14 +397,8 @@
         private System.Windows.Forms.Label labelCity;
         private System.Windows.Forms.Label labelZip;
         private System.Windows.Forms.TextBox textCity;
-        private System.Windows.Forms.TextBox textBillZip;
-        private System.Windows.Forms.Label labelLineItem;
-        private System.Windows.Forms.Label labelInvoiceDate;
-        private System.Windows.Forms.Label labelTotalPrice;
-        private System.Windows.Forms.Label labelUnitPrice;
-        private System.Windows.Forms.Label labelInvoiceItem;
-        private System.Windows.Forms.Label labelItemDescription;
-        private System.Windows.Forms.ComboBox comboItem;
+        private System.Windows.Forms.TextBox textZip;
+        private System.Windows.Forms.ComboBox comboInventory;
         private System.Windows.Forms.Label labelItem;
         private System.Windows.Forms.TextBox textQuantity;
         private System.Windows.Forms.Label labelQuantity;
@@ -370,5 +412,18 @@
         private System.Windows.Forms.TextBox textSONumber;
         private System.Windows.Forms.Label labelComboVendor;
         private System.Windows.Forms.ComboBox comboVendorName;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
+        private System.Windows.Forms.TextBox textTotalPrice;
+        private System.Windows.Forms.Label labelTotalPrice;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox textVendorID;
+        private CamcoDataSet11 camcoDataSet11;
+        private System.Windows.Forms.BindingSource vendorsBindingSource;
+        private CamcoDataSet11TableAdapters.VendorsTableAdapter vendorsTableAdapter;
     }
 }

@@ -19,5 +19,7 @@ namespace CamcoForm
         public string VendorName { get; set; }
         public string PurchaseDate { get; set; }
         public string PurchaseTotal { get; set; }
+        public string PurchaseSO { get; set; }
+        public string PurchasePO { get; set; }
     }
 }

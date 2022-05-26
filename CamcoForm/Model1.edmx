@@ -82,6 +82,7 @@
           <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="QuantityPicked" Type="int" />
           <Property Name="QuantityRemaining" Type="int" />
+          <Property Name="DateScheduled" Type="varchar" MaxLength="50" />
           <Property Name="Commit" Type="bit" />
           <Property Name="InvoicePO" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -94,6 +95,8 @@
           <Property Name="VendorName" Type="varchar" MaxLength="50" />
           <Property Name="PurchaseDate" Type="varchar" MaxLength="50" />
           <Property Name="PurchaseTotal" Type="varchar" MaxLength="50" />
+          <Property Name="PurchaseSO" Type="nvarchar" MaxLength="50" />
+          <Property Name="PurchasePO" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PurchaseOrderLineItems">
           <Key>
@@ -120,6 +123,7 @@
           <Property Name="ProductName" Type="varchar" MaxLength="50" />
           <Property Name="QuantityPicked" Type="int" />
           <Property Name="QuantityRemaining" Type="int" />
+          <Property Name="DateScheduled" Type="nvarchar" MaxLength="50" />
           <Property Name="PackingList" Type="bit" />
           <Property Name="InvoicePO" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -217,6 +221,8 @@
           <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PurchaseDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PurchaseTotal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseSO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PurchasePO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PurchaseOrderLineItem">
           <Key>
@@ -279,18 +285,20 @@
           <Property Name="QuantityRemaining" Type="Int32" />
           <Property Name="Commit" Type="Boolean" />
           <Property Name="InvoicePO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateScheduled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Shipping">
           <Key>
             <PropertyRef Name="ShipID" />
           </Key>
-          <Property Name="ShipID" Type="Int32" Nullable="false" />
+          <Property Name="ShipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="InvoiceSO" Type="Int32" />
           <Property Name="Quantity" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="QuantityPicked" Type="Int32" />
           <Property Name="QuantityRemaining" Type="Int32" />
+          <Property Name="DateScheduled" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PackingList" Type="Boolean" />
-          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="InvoicePO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
@@ -363,6 +371,8 @@
           <EntitySetMapping Name="PurchaseOrders">
             <EntityTypeMapping TypeName="CamcoModel.PurchaseOrder">
               <MappingFragment StoreEntitySet="PurchaseOrder">
+                <ScalarProperty Name="PurchasePO" ColumnName="PurchasePO" />
+                <ScalarProperty Name="PurchaseSO" ColumnName="PurchaseSO" />
                 <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
                 <ScalarProperty Name="VendorID" ColumnName="VendorID" />
                 <ScalarProperty Name="VendorName" ColumnName="VendorName" />
@@ -414,6 +424,7 @@
           <EntitySetMapping Name="Pickings">
             <EntityTypeMapping TypeName="CamcoModel.Picking">
               <MappingFragment StoreEntitySet="Picking">
+                <ScalarProperty Name="DateScheduled" ColumnName="DateScheduled" />
                 <ScalarProperty Name="InvoicePO" ColumnName="InvoicePO" />
                 <ScalarProperty Name="Commit" ColumnName="Commit" />
                 <ScalarProperty Name="QuantityRemaining" ColumnName="QuantityRemaining" />
@@ -429,10 +440,11 @@
             <EntityTypeMapping TypeName="CamcoModel.Shipping">
               <MappingFragment StoreEntitySet="Shipping">
                 <ScalarProperty Name="InvoicePO" ColumnName="InvoicePO" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="PackingList" ColumnName="PackingList" />
+                <ScalarProperty Name="DateScheduled" ColumnName="DateScheduled" />
                 <ScalarProperty Name="QuantityRemaining" ColumnName="QuantityRemaining" />
                 <ScalarProperty Name="QuantityPicked" ColumnName="QuantityPicked" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="InvoiceSO" ColumnName="InvoiceSO" />
                 <ScalarProperty Name="ShipID" ColumnName="ShipID" />

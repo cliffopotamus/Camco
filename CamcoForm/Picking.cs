@@ -22,5 +22,6 @@ namespace CamcoForm
         public Nullable<int> QuantityRemaining { get; set; }
         public Nullable<bool> Commit { get; set; }
         public string InvoicePO { get; set; }
+        public string DateScheduled { get; set; }
     }
 }
