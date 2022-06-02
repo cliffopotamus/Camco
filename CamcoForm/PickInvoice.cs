@@ -17,8 +17,8 @@ namespace CamcoForm
             InitializeComponent();
         }
 
-        private const int ColQuantPick = 3;
-        private const int ColQuantRemain = 4;
+        private const int ColQuantPick = 4;
+        private const int ColQuantRemain = 5;
 
         public class PickingModel
         {
@@ -106,6 +106,16 @@ namespace CamcoForm
                         dataGridView1.Rows[i].Cells[5].Value = result[i].QuantityRemaining;
                     }
                 }
+            }
+        }
+
+        public void setDetails(string invoiceSO)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                Invoice result = DB.Invoices.SingleOrDefault(x => x.InvoiceSO == invoiceSO);
+                textPONumber.Text = result.InvoicePO;
+                textSONumber.Text = result.InvoiceSO;
             }
         }
 
@@ -226,15 +236,7 @@ namespace CamcoForm
             textPONumber.Text = placeholder;
         }
 
-        public void setDetails(string invoiceSO)
-        {
-            using (var DB = new CamcoEntities())
-            {
-                Invoice result = DB.Invoices.SingleOrDefault(x => x.InvoiceSO == invoiceSO);
-                textPONumber.Text = result.InvoicePO;
-                textSONumber.Text = result.InvoiceSO;
-            }
-        }
+        
 
         public string getSO()
         {

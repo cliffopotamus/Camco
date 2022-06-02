@@ -9,12 +9,13 @@
         <EntityTypeShape EntityType="CamcoModel.Inventory" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CamcoModel.InvoiceLineItem" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CamcoModel.Invoice" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CamcoModel.PurchaseOrder" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CamcoModel.PurchaseOrderLineItem" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CamcoModel.Vendor" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CamcoModel.Kit" Width="1.5" PointX="9.125" PointY="2.25" />
         <EntityTypeShape EntityType="CamcoModel.Picking" Width="1.5" PointX="11" PointY="1.375" />
         <EntityTypeShape EntityType="CamcoModel.Shipping" Width="1.5" PointX="10" PointY="5" />
+        <EntityTypeShape EntityType="CamcoModel.PurchaseOrder" Width="1.5" PointX="4.5" PointY="5.25" />
+        <EntityTypeShape EntityType="CamcoModel.Receiving" Width="1.5" PointX="0.75" PointY="5.625" />
+        <EntityTypeShape EntityType="CamcoModel.PurchaseOrderLineItem" Width="1.5" PointX="7.25" PointY="1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

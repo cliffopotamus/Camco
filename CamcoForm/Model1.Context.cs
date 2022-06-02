@@ -29,11 +29,12 @@ namespace CamcoForm
         public virtual DbSet<Inventory> Inventories { get; set; }
         public virtual DbSet<InvoiceLineItem> InvoiceLineItems { get; set; }
         public virtual DbSet<Invoice> Invoices { get; set; }
-        public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
-        public virtual DbSet<PurchaseOrderLineItem> PurchaseOrderLineItems { get; set; }
         public virtual DbSet<Vendor> Vendors { get; set; }
         public virtual DbSet<Kit> Kits { get; set; }
         public virtual DbSet<Picking> Pickings { get; set; }
         public virtual DbSet<Shipping> Shippings { get; set; }
+        public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
+        public virtual DbSet<Receiving> Receivings { get; set; }
+        public virtual DbSet<PurchaseOrderLineItem> PurchaseOrderLineItems { get; set; }
     }
 }

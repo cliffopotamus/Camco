@@ -15,14 +15,15 @@ namespace CamcoForm
     public partial class PurchaseOrderLineItem
     {
         public int PurchaseID { get; set; }
-        public int VendorID { get; set; }
-        public string VendorName { get; set; }
-        public Nullable<int> PurchaseSequence { get; set; }
-        public Nullable<int> ProductNo { get; set; }
+        public string PurchaseSO { get; set; }
+        public string PurchasePO { get; set; }
         public string ProductDescription { get; set; }
         public Nullable<int> ProductQuantity { get; set; }
         public Nullable<decimal> ProductPrice { get; set; }
         public Nullable<decimal> ProductExtension { get; set; }
         public Nullable<decimal> PurchaseTotal { get; set; }
+        public Nullable<int> ProductNo { get; set; }
+        public string ProductName { get; set; }
+        public Nullable<int> VendorID { get; set; }
     }
 }

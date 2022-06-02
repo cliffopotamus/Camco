@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PurchaseForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnInventory = new System.Windows.Forms.Button();
             this.BtnPurchases = new System.Windows.Forms.Button();
             this.BtnInvoices = new System.Windows.Forms.Button();
             this.BtnVendors = new System.Windows.Forms.Button();
@@ -39,10 +41,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonNewPurchaseOrder = new System.Windows.Forms.Button();
-            this.BtnInventory = new System.Windows.Forms.Button();
+            this.btnReceiveOrder = new System.Windows.Forms.Button();
+            this.btnDeletePO = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.purchaseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendorIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vendorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchaseDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchaseTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchaseSODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchasePODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchaseOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.camcoDataSet12 = new CamcoForm.CamcoDataSet12();
+            this.purchaseOrderTableAdapter = new CamcoForm.CamcoDataSet12TableAdapters.PurchaseOrderTableAdapter();
+            this.btnOpenPurchaseOrder = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseOrderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet12)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -58,8 +76,24 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(186, 538);
+            this.panel1.Size = new System.Drawing.Size(186, 571);
             this.panel1.TabIndex = 1;
+            // 
+            // BtnInventory
+            // 
+            this.BtnInventory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnInventory.FlatAppearance.BorderSize = 0;
+            this.BtnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnInventory.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold);
+            this.BtnInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.BtnInventory.Image = ((System.Drawing.Image)(resources.GetObject("BtnInventory.Image")));
+            this.BtnInventory.Location = new System.Drawing.Point(0, 354);
+            this.BtnInventory.Name = "BtnInventory";
+            this.BtnInventory.Size = new System.Drawing.Size(186, 42);
+            this.BtnInventory.TabIndex = 4;
+            this.BtnInventory.Text = "Inventory";
+            this.BtnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnInventory.UseVisualStyleBackColor = true;
             // 
             // BtnPurchases
             // 
@@ -180,40 +214,145 @@
             this.buttonNewPurchaseOrder.Name = "buttonNewPurchaseOrder";
             this.buttonNewPurchaseOrder.Size = new System.Drawing.Size(125, 42);
             this.buttonNewPurchaseOrder.TabIndex = 2;
-            this.buttonNewPurchaseOrder.Text = "Add Purchase Order";
+            this.buttonNewPurchaseOrder.Text = "New Purchase Order";
             this.buttonNewPurchaseOrder.UseVisualStyleBackColor = true;
             this.buttonNewPurchaseOrder.Click += new System.EventHandler(this.buttonNewPurchaseOrder_Click);
             // 
-            // BtnInventory
+            // btnReceiveOrder
             // 
-            this.BtnInventory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnInventory.FlatAppearance.BorderSize = 0;
-            this.BtnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnInventory.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold);
-            this.BtnInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.BtnInventory.Image = ((System.Drawing.Image)(resources.GetObject("BtnInventory.Image")));
-            this.BtnInventory.Location = new System.Drawing.Point(0, 354);
-            this.BtnInventory.Name = "BtnInventory";
-            this.BtnInventory.Size = new System.Drawing.Size(186, 42);
-            this.BtnInventory.TabIndex = 4;
-            this.BtnInventory.Text = "Inventory";
-            this.BtnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnInventory.UseVisualStyleBackColor = true;
+            this.btnReceiveOrder.Location = new System.Drawing.Point(402, 60);
+            this.btnReceiveOrder.Name = "btnReceiveOrder";
+            this.btnReceiveOrder.Size = new System.Drawing.Size(125, 42);
+            this.btnReceiveOrder.TabIndex = 3;
+            this.btnReceiveOrder.Text = "Receive Order";
+            this.btnReceiveOrder.UseVisualStyleBackColor = true;
+            this.btnReceiveOrder.Click += new System.EventHandler(this.btnReceiveOrder_Click);
+            // 
+            // btnDeletePO
+            // 
+            this.btnDeletePO.Location = new System.Drawing.Point(783, 60);
+            this.btnDeletePO.Name = "btnDeletePO";
+            this.btnDeletePO.Size = new System.Drawing.Size(125, 42);
+            this.btnDeletePO.TabIndex = 4;
+            this.btnDeletePO.Text = "Delete Purchase Order";
+            this.btnDeletePO.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.purchaseIDDataGridViewTextBoxColumn,
+            this.vendorIDDataGridViewTextBoxColumn,
+            this.vendorNameDataGridViewTextBoxColumn,
+            this.purchaseDateDataGridViewTextBoxColumn,
+            this.purchaseTotalDataGridViewTextBoxColumn,
+            this.purchaseSODataGridViewTextBoxColumn,
+            this.purchasePODataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.purchaseOrderBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(219, 170);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(743, 352);
+            this.dataGridView1.TabIndex = 5;
+            // 
+            // purchaseIDDataGridViewTextBoxColumn
+            // 
+            this.purchaseIDDataGridViewTextBoxColumn.DataPropertyName = "PurchaseID";
+            this.purchaseIDDataGridViewTextBoxColumn.HeaderText = "PurchaseID";
+            this.purchaseIDDataGridViewTextBoxColumn.Name = "purchaseIDDataGridViewTextBoxColumn";
+            this.purchaseIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // vendorIDDataGridViewTextBoxColumn
+            // 
+            this.vendorIDDataGridViewTextBoxColumn.DataPropertyName = "VendorID";
+            this.vendorIDDataGridViewTextBoxColumn.HeaderText = "VendorID";
+            this.vendorIDDataGridViewTextBoxColumn.Name = "vendorIDDataGridViewTextBoxColumn";
+            this.vendorIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // vendorNameDataGridViewTextBoxColumn
+            // 
+            this.vendorNameDataGridViewTextBoxColumn.DataPropertyName = "VendorName";
+            this.vendorNameDataGridViewTextBoxColumn.HeaderText = "VendorName";
+            this.vendorNameDataGridViewTextBoxColumn.Name = "vendorNameDataGridViewTextBoxColumn";
+            this.vendorNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // purchaseDateDataGridViewTextBoxColumn
+            // 
+            this.purchaseDateDataGridViewTextBoxColumn.DataPropertyName = "PurchaseDate";
+            this.purchaseDateDataGridViewTextBoxColumn.HeaderText = "PurchaseDate";
+            this.purchaseDateDataGridViewTextBoxColumn.Name = "purchaseDateDataGridViewTextBoxColumn";
+            this.purchaseDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // purchaseTotalDataGridViewTextBoxColumn
+            // 
+            this.purchaseTotalDataGridViewTextBoxColumn.DataPropertyName = "PurchaseTotal";
+            this.purchaseTotalDataGridViewTextBoxColumn.HeaderText = "PurchaseTotal";
+            this.purchaseTotalDataGridViewTextBoxColumn.Name = "purchaseTotalDataGridViewTextBoxColumn";
+            this.purchaseTotalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // purchaseSODataGridViewTextBoxColumn
+            // 
+            this.purchaseSODataGridViewTextBoxColumn.DataPropertyName = "PurchaseSO";
+            this.purchaseSODataGridViewTextBoxColumn.HeaderText = "PurchaseSO";
+            this.purchaseSODataGridViewTextBoxColumn.Name = "purchaseSODataGridViewTextBoxColumn";
+            this.purchaseSODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // purchasePODataGridViewTextBoxColumn
+            // 
+            this.purchasePODataGridViewTextBoxColumn.DataPropertyName = "PurchasePO";
+            this.purchasePODataGridViewTextBoxColumn.HeaderText = "PurchasePO";
+            this.purchasePODataGridViewTextBoxColumn.Name = "purchasePODataGridViewTextBoxColumn";
+            this.purchasePODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // purchaseOrderBindingSource
+            // 
+            this.purchaseOrderBindingSource.DataMember = "PurchaseOrder";
+            this.purchaseOrderBindingSource.DataSource = this.camcoDataSet12;
+            // 
+            // camcoDataSet12
+            // 
+            this.camcoDataSet12.DataSetName = "CamcoDataSet12";
+            this.camcoDataSet12.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // purchaseOrderTableAdapter
+            // 
+            this.purchaseOrderTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnOpenPurchaseOrder
+            // 
+            this.btnOpenPurchaseOrder.Location = new System.Drawing.Point(591, 60);
+            this.btnOpenPurchaseOrder.Name = "btnOpenPurchaseOrder";
+            this.btnOpenPurchaseOrder.Size = new System.Drawing.Size(125, 42);
+            this.btnOpenPurchaseOrder.TabIndex = 6;
+            this.btnOpenPurchaseOrder.Text = "Open Purchase Order";
+            this.btnOpenPurchaseOrder.UseVisualStyleBackColor = true;
+            this.btnOpenPurchaseOrder.Click += new System.EventHandler(this.btnOpenPurchaseOrder_Click);
             // 
             // PurchaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(935, 538);
+            this.ClientSize = new System.Drawing.Size(1066, 571);
+            this.Controls.Add(this.btnOpenPurchaseOrder);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnDeletePO);
+            this.Controls.Add(this.btnReceiveOrder);
             this.Controls.Add(this.buttonNewPurchaseOrder);
             this.Controls.Add(this.panel1);
             this.Name = "PurchaseForm";
             this.Text = "PurchaseForm";
+            this.Load += new System.EventHandler(this.PurchaseForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseOrderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet12)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -231,5 +370,19 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonNewPurchaseOrder;
         private System.Windows.Forms.Button BtnInventory;
+        private System.Windows.Forms.Button btnReceiveOrder;
+        private System.Windows.Forms.Button btnDeletePO;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private CamcoDataSet12 camcoDataSet12;
+        private System.Windows.Forms.BindingSource purchaseOrderBindingSource;
+        private CamcoDataSet12TableAdapters.PurchaseOrderTableAdapter purchaseOrderTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn purchaseIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vendorIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vendorNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn purchaseDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn purchaseTotalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn purchaseSODataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn purchasePODataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnOpenPurchaseOrder;
     }
 }

@@ -93,8 +93,8 @@
           <Property Name="PurchaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VendorID" Type="int" Nullable="false" />
           <Property Name="VendorName" Type="varchar" MaxLength="50" />
-          <Property Name="PurchaseDate" Type="varchar" MaxLength="50" />
-          <Property Name="PurchaseTotal" Type="varchar" MaxLength="50" />
+          <Property Name="PurchaseDate" Type="datetime" />
+          <Property Name="PurchaseTotal" Type="decimal" Precision="18" Scale="2" />
           <Property Name="PurchaseSO" Type="nvarchar" MaxLength="50" />
           <Property Name="PurchasePO" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -103,15 +103,31 @@
             <PropertyRef Name="PurchaseID" />
           </Key>
           <Property Name="PurchaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="VendorID" Type="int" Nullable="false" />
-          <Property Name="VendorName" Type="varchar" MaxLength="50" />
-          <Property Name="PurchaseSequence" Type="int" />
-          <Property Name="ProductNo" Type="int" />
-          <Property Name="ProductDescription" Type="varchar" MaxLength="100" />
+          <Property Name="PurchaseSO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PurchasePO" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductDescription" Type="nvarchar" MaxLength="100" />
           <Property Name="ProductQuantity" Type="int" />
           <Property Name="ProductPrice" Type="money" />
           <Property Name="ProductExtension" Type="money" />
           <Property Name="PurchaseTotal" Type="money" />
+          <Property Name="ProductNo" Type="int" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="VendorID" Type="int" />
+        </EntityType>
+        <EntityType Name="Receiving">
+          <Key>
+            <PropertyRef Name="ReceiveID" />
+          </Key>
+          <Property Name="ReceiveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseSO" Type="nvarchar" MaxLength="50" />
+          <Property Name="PurchasePO" Type="nvarchar" MaxLength="50" />
+          <Property Name="VendorID" Type="int" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="100" />
+          <Property Name="QuantityReceived" Type="int" />
+          <Property Name="QuantityRemaining" Type="int" />
+          <Property Name="DateScheduled" Type="date" />
+          <Property Name="Finished" Type="bit" />
         </EntityType>
         <EntityType Name="Shipping">
           <Key>
@@ -148,6 +164,7 @@
           <EntitySet Name="Picking" EntityType="Self.Picking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseOrderLineItems" EntityType="Self.PurchaseOrderLineItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Receiving" EntityType="Self.Receiving" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shipping" EntityType="Self.Shipping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -212,33 +229,6 @@
           <Property Name="InvoiceSO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="PurchaseOrder">
-          <Key>
-            <PropertyRef Name="PurchaseID" />
-          </Key>
-          <Property Name="PurchaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="VendorID" Type="Int32" Nullable="false" />
-          <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PurchaseDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PurchaseTotal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PurchaseSO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PurchasePO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="PurchaseOrderLineItem">
-          <Key>
-            <PropertyRef Name="PurchaseID" />
-          </Key>
-          <Property Name="PurchaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="VendorID" Type="Int32" Nullable="false" />
-          <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PurchaseSequence" Type="Int32" />
-          <Property Name="ProductNo" Type="Int32" />
-          <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ProductQuantity" Type="Int32" />
-          <Property Name="ProductPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="ProductExtension" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="PurchaseTotal" Type="Decimal" Precision="19" Scale="4" />
-        </EntityType>
         <EntityType Name="Vendor">
           <Key>
             <PropertyRef Name="VendorID" />
@@ -256,12 +246,13 @@
           <EntitySet Name="Inventories" EntityType="Self.Inventory" />
           <EntitySet Name="InvoiceLineItems" EntityType="Self.InvoiceLineItem" />
           <EntitySet Name="Invoices" EntityType="Self.Invoice" />
-          <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrder" />
-          <EntitySet Name="PurchaseOrderLineItems" EntityType="Self.PurchaseOrderLineItem" />
           <EntitySet Name="Vendors" EntityType="Self.Vendor" />
           <EntitySet Name="Kits" EntityType="CamcoModel.Kit" />
           <EntitySet Name="Pickings" EntityType="CamcoModel.Picking" />
           <EntitySet Name="Shippings" EntityType="CamcoModel.Shipping" />
+          <EntitySet Name="PurchaseOrders" EntityType="CamcoModel.PurchaseOrder" />
+          <EntitySet Name="Receivings" EntityType="CamcoModel.Receiving" />
+          <EntitySet Name="PurchaseOrderLineItems" EntityType="CamcoModel.PurchaseOrderLineItem" />
         </EntityContainer>
         <EntityType Name="Kit">
           <Key>
@@ -300,6 +291,49 @@
           <Property Name="DateScheduled" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PackingList" Type="Boolean" />
           <Property Name="InvoicePO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="PurchaseID" />
+          </Key>
+          <Property Name="PurchaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorID" Type="Int32" Nullable="false" />
+          <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+          <Property Name="PurchaseTotal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseSO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PurchasePO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Receiving">
+          <Key>
+            <PropertyRef Name="ReceiveID" />
+          </Key>
+          <Property Name="ReceiveID" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseSO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PurchasePO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VendorID" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="QuantityReceived" Type="Int32" />
+          <Property Name="QuantityRemaining" Type="Int32" />
+          <Property Name="DateScheduled" Type="DateTime" Precision="0" />
+          <Property Name="Finished" Type="Boolean" />
+          <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderLineItem">
+          <Key>
+            <PropertyRef Name="PurchaseID" />
+          </Key>
+          <Property Name="PurchaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseSO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PurchasePO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductQuantity" Type="Int32" />
+          <Property Name="ProductPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ProductExtension" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PurchaseTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ProductNo" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VendorID" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -368,35 +402,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PurchaseOrders">
-            <EntityTypeMapping TypeName="CamcoModel.PurchaseOrder">
-              <MappingFragment StoreEntitySet="PurchaseOrder">
-                <ScalarProperty Name="PurchasePO" ColumnName="PurchasePO" />
-                <ScalarProperty Name="PurchaseSO" ColumnName="PurchaseSO" />
-                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
-                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
-                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
-                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
-                <ScalarProperty Name="PurchaseTotal" ColumnName="PurchaseTotal" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PurchaseOrderLineItems">
-            <EntityTypeMapping TypeName="CamcoModel.PurchaseOrderLineItem">
-              <MappingFragment StoreEntitySet="PurchaseOrderLineItems">
-                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
-                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
-                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
-                <ScalarProperty Name="PurchaseSequence" ColumnName="PurchaseSequence" />
-                <ScalarProperty Name="ProductNo" ColumnName="ProductNo" />
-                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
-                <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
-                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
-                <ScalarProperty Name="ProductExtension" ColumnName="ProductExtension" />
-                <ScalarProperty Name="PurchaseTotal" ColumnName="PurchaseTotal" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Vendors">
             <EntityTypeMapping TypeName="CamcoModel.Vendor">
               <MappingFragment StoreEntitySet="Vendors">
@@ -448,6 +453,52 @@
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="InvoiceSO" ColumnName="InvoiceSO" />
                 <ScalarProperty Name="ShipID" ColumnName="ShipID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrders">
+            <EntityTypeMapping TypeName="CamcoModel.PurchaseOrder">
+              <MappingFragment StoreEntitySet="PurchaseOrder">
+                <ScalarProperty Name="PurchasePO" ColumnName="PurchasePO" />
+                <ScalarProperty Name="PurchaseSO" ColumnName="PurchaseSO" />
+                <ScalarProperty Name="PurchaseTotal" ColumnName="PurchaseTotal" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receivings">
+            <EntityTypeMapping TypeName="CamcoModel.Receiving">
+              <MappingFragment StoreEntitySet="Receiving">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Finished" ColumnName="Finished" />
+                <ScalarProperty Name="DateScheduled" ColumnName="DateScheduled" />
+                <ScalarProperty Name="QuantityRemaining" ColumnName="QuantityRemaining" />
+                <ScalarProperty Name="QuantityReceived" ColumnName="QuantityReceived" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="PurchasePO" ColumnName="PurchasePO" />
+                <ScalarProperty Name="PurchaseSO" ColumnName="PurchaseSO" />
+                <ScalarProperty Name="ReceiveID" ColumnName="ReceiveID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderLineItems">
+            <EntityTypeMapping TypeName="CamcoModel.PurchaseOrderLineItem">
+              <MappingFragment StoreEntitySet="PurchaseOrderLineItems">
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductNo" ColumnName="ProductNo" />
+                <ScalarProperty Name="PurchaseTotal" ColumnName="PurchaseTotal" />
+                <ScalarProperty Name="ProductExtension" ColumnName="ProductExtension" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="PurchasePO" ColumnName="PurchasePO" />
+                <ScalarProperty Name="PurchaseSO" ColumnName="PurchaseSO" />
+                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

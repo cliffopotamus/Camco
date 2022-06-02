@@ -12,14 +12,17 @@ namespace CamcoForm
     using System;
     using System.Collections.Generic;
     
-    public partial class PurchaseOrder
+    public partial class Receiving
     {
-        public int PurchaseID { get; set; }
-        public int VendorID { get; set; }
-        public string VendorName { get; set; }
-        public Nullable<System.DateTime> PurchaseDate { get; set; }
-        public Nullable<decimal> PurchaseTotal { get; set; }
+        public int ReceiveID { get; set; }
         public string PurchaseSO { get; set; }
         public string PurchasePO { get; set; }
+        public Nullable<int> VendorID { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public Nullable<int> QuantityReceived { get; set; }
+        public Nullable<int> QuantityRemaining { get; set; }
+        public Nullable<System.DateTime> DateScheduled { get; set; }
+        public Nullable<bool> Finished { get; set; }
+        public string ProductName { get; set; }
     }
 }

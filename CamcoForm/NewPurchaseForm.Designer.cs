@@ -51,6 +51,8 @@
             this.textSONumber = new System.Windows.Forms.TextBox();
             this.labelComboVendor = new System.Windows.Forms.Label();
             this.comboVendorName = new System.Windows.Forms.ComboBox();
+            this.vendorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.camcoDataSet11 = new CamcoForm.CamcoDataSet11();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,12 +63,10 @@
             this.labelTotalPrice = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.textVendorID = new System.Windows.Forms.TextBox();
-            this.camcoDataSet11 = new CamcoForm.CamcoDataSet11();
-            this.vendorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vendorsTableAdapter = new CamcoForm.CamcoDataSet11TableAdapters.VendorsTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vendorsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -77,6 +77,7 @@
             this.btnCancel.TabIndex = 73;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnFinish
             // 
@@ -86,6 +87,7 @@
             this.btnFinish.TabIndex = 72;
             this.btnFinish.Text = "Finish";
             this.btnFinish.UseVisualStyleBackColor = true;
+            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 
             // textState
             // 
@@ -259,6 +261,16 @@
             this.comboVendorName.TabIndex = 38;
             this.comboVendorName.SelectedIndexChanged += new System.EventHandler(this.comboVendorName_SelectedIndexChanged);
             // 
+            // vendorsBindingSource
+            // 
+            this.vendorsBindingSource.DataMember = "Vendors";
+            this.vendorsBindingSource.DataSource = this.camcoDataSet11;
+            // 
+            // camcoDataSet11
+            // 
+            this.camcoDataSet11.DataSetName = "CamcoDataSet11";
+            this.camcoDataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -272,6 +284,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(542, 213);
             this.dataGridView1.TabIndex = 74;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
             // 
             // Quantity
             // 
@@ -331,16 +345,6 @@
             this.textVendorID.Size = new System.Drawing.Size(100, 20);
             this.textVendorID.TabIndex = 78;
             // 
-            // camcoDataSet11
-            // 
-            this.camcoDataSet11.DataSetName = "CamcoDataSet11";
-            this.camcoDataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vendorsBindingSource
-            // 
-            this.vendorsBindingSource.DataMember = "Vendors";
-            this.vendorsBindingSource.DataSource = this.camcoDataSet11;
-            // 
             // vendorsTableAdapter
             // 
             this.vendorsTableAdapter.ClearBeforeFill = true;
@@ -380,9 +384,9 @@
             this.Name = "NewPurchaseForm";
             this.Text = "NewPurchaseForm";
             this.Load += new System.EventHandler(this.NewPurchaseForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vendorsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

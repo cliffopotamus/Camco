@@ -116,6 +116,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CamcoDataSet11.xsd</DependentUpon>
     </Compile>
+    <Compile Include="CamcoDataSet12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CamcoDataSet12.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CamcoDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -327,6 +332,15 @@
     <Compile Include="PurchaseOrderLineItem.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReceiveOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReceiveOrderForm.Designer.cs">
+      <DependentUpon>ReceiveOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Receiving.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Shipping.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -423,6 +437,9 @@
     <EmbeddedResource Include="PurchaseForm.resx">
       <DependentUpon>PurchaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReceiveOrderForm.resx">
+      <DependentUpon>ReceiveOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ShippingForm.resx">
       <DependentUpon>ShippingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -500,6 +517,17 @@
     </None>
     <None Include="CamcoDataSet11.xss">
       <DependentUpon>CamcoDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet12.xsc">
+      <DependentUpon>CamcoDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="CamcoDataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CamcoDataSet12.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CamcoDataSet12.xss">
+      <DependentUpon>CamcoDataSet12.xsd</DependentUpon>
     </None>
     <None Include="CamcoDataSet2.xsc">
       <DependentUpon>CamcoDataSet2.xsd</DependentUpon>

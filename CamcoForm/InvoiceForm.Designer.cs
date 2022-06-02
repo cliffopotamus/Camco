@@ -60,6 +60,7 @@
             this.btnEnterSO = new System.Windows.Forms.Button();
             this.btnPickInvoice = new System.Windows.Forms.Button();
             this.btnShipInvoice = new System.Windows.Forms.Button();
+            this.btnDeleteInvoice = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,7 +72,7 @@
             // 
             // btnNewInvoice
             // 
-            this.btnNewInvoice.Location = new System.Drawing.Point(291, 68);
+            this.btnNewInvoice.Location = new System.Drawing.Point(235, 68);
             this.btnNewInvoice.Name = "btnNewInvoice";
             this.btnNewInvoice.Size = new System.Drawing.Size(118, 30);
             this.btnNewInvoice.TabIndex = 0;
@@ -93,7 +94,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(186, 538);
+            this.panel1.Size = new System.Drawing.Size(186, 550);
             this.panel1.TabIndex = 2;
             // 
             // button2
@@ -252,6 +253,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -264,10 +266,10 @@
             this.invoiceSODataGridViewTextBoxColumn,
             this.customerNameDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.invoicesBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(192, 159);
+            this.dataGridView1.Location = new System.Drawing.Point(222, 163);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(716, 325);
+            this.dataGridView1.Size = new System.Drawing.Size(742, 355);
             this.dataGridView1.TabIndex = 3;
             // 
             // invoiceIDDataGridViewTextBoxColumn
@@ -335,7 +337,7 @@
             // 
             // btnRefreshInvoice
             // 
-            this.btnRefreshInvoice.Location = new System.Drawing.Point(449, 68);
+            this.btnRefreshInvoice.Location = new System.Drawing.Point(400, 68);
             this.btnRefreshInvoice.Name = "btnRefreshInvoice";
             this.btnRefreshInvoice.Size = new System.Drawing.Size(118, 30);
             this.btnRefreshInvoice.TabIndex = 4;
@@ -362,7 +364,7 @@
             // 
             // btnPickInvoice
             // 
-            this.btnPickInvoice.Location = new System.Drawing.Point(607, 68);
+            this.btnPickInvoice.Location = new System.Drawing.Point(571, 68);
             this.btnPickInvoice.Name = "btnPickInvoice";
             this.btnPickInvoice.Size = new System.Drawing.Size(118, 30);
             this.btnPickInvoice.TabIndex = 7;
@@ -372,7 +374,7 @@
             // 
             // btnShipInvoice
             // 
-            this.btnShipInvoice.Location = new System.Drawing.Point(758, 68);
+            this.btnShipInvoice.Location = new System.Drawing.Point(722, 68);
             this.btnShipInvoice.Name = "btnShipInvoice";
             this.btnShipInvoice.Size = new System.Drawing.Size(118, 30);
             this.btnShipInvoice.TabIndex = 8;
@@ -380,12 +382,22 @@
             this.btnShipInvoice.UseVisualStyleBackColor = true;
             this.btnShipInvoice.Click += new System.EventHandler(this.btnShipInvoice_Click);
             // 
+            // btnDeleteInvoice
+            // 
+            this.btnDeleteInvoice.Location = new System.Drawing.Point(881, 68);
+            this.btnDeleteInvoice.Name = "btnDeleteInvoice";
+            this.btnDeleteInvoice.Size = new System.Drawing.Size(118, 30);
+            this.btnDeleteInvoice.TabIndex = 9;
+            this.btnDeleteInvoice.Text = "Delete Invoice";
+            this.btnDeleteInvoice.UseVisualStyleBackColor = true;
+            // 
             // InvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(935, 538);
+            this.ClientSize = new System.Drawing.Size(1082, 550);
+            this.Controls.Add(this.btnDeleteInvoice);
             this.Controls.Add(this.btnShipInvoice);
             this.Controls.Add(this.btnPickInvoice);
             this.Controls.Add(this.btnEnterSO);
@@ -442,5 +454,6 @@
         private System.Windows.Forms.Button btnEnterSO;
         private System.Windows.Forms.Button btnPickInvoice;
         private System.Windows.Forms.Button btnShipInvoice;
+        private System.Windows.Forms.Button btnDeleteInvoice;
     }
 }

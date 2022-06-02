@@ -12,6 +12,9 @@ namespace CamcoForm
 {
     public partial class NewPurchaseForm : Form
     {
+
+        private bool editMode = false;
+
         public NewPurchaseForm()
         {
             InitializeComponent();
@@ -30,6 +33,19 @@ namespace CamcoForm
             // TODO: This line of code loads data into the 'camcoDataSet11.Vendors' table. You can move, or remove it, as needed.
             this.vendorsTableAdapter.Fill(this.camcoDataSet11.Vendors);
 
+        }
+
+        public class ReceivingModel
+        {
+            public int ReceiveID;
+            public string PurchaseSO;
+            public string PurchasePO;
+            public int VendorID;
+            public int Quantity;
+            public int QuantityReceived;
+            public int QuantityRemaining;
+            public DateTime DateScheduled;
+            public bool Finished;
         }
 
         public class InventoryBox
@@ -750,17 +766,113 @@ namespace CamcoForm
             return addedItem;
         }
 
-        public void getVendorID(string vendName)
+        public void AddRow(SalesItem salesRow)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName == salesRow.DisplayName);
+                decimal totalPrice = result.SalesPrice.GetValueOrDefault() * salesRow.quantity;
+
+                if (result != null)
+                {
+                    dataGridView1.Rows.Add(salesRow.quantity, salesRow.DisplayName, result.ProductDescription, result.SalesPrice, totalPrice);
+
+                    string sInvoiceTotal = textTotalPrice.Text;
+                    decimal dInvoiceTotal = decimal.Parse(sInvoiceTotal);
+                    dInvoiceTotal = dInvoiceTotal + totalPrice;
+                    string sCompleteInvoiceTotal = dInvoiceTotal.ToString();
+                    textTotalPrice.Text = sCompleteInvoiceTotal;
+                }
+            }
+        }
+
+        public void EditRow(SalesItem salesRow, DataGridViewCellValidatingEventArgs e)
+        {
+            int number;
+            int intValue = convertToInt(e.FormattedValue.ToString());
+            decimal decValue = convertToDecimal(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+            {
+                if (int.TryParse(e.FormattedValue.ToString(), out number))
+                {
+                    decimal totalPrice = convertToDecimal(dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString()) * convertToInt(e.FormattedValue.ToString());
+                    dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
+                    textTotalPrice.Text = dataGridView1.Rows.Cast<DataGridViewRow>().AsEnumerable().Sum(t => Convert.ToDecimal(t.Cells[4].Value)).ToString();
+                }
+
+
+                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex] == dataGridView1.Rows[e.RowIndex].Cells[3])
+                {
+                    decimal totalPrice = convertToInt(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()) * convertToDecimal(e.FormattedValue.ToString());
+                    dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
+                    textTotalPrice.Text = dataGridView1.Rows.Cast<DataGridViewRow>().AsEnumerable().Sum(t => Convert.ToDecimal(t.Cells[4].Value)).ToString();
+                }
+            }
+
+        }
+
+        private bool editQuantity(int quantity)
+        {
+            return true;
+        }
+
+        private bool editPrice(decimal money)
+        {
+            return true;
+        }
+
+        private const int ColQuantIndex = 0;
+        private const int ColPriceIndex = 3;
+
+        public bool ValidateCell(DataGridViewCellValidatingEventArgs e)
+        {
+            bool result = true;
+
+            switch (e.ColumnIndex)
+            {
+                case ColQuantIndex:
+                    int intValue = convertToInt(e.FormattedValue.ToString());
+                    result = editQuantity(intValue);
+                    break;
+
+                case ColPriceIndex:
+                    decimal decimalValue = convertToDecimal(e.FormattedValue.ToString());
+                    result = editPrice(decimalValue);
+                    break;
+            }
+            return result;
+        }
+
+        public bool CheckRequired(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void setPurchaseSO(string textSO)
+        {
+            textSONumber.Text = textSO;
+        }
+         
+        public string getPurchaseSO()
+        {
+            return textSONumber.Text;
+        }
+
+       public void getVendorID(string vendName)
         {
             using (var DB = new CamcoEntities())
             {
                 Vendor result = DB.Vendors.SingleOrDefault(c => c.VendorName == vendName);
-
                 if (result != null)
                 {
                     textVendorID.Text = result.VendorID.ToString();
                 }
-
             }
         }
 
@@ -823,6 +935,151 @@ namespace CamcoForm
             }
         }
 
+        public bool validateDate(string placeholder)
+        {
+            DateTime date;
+            bool success = DateTime.TryParse(placeholder, out date);
+
+            if (success)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+        }
+
+        public Receiving convertToDB(int i)
+        {
+            Receiving placeholder = new Receiving();
+            placeholder.PurchasePO = textPONumber.Text;
+            placeholder.PurchaseSO = textSONumber.Text;
+            placeholder.Quantity = convertToInt(dataGridView1.Rows[i].Cells[0].Value.ToString());
+            placeholder.ProductName = dataGridView1.Rows[i].Cells[1].Value.ToString();
+            return placeholder;
+        }
+
+        public void updateReceivingDB(Receiving placeholder)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                DB.Receivings.Add(placeholder);
+                DB.SaveChanges();
+            }
+        }
+
+        public PurchaseOrder convertPurchaseToDB()
+        {
+            PurchaseOrder placeholder = new PurchaseOrder();
+            placeholder.PurchasePO = textPONumber.Text;
+            placeholder.PurchaseSO = textSONumber.Text;
+            placeholder.VendorID = convertToInt(textVendorID.Text);
+            placeholder.VendorName = comboVendorName.Text;
+            placeholder.PurchaseTotal = convertToDecimal(textTotalPrice.Text);
+            bool boolDate = validateDate(textDate.Text);
+            if (boolDate)
+            {
+                placeholder.PurchaseDate = DateTime.Parse(textDate.Text);
+            }
+
+            else
+            {
+                string error = "Error: invalid date entered.";
+                MessageBox.Show(error);
+            }
+            return placeholder;
+        }
+
+        public void updatePurchaseDB(PurchaseOrder placeholder)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                DB.PurchaseOrders.Add(placeholder);
+                DB.SaveChanges();
+            }
+        }
+
+        public PurchaseOrderLineItem convertLineToDB(int i)
+        {
+            PurchaseOrderLineItem placeholder = new PurchaseOrderLineItem();
+            placeholder.ProductName = dataGridView1.Rows[i].Cells[1].Value.ToString();
+            placeholder.ProductDescription = dataGridView1.Rows[i].Cells[2].Value.ToString();
+            placeholder.ProductQuantity = convertToInt(dataGridView1.Rows[i].Cells[0].Value.ToString());
+            placeholder.ProductPrice = convertToDecimal(dataGridView1.Rows[i].Cells[3].Value.ToString());
+            placeholder.ProductExtension = convertToDecimal(dataGridView1.Rows[i].Cells[4].Value.ToString());
+            placeholder.PurchasePO = textPONumber.Text;
+            placeholder.PurchaseSO = textSONumber.Text;
+            return placeholder;
+        }
+
+        public void updateLineDB(PurchaseOrderLineItem placeholder)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                DB.PurchaseOrderLineItems.Add(placeholder);
+                DB.SaveChanges();
+            }
+        }
+
+        public void removeReceivingDB()
+        {
+            using (var DB = new CamcoEntities())
+            {
+                List<Receiving> result = DB.Receivings.Where(x => x.PurchasePO == textSONumber.Text).ToList();
+
+                if (result != null)
+                {
+                    for (int i =0; i < result.Count; i++)
+                    {
+                        DB.Receivings.Remove(result[i]);
+                        DB.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        public void removeLineDB()
+        {
+            using (var DB = new CamcoEntities())
+            {
+                List<PurchaseOrderLineItem> result = DB.PurchaseOrderLineItems.Where(x => x.PurchaseSO == textSONumber.Text).ToList();
+
+                if (result != null)
+                {
+                    for (int i =0; i < result.Count; i++)
+                    {
+                        DB.PurchaseOrderLineItems.Remove(result[i]);
+                        DB.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        public void removePurchaseOrderDB()
+        {
+            using (var DB = new CamcoEntities())
+            {
+                List<PurchaseOrder> result = DB.PurchaseOrders.Where(x => x.PurchaseSO == textSONumber.Text).ToList();
+
+                if (result != null)
+                {
+                    for (int i =0; i < result.Count; i++)
+                    {
+                        DB.PurchaseOrders.Remove(result[i]);
+                        DB.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        public bool editModeBool()
+        {
+            editMode = true;
+            return editMode;
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             int itemQuantity = Int32.Parse(textQuantity.Text);
@@ -834,6 +1091,81 @@ namespace CamcoForm
         {
             getVendorID(comboVendorName.Text);
             setAddress(convertToInt(textVendorID.Text));
+        }
+
+        private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            var result = ValidateCell(e);
+            var eValue = e.FormattedValue.ToString();
+
+
+            if (true)
+            {
+                if (String.IsNullOrEmpty(eValue))
+                {
+
+                }
+                else
+                {
+                    /* insert tryparse methods in itemToEdit */
+                    SalesItem itemToedit = new SalesItem(convertToInt(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()), dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
+                    EditRow(itemToedit, e);
+                }
+            }
+
+            else
+            {
+                string message = "Validation failed.";
+                MessageBox.Show(message);
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            string message = "Are you sure you want to cancel?";
+            string title = "Close Window";
+            MessageBoxButtons closeButtons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, closeButtons);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void btnFinish_Click(object sender, EventArgs e)
+        {
+            var custFailure = CheckRequired(comboVendorName.Text);
+            var POFailure = CheckRequired(textPONumber.Text);
+            var SOFailure = CheckRequired(textSONumber.Text);
+            var dateFailure = CheckRequired(textDate.Text);
+
+            if ((custFailure == false) && (POFailure == false) && (SOFailure == false) && (dateFailure == false))
+            {
+                if (editMode == true)
+                {
+                    removeLineDB();
+                    removeReceivingDB();
+                }
+
+                for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+                {
+                    var valueToUpdate = convertLineToDB(i);
+                    updateLineDB(valueToUpdate);
+                    var receivingItem = convertToDB(i);
+                    updateReceivingDB(receivingItem);
+                }
+
+                var secondValueToUpdate = convertPurchaseToDB();
+                removePurchaseOrderDB();
+                updatePurchaseDB(secondValueToUpdate);
+                this.Close();
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

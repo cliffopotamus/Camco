@@ -797,11 +797,6 @@ namespace CamcoForm
                     textInvoiceTotal.Text = dataGridView1.Rows.Cast<DataGridViewRow>().AsEnumerable().Sum(t => Convert.ToDecimal(t.Cells[4].Value)).ToString();
                 }
 
-                /*  if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value is decimal)
-                  {
-                      decimal totalPrice = convertToInt(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()) * convertToDecimal(e.FormattedValue.ToString());
-                      dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
-                  }  */
 
                 if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex] == dataGridView1.Rows[e.RowIndex].Cells[3])
                 {

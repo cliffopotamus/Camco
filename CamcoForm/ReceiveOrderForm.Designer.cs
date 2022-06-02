@@ -1,6 +1,6 @@
 ﻿namespace CamcoForm
 {
-    partial class PickInvoice
+    partial class ReceiveOrderForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,83 +28,84 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textSONumber = new System.Windows.Forms.TextBox();
+            this.textSO = new System.Windows.Forms.TextBox();
+            this.textPO = new System.Windows.Forms.TextBox();
             this.labelSO = new System.Windows.Forms.Label();
-            this.labelPONumber = new System.Windows.Forms.Label();
-            this.textPONumber = new System.Windows.Forms.TextBox();
+            this.labelPO = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.InvoiceSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoicePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchasePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityPicked = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReceivedQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RemainingQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Commit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.textInvoiceTotal = new System.Windows.Forms.TextBox();
             this.btnCommit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textSONumber
+            // textSO
             // 
-            this.textSONumber.Location = new System.Drawing.Point(41, 44);
-            this.textSONumber.Name = "textSONumber";
-            this.textSONumber.Size = new System.Drawing.Size(100, 20);
-            this.textSONumber.TabIndex = 0;
+            this.textSO.Location = new System.Drawing.Point(57, 52);
+            this.textSO.Name = "textSO";
+            this.textSO.Size = new System.Drawing.Size(100, 20);
+            this.textSO.TabIndex = 0;
+            // 
+            // textPO
+            // 
+            this.textPO.Location = new System.Drawing.Point(211, 52);
+            this.textPO.Name = "textPO";
+            this.textPO.Size = new System.Drawing.Size(100, 20);
+            this.textPO.TabIndex = 1;
             // 
             // labelSO
             // 
             this.labelSO.AutoSize = true;
-            this.labelSO.Location = new System.Drawing.Point(38, 28);
+            this.labelSO.Location = new System.Drawing.Point(54, 36);
             this.labelSO.Name = "labelSO";
-            this.labelSO.Size = new System.Drawing.Size(62, 13);
-            this.labelSO.TabIndex = 1;
-            this.labelSO.Text = "SO Number";
+            this.labelSO.Size = new System.Drawing.Size(70, 13);
+            this.labelSO.TabIndex = 2;
+            this.labelSO.Text = "Purchase SO";
             // 
-            // labelPONumber
+            // labelPO
             // 
-            this.labelPONumber.AutoSize = true;
-            this.labelPONumber.Location = new System.Drawing.Point(173, 28);
-            this.labelPONumber.Name = "labelPONumber";
-            this.labelPONumber.Size = new System.Drawing.Size(62, 13);
-            this.labelPONumber.TabIndex = 2;
-            this.labelPONumber.Text = "PO Number";
-            // 
-            // textPONumber
-            // 
-            this.textPONumber.Location = new System.Drawing.Point(176, 44);
-            this.textPONumber.Name = "textPONumber";
-            this.textPONumber.Size = new System.Drawing.Size(100, 20);
-            this.textPONumber.TabIndex = 3;
+            this.labelPO.AutoSize = true;
+            this.labelPO.Location = new System.Drawing.Point(208, 36);
+            this.labelPO.Name = "labelPO";
+            this.labelPO.Size = new System.Drawing.Size(70, 13);
+            this.labelPO.TabIndex = 3;
+            this.labelPO.Text = "Purchase PO";
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.InvoiceSO,
-            this.InvoicePO,
+            this.PurchaseSO,
+            this.PurchasePO,
             this.Quantity,
             this.ProductName,
-            this.QuantityPicked,
-            this.QuantityRemaining,
+            this.ReceivedQuantity,
+            this.RemainingQuantity,
             this.Commit});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 127);
+            this.dataGridView1.Location = new System.Drawing.Point(21, 137);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(740, 264);
+            this.dataGridView1.Size = new System.Drawing.Size(743, 269);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
             // 
-            // InvoiceSO
+            // PurchaseSO
             // 
-            this.InvoiceSO.HeaderText = "InvoiceSO";
-            this.InvoiceSO.Name = "InvoiceSO";
-            this.InvoiceSO.ReadOnly = true;
+            this.PurchaseSO.HeaderText = "PurchaseSO";
+            this.PurchaseSO.Name = "PurchaseSO";
+            this.PurchaseSO.ReadOnly = true;
             // 
-            // InvoicePO
+            // PurchasePO
             // 
-            this.InvoicePO.HeaderText = "InvoicePO";
-            this.InvoicePO.Name = "InvoicePO";
+            this.PurchasePO.HeaderText = "PurchasePO";
+            this.PurchasePO.Name = "PurchasePO";
+            this.PurchasePO.ReadOnly = true;
             // 
             // Quantity
             // 
@@ -118,35 +119,28 @@
             this.ProductName.Name = "ProductName";
             this.ProductName.ReadOnly = true;
             // 
-            // QuantityPicked
+            // ReceivedQuantity
             // 
-            this.QuantityPicked.HeaderText = "QuantityPicked";
-            this.QuantityPicked.Name = "QuantityPicked";
+            this.ReceivedQuantity.HeaderText = "ReceivedQuantity";
+            this.ReceivedQuantity.Name = "ReceivedQuantity";
             // 
-            // QuantityRemaining
+            // RemainingQuantity
             // 
-            this.QuantityRemaining.HeaderText = "QuantityRemaining";
-            this.QuantityRemaining.Name = "QuantityRemaining";
-            this.QuantityRemaining.ReadOnly = true;
+            this.RemainingQuantity.HeaderText = "RemainingQuantity";
+            this.RemainingQuantity.Name = "RemainingQuantity";
+            this.RemainingQuantity.ReadOnly = true;
             // 
             // Commit
             // 
             this.Commit.HeaderText = "Commit";
             this.Commit.Name = "Commit";
             // 
-            // textInvoiceTotal
-            // 
-            this.textInvoiceTotal.Location = new System.Drawing.Point(603, 76);
-            this.textInvoiceTotal.Name = "textInvoiceTotal";
-            this.textInvoiceTotal.Size = new System.Drawing.Size(100, 20);
-            this.textInvoiceTotal.TabIndex = 5;
-            // 
             // btnCommit
             // 
-            this.btnCommit.Location = new System.Drawing.Point(628, 415);
+            this.btnCommit.Location = new System.Drawing.Point(608, 415);
             this.btnCommit.Name = "btnCommit";
             this.btnCommit.Size = new System.Drawing.Size(75, 23);
-            this.btnCommit.TabIndex = 6;
+            this.btnCommit.TabIndex = 5;
             this.btnCommit.Text = "Commit";
             this.btnCommit.UseVisualStyleBackColor = true;
             this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
@@ -156,26 +150,25 @@
             this.btnCancel.Location = new System.Drawing.Point(713, 415);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 7;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // PickInvoice
+            // ReceiveOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnCommit);
-            this.Controls.Add(this.textInvoiceTotal);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textPONumber);
-            this.Controls.Add(this.labelPONumber);
+            this.Controls.Add(this.labelPO);
             this.Controls.Add(this.labelSO);
-            this.Controls.Add(this.textSONumber);
-            this.Name = "PickInvoice";
-            this.Text = "PickInvoice";
-            this.Load += new System.EventHandler(this.PickInvoice_Load);
+            this.Controls.Add(this.textPO);
+            this.Controls.Add(this.textSO);
+            this.Name = "ReceiveOrderForm";
+            this.Text = "ReceiveOrderForm";
+            this.Load += new System.EventHandler(this.ReceiveOrderForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -184,20 +177,19 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textSONumber;
+        private System.Windows.Forms.TextBox textSO;
+        private System.Windows.Forms.TextBox textPO;
         private System.Windows.Forms.Label labelSO;
-        private System.Windows.Forms.Label labelPONumber;
-        private System.Windows.Forms.TextBox textPONumber;
+        private System.Windows.Forms.Label labelPO;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textInvoiceTotal;
-        private System.Windows.Forms.Button btnCommit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceSO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InvoicePO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseSO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchasePO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityPicked;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityRemaining;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ReceivedQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RemainingQuantity;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Commit;
+        private System.Windows.Forms.Button btnCommit;
         private System.Windows.Forms.Button btnCancel;
     }
 }
