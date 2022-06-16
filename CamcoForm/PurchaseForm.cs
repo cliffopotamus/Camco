@@ -85,5 +85,29 @@ namespace CamcoForm
             }
                 
         }
+
+        private void btnReceivedOrder_Click(object sender, EventArgs e)
+        {
+            ReceivedForm newForm = new ReceivedForm();
+            newForm.setSO(dataGridView1.CurrentRow.Cells[5].Value.ToString());
+            newForm.setPO(dataGridView1.CurrentRow.Cells[6].Value.ToString());
+            newForm.setCustomerID();
+            newForm.editPurchaseTotal();
+
+            using (var DB = new CamcoEntities())
+            {
+                string textBoxSO = newForm.getSO();
+                List<Received> result = DB.Receiveds.Where(x => x.PurchaseSO == textBoxSO).ToList();
+
+                if (result != null)
+                {
+                    for (int i = 0; i < result.Count; i++)
+                    {
+                        newForm.AddRow(i);
+                    }
+                }
+            }
+            newForm.Show();
+        }
     }
 }

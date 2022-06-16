@@ -178,6 +178,19 @@ namespace CamcoForm
             return placeholder;
         }
 
+        public Received ConvertReceivingToReceived(Receiving placeholder)
+        {
+            Received ship = new Received();
+            ship.PurchaseSO = placeholder.PurchaseSO;
+            ship.Quantity = placeholder.Quantity;
+            ship.PurchasePO = placeholder.PurchasePO;
+            ship.QuantityReceived = placeholder.QuantityReceived;
+            ship.QuantityRemaining = placeholder.QuantityRemaining;
+            ship.DateScheduled = placeholder.DateScheduled;
+            ship.ProductName = placeholder.ProductName;
+            return ship;
+        }
+
         public void updateInventory(Receiving placeholder)
         {
             if (placeholder.Finished == true)
@@ -208,6 +221,15 @@ namespace CamcoForm
             using (var DB = new CamcoEntities())
             {
                 DB.Receivings.Add(placeholder);
+                DB.SaveChanges();
+            }
+        }
+
+        public void updateReceivedDB(Received placeholder)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                DB.Receiveds.Add(placeholder);
                 DB.SaveChanges();
             }
         }
@@ -306,23 +328,51 @@ namespace CamcoForm
 
                 else
                 {
-                    var placeholder = convertReceivingToDB(i);
-
-                    if (placeholder.Finished == true)
+                    if (invalidQuantity(i) == false)
                     {
-                        removeReceivingDB();
-                        updateReceivingDB(placeholder);
-                        updateInventory(placeholder);
+                        var placeholder = convertReceivingToDB(i);
+
+                        if (placeholder.Finished == true)
+                        {
+                            removeReceivingDB();
+                            updateReceivingDB(placeholder);
+                            updateInventory(placeholder);
+                            var convertedToReceived = ConvertReceivingToReceived(placeholder);
+                            updateReceivedDB(convertedToReceived);
+                        }
+
+                        else
+                        {
+                            removeReceivingDB();
+                            updateReceivingDB(placeholder);
+                        }
                     }
 
                     else
                     {
-                        removeReceivingDB();
-                        updateReceivingDB(placeholder);
+                        string error = "Error: quantity received is greater than the order amount.";
+                        MessageBox.Show(error);
                     }
-
                 }
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            string message = "Do you want to close this window?";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            else
+            {
+                //DO SOMETHING //
+            }
+
         }
     }
 }

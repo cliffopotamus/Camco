@@ -30,15 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShippingForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ShipID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoiceSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoicePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityPicked = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateScheduled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Finished = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.textInvoiceSO = new System.Windows.Forms.TextBox();
             this.textCustomerID = new System.Windows.Forms.TextBox();
             this.textInvoicePO = new System.Windows.Forms.TextBox();
@@ -53,6 +44,15 @@
             this.labelInvoiceSO = new System.Windows.Forms.Label();
             this.textInvoiceTotal = new System.Windows.Forms.TextBox();
             this.labelInvoiceTotal = new System.Windows.Forms.Label();
+            this.ShipID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoicePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityPicked = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateScheduled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Finished = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,16 +70,134 @@
             this.QuantityRemaining,
             this.DateScheduled,
             this.Finished});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 263);
+            this.dataGridView1.Location = new System.Drawing.Point(65, 185);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(841, 325);
+            this.dataGridView1.Size = new System.Drawing.Size(744, 339);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // textInvoiceSO
+            // 
+            this.textInvoiceSO.Location = new System.Drawing.Point(232, 57);
+            this.textInvoiceSO.Name = "textInvoiceSO";
+            this.textInvoiceSO.Size = new System.Drawing.Size(100, 20);
+            this.textInvoiceSO.TabIndex = 1;
+            // 
+            // textCustomerID
+            // 
+            this.textCustomerID.Location = new System.Drawing.Point(585, 57);
+            this.textCustomerID.Name = "textCustomerID";
+            this.textCustomerID.Size = new System.Drawing.Size(119, 20);
+            this.textCustomerID.TabIndex = 2;
+            this.textCustomerID.Visible = false;
+            // 
+            // textInvoicePO
+            // 
+            this.textInvoicePO.Location = new System.Drawing.Point(94, 57);
+            this.textInvoicePO.Name = "textInvoicePO";
+            this.textInvoicePO.Size = new System.Drawing.Size(100, 20);
+            this.textInvoicePO.TabIndex = 3;
+            this.textInvoicePO.TextChanged += new System.EventHandler(this.textInvoicePO_TextChanged);
+            // 
+            // btnPackingList
+            // 
+            this.btnPackingList.Location = new System.Drawing.Point(774, 530);
+            this.btnPackingList.Name = "btnPackingList";
+            this.btnPackingList.Size = new System.Drawing.Size(111, 45);
+            this.btnPackingList.TabIndex = 4;
+            this.btnPackingList.Text = "Print Packing List";
+            this.btnPackingList.UseVisualStyleBackColor = true;
+            this.btnPackingList.Click += new System.EventHandler(this.btnPackingList_Click);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            this.printPreviewDialog1.Load += new System.EventHandler(this.printPreviewDialog1_Load);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // richTextShip
+            // 
+            this.richTextShip.Location = new System.Drawing.Point(94, 111);
+            this.richTextShip.Name = "richTextShip";
+            this.richTextShip.Size = new System.Drawing.Size(184, 68);
+            this.richTextShip.TabIndex = 5;
+            this.richTextShip.Text = "";
+            // 
+            // richTextBill
+            // 
+            this.richTextBill.Location = new System.Drawing.Point(565, 111);
+            this.richTextBill.Name = "richTextBill";
+            this.richTextBill.Size = new System.Drawing.Size(179, 68);
+            this.richTextBill.TabIndex = 6;
+            this.richTextBill.Text = "";
+            // 
+            // labelShippingAddress
+            // 
+            this.labelShippingAddress.AutoSize = true;
+            this.labelShippingAddress.Location = new System.Drawing.Point(91, 95);
+            this.labelShippingAddress.Name = "labelShippingAddress";
+            this.labelShippingAddress.Size = new System.Drawing.Size(89, 13);
+            this.labelShippingAddress.TabIndex = 7;
+            this.labelShippingAddress.Text = "Shipping Address";
+            // 
+            // labelBillingAddress
+            // 
+            this.labelBillingAddress.AutoSize = true;
+            this.labelBillingAddress.Location = new System.Drawing.Point(562, 95);
+            this.labelBillingAddress.Name = "labelBillingAddress";
+            this.labelBillingAddress.Size = new System.Drawing.Size(75, 13);
+            this.labelBillingAddress.TabIndex = 8;
+            this.labelBillingAddress.Text = "Billing Address";
+            // 
+            // labelInvoicePO
+            // 
+            this.labelInvoicePO.AutoSize = true;
+            this.labelInvoicePO.Location = new System.Drawing.Point(91, 41);
+            this.labelInvoicePO.Name = "labelInvoicePO";
+            this.labelInvoicePO.Size = new System.Drawing.Size(60, 13);
+            this.labelInvoicePO.TabIndex = 9;
+            this.labelInvoicePO.Text = "Invoice PO";
+            // 
+            // labelInvoiceSO
+            // 
+            this.labelInvoiceSO.AutoSize = true;
+            this.labelInvoiceSO.Location = new System.Drawing.Point(229, 41);
+            this.labelInvoiceSO.Name = "labelInvoiceSO";
+            this.labelInvoiceSO.Size = new System.Drawing.Size(60, 13);
+            this.labelInvoiceSO.TabIndex = 10;
+            this.labelInvoiceSO.Text = "Invoice SO";
+            // 
+            // textInvoiceTotal
+            // 
+            this.textInvoiceTotal.Location = new System.Drawing.Point(372, 57);
+            this.textInvoiceTotal.Name = "textInvoiceTotal";
+            this.textInvoiceTotal.Size = new System.Drawing.Size(104, 20);
+            this.textInvoiceTotal.TabIndex = 11;
+            // 
+            // labelInvoiceTotal
+            // 
+            this.labelInvoiceTotal.AutoSize = true;
+            this.labelInvoiceTotal.Location = new System.Drawing.Point(369, 41);
+            this.labelInvoiceTotal.Name = "labelInvoiceTotal";
+            this.labelInvoiceTotal.Size = new System.Drawing.Size(69, 13);
+            this.labelInvoiceTotal.TabIndex = 12;
+            this.labelInvoiceTotal.Text = "Invoice Total";
             // 
             // ShipID
             // 
             this.ShipID.HeaderText = "ShipID";
             this.ShipID.Name = "ShipID";
             this.ShipID.ReadOnly = true;
+            this.ShipID.Visible = false;
             // 
             // InvoiceSO
             // 
@@ -126,122 +244,7 @@
             // 
             this.Finished.HeaderText = "Finished";
             this.Finished.Name = "Finished";
-            // 
-            // textInvoiceSO
-            // 
-            this.textInvoiceSO.Location = new System.Drawing.Point(221, 47);
-            this.textInvoiceSO.Name = "textInvoiceSO";
-            this.textInvoiceSO.Size = new System.Drawing.Size(100, 20);
-            this.textInvoiceSO.TabIndex = 1;
-            // 
-            // textCustomerID
-            // 
-            this.textCustomerID.Location = new System.Drawing.Point(456, 71);
-            this.textCustomerID.Name = "textCustomerID";
-            this.textCustomerID.Size = new System.Drawing.Size(119, 20);
-            this.textCustomerID.TabIndex = 2;
-            // 
-            // textInvoicePO
-            // 
-            this.textInvoicePO.Location = new System.Drawing.Point(45, 47);
-            this.textInvoicePO.Name = "textInvoicePO";
-            this.textInvoicePO.Size = new System.Drawing.Size(100, 20);
-            this.textInvoicePO.TabIndex = 3;
-            this.textInvoicePO.TextChanged += new System.EventHandler(this.textInvoicePO_TextChanged);
-            // 
-            // btnPackingList
-            // 
-            this.btnPackingList.Location = new System.Drawing.Point(743, 186);
-            this.btnPackingList.Name = "btnPackingList";
-            this.btnPackingList.Size = new System.Drawing.Size(111, 45);
-            this.btnPackingList.TabIndex = 4;
-            this.btnPackingList.Text = "Print Packing List";
-            this.btnPackingList.UseVisualStyleBackColor = true;
-            this.btnPackingList.Click += new System.EventHandler(this.btnPackingList_Click);
-            // 
-            // printPreviewDialog1
-            // 
-            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog1.Document = this.printDocument1;
-            this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
-            this.printPreviewDialog1.Name = "printPreviewDialog1";
-            this.printPreviewDialog1.Visible = false;
-            this.printPreviewDialog1.Load += new System.EventHandler(this.printPreviewDialog1_Load);
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // richTextShip
-            // 
-            this.richTextShip.Location = new System.Drawing.Point(27, 141);
-            this.richTextShip.Name = "richTextShip";
-            this.richTextShip.Size = new System.Drawing.Size(184, 68);
-            this.richTextShip.TabIndex = 5;
-            this.richTextShip.Text = "";
-            // 
-            // richTextBill
-            // 
-            this.richTextBill.Location = new System.Drawing.Point(249, 141);
-            this.richTextBill.Name = "richTextBill";
-            this.richTextBill.Size = new System.Drawing.Size(179, 68);
-            this.richTextBill.TabIndex = 6;
-            this.richTextBill.Text = "";
-            // 
-            // labelShippingAddress
-            // 
-            this.labelShippingAddress.AutoSize = true;
-            this.labelShippingAddress.Location = new System.Drawing.Point(42, 112);
-            this.labelShippingAddress.Name = "labelShippingAddress";
-            this.labelShippingAddress.Size = new System.Drawing.Size(89, 13);
-            this.labelShippingAddress.TabIndex = 7;
-            this.labelShippingAddress.Text = "Shipping Address";
-            // 
-            // labelBillingAddress
-            // 
-            this.labelBillingAddress.AutoSize = true;
-            this.labelBillingAddress.Location = new System.Drawing.Point(246, 112);
-            this.labelBillingAddress.Name = "labelBillingAddress";
-            this.labelBillingAddress.Size = new System.Drawing.Size(75, 13);
-            this.labelBillingAddress.TabIndex = 8;
-            this.labelBillingAddress.Text = "Billing Address";
-            // 
-            // labelInvoicePO
-            // 
-            this.labelInvoicePO.AutoSize = true;
-            this.labelInvoicePO.Location = new System.Drawing.Point(42, 31);
-            this.labelInvoicePO.Name = "labelInvoicePO";
-            this.labelInvoicePO.Size = new System.Drawing.Size(60, 13);
-            this.labelInvoicePO.TabIndex = 9;
-            this.labelInvoicePO.Text = "Invoice PO";
-            // 
-            // labelInvoiceSO
-            // 
-            this.labelInvoiceSO.AutoSize = true;
-            this.labelInvoiceSO.Location = new System.Drawing.Point(218, 31);
-            this.labelInvoiceSO.Name = "labelInvoiceSO";
-            this.labelInvoiceSO.Size = new System.Drawing.Size(60, 13);
-            this.labelInvoiceSO.TabIndex = 10;
-            this.labelInvoiceSO.Text = "Invoice SO";
-            // 
-            // textInvoiceTotal
-            // 
-            this.textInvoiceTotal.Location = new System.Drawing.Point(494, 157);
-            this.textInvoiceTotal.Name = "textInvoiceTotal";
-            this.textInvoiceTotal.Size = new System.Drawing.Size(104, 20);
-            this.textInvoiceTotal.TabIndex = 11;
-            // 
-            // labelInvoiceTotal
-            // 
-            this.labelInvoiceTotal.AutoSize = true;
-            this.labelInvoiceTotal.Location = new System.Drawing.Point(491, 141);
-            this.labelInvoiceTotal.Name = "labelInvoiceTotal";
-            this.labelInvoiceTotal.Size = new System.Drawing.Size(69, 13);
-            this.labelInvoiceTotal.TabIndex = 12;
-            this.labelInvoiceTotal.Text = "Invoice Total";
+            this.Finished.Visible = false;
             // 
             // ShippingForm
             // 

@@ -16,6 +16,7 @@
         <EntityTypeShape EntityType="CamcoModel.PurchaseOrder" Width="1.5" PointX="4.5" PointY="5.25" />
         <EntityTypeShape EntityType="CamcoModel.Receiving" Width="1.5" PointX="0.75" PointY="5.625" />
         <EntityTypeShape EntityType="CamcoModel.PurchaseOrderLineItem" Width="1.5" PointX="7.25" PointY="1" />
+        <EntityTypeShape EntityType="CamcoModel.Received" Width="1.5" PointX="3.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

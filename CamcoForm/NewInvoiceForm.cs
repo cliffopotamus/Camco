@@ -45,6 +45,7 @@ namespace CamcoForm
             public int quantityRemaining;
             public bool commit;
             public string InvoicePO;
+            public string productDescription;
         }
 
         public Picking convertToDB(int i)
@@ -55,6 +56,8 @@ namespace CamcoForm
             placeholder.ProductName = dataGridView1.Rows[i].Cells[1].Value.ToString();
             placeholder.InvoicePO = textPONumber.Text;
             /* placeholder.Commit = Convert.ToBoolean(dataGridView1.Rows[i].Cells[5].Value);*/
+            placeholder.ProductDescription = dataGridView1.Rows[i].Cells[2].Value.ToString();
+            
             return placeholder;
         }
 
@@ -404,6 +407,52 @@ namespace CamcoForm
             InventoryBox c343 = new InventoryBox(343, "TBTo14");
             InventoryBox c344 = new InventoryBox(344, "TBTo316");
 
+            InventoryBox k1 = new InventoryBox(345, "DI-38 Drop-in Anchors");
+            InventoryBox k2 = new InventoryBox(346, "DWS-6 Drywall Screw");
+            InventoryBox k3 = new InventoryBox(347, "DWS-8 Drywall Screw");
+            InventoryBox k4 = new InventoryBox(348, "EZ-2 Plastic anchors");
+            InventoryBox k5 = new InventoryBox(349, "EZ-5 Metal anchor");
+           /*  InventoryBox k6 = new InventoryBox(350, "EZT8218W E-Z Toggle Anchors Metal"); */
+            InventoryBox k7 = new InventoryBox(351, "F-400 Flanged");
+            InventoryBox k8 = new InventoryBox(352, "F-400HWH Flanged");
+            InventoryBox k9 = new InventoryBox(353, "FA-316 Flanged");
+            InventoryBox k10 = new InventoryBox(354, "FA-316FH PH-6");
+            InventoryBox k11 = new InventoryBox(355, "FA-316FHPH");
+            InventoryBox k12 = new InventoryBox(356, "FA-316-6 Flanged");
+            InventoryBox k13 = new InventoryBox(357, "FA-1420 Flanged");
+            InventoryBox k14 = new InventoryBox(358, "FA-1420 HWH \"Big Red\" Flanged");
+            InventoryBox k15 = new InventoryBox(359, "FA-5016 Flanged");
+            InventoryBox k16 = new InventoryBox(360, "FA-5016 HWH Flanged");
+            InventoryBox k17 = new InventoryBox(361, "GF-1816");
+            InventoryBox k18 = new InventoryBox(362, "H-78 Hex Washer Slotted");
+            InventoryBox k19 = new InventoryBox(363, "HC-14");
+            InventoryBox k20 = new InventoryBox(364, "LS-30");
+            InventoryBox k21 = new InventoryBox(365, "MK-1812");
+           /* InventoryBox k22 = new InventoryBox(366, "NW-12"); */
+            InventoryBox k23 = new InventoryBox(367, "NW-832-1032");
+            InventoryBox k24 = new InventoryBox(368, "NY-80");
+            InventoryBox k25 = new InventoryBox(369, "SB-316");
+            InventoryBox k26 = new InventoryBox(370, "SB-632");
+            InventoryBox k27 = new InventoryBox(371, "SB-832");
+            InventoryBox k28 = new InventoryBox(372, "SB-1032");
+            InventoryBox k29 = new InventoryBox(373, "SB-1420");
+            InventoryBox k30 = new InventoryBox(374, "SBH-1420");
+            InventoryBox k31 = new InventoryBox(375, "SBH-3816");
+            InventoryBox k32 = new InventoryBox(376, "SBH-5018");
+            InventoryBox k33 = new InventoryBox(377, "SLW-358");
+            InventoryBox k34 = new InventoryBox(378, "SS-500");
+           /*  InventoryBox k35 = new InventoryBox(379, "TB-12"); */
+            InventoryBox k36 = new InventoryBox(380, "TK-8");
+            InventoryBox k37 = new InventoryBox(381, "TK-10");
+            InventoryBox k38 = new InventoryBox(382, "TK-10-5834");
+            InventoryBox k39 = new InventoryBox(383, "TK-12");
+            InventoryBox k40 = new InventoryBox(384, "TK-14");
+            InventoryBox k41 = new InventoryBox(385, "TK-141");
+            InventoryBox k42 = new InventoryBox(386, "TSHZ-1010");
+            InventoryBox k43 = new InventoryBox(387, "W-100 Plated washers");
+            InventoryBox k44 = new InventoryBox(388, "WE-383");
+           /* InventoryBox k45 = new InventoryBox(399, "DWS-6L Long Drywall"); */
+
             comboInventory.Items.Add(c1);
             comboInventory.Items.Add(c2);
             comboInventory.Items.Add(c3);
@@ -739,6 +788,52 @@ namespace CamcoForm
             comboInventory.Items.Add(c342);
             comboInventory.Items.Add(c343);
             comboInventory.Items.Add(c344);
+
+            comboInventory.Items.Add(k1);
+            comboInventory.Items.Add(k2);
+            comboInventory.Items.Add(k3);
+            comboInventory.Items.Add(k4);
+            comboInventory.Items.Add(k5);
+            /* comboInventory.Items.Add(k6); */
+            comboInventory.Items.Add(k7);
+            comboInventory.Items.Add(k8);
+            comboInventory.Items.Add(k9);
+            comboInventory.Items.Add(k10);
+            comboInventory.Items.Add(k11);
+            comboInventory.Items.Add(k12);
+            comboInventory.Items.Add(k13);
+            comboInventory.Items.Add(k14);
+            comboInventory.Items.Add(k15);
+            comboInventory.Items.Add(k16);
+            comboInventory.Items.Add(k17);
+            comboInventory.Items.Add(k18);
+            comboInventory.Items.Add(k19);
+            comboInventory.Items.Add(k20);
+            comboInventory.Items.Add(k21);
+          /*  comboInventory.Items.Add(k22); */
+            comboInventory.Items.Add(k23);
+            comboInventory.Items.Add(k24);
+            comboInventory.Items.Add(k25);
+            comboInventory.Items.Add(k26);
+            comboInventory.Items.Add(k27);
+            comboInventory.Items.Add(k28);
+            comboInventory.Items.Add(k29);
+            comboInventory.Items.Add(k30);
+            comboInventory.Items.Add(k31);
+            comboInventory.Items.Add(k32);
+            comboInventory.Items.Add(k33);
+            comboInventory.Items.Add(k34);
+           /* comboInventory.Items.Add(k35); */
+            comboInventory.Items.Add(k36);
+            comboInventory.Items.Add(k37);
+            comboInventory.Items.Add(k38);
+            comboInventory.Items.Add(k39);
+            comboInventory.Items.Add(k40);
+            comboInventory.Items.Add(k41);
+            comboInventory.Items.Add(k42);
+            comboInventory.Items.Add(k43);
+            comboInventory.Items.Add(k44);
+           /* comboInventory.Items.Add(k45); */
         }
 
         public class SalesItem
@@ -781,6 +876,12 @@ namespace CamcoForm
                     string sCompleteInvoiceTotal = dInvoiceTotal.ToString();
                     textInvoiceTotal.Text = sCompleteInvoiceTotal;
                 }
+
+                else
+                {
+                    string error = "Error: invalid product name or quantity.";
+                    MessageBox.Show(error);
+                }
             }
         }
 
@@ -803,6 +904,12 @@ namespace CamcoForm
                     decimal totalPrice = convertToInt(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()) * convertToDecimal(e.FormattedValue.ToString());
                     dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
                     textInvoiceTotal.Text = dataGridView1.Rows.Cast<DataGridViewRow>().AsEnumerable().Sum(t => Convert.ToDecimal(t.Cells[4].Value)).ToString();
+                }
+
+                else
+                {
+                    string error = "EditRow method failure.";
+                    MessageBox.Show(error);
                 }
             }
 
@@ -852,6 +959,11 @@ namespace CamcoForm
                     textCustID.Text = result.CustomerID.ToString();
                 }
 
+               /* else
+                {
+                    string error = "getCustomerID method failed.";
+                    MessageBox.Show(error);
+                } */
             }
         }
 
@@ -1088,6 +1200,12 @@ namespace CamcoForm
                         DB.SaveChanges();
                     }
                 }
+
+                else
+                {
+                    string error = "removePickDB method failed.";
+                    MessageBox.Show(error);
+                }
             }
         }
 
@@ -1106,6 +1224,12 @@ namespace CamcoForm
                         DB.SaveChanges();
                     }
                 }
+
+               else
+                {
+                    string error = "removeOldLineDB method failed.";
+                    MessageBox.Show(error);
+                }
             }
         }
 
@@ -1120,6 +1244,12 @@ namespace CamcoForm
                 {
                     DB.Invoices.Remove(result);
                     DB.SaveChanges();
+                }
+
+                else
+                {
+                    string error = "removeOldInvoiceDB method failed.";
+                    MessageBox.Show(error);
                 }
             }
         }
@@ -1154,9 +1284,20 @@ namespace CamcoForm
                 }
                 
                 var secondValueToUpdate = convertInvoiceToDB();
-                removeOldInvoiceDB();
+               
+                if (editMode == true)
+                {
+                    removeOldInvoiceDB();
+                }
+
                 updateInvoiceDB(secondValueToUpdate);
                 this.Close();
+            }
+
+            else
+            {
+                string error = "Error: Invoice not added.";
+                MessageBox.Show(error);
             }
         }
 

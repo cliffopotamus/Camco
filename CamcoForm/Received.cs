@@ -12,17 +12,16 @@ namespace CamcoForm
     using System;
     using System.Collections.Generic;
     
-    public partial class Picking
+    public partial class Received
     {
-        public int PickID { get; set; }
-        public int InvoiceSO { get; set; }
-        public int Quantity { get; set; }
+        public int ReceivedID { get; set; }
+        public string PurchaseSO { get; set; }
+        public string PurchasePO { get; set; }
+        public Nullable<int> Quantity { get; set; }
         public string ProductName { get; set; }
-        public Nullable<int> QuantityPicked { get; set; }
+        public Nullable<int> QuantityReceived { get; set; }
         public Nullable<int> QuantityRemaining { get; set; }
-        public Nullable<bool> Commit { get; set; }
-        public string InvoicePO { get; set; }
-        public string DateScheduled { get; set; }
-        public string ProductDescription { get; set; }
+        public Nullable<System.DateTime> DateScheduled { get; set; }
+        public Nullable<bool> PackingList { get; set; }
     }
 }

@@ -1161,6 +1161,12 @@ namespace CamcoForm
                 updatePurchaseDB(secondValueToUpdate);
                 this.Close();
             }
+
+            else
+            {
+                string error = "Please check all text boxes.";
+                MessageBox.Show(error);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

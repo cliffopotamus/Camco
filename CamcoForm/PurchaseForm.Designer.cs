@@ -55,6 +55,7 @@
             this.camcoDataSet12 = new CamcoForm.CamcoDataSet12();
             this.purchaseOrderTableAdapter = new CamcoForm.CamcoDataSet12TableAdapters.PurchaseOrderTableAdapter();
             this.btnOpenPurchaseOrder = new System.Windows.Forms.Button();
+            this.btnReceivedOrder = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -230,7 +231,7 @@
             // 
             // btnDeletePO
             // 
-            this.btnDeletePO.Location = new System.Drawing.Point(783, 60);
+            this.btnDeletePO.Location = new System.Drawing.Point(764, 60);
             this.btnDeletePO.Name = "btnDeletePO";
             this.btnDeletePO.Size = new System.Drawing.Size(125, 42);
             this.btnDeletePO.TabIndex = 4;
@@ -331,12 +332,23 @@
             this.btnOpenPurchaseOrder.UseVisualStyleBackColor = true;
             this.btnOpenPurchaseOrder.Click += new System.EventHandler(this.btnOpenPurchaseOrder_Click);
             // 
+            // btnReceivedOrder
+            // 
+            this.btnReceivedOrder.Location = new System.Drawing.Point(929, 60);
+            this.btnReceivedOrder.Name = "btnReceivedOrder";
+            this.btnReceivedOrder.Size = new System.Drawing.Size(125, 42);
+            this.btnReceivedOrder.TabIndex = 7;
+            this.btnReceivedOrder.Text = "Received Order";
+            this.btnReceivedOrder.UseVisualStyleBackColor = true;
+            this.btnReceivedOrder.Click += new System.EventHandler(this.btnReceivedOrder_Click);
+            // 
             // PurchaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1066, 571);
+            this.Controls.Add(this.btnReceivedOrder);
             this.Controls.Add(this.btnOpenPurchaseOrder);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnDeletePO);
@@ -384,5 +396,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn purchaseSODataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn purchasePODataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnOpenPurchaseOrder;
+        private System.Windows.Forms.Button btnReceivedOrder;
     }
 }

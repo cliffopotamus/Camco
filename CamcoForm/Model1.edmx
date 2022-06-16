@@ -85,6 +85,7 @@
           <Property Name="DateScheduled" Type="varchar" MaxLength="50" />
           <Property Name="Commit" Type="bit" />
           <Property Name="InvoicePO" Type="varchar" MaxLength="50" />
+          <Property Name="ProductDescription" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
@@ -113,6 +114,20 @@
           <Property Name="ProductNo" Type="int" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
           <Property Name="VendorID" Type="int" />
+        </EntityType>
+        <EntityType Name="Received">
+          <Key>
+            <PropertyRef Name="ReceivedID" />
+          </Key>
+          <Property Name="ReceivedID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseSO" Type="nvarchar" MaxLength="50" />
+          <Property Name="PurchasePO" Type="nvarchar" MaxLength="50" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="QuantityReceived" Type="int" />
+          <Property Name="QuantityRemaining" Type="int" />
+          <Property Name="DateScheduled" Type="date" />
+          <Property Name="PackingList" Type="bit" />
         </EntityType>
         <EntityType Name="Receiving">
           <Key>
@@ -164,6 +179,7 @@
           <EntitySet Name="Picking" EntityType="Self.Picking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseOrderLineItems" EntityType="Self.PurchaseOrderLineItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Received" EntityType="Self.Received" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Receiving" EntityType="Self.Receiving" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shipping" EntityType="Self.Shipping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
@@ -253,6 +269,7 @@
           <EntitySet Name="PurchaseOrders" EntityType="CamcoModel.PurchaseOrder" />
           <EntitySet Name="Receivings" EntityType="CamcoModel.Receiving" />
           <EntitySet Name="PurchaseOrderLineItems" EntityType="CamcoModel.PurchaseOrderLineItem" />
+          <EntitySet Name="Receiveds" EntityType="CamcoModel.Received" />
         </EntityContainer>
         <EntityType Name="Kit">
           <Key>
@@ -277,6 +294,7 @@
           <Property Name="Commit" Type="Boolean" />
           <Property Name="InvoicePO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DateScheduled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Shipping">
           <Key>
@@ -334,6 +352,20 @@
           <Property Name="ProductNo" Type="Int32" />
           <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VendorID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Received">
+          <Key>
+            <PropertyRef Name="ReceivedID" />
+          </Key>
+          <Property Name="ReceivedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseSO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PurchasePO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QuantityReceived" Type="Int32" />
+          <Property Name="QuantityRemaining" Type="Int32" />
+          <Property Name="DateScheduled" Type="DateTime" Precision="0" />
+          <Property Name="PackingList" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -429,6 +461,7 @@
           <EntitySetMapping Name="Pickings">
             <EntityTypeMapping TypeName="CamcoModel.Picking">
               <MappingFragment StoreEntitySet="Picking">
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
                 <ScalarProperty Name="DateScheduled" ColumnName="DateScheduled" />
                 <ScalarProperty Name="InvoicePO" ColumnName="InvoicePO" />
                 <ScalarProperty Name="Commit" ColumnName="Commit" />
@@ -499,6 +532,21 @@
                 <ScalarProperty Name="PurchasePO" ColumnName="PurchasePO" />
                 <ScalarProperty Name="PurchaseSO" ColumnName="PurchaseSO" />
                 <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receiveds">
+            <EntityTypeMapping TypeName="CamcoModel.Received">
+              <MappingFragment StoreEntitySet="Received">
+                <ScalarProperty Name="PackingList" ColumnName="PackingList" />
+                <ScalarProperty Name="DateScheduled" ColumnName="DateScheduled" />
+                <ScalarProperty Name="QuantityRemaining" ColumnName="QuantityRemaining" />
+                <ScalarProperty Name="QuantityReceived" ColumnName="QuantityReceived" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="PurchasePO" ColumnName="PurchasePO" />
+                <ScalarProperty Name="PurchaseSO" ColumnName="PurchaseSO" />
+                <ScalarProperty Name="ReceivedID" ColumnName="ReceivedID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

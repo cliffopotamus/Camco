@@ -332,6 +332,15 @@
     <Compile Include="PurchaseOrderLineItem.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Received.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReceivedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReceivedForm.Designer.cs">
+      <DependentUpon>ReceivedForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReceiveOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -436,6 +445,9 @@
     </Compile>
     <EmbeddedResource Include="PurchaseForm.resx">
       <DependentUpon>PurchaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReceivedForm.resx">
+      <DependentUpon>ReceivedForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReceiveOrderForm.resx">
       <DependentUpon>ReceiveOrderForm.cs</DependentUpon>

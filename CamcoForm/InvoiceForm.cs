@@ -84,7 +84,6 @@ namespace CamcoForm
             PickInvoice newForm = new PickInvoice();
             newForm.setDetails(dataGridView1.CurrentRow.Cells[5].Value.ToString());
             newForm.setPO(dataGridView1.CurrentRow.Cells[4].Value.ToString());
-
             using (var db = new CamcoEntities())
             {
                 int textBoxSO = newForm.convertToInt(newForm.getSO());
@@ -98,6 +97,7 @@ namespace CamcoForm
                         var addToDGV = newForm.createSalesItem(result[i].Quantity, result[i].ProductName);
                         newForm.AddRow(addToDGV);
                         newForm.setRemainingDGV(i);
+                        newForm.setProductDescription(i);
                     }
                 }
             }

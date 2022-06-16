@@ -225,6 +225,8 @@
             // 
             // comboInventory
             // 
+            this.comboInventory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboInventory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboInventory.FormattingEnabled = true;
             this.comboInventory.Location = new System.Drawing.Point(107, 185);
             this.comboInventory.Name = "comboInventory";
