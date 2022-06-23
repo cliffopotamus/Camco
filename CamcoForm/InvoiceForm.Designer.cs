@@ -271,6 +271,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(742, 355);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // invoiceIDDataGridViewTextBoxColumn
             // 
@@ -390,6 +391,7 @@
             this.btnDeleteInvoice.TabIndex = 9;
             this.btnDeleteInvoice.Text = "Delete Invoice";
             this.btnDeleteInvoice.UseVisualStyleBackColor = true;
+            this.btnDeleteInvoice.Click += new System.EventHandler(this.btnDeleteInvoice_Click);
             // 
             // InvoiceForm
             // 

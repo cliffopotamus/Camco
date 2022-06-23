@@ -98,7 +98,14 @@ namespace CamcoForm
                         newForm.AddRow(addToDGV);
                         newForm.setRemainingDGV(i);
                         newForm.setProductDescription(i);
+                        newForm.setProductPickID(i);
                     }
+                }
+
+                else
+                {
+                    string error = "Error: invalid invoice selected.";
+                    MessageBox.Show(error);
                 }
             }
             newForm.Show();
@@ -126,8 +133,83 @@ namespace CamcoForm
                         newForm.AddRow(i);
                     }
                 }
+
+                else
+                {
+                    string error = "Error: invalid invoice selected.";
+                    MessageBox.Show(error);
+                }
             }
             newForm.Show();
+        }
+
+        public int convertToInt(string placeholder)
+        {
+            int number;
+            bool success = int.TryParse(placeholder, out number);
+
+            if (success)
+            {
+                return number;
+            }
+
+            else
+            {
+                return 0;
+            }
+        }
+
+        private void btnDeleteInvoice_Click(object sender, EventArgs e)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                string stringSO = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                Invoice invoiceResult = DB.Invoices.SingleOrDefault(x => x.InvoiceSO == stringSO);
+
+                if (invoiceResult != null)
+                {
+                    DB.Invoices.Remove(invoiceResult);
+                    DB.SaveChanges();
+                }
+
+                int textSO = convertToInt(dataGridView1.CurrentRow.Cells[5].Value.ToString());
+                List<InvoiceLineItem> invoiceLineItemsResult = DB.InvoiceLineItems.Where(x => x.InvoiceSO == textSO).ToList();
+
+                if (invoiceLineItemsResult != null)
+                {
+                    for (int i = 0; i < invoiceLineItemsResult.Count; i++)
+                    {
+                        DB.InvoiceLineItems.Remove(invoiceLineItemsResult[i]);
+                    }
+                }
+
+                List<Picking> pickingResult = DB.Pickings.Where(x => x.InvoiceSO == textSO).ToList();
+
+                if (pickingResult != null)
+                {
+                    for (int i = 0; i < pickingResult.Count; i++)
+                    {
+                        DB.Pickings.Remove(pickingResult[i]);
+                        DB.SaveChanges();
+                    }
+                }
+
+                List<Shipping> shippingResult = DB.Shippings.Where(x => x.InvoiceSO == textSO).ToList();
+
+                if (shippingResult != null)
+                {
+                    for (int i = 0; i < shippingResult.Count; i++)
+                    {
+                        DB.Shippings.Remove(shippingResult[i]);
+                        DB.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

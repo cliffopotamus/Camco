@@ -888,28 +888,23 @@ namespace CamcoForm
         public void EditRow(SalesItem salesRow, DataGridViewCellValidatingEventArgs e)
         {
             int number;
-            int intValue = convertToInt(e.FormattedValue.ToString());
-            decimal decValue = convertToDecimal(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
             {
                 if (int.TryParse(e.FormattedValue.ToString(), out number))
                 {
-                    decimal totalPrice = convertToDecimal(dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString()) * convertToInt(e.FormattedValue.ToString());
-                    dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
-                    textInvoiceTotal.Text = dataGridView1.Rows.Cast<DataGridViewRow>().AsEnumerable().Sum(t => Convert.ToDecimal(t.Cells[4].Value)).ToString();
-                }
+                    if (dataGridView1.Rows[e.RowIndex].Cells[3].Value != null)
+                    {
 
+                        decimal totalPrice = convertToDecimal(dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString()) * convertToInt(e.FormattedValue.ToString());
+                        dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
+                        textInvoiceTotal.Text = dataGridView1.Rows.Cast<DataGridViewRow>().AsEnumerable().Sum(t => Convert.ToDecimal(t.Cells[4].Value)).ToString();
+                    }
+                }    
 
                 if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex] == dataGridView1.Rows[e.RowIndex].Cells[3])
                 {
                     decimal totalPrice = convertToInt(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()) * convertToDecimal(e.FormattedValue.ToString());
                     dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
                     textInvoiceTotal.Text = dataGridView1.Rows.Cast<DataGridViewRow>().AsEnumerable().Sum(t => Convert.ToDecimal(t.Cells[4].Value)).ToString();
-                }
-
-                else
-                {
-                    string error = "EditRow method failure.";
-                    MessageBox.Show(error);
                 }
             }
 
@@ -996,9 +991,18 @@ namespace CamcoForm
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            int itemQuantity = Int32.Parse(textQuantity.Text);
-            SalesItem addedItem = new SalesItem(itemQuantity, comboInventory.Text);
-            AddRow(addedItem);
+            if (String.IsNullOrEmpty(textQuantity.Text) || String.IsNullOrEmpty(comboInventory.Text))
+            {
+                string error = "Unable to add item.";
+                MessageBox.Show(error);
+            }
+
+            else
+            {
+                int itemQuantity = Int32.Parse(textQuantity.Text);
+                SalesItem addedItem = new SalesItem(itemQuantity, comboInventory.Text);
+                AddRow(addedItem);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

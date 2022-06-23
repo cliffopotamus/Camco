@@ -122,6 +122,20 @@ namespace CamcoForm
             }
         }
 
+        public void setProductPickID(int i)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                int intSO = convertToInt(textSONumber.Text);
+                List<Picking> result = DB.Pickings.Where(x => x.InvoiceSO == intSO).ToList();
+
+                if (result != null)
+                {
+                    dataGridView1.Rows[i].Cells[8].Value = result[i].PickID;
+                }
+            }
+        }
+
         public void setDetails(string invoiceSO)
         {
             using (var DB = new CamcoEntities())
@@ -206,594 +220,594 @@ namespace CamcoForm
             }
         }
 
-        public void UpdateKitInventory(Picking placeholder, int currentRow)
+        public void UpdateKitInventory(Picking placeholder, int currentRow, int pickID)
         {
             using (var DB = new CamcoEntities())
             {
-                if (placeholder.ProductDescription == "KIT")
-                {
-                    int pickAmount = (int)(placeholder.QuantityPicked);
-                    switch (placeholder.ProductName)
+                    if (placeholder.ProductDescription == "KIT")
                     {
-                        case "DI-38 Drop-in Anchors":
-                            if ((CheckProductKitInventory("1box", pickAmount)) && (CheckProductKitInventory("Drop-in 38", pickAmount * 12)) && (CheckProductKitInventory("Mdrill12", pickAmount)) && (CheckProductKitInventory("38Stool", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in DI-38.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-
-                        case "DWS-6 Drywall Screw":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("DWS61", pickAmount * 100)) && (CheckProductKitInventory("DWS6158", pickAmount * 100)) && (CheckProductKitInventory("PBit2", pickAmount)) && (CheckProductKitInventory("Mbholder", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in DWS-6 Drywall Screw.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-
-                        case "DWS-8 Drywall Screw":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("DWS8-212", pickAmount * 50)) && (CheckProductKitInventory("DWS8-3", pickAmount * 50)) && (CheckProductKitInventory("PBit2", pickAmount)) && (CheckProductKitInventory("Mbholder", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in DWS-8 Drywall Screw.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "EZ-2 Plastic anchors":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Panchor-white", pickAmount * 60)) && (CheckProductKitInventory("pflat634", pickAmount * 60)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in EZ-2 Plastic anchors.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "EZ-5 Metal anchor":
-                            if ((CheckProductKitInventory("1box", pickAmount)) && (CheckProductKitInventory("Manchor", pickAmount * 50)) && (CheckProductKitInventory("Cpan8-114", pickAmount * 50)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in EZ-5 Metal anchor.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "F-400 Flanged":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("BAnchor141", pickAmount * 100)) && (CheckProductKitInventory("Cpan 10-1T", pickAmount * 100)) && (CheckProductKitInventory("Mdrill14", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in F-400 Flanged.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "F-400HWH Flanged":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("BAnchor141", pickAmount * 100)) && (CheckProductKitInventory("Zip10-1", pickAmount * 100)) && (CheckProductKitInventory("Mdrill14", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in F-400HWH Flanged.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "FA-316 Flanged":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Panc316-78R", pickAmount * 101)) && (CheckProductKitInventory("Cpan8-1", pickAmount * 101)) && (CheckProductKitInventory("Mdrill316", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in FA-316 Flanged.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "FA-316FH PH-6":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("pflat634", pickAmount * 101)) && (CheckProductKitInventory("Panc316-78R", pickAmount * 101)) && (CheckProductKitInventory("Mdrill316", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in FA-316FH PH-6.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "FA-316FHPH":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("pflat8-1", pickAmount * 101)) && (CheckProductKitInventory("Panc316-78R", pickAmount * 101)) && (CheckProductKitInventory("Mdrill316", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in FA-316FHPH.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "FA-316-6 Flanged":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Panc316-78R", pickAmount * 101)) && (CheckProductKitInventory("Cpan 634", pickAmount * 101)) && (CheckProductKitInventory("Mdrill316", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in FA-316-6 Flanged.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "FA-1420 Flanged":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Cpan 10-1T", pickAmount * 101)) && (CheckProductKitInventory("RANChor14-1", pickAmount * 101)) && (CheckProductKitInventory("Mdrill14", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in FA-1420 Flanged.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "FA-1420 HWH \"Big Red\" Flanged":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Zip10-1", pickAmount * 101)) && (CheckProductKitInventory("RANChor14-1", pickAmount * 101)) && (CheckProductKitInventory("Mdrill14", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in FA-1420 HWH \"Big Red\" Flanged.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "FA-5016 Flanged":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Panch-516-114B", pickAmount * 52)) && (CheckProductKitInventory("Cpan-12-114", pickAmount * 52)) && (CheckProductKitInventory("Mdrill516", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in FA-5016 Flanged.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "FA-5016 HWH Flanged":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Panch-516-114B", pickAmount * 52)) && (CheckProductKitInventory("Zip12-114", pickAmount * 52)) && (CheckProductKitInventory("Mdrill516", pickAmount )))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in FA-5016 HWH Flanged.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "GF-1816":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("GF-64-01 ST", pickAmount * 3)) && (CheckProductKitInventory("GF-90", pickAmount * 2)) && (CheckProductKitInventory("GF-45", pickAmount * 2)) && (CheckProductKitInventory("GF1428-45", pickAmount)) && (CheckProductKitInventory("GF1428-90", pickAmount)) && (CheckProductKitInventory("GF1428st", pickAmount * 3)) && (CheckProductKitInventory("316-str64-12", pickAmount * 6)) && (CheckProductKitInventory("GF-516-64-13", pickAmount * 5)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            { 
-                                string message = "Please check quantity of items in GF-1816.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "H-78 Hex Washer Slotted":
-                            if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("Zip8-12", pickAmount * 100)) && (CheckProductKitInventory("Zip8-34", pickAmount * 75)) && (CheckProductKitInventory("Zip8-1", pickAmount * 50)) && (CheckProductKitInventory("Zip8-114", pickAmount * 30)) && (CheckProductKitInventory("Zip8-112", pickAmount * 20)) && (CheckProductKitInventory("JC-2", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in H-78 Hex Washer Slotted.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "HC-14":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("HC-300-004", pickAmount * 2)) && (CheckProductKitInventory("HC-300-006", pickAmount * 2)) && (CheckProductKitInventory("HC-300-008", pickAmount * 2)) && (CheckProductKitInventory("HC-300-012", pickAmount * 2)) && (CheckProductKitInventory("HC-600-016", pickAmount * 2)) && (CheckProductKitInventory("HC-600-020", pickAmount * 2)) && (CheckProductKitInventory("HC-600-028", pickAmount * 2)))
+                        int pickAmount = (int)(placeholder.QuantityPicked);
+                        switch (placeholder.ProductName)
+                        {
+                            case "DI-38 Drop-in Anchors":
+                                if ((CheckProductKitInventory("1box", pickAmount)) && (CheckProductKitInventory("Drop-in 38", pickAmount * 12)) && (CheckProductKitInventory("Mdrill12", pickAmount)) && (CheckProductKitInventory("38Stool", pickAmount)))
                                 {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                    removePickRow(placeholder.PickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in HC-14.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "LS-30":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("LAGS-38-1", pickAmount * 6 )) && (CheckProductKitInventory("LAGS-38-112", pickAmount * 6)) && (CheckProductKitInventory("LAGS-38-2", pickAmount * 6)) && (CheckProductKitInventory("LAGS-38-212", pickAmount * 6)) && (CheckProductKitInventory("LAGS-38-3", pickAmount * 6)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in LS-30.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "MK-1812":
-                            if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("MK-18-112L", pickAmount * 4)) && (CheckProductKitInventory("MK-316-112L", pickAmount * 3)) && (CheckProductKitInventory("MK14-112L", pickAmount * 3)) && (CheckProductKitInventory("MK-516-112", pickAmount * 2)) && (CheckProductKitInventory("MK-38-112L", pickAmount)) && (CheckProductKitInventory("MK12-2L", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
-
-                            else
-                            {
-                                string message = "Please check quantity of items in MK-1812.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-
-                        case "NW-832-1032":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("632MSN", pickAmount * 10)) && (CheckProductKitInventory("632KLN", pickAmount * 8)) && (CheckProductKitInventory("632NYN", pickAmount * 8)) && (CheckProductKitInventory("SAEF632-6", pickAmount * 20)) && (CheckProductKitInventory("632SLW6", pickAmount * 8)) && (CheckProductKitInventory("Cnut6-32", pickAmount * 6)) && (CheckProductKitInventory("632-112MS", pickAmount)) && (CheckProductKitInventory("832MSN", pickAmount * 30)) && (CheckProductKitInventory("832KLN", pickAmount * 20)) && (CheckProductKitInventory("832NYN", pickAmount *20)) && (CheckProductKitInventory("832SFN", pickAmount * 20)) && (CheckProductKitInventory("Cnut8-32", pickAmount * 5)) && (CheckProductKitInventory("832WN", pickAmount * 5)) && (CheckProductKitInventory("SAEF832-8", pickAmount * 50)) && (CheckProductKitInventory("832SLW8", pickAmount * 20)) && (CheckProductKitInventory("832-12MS", pickAmount * 12)) && (CheckProductKitInventory("832-34MS", pickAmount * 12)) && (CheckProductKitInventory("832-114MS", pickAmount)) && (CheckProductKitInventory("1032HN", pickAmount * 15)) && (CheckProductKitInventory("1032KLN", pickAmount * 10)) && (CheckProductKitInventory("1032NLN", pickAmount * 10)) && (CheckProductKitInventory("1032SFN", pickAmount *10)) && (CheckProductKitInventory("1032CN", pickAmount * 5)) && (CheckProductKitInventory("1032WN", pickAmount * 5)) && (CheckProductKitInventory("1032SLW10", pickAmount * 20)) && (CheckProductKitInventory("SAEFW10", pickAmount * 50)) && (CheckProductKitInventory("1032114MS", pickAmount)))
+                                else
                                 {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                    string message = "Please check quantity of items in DI-38.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
 
-                            else
-                            {
-                                string message = "Please check quantity of items in NW-832-1032.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "NY-80":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("NLIstop-14", pickAmount * 30)) && (CheckProductKitInventory("NLIstop-516", pickAmount * 6)) && (CheckProductKitInventory("NLIstop-38", pickAmount * 20)) && (CheckProductKitInventory("NLIstop-12", pickAmount * 24)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                            case "DWS-6 Drywall Screw":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("DWS61", pickAmount * 100)) && (CheckProductKitInventory("DWS6158", pickAmount * 100)) && (CheckProductKitInventory("PBit2", pickAmount)) && (CheckProductKitInventory("Mbholder", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in NY-80.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "SB-316":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("102438MS", pickAmount * 20)) && (CheckProductKitInventory("102412MS", pickAmount * 20)) && (CheckProductKitInventory("102434MS", pickAmount * 15)) && (CheckProductKitInventory("10241MS", pickAmount * 15)) && (CheckProductKitInventory("1024114MS", pickAmount * 10)) && (CheckProductKitInventory("1024112MS", pickAmount * 10)) && (CheckProductKitInventory("10242MS", pickAmount * 10)) && (CheckProductKitInventory("1024MSN", pickAmount * 100)) && (CheckProductKitInventory("SAEFW10", pickAmount * 50)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in DWS-6 Drywall Screw.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
 
-                            else
-                            {
-                                string message = "Please check quantity of items in SB-316.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "SB-632":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("632-38MS", pickAmount * 25)) && (CheckProductKitInventory("632-12MS", pickAmount * 25)) && (CheckProductKitInventory("632-34MS", pickAmount * 20)) && (CheckProductKitInventory("632-1MS", pickAmount * 20)) && (CheckProductKitInventory("632-112MS", pickAmount * 20)) && (CheckProductKitInventory("632-114MS", pickAmount * 20)) && (CheckProductKitInventory("632-2MS", pickAmount * 20)) && (CheckProductKitInventory("632MSN", pickAmount * 150)) && (CheckProductKitInventory("SAEF632-6", pickAmount * 50)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                            case "DWS-8 Drywall Screw":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("DWS8-212", pickAmount * 50)) && (CheckProductKitInventory("DWS8-3", pickAmount * 50)) && (CheckProductKitInventory("PBit2", pickAmount)) && (CheckProductKitInventory("Mbholder", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in kit.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "SB-832":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("832-38MS", pickAmount * 20)) && (CheckProductKitInventory("832-12MS", pickAmount * 20)) && (CheckProductKitInventory("832-34MS", pickAmount * 20)) && (CheckProductKitInventory("832-1MS", pickAmount * 20)) && (CheckProductKitInventory("832-114MS", pickAmount * 15)) && (CheckProductKitInventory("832-112MS", pickAmount * 15)) && (CheckProductKitInventory("832-2MS", pickAmount * 15)) && (CheckProductKitInventory("832MSN", pickAmount * 125)) && (CheckProductKitInventory("SAEF832-8", pickAmount * 50)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in DWS-8 Drywall Screw.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "EZ-2 Plastic anchors":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Panchor-white", pickAmount * 60)) && (CheckProductKitInventory("pflat634", pickAmount * 60)))
+                                {
+                                    removePickRow(pickID);;
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in kit.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "SB-1032":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("103238MS", pickAmount * 20)) && (CheckProductKitInventory("103212MS", pickAmount * 20)) && (CheckProductKitInventory("103234MS", pickAmount * 15)) && (CheckProductKitInventory("10321MS", pickAmount * 15)) && (CheckProductKitInventory("1032114MS", pickAmount * 10)) && (CheckProductKitInventory("1032112MS", pickAmount * 10)) && (CheckProductKitInventory("10322MS", pickAmount * 10)) && (CheckProductKitInventory("1032SLW10", pickAmount * 100)) && (CheckProductKitInventory("SAEFW10", pickAmount * 50)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in EZ-2 Plastic anchors.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "EZ-5 Metal anchor":
+                                if ((CheckProductKitInventory("1box", pickAmount)) && (CheckProductKitInventory("Manchor", pickAmount * 50)) && (CheckProductKitInventory("Cpan8-114", pickAmount * 50)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in SB-1032.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "SB-1420":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("MS14-12", pickAmount * 30)) && (CheckProductKitInventory("MS14-34", pickAmount * 16)) && (CheckProductKitInventory("MS14-1", pickAmount * 10)) && (CheckProductKitInventory("MS14-114", pickAmount * 8)) && (CheckProductKitInventory("MS14-112", pickAmount * 8)) && (CheckProductKitInventory("MS14-2", pickAmount * 6)) && (CheckProductKitInventory("HFN14", pickAmount * 75)) && (CheckProductKitInventory("SAEFW14", pickAmount * 50)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in EZ-5 Metal anchor.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "F-400 Flanged":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("BAnchor141", pickAmount * 100)) && (CheckProductKitInventory("Cpan 10-1T", pickAmount * 100)) && (CheckProductKitInventory("Mdrill14", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in SB-1420.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "SBH-1420":
-                            if ((CheckProductKitInventory("2Box" , pickAmount)) && (CheckProductKitInventory("USSFW14", pickAmount * 40)) && (CheckProductKitInventory("HFN14", pickAmount * 40)) && (CheckProductKitInventory("KLN14", pickAmount * 20)) && (CheckProductKitInventory("SLW14", pickAmount * 20)) && (CheckProductKitInventory("FW14-1", pickAmount * 10)) && (CheckProductKitInventory("TB14-34", pickAmount * 20)) && (CheckProductKitInventory("TB14-1", pickAmount * 15)) && (CheckProductKitInventory("TB14-112", pickAmount * 10)) && (CheckProductKitInventory("TB14-2", pickAmount * 10)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in F-400 Flanged.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "F-400HWH Flanged":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("BAnchor141", pickAmount * 100)) && (CheckProductKitInventory("Zip10-1", pickAmount * 100)) && (CheckProductKitInventory("Mdrill14", pickAmount)))
+                                {
+                                    removePickRow(pickID); 
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in SBH-1420.";
-                                MessageBox.Show(message);
-                            }
-                            break;
+                                else
+                                {
+                                    string message = "Please check quantity of items in F-400HWH Flanged.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "FA-316 Flanged":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Panc316-78R", pickAmount * 101)) && (CheckProductKitInventory("Cpan8-1", pickAmount * 101)) && (CheckProductKitInventory("Mdrill316", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                        case "SBH-3816":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("TB38-34", pickAmount * 12)) && (CheckProductKitInventory("TB38-1", pickAmount * 8)) && (CheckProductKitInventory("TB38-112", pickAmount * 6)) && (CheckProductKitInventory("TB38-2", pickAmount * 4)) && (CheckProductKitInventory("USSFW38", pickAmount * 20)) && (CheckProductKitInventory("HFN38", pickAmount * 20)) && (CheckProductKitInventory("KLN38", pickAmount * 8)) && (CheckProductKitInventory("SLW38", pickAmount * 10)) && (CheckProductKitInventory("FW38-112", pickAmount * 6)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in FA-316 Flanged.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "FA-316FH PH-6":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("pflat634", pickAmount * 101)) && (CheckProductKitInventory("Panc316-78R", pickAmount * 101)) && (CheckProductKitInventory("Mdrill316", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in SBH-3816.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "SBH-5018":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("TB516-34", pickAmount * 15)) && (CheckProductKitInventory("TB516-1", pickAmount * 10)) && (CheckProductKitInventory("TB516-112", pickAmount * 8)) && (CheckProductKitInventory("TB516-2", pickAmount * 6)) && (CheckProductKitInventory("USSFW516", pickAmount * 25)) && (CheckProductKitInventory("HFN516", pickAmount * 25)) && (CheckProductKitInventory("KLN516", pickAmount * 12)) && (CheckProductKitInventory("SLW516", pickAmount * 12)) && (CheckProductKitInventory("FW516-114", pickAmount * 8)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in FA-316FH PH-6.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "FA-316FHPH":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("pflat8-1", pickAmount * 101)) && (CheckProductKitInventory("Panc316-78R", pickAmount * 101)) && (CheckProductKitInventory("Mdrill316", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in SBH-5018.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "SLW-358":
-                            if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("SAEFW10", pickAmount * 50)) && (CheckProductKitInventory("SLW14", pickAmount * 40)) && (CheckProductKitInventory("SLW516", pickAmount * 40)) && (CheckProductKitInventory("SLW38", pickAmount * 25)) && (CheckProductKitInventory("SLW12", pickAmount * 15)) && (CheckProductKitInventory("SLW58", pickAmount * 10)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in FA-316FHPH.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "FA-316-6 Flanged":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Panc316-78R", pickAmount * 101)) && (CheckProductKitInventory("Cpan 634", pickAmount * 101)) && (CheckProductKitInventory("Mdrill316", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in SLW-358.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "SS-500":
-                            if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("516-18NC14", pickAmount * 6)) && (CheckProductKitInventory("516-18NC38", pickAmount * 4)) && (CheckProductKitInventory("516-18NC12", pickAmount * 4)) && (CheckProductKitInventory("516-18NC34", pickAmount * 2)) && (CheckProductKitInventory("SS5-1420-14", pickAmount * 6)) && (CheckProductKitInventory("SS5-1420-38", pickAmount * 4)) && (CheckProductKitInventory("SS5-1420-12", pickAmount * 4)) && (CheckProductKitInventory("SS5-1420-34", pickAmount * 2)) && (CheckProductKitInventory("1024NC14", pickAmount * 6)) && (CheckProductKitInventory("1024NC38", pickAmount * 4)) && (CheckProductKitInventory("1024NC12", pickAmount * 4)) && (CheckProductKitInventory("516-24NF14", pickAmount * 6)) && (CheckProductKitInventory("516-24NF38", pickAmount * 4)) && (CheckProductKitInventory("516-24NF12", pickAmount * 4)) && (CheckProductKitInventory("516-24NF34", pickAmount * 2)) && (CheckProductKitInventory("SS5-1428-14", pickAmount * 6)) && (CheckProductKitInventory("SS5-1428-38", pickAmount * 4)) && (CheckProductKitInventory("SS5-1428-12", pickAmount * 4)) && (CheckProductKitInventory("SS5-1428-34", pickAmount * 2)) && (CheckProductKitInventory("1032NF14", pickAmount * 6)) && (CheckProductKitInventory("1032NF38", pickAmount * 4)) && (CheckProductKitInventory("1032NF12", pickAmount * 4)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in FA-316-6 Flanged.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "FA-1420 Flanged":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Cpan 10-1T", pickAmount * 101)) && (CheckProductKitInventory("RANChor14-1", pickAmount * 101)) && (CheckProductKitInventory("Mdrill14", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in SS-500.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "TK-10":
-                            if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("Tek1012", pickAmount * 25)) && (CheckProductKitInventory("TEK1034", pickAmount * 25)) && (CheckProductKitInventory("Tek10-1", pickAmount * 20)) && (CheckProductKitInventory("Tek10-114", pickAmount * 15)) && (CheckProductKitInventory("Tek10-112", pickAmount * 15)) && (CheckProductKitInventory("jc-15", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in FA-1420 Flanged.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "FA-1420 HWH \"Big Red\" Flanged":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Zip10-1", pickAmount * 101)) && (CheckProductKitInventory("RANChor14-1", pickAmount * 101)) && (CheckProductKitInventory("Mdrill14", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in TK-10.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "TK-8":
-                            if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("TEK8-12", pickAmount * 40)) && (CheckProductKitInventory("TEK8-34", pickAmount * 30)) && (CheckProductKitInventory("TEK8-1", pickAmount * 30)) && (CheckProductKitInventory("TEK8-114", pickAmount * 30)) && (CheckProductKitInventory("TEK8-112", pickAmount * 15)) && (CheckProductKitInventory("JC-2", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in FA-1420 HWH \"Big Red\" Flanged.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "FA-5016 Flanged":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Panch-516-114B", pickAmount * 52)) && (CheckProductKitInventory("Cpan-12-114", pickAmount * 52)) && (CheckProductKitInventory("Mdrill516", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in TK-8.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "TK-10-5834":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("jc-15", pickAmount)) && (CheckProductKitInventory("TEK1058", pickAmount * 100)) && (CheckProductKitInventory("TEK1034", pickAmount * 100)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in FA-5016 Flanged.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "FA-5016 HWH Flanged":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Panch-516-114B", pickAmount * 52)) && (CheckProductKitInventory("Zip12-114", pickAmount * 52)) && (CheckProductKitInventory("Mdrill516", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in TK-10-5834.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "TK-12":
-                            if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("Tek12-34", pickAmount * 12)) && (CheckProductKitInventory("Tek12-1", pickAmount * 8)) && (CheckProductKitInventory("Tek12-114", pickAmount * 7)) && (CheckProductKitInventory("Tek12-112", pickAmount * 6)) && (CheckProductKitInventory("Tek12-2", pickAmount * 5)) && (CheckProductKitInventory("jc-15", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in FA-5016 HWH Flanged.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "GF-1816":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("GF-64-01 ST", pickAmount * 3)) && (CheckProductKitInventory("GF-90", pickAmount * 2)) && (CheckProductKitInventory("GF-45", pickAmount * 2)) && (CheckProductKitInventory("GF1428-45", pickAmount)) && (CheckProductKitInventory("GF1428-90", pickAmount)) && (CheckProductKitInventory("GF1428st", pickAmount * 3)) && (CheckProductKitInventory("316-str64-12", pickAmount * 6)) && (CheckProductKitInventory("GF-516-64-13", pickAmount * 5)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in TK-12.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "TK-14":
-                            if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("Tek14-34", pickAmount * 10)) && (CheckProductKitInventory("Tek14-1", pickAmount * 7)) && (CheckProductKitInventory("Tek14-114", pickAmount * 4)) && (CheckProductKitInventory("Tek14-112", pickAmount * 4)) && (CheckProductKitInventory("Tek14-2", pickAmount * 4)) && (CheckProductKitInventory("JC-30", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in GF-1816.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "H-78 Hex Washer Slotted":
+                                if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("Zip8-12", pickAmount * 100)) && (CheckProductKitInventory("Zip8-34", pickAmount * 75)) && (CheckProductKitInventory("Zip8-1", pickAmount * 50)) && (CheckProductKitInventory("Zip8-114", pickAmount * 30)) && (CheckProductKitInventory("Zip8-112", pickAmount * 20)) && (CheckProductKitInventory("JC-2", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in TK-14.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "TK-141":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Tek14-1", pickAmount * 75)) && (CheckProductKitInventory("JC-30", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in H-78 Hex Washer Slotted.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "HC-14":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("HC-300-004", pickAmount * 2)) && (CheckProductKitInventory("HC-300-006", pickAmount * 2)) && (CheckProductKitInventory("HC-300-008", pickAmount * 2)) && (CheckProductKitInventory("HC-300-012", pickAmount * 2)) && (CheckProductKitInventory("HC-600-016", pickAmount * 2)) && (CheckProductKitInventory("HC-600-020", pickAmount * 2)) && (CheckProductKitInventory("HC-600-028", pickAmount * 2)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in TK-141.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "TSHZ-1010":
-                            if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("ZIP10-12", pickAmount * 70)) && (CheckProductKitInventory("ZIP1034", pickAmount * 50)) && (CheckProductKitInventory("Zip10-1", pickAmount * 35)) && (CheckProductKitInventory("ZIP10-114", pickAmount * 15)) && (CheckProductKitInventory("ZIP10-112", pickAmount * 15)) && (CheckProductKitInventory("ZIP102", pickAmount * 15)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in HC-14.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "LS-30":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("LAGS-38-1", pickAmount * 6)) && (CheckProductKitInventory("LAGS-38-112", pickAmount * 6)) && (CheckProductKitInventory("LAGS-38-2", pickAmount * 6)) && (CheckProductKitInventory("LAGS-38-212", pickAmount * 6)) && (CheckProductKitInventory("LAGS-38-3", pickAmount * 6)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in TSHZ-1010.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "W-100 Plated washers":
-                            if ((CheckProductKitInventory("1Box", pickAmount)) && (CheckProductKitInventory("SAEF632-6", pickAmount * 12)) && (CheckProductKitInventory("SAEF832-8", pickAmount * 10)) && (CheckProductKitInventory("SAEFW10", pickAmount * 10)) && (CheckProductKitInventory("SAEFW14", pickAmount * 10)) && (CheckProductKitInventory("SAEFW516", pickAmount * 8)) && (CheckProductKitInventory("SAEFW38", pickAmount * 8)) && (CheckProductKitInventory("USSFW14", pickAmount * 10)) && (CheckProductKitInventory("USSFW516", pickAmount * 10)) && (CheckProductKitInventory("USSFW12", pickAmount * 6)) && (CheckProductKitInventory("USSFW38", pickAmount * 8)) && (CheckProductKitInventory("FW14-1", pickAmount * 10)) && (CheckProductKitInventory("FW316-1" , pickAmount * 10)) && (CheckProductKitInventory("FW38-112", pickAmount * 6)) && (CheckProductKitInventory("FW12-112", pickAmount * 3)) && (CheckProductKitInventory("FW516-114", pickAmount * 5)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in LS-30.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "MK-1812":
+                                if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("MK-18-112L", pickAmount * 4)) && (CheckProductKitInventory("MK-316-112L", pickAmount * 3)) && (CheckProductKitInventory("MK14-112L", pickAmount * 3)) && (CheckProductKitInventory("MK-516-112", pickAmount * 2)) && (CheckProductKitInventory("MK-38-112L", pickAmount)) && (CheckProductKitInventory("MK12-2L", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
 
-                            else
-                            {
-                                string message = "Please check quantity of items in W-100 Plated washers.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                        case "WE-383":
-                            if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("HFN38", pickAmount * 13)) && (CheckProductKitInventory("SAEFW38", pickAmount * 13)) && (CheckProductKitInventory("WedgeAnc-38-3", pickAmount * 12)) && (CheckProductKitInventory("Mdrill38", pickAmount)))
-                            {
-                                removePickDB();
-                                updatePickDB(placeholder);
-                                UpdateKitItem(placeholder);
-                            }
+                                else
+                                {
+                                    string message = "Please check quantity of items in MK-1812.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
 
-                            else
-                            {
-                                string message = "Please check quantity of items in WE-383.";
-                                MessageBox.Show(message);
-                            }
-                            break;
-                    }
+                            case "NW-832-1032":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("632MSN", pickAmount * 10)) && (CheckProductKitInventory("632KLN", pickAmount * 8)) && (CheckProductKitInventory("632NYN", pickAmount * 8)) && (CheckProductKitInventory("SAEF632-6", pickAmount * 20)) && (CheckProductKitInventory("632SLW6", pickAmount * 8)) && (CheckProductKitInventory("Cnut6-32", pickAmount * 6)) && (CheckProductKitInventory("632-112MS", pickAmount)) && (CheckProductKitInventory("832MSN", pickAmount * 30)) && (CheckProductKitInventory("832KLN", pickAmount * 20)) && (CheckProductKitInventory("832NYN", pickAmount * 20)) && (CheckProductKitInventory("832SFN", pickAmount * 20)) && (CheckProductKitInventory("Cnut8-32", pickAmount * 5)) && (CheckProductKitInventory("832WN", pickAmount * 5)) && (CheckProductKitInventory("SAEF832-8", pickAmount * 50)) && (CheckProductKitInventory("832SLW8", pickAmount * 20)) && (CheckProductKitInventory("832-12MS", pickAmount * 12)) && (CheckProductKitInventory("832-34MS", pickAmount * 12)) && (CheckProductKitInventory("832-114MS", pickAmount)) && (CheckProductKitInventory("1032HN", pickAmount * 15)) && (CheckProductKitInventory("1032KLN", pickAmount * 10)) && (CheckProductKitInventory("1032NLN", pickAmount * 10)) && (CheckProductKitInventory("1032SFN", pickAmount * 10)) && (CheckProductKitInventory("1032CN", pickAmount * 5)) && (CheckProductKitInventory("1032WN", pickAmount * 5)) && (CheckProductKitInventory("1032SLW10", pickAmount * 20)) && (CheckProductKitInventory("SAEFW10", pickAmount * 50)) && (CheckProductKitInventory("1032114MS", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in NW-832-1032.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "NY-80":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("NLIstop-14", pickAmount * 30)) && (CheckProductKitInventory("NLIstop-516", pickAmount * 6)) && (CheckProductKitInventory("NLIstop-38", pickAmount * 20)) && (CheckProductKitInventory("NLIstop-12", pickAmount * 24)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in NY-80.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "SB-316":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("102438MS", pickAmount * 20)) && (CheckProductKitInventory("102412MS", pickAmount * 20)) && (CheckProductKitInventory("102434MS", pickAmount * 15)) && (CheckProductKitInventory("10241MS", pickAmount * 15)) && (CheckProductKitInventory("1024114MS", pickAmount * 10)) && (CheckProductKitInventory("1024112MS", pickAmount * 10)) && (CheckProductKitInventory("10242MS", pickAmount * 10)) && (CheckProductKitInventory("1024MSN", pickAmount * 100)) && (CheckProductKitInventory("SAEFW10", pickAmount * 50)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in SB-316.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "SB-632":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("632-38MS", pickAmount * 25)) && (CheckProductKitInventory("632-12MS", pickAmount * 25)) && (CheckProductKitInventory("632-34MS", pickAmount * 20)) && (CheckProductKitInventory("632-1MS", pickAmount * 20)) && (CheckProductKitInventory("632-112MS", pickAmount * 20)) && (CheckProductKitInventory("632-114MS", pickAmount * 20)) && (CheckProductKitInventory("632-2MS", pickAmount * 20)) && (CheckProductKitInventory("632MSN", pickAmount * 150)) && (CheckProductKitInventory("SAEF632-6", pickAmount * 50)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in kit.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "SB-832":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("832-38MS", pickAmount * 20)) && (CheckProductKitInventory("832-12MS", pickAmount * 20)) && (CheckProductKitInventory("832-34MS", pickAmount * 20)) && (CheckProductKitInventory("832-1MS", pickAmount * 20)) && (CheckProductKitInventory("832-114MS", pickAmount * 15)) && (CheckProductKitInventory("832-112MS", pickAmount * 15)) && (CheckProductKitInventory("832-2MS", pickAmount * 15)) && (CheckProductKitInventory("832MSN", pickAmount * 125)) && (CheckProductKitInventory("SAEF832-8", pickAmount * 50)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in kit.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "SB-1032":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("103238MS", pickAmount * 20)) && (CheckProductKitInventory("103212MS", pickAmount * 20)) && (CheckProductKitInventory("103234MS", pickAmount * 15)) && (CheckProductKitInventory("10321MS", pickAmount * 15)) && (CheckProductKitInventory("1032114MS", pickAmount * 10)) && (CheckProductKitInventory("1032112MS", pickAmount * 10)) && (CheckProductKitInventory("10322MS", pickAmount * 10)) && (CheckProductKitInventory("1032SLW10", pickAmount * 100)) && (CheckProductKitInventory("SAEFW10", pickAmount * 50)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in SB-1032.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "SB-1420":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("MS14-12", pickAmount * 30)) && (CheckProductKitInventory("MS14-34", pickAmount * 16)) && (CheckProductKitInventory("MS14-1", pickAmount * 10)) && (CheckProductKitInventory("MS14-114", pickAmount * 8)) && (CheckProductKitInventory("MS14-112", pickAmount * 8)) && (CheckProductKitInventory("MS14-2", pickAmount * 6)) && (CheckProductKitInventory("HFN14", pickAmount * 75)) && (CheckProductKitInventory("SAEFW14", pickAmount * 50)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in SB-1420.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "SBH-1420":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("USSFW14", pickAmount * 40)) && (CheckProductKitInventory("HFN14", pickAmount * 40)) && (CheckProductKitInventory("KLN14", pickAmount * 20)) && (CheckProductKitInventory("SLW14", pickAmount * 20)) && (CheckProductKitInventory("FW14-1", pickAmount * 10)) && (CheckProductKitInventory("TB14-34", pickAmount * 20)) && (CheckProductKitInventory("TB14-1", pickAmount * 15)) && (CheckProductKitInventory("TB14-112", pickAmount * 10)) && (CheckProductKitInventory("TB14-2", pickAmount * 10)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in SBH-1420.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+
+                            case "SBH-3816":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("TB38-34", pickAmount * 12)) && (CheckProductKitInventory("TB38-1", pickAmount * 8)) && (CheckProductKitInventory("TB38-112", pickAmount * 6)) && (CheckProductKitInventory("TB38-2", pickAmount * 4)) && (CheckProductKitInventory("USSFW38", pickAmount * 20)) && (CheckProductKitInventory("HFN38", pickAmount * 20)) && (CheckProductKitInventory("KLN38", pickAmount * 8)) && (CheckProductKitInventory("SLW38", pickAmount * 10)) && (CheckProductKitInventory("FW38-112", pickAmount * 6)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in SBH-3816.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "SBH-5018":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("TB516-34", pickAmount * 15)) && (CheckProductKitInventory("TB516-1", pickAmount * 10)) && (CheckProductKitInventory("TB516-112", pickAmount * 8)) && (CheckProductKitInventory("TB516-2", pickAmount * 6)) && (CheckProductKitInventory("USSFW516", pickAmount * 25)) && (CheckProductKitInventory("HFN516", pickAmount * 25)) && (CheckProductKitInventory("KLN516", pickAmount * 12)) && (CheckProductKitInventory("SLW516", pickAmount * 12)) && (CheckProductKitInventory("FW516-114", pickAmount * 8)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in SBH-5018.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "SLW-358":
+                                if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("SAEFW10", pickAmount * 50)) && (CheckProductKitInventory("SLW14", pickAmount * 40)) && (CheckProductKitInventory("SLW516", pickAmount * 40)) && (CheckProductKitInventory("SLW38", pickAmount * 25)) && (CheckProductKitInventory("SLW12", pickAmount * 15)) && (CheckProductKitInventory("SLW58", pickAmount * 10)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in SLW-358.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "SS-500":
+                                if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("516-18NC14", pickAmount * 6)) && (CheckProductKitInventory("516-18NC38", pickAmount * 4)) && (CheckProductKitInventory("516-18NC12", pickAmount * 4)) && (CheckProductKitInventory("516-18NC34", pickAmount * 2)) && (CheckProductKitInventory("SS5-1420-14", pickAmount * 6)) && (CheckProductKitInventory("SS5-1420-38", pickAmount * 4)) && (CheckProductKitInventory("SS5-1420-12", pickAmount * 4)) && (CheckProductKitInventory("SS5-1420-34", pickAmount * 2)) && (CheckProductKitInventory("1024NC14", pickAmount * 6)) && (CheckProductKitInventory("1024NC38", pickAmount * 4)) && (CheckProductKitInventory("1024NC12", pickAmount * 4)) && (CheckProductKitInventory("516-24NF14", pickAmount * 6)) && (CheckProductKitInventory("516-24NF38", pickAmount * 4)) && (CheckProductKitInventory("516-24NF12", pickAmount * 4)) && (CheckProductKitInventory("516-24NF34", pickAmount * 2)) && (CheckProductKitInventory("SS5-1428-14", pickAmount * 6)) && (CheckProductKitInventory("SS5-1428-38", pickAmount * 4)) && (CheckProductKitInventory("SS5-1428-12", pickAmount * 4)) && (CheckProductKitInventory("SS5-1428-34", pickAmount * 2)) && (CheckProductKitInventory("1032NF14", pickAmount * 6)) && (CheckProductKitInventory("1032NF38", pickAmount * 4)) && (CheckProductKitInventory("1032NF12", pickAmount * 4)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in SS-500.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "TK-10":
+                                if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("Tek1012", pickAmount * 25)) && (CheckProductKitInventory("TEK1034", pickAmount * 25)) && (CheckProductKitInventory("Tek10-1", pickAmount * 20)) && (CheckProductKitInventory("Tek10-114", pickAmount * 15)) && (CheckProductKitInventory("Tek10-112", pickAmount * 15)) && (CheckProductKitInventory("jc-15", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in TK-10.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "TK-8":
+                                if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("TEK8-12", pickAmount * 40)) && (CheckProductKitInventory("TEK8-34", pickAmount * 30)) && (CheckProductKitInventory("TEK8-1", pickAmount * 30)) && (CheckProductKitInventory("TEK8-114", pickAmount * 30)) && (CheckProductKitInventory("TEK8-112", pickAmount * 15)) && (CheckProductKitInventory("JC-2", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in TK-8.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "TK-10-5834":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("jc-15", pickAmount)) && (CheckProductKitInventory("TEK1058", pickAmount * 100)) && (CheckProductKitInventory("TEK1034", pickAmount * 100)))
+                                {
+                                    removePickRow(pickID);;
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in TK-10-5834.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "TK-12":
+                                if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("Tek12-34", pickAmount * 12)) && (CheckProductKitInventory("Tek12-1", pickAmount * 8)) && (CheckProductKitInventory("Tek12-114", pickAmount * 7)) && (CheckProductKitInventory("Tek12-112", pickAmount * 6)) && (CheckProductKitInventory("Tek12-2", pickAmount * 5)) && (CheckProductKitInventory("jc-15", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in TK-12.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "TK-14":
+                                if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("Tek14-34", pickAmount * 10)) && (CheckProductKitInventory("Tek14-1", pickAmount * 7)) && (CheckProductKitInventory("Tek14-114", pickAmount * 4)) && (CheckProductKitInventory("Tek14-112", pickAmount * 4)) && (CheckProductKitInventory("Tek14-2", pickAmount * 4)) && (CheckProductKitInventory("JC-30", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in TK-14.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "TK-141":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("Tek14-1", pickAmount * 75)) && (CheckProductKitInventory("JC-30", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in TK-141.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "TSHZ-1010":
+                                if ((CheckProductKitInventory("6Box", pickAmount)) && (CheckProductKitInventory("ZIP10-12", pickAmount * 70)) && (CheckProductKitInventory("ZIP1034", pickAmount * 50)) && (CheckProductKitInventory("Zip10-1", pickAmount * 35)) && (CheckProductKitInventory("ZIP10-114", pickAmount * 15)) && (CheckProductKitInventory("ZIP10-112", pickAmount * 15)) && (CheckProductKitInventory("ZIP102", pickAmount * 15)))
+                                {
+                                    removePickRow(pickID);;
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in TSHZ-1010.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "W-100 Plated washers":
+                                if ((CheckProductKitInventory("1Box", pickAmount)) && (CheckProductKitInventory("SAEF632-6", pickAmount * 12)) && (CheckProductKitInventory("SAEF832-8", pickAmount * 10)) && (CheckProductKitInventory("SAEFW10", pickAmount * 10)) && (CheckProductKitInventory("SAEFW14", pickAmount * 10)) && (CheckProductKitInventory("SAEFW516", pickAmount * 8)) && (CheckProductKitInventory("SAEFW38", pickAmount * 8)) && (CheckProductKitInventory("USSFW14", pickAmount * 10)) && (CheckProductKitInventory("USSFW516", pickAmount * 10)) && (CheckProductKitInventory("USSFW12", pickAmount * 6)) && (CheckProductKitInventory("USSFW38", pickAmount * 8)) && (CheckProductKitInventory("FW14-1", pickAmount * 10)) && (CheckProductKitInventory("FW316-1", pickAmount * 10)) && (CheckProductKitInventory("FW38-112", pickAmount * 6)) && (CheckProductKitInventory("FW12-112", pickAmount * 3)) && (CheckProductKitInventory("FW516-114", pickAmount * 5)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in W-100 Plated washers.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                            case "WE-383":
+                                if ((CheckProductKitInventory("2Box", pickAmount)) && (CheckProductKitInventory("HFN38", pickAmount * 13)) && (CheckProductKitInventory("SAEFW38", pickAmount * 13)) && (CheckProductKitInventory("WedgeAnc-38-3", pickAmount * 12)) && (CheckProductKitInventory("Mdrill38", pickAmount)))
+                                {
+                                    removePickRow(pickID);
+                                    updatePickDB(placeholder);
+                                    UpdateKitItem(placeholder);
+                                }
+
+                                else
+                                {
+                                    string message = "Please check quantity of items in WE-383.";
+                                    MessageBox.Show(message);
+                                }
+                                break;
+                        }
                 }
             }
         }
@@ -874,6 +888,20 @@ namespace CamcoForm
             }
         }
 
+        public void removePickRow(int pickID)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                Picking result = DB.Pickings.SingleOrDefault(x => x.PickID == pickID);
+
+                if (result != null)
+                {
+                    DB.Pickings.Remove(result);
+                    DB.SaveChanges();
+                }
+            }
+        }
+
         public string getPO()
         {
             return textPONumber.Text;
@@ -933,16 +961,19 @@ namespace CamcoForm
         public bool invalidQuantity(int i)
         {
             bool invalidQuantity = true;
-            if (convertToInt(dataGridView1.Rows[i].Cells[4].Value.ToString()) > convertToInt(dataGridView1.Rows[i].Cells[5].Value.ToString()))
+            if (dataGridView1.Rows[i].Cells[4].Value.ToString() != null)
             {
-                string error = "Error: Quantity picked exceeds remaining amount in order.";
-                MessageBox.Show(error);
-                return invalidQuantity;
-            }
+                if (convertToInt(dataGridView1.Rows[i].Cells[4].Value.ToString()) > convertToInt(dataGridView1.Rows[i].Cells[5].Value.ToString()))
+                {
+                    string error = "Error: Quantity picked exceeds remaining amount in order.";
+                    MessageBox.Show(error);
+                    return invalidQuantity;
+                }
 
-            else
-            {
-                invalidQuantity = false;
+                else
+                {
+                    invalidQuantity = false;
+                }
             }
             return invalidQuantity;
         }
@@ -1004,63 +1035,81 @@ namespace CamcoForm
 
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
+                int pickID = convertToInt(dataGridView1.Rows[i].Cells[8].Value.ToString());
+
                 if (dataGridView1.Rows[i].Cells[7].Value.ToString() == "KIT")
                 {
                     if (dataGridView1.Rows[i].Cells[4].Value == null)
                     {
                         var placeholder = convertNullPickToDB(i);
+                        removePickRow(pickID);
                         updatePickDB(placeholder);
                     }
 
                     else
                     {
-                        var placeholder = convertPickToDB(i);
-
-                        if (placeholder.Commit == true)
+                        if (convertToInt(dataGridView1.Rows[i].Cells[4].Value.ToString()) > convertToInt(dataGridView1.Rows[i].Cells[5].Value.ToString()))
                         {
-                            UpdateKitInventory(placeholder, i);
-                            var convertedShip = convertPickToShipping(placeholder);
-                            updateShipDB(convertedShip);
+                            string error = "Error: quantity picked exceeds invoice quantity.";
+                            MessageBox.Show(error);
                         }
-                        
+
                         else
                         {
-                            removePickDB();
-                            updatePickDB(placeholder);
+                            var placeholder = convertPickToDB(i);
+
+                            if (placeholder.Commit == true)
+                            {
+                                removePickRow(pickID);
+                                updatePickDB(placeholder);
+                                UpdateKitInventory(placeholder, i, pickID);
+                                var convertedShip = convertPickToShipping(placeholder);
+                                updateShipDB(convertedShip);
+                            }
+
+                            else
+                            {
+                               /* placeholder.QuantityPicked = 0;
+                                removePickDB();
+                                updatePickDB(placeholder); */
+                            }
                         }
                     }
                 }
 
                 else
                 {
-                    if (invalidQuantity(i) == false)
+                    if (dataGridView1.Rows[i].Cells[4].Value != null)
                     {
-                        var placeholder = convertPickToDB(i);
-
-                        if (placeholder.Commit == true)
+                        if (invalidQuantity(i) == false)
                         {
-                            removePickDB();
-                            updatePickDB(placeholder);
-                            updateInventory(placeholder);
-                            var convertedShip = convertPickToShipping(placeholder);
-                            updateShipDB(convertedShip);
+                            var placeholder = convertPickToDB(i);
+
+                            if (placeholder.Commit == true)
+                            {
+                                removePickRow(pickID);
+                                updatePickDB(placeholder);
+                                updateInventory(placeholder);
+                                var convertedShip = convertPickToShipping(placeholder);
+                                updateShipDB(convertedShip);
+                            }
+
+                            else
+                            {
+                                /*placeholder.QuantityPicked = 0;
+                                removePickDB();
+                                updatePickDB(placeholder); */
+                            }
                         }
 
                         else
                         {
-                            removePickDB();
-                            updatePickDB(placeholder);
+                            string msg = "Invalid quantity entered.";
+                            MessageBox.Show(msg);
                         }
-                    }
-
-                    else
-                    {
-                        string msg = "Invalid quantity entered.";
-                        MessageBox.Show(msg);
                     }
                 }       
             }
-            this.Close();
         }
     
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
