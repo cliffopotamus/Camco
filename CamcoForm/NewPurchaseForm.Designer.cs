@@ -142,6 +142,8 @@
             // 
             // comboInventory
             // 
+            this.comboInventory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboInventory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboInventory.DisplayMember = "ProductName";
             this.comboInventory.FormattingEnabled = true;
             this.comboInventory.Location = new System.Drawing.Point(125, 141);

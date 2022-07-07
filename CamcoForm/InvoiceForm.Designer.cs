@@ -32,8 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvoiceForm));
             this.btnNewInvoice = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnPicking = new System.Windows.Forms.Button();
+            this.btnInventory = new System.Windows.Forms.Button();
             this.BtnPurchases = new System.Windows.Forms.Button();
             this.BtnInvoices = new System.Windows.Forms.Button();
             this.BtnVendors = new System.Windows.Forms.Button();
@@ -83,8 +82,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.btnPicking);
+            this.panel1.Controls.Add(this.btnInventory);
             this.panel1.Controls.Add(this.BtnPurchases);
             this.panel1.Controls.Add(this.BtnInvoices);
             this.panel1.Controls.Add(this.BtnVendors);
@@ -97,37 +95,21 @@
             this.panel1.Size = new System.Drawing.Size(186, 550);
             this.panel1.TabIndex = 2;
             // 
-            // button2
+            // btnInventory
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(0, 396);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(186, 42);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Purchases";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // btnPicking
-            // 
-            this.btnPicking.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPicking.FlatAppearance.BorderSize = 0;
-            this.btnPicking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPicking.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnPicking.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnPicking.Image = ((System.Drawing.Image)(resources.GetObject("btnPicking.Image")));
-            this.btnPicking.Location = new System.Drawing.Point(0, 354);
-            this.btnPicking.Name = "btnPicking";
-            this.btnPicking.Size = new System.Drawing.Size(186, 42);
-            this.btnPicking.TabIndex = 2;
-            this.btnPicking.Text = "Picking";
-            this.btnPicking.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPicking.UseVisualStyleBackColor = true;
+            this.btnInventory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInventory.FlatAppearance.BorderSize = 0;
+            this.btnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInventory.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnInventory.Image = ((System.Drawing.Image)(resources.GetObject("btnInventory.Image")));
+            this.btnInventory.Location = new System.Drawing.Point(0, 354);
+            this.btnInventory.Name = "btnInventory";
+            this.btnInventory.Size = new System.Drawing.Size(186, 42);
+            this.btnInventory.TabIndex = 3;
+            this.btnInventory.Text = "Inventory";
+            this.btnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInventory.UseVisualStyleBackColor = true;
             // 
             // BtnPurchases
             // 
@@ -450,8 +432,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn invoiceSODataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnRefreshInvoice;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnPicking;
+        private System.Windows.Forms.Button btnInventory;
         private System.Windows.Forms.TextBox textEnterSO;
         private System.Windows.Forms.Button btnEnterSO;
         private System.Windows.Forms.Button btnPickInvoice;

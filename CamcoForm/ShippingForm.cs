@@ -19,11 +19,7 @@ namespace CamcoForm
 
         private void ShippingForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'camcoDataSet10.Shipping' table. You can move, or remove it, as needed.
-            using (var DB = new CamcoEntities())
-            {
-
-            }
+            dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
 
         }
 
@@ -72,7 +68,7 @@ namespace CamcoForm
 
                 if (result != null)
                 {
-                  dataGridView1.Rows.Add(result[i].ShipID, result[i].InvoiceSO, result[i].InvoicePO, result[i].Quantity, result[i].ProductName, result[i].QuantityPicked, result[i].QuantityRemaining, result[i].DateScheduled);
+                  dataGridView1.Rows.Add(result[i].ShipID, result[i].InvoiceSO, result[i].InvoicePO, result[i].Quantity, result[i].ProductName, result[i].ProductDescription, result[i].QuantityPicked, result[i].QuantityRemaining, result[i].DateScheduled);
                 }
             }
 
@@ -149,7 +145,7 @@ namespace CamcoForm
             Graphics graphic = this.CreateGraphics();
             bmp = new Bitmap(this.Size.Width, this.Size.Height - 20, graphic);
             Graphics mg = Graphics.FromImage(bmp);
-            mg.CopyFromScreen(this.Location.X, this.Location.Y, -20, 70, this.Size);
+            mg.CopyFromScreen(this.Location.X, this.Location.Y, -45, 70, this.Size);
             printPreviewDialog1.ShowDialog();
         }
 

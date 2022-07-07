@@ -23,5 +23,6 @@ namespace CamcoForm
         public string DateScheduled { get; set; }
         public Nullable<bool> PackingList { get; set; }
         public string InvoicePO { get; set; }
+        public string ProductDescription { get; set; }
     }
 }

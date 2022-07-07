@@ -231,12 +231,13 @@
             // 
             // btnDeletePO
             // 
-            this.btnDeletePO.Location = new System.Drawing.Point(764, 60);
+            this.btnDeletePO.Location = new System.Drawing.Point(929, 60);
             this.btnDeletePO.Name = "btnDeletePO";
             this.btnDeletePO.Size = new System.Drawing.Size(125, 42);
             this.btnDeletePO.TabIndex = 4;
-            this.btnDeletePO.Text = "Delete Purchase Order";
+            this.btnDeletePO.Text = " Delete Purchase Order     ";
             this.btnDeletePO.UseVisualStyleBackColor = true;
+            this.btnDeletePO.Click += new System.EventHandler(this.btnDeletePO_Click);
             // 
             // dataGridView1
             // 
@@ -334,7 +335,7 @@
             // 
             // btnReceivedOrder
             // 
-            this.btnReceivedOrder.Location = new System.Drawing.Point(929, 60);
+            this.btnReceivedOrder.Location = new System.Drawing.Point(762, 60);
             this.btnReceivedOrder.Name = "btnReceivedOrder";
             this.btnReceivedOrder.Size = new System.Drawing.Size(125, 42);
             this.btnReceivedOrder.TabIndex = 7;

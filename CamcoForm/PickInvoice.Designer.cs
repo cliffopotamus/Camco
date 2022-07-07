@@ -41,10 +41,11 @@
             this.QuantityRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Commit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PickID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textInvoiceTotal = new System.Windows.Forms.TextBox();
             this.btnCommit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.PickID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnVoid = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,6 +146,12 @@
             this.ProductDescription.Name = "ProductDescription";
             this.ProductDescription.Visible = false;
             // 
+            // PickID
+            // 
+            this.PickID.HeaderText = "PickID";
+            this.PickID.Name = "PickID";
+            this.PickID.Visible = false;
+            // 
             // textInvoiceTotal
             // 
             this.textInvoiceTotal.Location = new System.Drawing.Point(603, 76);
@@ -172,17 +179,22 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // PickID
+            // btnVoid
             // 
-            this.PickID.HeaderText = "PickID";
-            this.PickID.Name = "PickID";
-            this.PickID.Visible = false;
+            this.btnVoid.Location = new System.Drawing.Point(677, 98);
+            this.btnVoid.Name = "btnVoid";
+            this.btnVoid.Size = new System.Drawing.Size(75, 23);
+            this.btnVoid.TabIndex = 8;
+            this.btnVoid.Text = "Void Pick";
+            this.btnVoid.UseVisualStyleBackColor = true;
+            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // PickInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnVoid);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnCommit);
             this.Controls.Add(this.textInvoiceTotal);
@@ -219,5 +231,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Commit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn PickID;
+        private System.Windows.Forms.Button btnVoid;
     }
 }

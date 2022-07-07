@@ -33,6 +33,8 @@
             this.labelSO = new System.Windows.Forms.Label();
             this.labelPO = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnCommit = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.PurchaseSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchasePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,8 +42,8 @@
             this.ReceivedQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RemainingQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Commit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnCommit = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.ReceiveID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,12 +90,34 @@
             this.ProductName,
             this.ReceivedQuantity,
             this.RemainingQuantity,
-            this.Commit});
+            this.Commit,
+            this.ReceiveID,
+            this.ProductDescription});
             this.dataGridView1.Location = new System.Drawing.Point(21, 137);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(743, 269);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
+            // 
+            // btnCommit
+            // 
+            this.btnCommit.Location = new System.Drawing.Point(608, 415);
+            this.btnCommit.Name = "btnCommit";
+            this.btnCommit.Size = new System.Drawing.Size(75, 23);
+            this.btnCommit.TabIndex = 5;
+            this.btnCommit.Text = "Commit";
+            this.btnCommit.UseVisualStyleBackColor = true;
+            this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(713, 415);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // PurchaseSO
             // 
@@ -135,25 +159,17 @@
             this.Commit.HeaderText = "Commit";
             this.Commit.Name = "Commit";
             // 
-            // btnCommit
+            // ReceiveID
             // 
-            this.btnCommit.Location = new System.Drawing.Point(608, 415);
-            this.btnCommit.Name = "btnCommit";
-            this.btnCommit.Size = new System.Drawing.Size(75, 23);
-            this.btnCommit.TabIndex = 5;
-            this.btnCommit.Text = "Commit";
-            this.btnCommit.UseVisualStyleBackColor = true;
-            this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
+            this.ReceiveID.HeaderText = "ReceiveID";
+            this.ReceiveID.Name = "ReceiveID";
+            this.ReceiveID.Visible = false;
             // 
-            // btnCancel
+            // ProductDescription
             // 
-            this.btnCancel.Location = new System.Drawing.Point(713, 415);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.ProductDescription.HeaderText = "ProductDescription";
+            this.ProductDescription.Name = "ProductDescription";
+            this.ProductDescription.Visible = false;
             // 
             // ReceiveOrderForm
             // 
@@ -183,6 +199,8 @@
         private System.Windows.Forms.Label labelSO;
         private System.Windows.Forms.Label labelPO;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnCommit;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseSO;
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchasePO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
@@ -190,7 +208,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ReceivedQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn RemainingQuantity;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Commit;
-        private System.Windows.Forms.Button btnCommit;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ReceiveID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductDescription;
     }
 }

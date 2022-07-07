@@ -46,6 +46,7 @@ namespace CamcoForm
             public int QuantityRemaining;
             public DateTime DateScheduled;
             public bool Finished;
+            public string productDescription;
         }
 
         public class InventoryBox
@@ -789,14 +790,16 @@ namespace CamcoForm
         public void EditRow(SalesItem salesRow, DataGridViewCellValidatingEventArgs e)
         {
             int number;
-            int intValue = convertToInt(e.FormattedValue.ToString());
-            decimal decValue = convertToDecimal(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+            
             {
                 if (int.TryParse(e.FormattedValue.ToString(), out number))
                 {
-                    decimal totalPrice = convertToDecimal(dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString()) * convertToInt(e.FormattedValue.ToString());
-                    dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
-                    textTotalPrice.Text = dataGridView1.Rows.Cast<DataGridViewRow>().AsEnumerable().Sum(t => Convert.ToDecimal(t.Cells[4].Value)).ToString();
+                    if (dataGridView1.Rows[e.RowIndex].Cells[3].Value != null)
+                    {
+                        decimal totalPrice = convertToDecimal(dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString()) * convertToInt(e.FormattedValue.ToString());
+                        dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
+                        textTotalPrice.Text = dataGridView1.Rows.Cast<DataGridViewRow>().AsEnumerable().Sum(t => Convert.ToDecimal(t.Cells[4].Value)).ToString();
+                    }
                 }
 
 
@@ -958,6 +961,7 @@ namespace CamcoForm
             placeholder.PurchaseSO = textSONumber.Text;
             placeholder.Quantity = convertToInt(dataGridView1.Rows[i].Cells[0].Value.ToString());
             placeholder.ProductName = dataGridView1.Rows[i].Cells[1].Value.ToString();
+            placeholder.ProductDescription = dataGridView1.Rows[i].Cells[2].Value.ToString();
             return placeholder;
         }
 

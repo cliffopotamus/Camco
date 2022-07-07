@@ -22,6 +22,38 @@ namespace CamcoForm
 
         }
 
+        public int convertToInt(string placeholder)
+        {
+            int number;
+            bool success = int.TryParse(placeholder, out number);
+
+            if (success)
+            {
+                return number;
+            }
+
+            else
+            {
+                return 0;
+            }
+        }
+
+        public decimal convertToDecimal(string placeholder)
+        {
+            decimal number;
+            bool success = decimal.TryParse(placeholder, out number);
+
+            if (success)
+            {
+                return number;
+            }
+
+            else
+            {
+                return 0;
+            }
+        }
+
         public class KitModel
         {
             public string name;
@@ -46,14 +78,14 @@ namespace CamcoForm
         public InventoryModel GetAllValuesFromForm()
         {
             var prod = new InventoryModel();
-            var decimalUnitCost = Convert.ToDecimal(textUnitCost.Text);
-            var decimalQuantity = Convert.ToInt32(textQuantity.Text);
+            var decimalUnitCost = convertToDecimal(textUnitCost.Text);
+            var decimalQuantity = convertToInt(textQuantity.Text);
             prod.name = textProductName.Text;
             prod.description = textProductDescription.Text;
-            prod.quantity = Convert.ToInt32(textQuantity.Text);
-            prod.unitCost = Convert.ToDecimal(textUnitCost.Text);
+            prod.quantity = convertToInt(textQuantity.Text);
+            prod.unitCost = convertToDecimal(textUnitCost.Text);
             prod.totalCost = decimalUnitCost * decimalQuantity;
-            prod.salesPrice = Convert.ToDecimal(textSalesPrice.Text);
+            prod.salesPrice = convertToDecimal(textSalesPrice.Text);
             return prod;
         }
 
@@ -92,6 +124,17 @@ namespace CamcoForm
             }
         }
 
+        public void incrementProductID()
+        {
+            int intID = convertToInt(textProductID.Text);
+            intID = intID + 1;
+            textProductID.Text = intID.ToString();
+        }
+
+        NewInvoiceForm invoiceForm = new NewInvoiceForm();
+        NewInventoryForm inventoryForm = new NewInventoryForm();
+
+
         private void btnFinish_Click(object sender, EventArgs e)
         {
             var nameFailure = CheckRequired(textProductName.Text);
@@ -103,11 +146,11 @@ namespace CamcoForm
 
             if ((nameFailure == false) && (descriptionFailure == false) && (quantityFailure == false) && (unitCostFailure == false) && (salesPriceFailure == false))
             {
-                textTotalCost.Text = (Convert.ToDecimal(textUnitCost.Text) * Convert.ToInt32(textQuantity.Text)).ToString();
+                textTotalCost.Text = (convertToDecimal(textUnitCost.Text) * convertToInt(textQuantity.Text)).ToString();
                 var placeholderValues = GetAllValuesFromForm();
                 updateDB(placeholderValues);
                 string successBox = "Success";
-                MessageBox.Show(successBox);
+                MessageBox.Show(successBox);          
                 this.Close();
             }
 

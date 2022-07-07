@@ -35,7 +35,7 @@ namespace CamcoForm
 
         private void btnRefreshInvoice_Click(object sender, EventArgs e)
         {
-          dataGridView1.Refresh();
+          
         }
 
         private void btnEnterSO_Click(object sender, EventArgs e)

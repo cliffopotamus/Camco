@@ -124,6 +124,7 @@
           <Property Name="PurchasePO" Type="nvarchar" MaxLength="50" />
           <Property Name="Quantity" Type="int" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductDescription" Type="nvarchar" MaxLength="100" />
           <Property Name="QuantityReceived" Type="int" />
           <Property Name="QuantityRemaining" Type="int" />
           <Property Name="DateScheduled" Type="date" />
@@ -139,6 +140,7 @@
           <Property Name="VendorID" Type="int" />
           <Property Name="Quantity" Type="int" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductDescription" Type="nvarchar" MaxLength="100" />
           <Property Name="QuantityReceived" Type="int" />
           <Property Name="QuantityRemaining" Type="int" />
           <Property Name="DateScheduled" Type="date" />
@@ -152,6 +154,7 @@
           <Property Name="InvoiceSO" Type="int" />
           <Property Name="Quantity" Type="int" />
           <Property Name="ProductName" Type="varchar" MaxLength="50" />
+          <Property Name="ProductDescription" Type="varchar" MaxLength="100" />
           <Property Name="QuantityPicked" Type="int" />
           <Property Name="QuantityRemaining" Type="int" />
           <Property Name="DateScheduled" Type="nvarchar" MaxLength="50" />
@@ -309,6 +312,7 @@
           <Property Name="DateScheduled" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PackingList" Type="Boolean" />
           <Property Name="InvoicePO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
@@ -336,6 +340,7 @@
           <Property Name="DateScheduled" Type="DateTime" Precision="0" />
           <Property Name="Finished" Type="Boolean" />
           <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PurchaseOrderLineItem">
           <Key>
@@ -366,6 +371,7 @@
           <Property Name="QuantityRemaining" Type="Int32" />
           <Property Name="DateScheduled" Type="DateTime" Precision="0" />
           <Property Name="PackingList" Type="Boolean" />
+          <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -477,6 +483,7 @@
           <EntitySetMapping Name="Shippings">
             <EntityTypeMapping TypeName="CamcoModel.Shipping">
               <MappingFragment StoreEntitySet="Shipping">
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
                 <ScalarProperty Name="InvoicePO" ColumnName="InvoicePO" />
                 <ScalarProperty Name="PackingList" ColumnName="PackingList" />
                 <ScalarProperty Name="DateScheduled" ColumnName="DateScheduled" />
@@ -505,6 +512,7 @@
           <EntitySetMapping Name="Receivings">
             <EntityTypeMapping TypeName="CamcoModel.Receiving">
               <MappingFragment StoreEntitySet="Receiving">
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="Finished" ColumnName="Finished" />
                 <ScalarProperty Name="DateScheduled" ColumnName="DateScheduled" />
@@ -538,6 +546,7 @@
           <EntitySetMapping Name="Receiveds">
             <EntityTypeMapping TypeName="CamcoModel.Received">
               <MappingFragment StoreEntitySet="Received">
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
                 <ScalarProperty Name="PackingList" ColumnName="PackingList" />
                 <ScalarProperty Name="DateScheduled" ColumnName="DateScheduled" />
                 <ScalarProperty Name="QuantityRemaining" ColumnName="QuantityRemaining" />

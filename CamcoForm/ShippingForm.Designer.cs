@@ -49,6 +49,7 @@
             this.InvoicePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantityPicked = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantityRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateScheduled = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,13 +67,14 @@
             this.InvoicePO,
             this.Quantity,
             this.ProductName,
+            this.ProductDescription,
             this.QuantityPicked,
             this.QuantityRemaining,
             this.DateScheduled,
             this.Finished});
-            this.dataGridView1.Location = new System.Drawing.Point(65, 185);
+            this.dataGridView1.Location = new System.Drawing.Point(31, 185);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(744, 339);
+            this.dataGridView1.Size = new System.Drawing.Size(845, 339);
             this.dataGridView1.TabIndex = 0;
             // 
             // textInvoiceSO
@@ -223,6 +225,11 @@
             this.ProductName.Name = "ProductName";
             this.ProductName.ReadOnly = true;
             // 
+            // ProductDescription
+            // 
+            this.ProductDescription.HeaderText = "ProductDescription";
+            this.ProductDescription.Name = "ProductDescription";
+            // 
             // QuantityPicked
             // 
             this.QuantityPicked.HeaderText = "QuantityPicked";
@@ -297,6 +304,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn InvoicePO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityPicked;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityRemaining;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateScheduled;

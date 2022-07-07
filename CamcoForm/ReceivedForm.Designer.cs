@@ -47,6 +47,7 @@
             this.PurchasePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantityReceived = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantityRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateScheduled = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +65,7 @@
             this.PurchasePO,
             this.Quantity,
             this.ProductName,
+            this.ProductDescription,
             this.QuantityReceived,
             this.QuantityRemaining,
             this.DateScheduled});
@@ -201,6 +203,12 @@
             this.ProductName.Name = "ProductName";
             this.ProductName.ReadOnly = true;
             // 
+            // ProductDescription
+            // 
+            this.ProductDescription.HeaderText = "ProductDescription";
+            this.ProductDescription.Name = "ProductDescription";
+            this.ProductDescription.ReadOnly = true;
+            // 
             // QuantityReceived
             // 
             this.QuantityReceived.HeaderText = "QuantityReceived";
@@ -264,6 +272,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchasePO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityReceived;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityRemaining;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateScheduled;

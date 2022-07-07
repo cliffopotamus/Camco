@@ -80,7 +80,7 @@ namespace CamcoForm
 
                 if (result != null)
                 {
-                    dataGridView1.Rows.Add(result[i].ReceivedID, result[i].PurchaseSO, result[i].PurchasePO, result[i].Quantity, result[i].ProductName, result[i].QuantityReceived, result[i].QuantityRemaining, result[i].DateScheduled);
+                    dataGridView1.Rows.Add(result[i].ReceivedID, result[i].PurchaseSO, result[i].PurchasePO, result[i].Quantity, result[i].ProductName, result[i].ProductDescription, result[i].QuantityReceived, result[i].QuantityRemaining, result[i].DateScheduled);
                 }
             }
         }

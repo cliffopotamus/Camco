@@ -24,5 +24,6 @@ namespace CamcoForm
         public Nullable<System.DateTime> DateScheduled { get; set; }
         public Nullable<bool> Finished { get; set; }
         public string ProductName { get; set; }
+        public string ProductDescription { get; set; }
     }
 }

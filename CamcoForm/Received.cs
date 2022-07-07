@@ -23,5 +23,6 @@ namespace CamcoForm
         public Nullable<int> QuantityRemaining { get; set; }
         public Nullable<System.DateTime> DateScheduled { get; set; }
         public Nullable<bool> PackingList { get; set; }
+        public string ProductDescription { get; set; }
     }
 }

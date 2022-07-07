@@ -118,23 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJYSURBVEhL5dVPSBRhGMfxR1cREvVSmDfrEvTv4qEo
-        FqIiKmrpEP2PwCCLDqWHXavdkkIpI8p1q1UMCszYWKQIshSCypbViG5SIV2CoFt/6OC8Mzt9X3hHlnY1
-        WdZThw/7zvO+7/ObdwZ2xHXdeZe3WGx5i8U2PYi8cE7746ref8eWgvQp2fXAlvQXV/w9SpITmdyQnQP2
-        XWmeWi1nLClIaEpqOix58jEj0jIl11JObsjuhNMjIWulnFdSkLAldVeVPP1E01ZLutJ5TlKskOeT8xxS
-        26lkcCLjI6SUkPLih0QsqWpXUn9dJSRofSBkRSEh5XlqWaylFRetC2t77SQn6e8ey5TONcSH9TiLewgg
-        e15biBCPq6e201oXf5upo09ldGzmd7LEbFyGk4jiHFZBN4tjM/SaBWhCL7ZxEvG1qeayNjVJn2pOMmNI
-        kA1XjK2oQYm51gG68S20mN/DWIRT2I5xiajf9KmaKaSfyQgL66Abb8Eo9J27GMYObMAx6HXLsR96vhEj
-        +DFbyE0m17DoEcKIQW/WIT+RRAfeoxrPkMYB6HX6VP8MucHkEbPBe2R6vAm/oENaTU03/orX2Gdqcw45
-        ZDboO54tZC8+4xX+45CDZkM7LpvxRngvPmRqe+CF6EBd0zeoQ77TpzI2nickMGDf5jvQxLfBRRdiZhyA
-        gyFcMrVGfMM7HDW140hB0Wdx5xunIickOOyEG6LqYUPcTuGxocf3MYohDJpaAi8xYsZebRijDd2qj34n
-        ckKMkr+utek/uizZ67xxdq0MPu/aK86rvMXicuUP1XWnFuloXDMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnPicking.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnInventory.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJYSURBVEhL5dVPSBRhGMfxR1cREvVSmDfrEvTv4qEo

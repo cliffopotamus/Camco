@@ -14,13 +14,16 @@ namespace CamcoForm
     public partial class NewInvoiceForm : Form
     {
         private bool editMode = false;
+        public bool failure = true;
+
 
         public NewInvoiceForm()
         {
             InitializeComponent();
-            PopulateCombos();
+            PopulateComboFromDB();
             textInvoiceTotal.Text = "0";
             textDate.Text = DateTime.Today.ToString("MM/dd/yyyy");
+            
         }
 
         public string getSO()
@@ -68,6 +71,27 @@ namespace CamcoForm
             {
                 db.Pickings.Add(placeholder);
                 db.SaveChanges();
+            }
+        }
+
+        public void addToCombo(int ProductID, string ProductName)
+        {
+            InventoryBox itemToAdd = new InventoryBox(ProductID, ProductName);
+            comboInventory.Items.Add(itemToAdd);
+            comboInventory.Refresh();
+        }
+
+        private void PopulateComboFromDB()
+        {
+            using (var DB = new CamcoEntities())
+            {
+                List<Inventory> invenList = DB.Inventories.ToList();
+
+                foreach(Inventory invenItem in invenList)
+                {
+                    InventoryBox itemToAdd = new InventoryBox(invenItem.ProductNo, invenItem.ProductName);
+                    comboInventory.Items.Add(itemToAdd);            
+                }
             }
         }
 
@@ -406,6 +430,7 @@ namespace CamcoForm
             InventoryBox c342 = new InventoryBox(342, "TB14-4");
             InventoryBox c343 = new InventoryBox(343, "TBTo14");
             InventoryBox c344 = new InventoryBox(344, "TBTo316");
+            InventoryBox c345 = new InventoryBox(345, "SPB-55275");
 
             InventoryBox k1 = new InventoryBox(345, "DI-38 Drop-in Anchors");
             InventoryBox k2 = new InventoryBox(346, "DWS-6 Drywall Screw");
@@ -428,7 +453,7 @@ namespace CamcoForm
             InventoryBox k19 = new InventoryBox(363, "HC-14");
             InventoryBox k20 = new InventoryBox(364, "LS-30");
             InventoryBox k21 = new InventoryBox(365, "MK-1812");
-           /* InventoryBox k22 = new InventoryBox(366, "NW-12"); */
+            InventoryBox k22 = new InventoryBox(366, "NW-12"); 
             InventoryBox k23 = new InventoryBox(367, "NW-832-1032");
             InventoryBox k24 = new InventoryBox(368, "NY-80");
             InventoryBox k25 = new InventoryBox(369, "SB-316");
@@ -451,6 +476,8 @@ namespace CamcoForm
             InventoryBox k42 = new InventoryBox(386, "TSHZ-1010");
             InventoryBox k43 = new InventoryBox(387, "W-100 Plated washers");
             InventoryBox k44 = new InventoryBox(388, "WE-383");
+
+
            /* InventoryBox k45 = new InventoryBox(399, "DWS-6L Long Drywall"); */
 
             comboInventory.Items.Add(c1);
@@ -788,6 +815,7 @@ namespace CamcoForm
             comboInventory.Items.Add(c342);
             comboInventory.Items.Add(c343);
             comboInventory.Items.Add(c344);
+            comboInventory.Items.Add(c345);
 
             comboInventory.Items.Add(k1);
             comboInventory.Items.Add(k2);
@@ -810,7 +838,7 @@ namespace CamcoForm
             comboInventory.Items.Add(k19);
             comboInventory.Items.Add(k20);
             comboInventory.Items.Add(k21);
-          /*  comboInventory.Items.Add(k22); */
+            comboInventory.Items.Add(k22); 
             comboInventory.Items.Add(k23);
             comboInventory.Items.Add(k24);
             comboInventory.Items.Add(k25);
@@ -864,10 +892,11 @@ namespace CamcoForm
             using (var DB = new CamcoEntities())
             {
                 Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName == salesRow.DisplayName);
-                decimal totalPrice = result.SalesPrice.GetValueOrDefault() * salesRow.quantity;
+                
 
                 if (result != null)
                 {
+                    decimal totalPrice = result.SalesPrice.GetValueOrDefault() * salesRow.quantity;
                     dataGridView1.Rows.Add(salesRow.quantity, salesRow.DisplayName, result.ProductDescription, result.SalesPrice, totalPrice);
 
                     string sInvoiceTotal = textInvoiceTotal.Text;
@@ -910,6 +939,24 @@ namespace CamcoForm
 
         }
 
+        public bool CheckRow()
+        {
+            bool checkFailed = true;
+            for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+            {
+                if (dataGridView1.Rows[i].Cells[0].Value == null || dataGridView1.Rows[i].Cells[1].Value == null || dataGridView1.Rows[i].Cells[2].Value == null || dataGridView1.Rows[i].Cells[3].Value == null)
+                {
+                    checkFailed = false;
+                }
+            }
+            return checkFailed;
+        }
+
+        public void resetQuantityAndItem()
+        {
+            textQuantity.Text = "";
+            comboInventory.Text = "";
+        }
 
         private bool editQuantity(int quantity)
         {
@@ -967,15 +1014,18 @@ namespace CamcoForm
             textCustID.Text = custID.ToString();
             using (var DB = new CamcoEntities())
             {
-                Customer result = DB.Customers.SingleOrDefault(x => x.CustomerID == custID);
-                textBillAddress.Text = result.CustomerBillAddress;
-                textBillCity.Text = result.CustomerBillCity;
-                textBillZip.Text = result.CustomerBillZipCode;
-                textBillState.Text = result.CustomerBillState;
-                textShipAddress.Text = result.CustomerShipAddress;
-                textShipCity.Text = result.CustomerShipCity;
-                textShipZip.Text = result.CustomerShipZipCode;
-                textShipState.Text = result.CustomerShipState;
+              Customer result = DB.Customers.SingleOrDefault(x => x.CustomerID == custID);
+              if (result != null)
+                {
+                    textBillAddress.Text = result.CustomerBillAddress;
+                    textBillCity.Text = result.CustomerBillCity;
+                    textBillZip.Text = result.CustomerBillZipCode;
+                    textBillState.Text = result.CustomerBillState;
+                    textShipAddress.Text = result.CustomerShipAddress;
+                    textShipCity.Text = result.CustomerShipCity;
+                    textShipZip.Text = result.CustomerShipZipCode;
+                    textShipState.Text = result.CustomerShipState;
+                }
             }
         }
 
@@ -999,9 +1049,10 @@ namespace CamcoForm
 
             else
             {
-                int itemQuantity = Int32.Parse(textQuantity.Text);
+                int itemQuantity = convertToInt(textQuantity.Text);
                 SalesItem addedItem = new SalesItem(itemQuantity, comboInventory.Text);
                 AddRow(addedItem);
+                resetQuantityAndItem();
             }
         }
 
@@ -1105,7 +1156,6 @@ namespace CamcoForm
                 }
                 else
                 {
-                    /* insert tryparse methods in itemToEdit */
                     SalesItem itemToedit = new SalesItem(convertToInt(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()), dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
                     EditRow(itemToedit, e);
                 }
@@ -1186,6 +1236,33 @@ namespace CamcoForm
             {
                 db.InvoiceLineItems.Add(placeholder);
                 db.SaveChanges();
+            }
+        }
+
+        public void resetPickAndShip(int intSO)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                List<Picking> resultPick = DB.Pickings.Where(x => x.InvoiceSO == intSO).ToList();
+                List<Shipping> resultShip = DB.Shippings.Where(x => x.InvoiceSO == intSO).ToList();
+
+                if (resultPick != null)
+                {
+                    for (int i = 0; i < resultPick.Count; i++)
+                    {
+                        resultPick[i].QuantityPicked = 0;
+                        resultPick[i].QuantityRemaining = resultPick[i].Quantity;
+                    }
+                }
+
+                if (resultShip != null)
+                {
+                    for (int k = 0; k < resultShip.Count; k++)
+                    {
+                        DB.Shippings.Remove(resultShip[k]);
+                        DB.SaveChanges();
+                    }
+                }
             }
         }
 
@@ -1273,35 +1350,68 @@ namespace CamcoForm
 
             if ((custFailure == false) && (POFailure == false) && (SOFailure == false) && (dateFailure == false))
             {
-                if (editMode == true)
+                bool checkedRow = CheckRow();
+                int integerSO = convertToInt(textSONumber.Text);
+
+                if (editMode == true && checkedRow == true)
                 {
+                    resetPickAndShip(integerSO);
                     removeOldLineDB();
                     removePickDB();
-                }
+                    
 
-                for (int i = 0; i < dataGridView1.RowCount - 1; i++)
-                {
-                    var valueToUpdate = convertLineToDB(i);
-                    updateLineDB(valueToUpdate);
-                    var pickingItems = convertToDB(i);
-                    updatePickDB(pickingItems);
-                }
-                
-                var secondValueToUpdate = convertInvoiceToDB();
-               
-                if (editMode == true)
-                {
+                    for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+                    {
+                        var valueToUpdate = convertLineToDB(i);
+                        updateLineDB(valueToUpdate);
+                        var pickingItems = convertToDB(i);
+                        updatePickDB(pickingItems);
+                    }
+
+                    var secondValueToUpdate = convertInvoiceToDB();
+
                     removeOldInvoiceDB();
+                    updateInvoiceDB(secondValueToUpdate);
+                    failure = false;
                 }
 
-                updateInvoiceDB(secondValueToUpdate);
-                this.Close();
+                if (checkedRow == true && editMode == false)
+                {
+                    for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+                    {
+                        var valueToUpdate = convertLineToDB(i);
+                        updateLineDB(valueToUpdate);
+                        var pickingItems = convertToDB(i);
+                        updatePickDB(pickingItems);
+                    }
+
+                    var secondValueToUpdate = convertInvoiceToDB();
+
+                    if (editMode == true)
+                    {
+                        removeOldInvoiceDB();
+                    }
+
+                    updateInvoiceDB(secondValueToUpdate);
+                    failure = false;
+                }
+
+                else
+                {
+                    string message = "Check all columns.";
+                    MessageBox.Show(message);
+                }
             }
 
             else
             {
                 string error = "Error: Invoice not added.";
                 MessageBox.Show(error);
+            }
+
+            if (failure == false)
+            {
+                this.Close();
             }
         }
 
@@ -1314,6 +1424,10 @@ namespace CamcoForm
         {
             getCustomerID(comboCustomerName.Text);
             setAddress(convertToInt(textCustID.Text));
+        }
+
+        private void comboInventory_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -15,7 +15,7 @@ namespace CamcoForm
         public NewInventoryForm()
         {
             InitializeComponent();
-            PopulateCombo();
+            PopulateComboFromDB();
         }
 
         private void NewInventoryForm_Load(object sender, EventArgs e)
@@ -43,6 +43,20 @@ namespace CamcoForm
             public override string ToString()
             {
                 return DisplayName;
+            }
+        }
+
+        private void PopulateComboFromDB()
+        {
+            using (var DB = new CamcoEntities())
+            {
+                List<Inventory> invenList = DB.Inventories.ToList();
+
+                foreach (Inventory invenItem in invenList)
+                {
+                    InventoryBox itemToAdd = new InventoryBox(invenItem.ProductNo, invenItem.ProductName);
+                    comboInventory.Items.Add(itemToAdd);
+                }
             }
         }
 
@@ -381,6 +395,7 @@ namespace CamcoForm
             InventoryBox c342 = new InventoryBox(342, "TB14-4");
             InventoryBox c343 = new InventoryBox(343, "TBTo14");
             InventoryBox c344 = new InventoryBox(344, "TBTo316");
+            InventoryBox c345 = new InventoryBox(345, "SPB-55275");
        
 
             /* KITS ALREADY IMPLENTED IN WORK ORDER 
@@ -765,6 +780,7 @@ namespace CamcoForm
             comboInventory.Items.Add(c342);
             comboInventory.Items.Add(c343);
             comboInventory.Items.Add(c344);
+            comboInventory.Items.Add(c345);
 
             /*
             comboInventory.Items.Add(k1);
@@ -815,6 +831,12 @@ namespace CamcoForm
             */
         }
 
+        public void addToCombo(int ProductID, string ProductName)
+        {
+            InventoryBox itemToAdd = new InventoryBox(ProductID, ProductName);
+            comboInventory.Items.Add(itemToAdd);
+        }
+
         public class InventoryModel
         {
             public string name;
@@ -833,6 +855,7 @@ namespace CamcoForm
             public decimal unitCost;
             public int kitID;
         }
+
 
         public void editRichTextBox(string prodName)
         {

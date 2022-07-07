@@ -232,6 +232,7 @@
             this.comboInventory.Name = "comboInventory";
             this.comboInventory.Size = new System.Drawing.Size(241, 21);
             this.comboInventory.TabIndex = 15;
+            this.comboInventory.SelectedIndexChanged += new System.EventHandler(this.comboInventory_SelectedIndexChanged);
             // 
             // inventoryBindingSource
             // 

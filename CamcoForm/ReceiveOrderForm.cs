@@ -28,6 +28,8 @@ namespace CamcoForm
             public int QuantityRemaining;
             public DateTime DateScheduled;
             public bool Finished;
+            public string productDescription;
+            public string productName;
         }
 
         private const int ColQuantReceive = 4;
@@ -98,7 +100,19 @@ namespace CamcoForm
             textPO.Text = placeholder;
         }
 
+        public void setProductReceivedID(int i)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                string stringSO = textSO.Text;
+                List<Receiving> result = DB.Receivings.Where(x => x.PurchaseSO == stringSO).ToList();
 
+                if (result != null)
+                {
+                    dataGridView1.Rows[i].Cells[7].Value = result[i].ReceiveID;
+                }
+            }
+        }
 
         public string getSO()
         {
@@ -108,6 +122,20 @@ namespace CamcoForm
         public void setSO(string placeholder)
         {
             textSO.Text = placeholder;
+        }
+        
+         public void setProductDescription(int i)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                string invoiceSO = textSO.Text;
+                List<Receiving> result = DB.Receivings.Where(x => x.PurchaseSO == invoiceSO).ToList();
+
+                if (result != null)
+                {
+                    dataGridView1.Rows[i].Cells[8].Value = result[i].ProductDescription;
+                }
+            }
         }
 
         public class SalesItem
@@ -156,6 +184,7 @@ namespace CamcoForm
             placeholder.QuantityReceived = convertToInt(dataGridView1.Rows[i].Cells[4].Value.ToString());
             placeholder.QuantityRemaining = convertToInt(dataGridView1.Rows[i].Cells[5].Value.ToString());
             placeholder.Finished = Convert.ToBoolean(dataGridView1.Rows[i].Cells[6].Value);
+            placeholder.ProductDescription = dataGridView1.Rows[i].Cells[8].Value.ToString();
             placeholder.DateScheduled = DateTime.Today;
 
             if (placeholder.Finished == true)
@@ -175,6 +204,7 @@ namespace CamcoForm
             placeholder.QuantityRemaining = convertToInt(dataGridView1.Rows[i].Cells[5].Value.ToString());
             placeholder.PurchasePO = textPO.Text;
             placeholder.DateScheduled = DateTime.Today;
+            placeholder.ProductDescription = dataGridView1.Rows[i].Cells[8].Value.ToString();
             return placeholder;
         }
 
@@ -188,6 +218,7 @@ namespace CamcoForm
             ship.QuantityRemaining = placeholder.QuantityRemaining;
             ship.DateScheduled = placeholder.DateScheduled;
             ship.ProductName = placeholder.ProductName;
+            ship.ProductDescription = placeholder.ProductDescription;
             return ship;
         }
 
@@ -231,6 +262,20 @@ namespace CamcoForm
             {
                 DB.Receiveds.Add(placeholder);
                 DB.SaveChanges();
+            }
+        }
+
+        public void removeReceivingRow(int receiveID)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                Receiving result = DB.Receivings.SingleOrDefault(x => x.ReceiveID == receiveID);
+
+                if (result != null)
+                {
+                    DB.Receivings.Remove(result);
+                    DB.SaveChanges();
+                }
             }
         }
 
@@ -320,9 +365,11 @@ namespace CamcoForm
         {
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
+                int receiveID = convertToInt(dataGridView1.Rows[i].Cells[7].Value.ToString());
                 if (dataGridView1.Rows[i].Cells[4].Value == null)
                 {
                     var placeholder = convertNullReceivingToDB(i);
+                    removeReceivingRow(receiveID) ;
                     updateReceivingDB(placeholder);
                 }
 
@@ -334,7 +381,7 @@ namespace CamcoForm
 
                         if (placeholder.Finished == true)
                         {
-                            removeReceivingDB();
+                            removeReceivingRow(receiveID);
                             updateReceivingDB(placeholder);
                             updateInventory(placeholder);
                             var convertedToReceived = ConvertReceivingToReceived(placeholder);
@@ -343,8 +390,7 @@ namespace CamcoForm
 
                         else
                         {
-                            removeReceivingDB();
-                            updateReceivingDB(placeholder);
+
                         }
                     }
 

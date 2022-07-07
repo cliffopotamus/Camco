@@ -42,6 +42,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.textSalesPrice = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.textProductID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textProductName
@@ -160,11 +161,20 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Sales Price";
             // 
+            // textProductID
+            // 
+            this.textProductID.Location = new System.Drawing.Point(423, 150);
+            this.textProductID.Name = "textProductID";
+            this.textProductID.Size = new System.Drawing.Size(146, 20);
+            this.textProductID.TabIndex = 14;
+            this.textProductID.Text = "400";
+            // 
             // NewProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textProductID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textSalesPrice);
             this.Controls.Add(this.btnCancel);
@@ -203,5 +213,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox textSalesPrice;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textProductID;
     }
 }
