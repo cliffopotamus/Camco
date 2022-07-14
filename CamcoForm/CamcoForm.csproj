@@ -240,6 +240,17 @@
     <Compile Include="EditVendorForm.Designer.cs">
       <DependentUpon>EditVendorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GeneratedInvoiceDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratedInvoiceDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateInvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateInvoiceForm.Designer.cs">
+      <DependentUpon>GenerateInvoiceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inventory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -350,6 +361,12 @@
     <Compile Include="Receiving.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ShipInvoice.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShipLineItem.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Shipping.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -409,6 +426,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditVendorForm.resx">
       <DependentUpon>EditVendorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerateInvoiceForm.resx">
+      <DependentUpon>GenerateInvoiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InvoiceForm.resx">
       <DependentUpon>InvoiceForm.cs</DependentUpon>
@@ -688,6 +708,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="GeneratedInvoiceDataset.xsc">
+      <DependentUpon>GeneratedInvoiceDataset.xsd</DependentUpon>
+    </None>
+    <None Include="GeneratedInvoiceDataset.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GeneratedInvoiceDataset.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GeneratedInvoiceDataset.xss">
+      <DependentUpon>GeneratedInvoiceDataset.xsd</DependentUpon>
+    </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>

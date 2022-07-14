@@ -15,12 +15,122 @@ namespace CamcoForm
         public ShippingForm()
         {
             InitializeComponent();
+            textInvoiceTotal.Text = "0";
         }
 
         private void ShippingForm_Load(object sender, EventArgs e)
         {
-            dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            calculateInvoiceTotal();
+        }
 
+        public class InvoiceModel
+        {
+            public int shipInvoiceID;
+            public string invoiceNumber;
+            public string invoiceSO;
+            public string invoicePO;
+            public string productName;
+            public string productDescription;
+            public int quantity;
+            public decimal salesPrice;
+            public decimal productExtension;
+        }
+
+        public class ShipLineItems
+        {
+            public int invoiceID;
+            public string invoiceNumber;
+            public string invoiceSO;
+            public string invoicePO;
+            public int quantity;
+            public string productName;
+            public string productDescription;
+            public int quantityPicked;
+            public int quantityRemaining;
+            public decimal salesPrice;
+            public decimal productExtension;
+            public DateTime dateScheduled;
+        }
+
+        public ShipLineItem convertShipToShipLine(int i)
+        {
+            ShipLineItem shipLine = new ShipLineItem();
+            shipLine.InvoiceNumber = textInvoiceNumber.Text;
+            shipLine.InvoiceSO = textInvoiceSO.Text;
+            shipLine.InvoicePO = textInvoicePO.Text;
+            shipLine.ProductName = dataGridView1.Rows[i].Cells["ProductName"].Value.ToString();
+            shipLine.ProductDescription = dataGridView1.Rows[i].Cells["ProductDescription"].Value.ToString();
+            shipLine.Quantity = convertToInt(dataGridView1.Rows[i].Cells["Quantity"].Value.ToString());
+            shipLine.QuantityPicked = convertToInt(dataGridView1.Rows[i].Cells["QuantityPicked"].Value.ToString());
+            shipLine.QuantityRemaining = convertToInt(dataGridView1.Rows[i].Cells["QuantityRemaining"].Value.ToString());
+            shipLine.SalesPrice = convertToDecimal(dataGridView1.Rows[i].Cells["ProductPrice"].Value.ToString());
+            shipLine.ProductExtension = shipLine.SalesPrice * shipLine.QuantityPicked;
+            return shipLine;
+        }
+
+        public ShipInvoice convertShipToInvoice(int i)
+        {
+            ShipInvoice newInvoice = new ShipInvoice();
+            newInvoice.InvoiceNumber = textInvoiceNumber.Text;
+            newInvoice.InvoiceSO = textInvoiceSO.Text;
+            newInvoice.InvoicePO = textInvoicePO.Text;
+            newInvoice.ProductDescription = dataGridView1.Rows[i].Cells["ProductDescription"].Value.ToString();
+            newInvoice.ProductName = dataGridView1.Rows[i].Cells["ProductName"].Value.ToString();
+            newInvoice.Quantity = convertToInt(dataGridView1.Rows[i].Cells["Quantity"].Value.ToString());
+            newInvoice.SalesPrice = convertToDecimal(dataGridView1.Rows[i].Cells["ProductPrice"].Value.ToString();
+            newInvoice.ProductExtension = newInvoice.SalesPrice * newInvoice.Quantity;
+            return newInvoice;
+        }
+
+        public void updateShipInvoiceToDB(ShipInvoice placeholder)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                DB.ShipInvoices.Add(placeholder);
+                DB.SaveChanges();
+            }
+        }
+
+        public void updateShipLineItemToDB(ShipLineItem placeholder)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                DB.ShipLineItems.Add(placeholder);
+                DB.SaveChanges();
+            }
+        }
+
+        public void removeShipLineItem()
+        {
+            using (var DB = new CamcoEntities())
+            {
+                List<ShipLineItem> lineResult = DB.ShipLineItems.Where(x => x.InvoiceNumber == textInvoiceNumber.Text).ToList();
+
+                if (lineResult != null)
+                {
+                    for (int i = 0; i < lineResult.Count; i++)
+                    {
+                        DB.ShipLineItems.Remove(lineResult[i]);
+                        DB.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        public decimal convertToDecimal(string placeholder)
+        {
+            decimal number;
+            bool success = decimal.TryParse(placeholder, out number);
+
+            if (success)
+            {
+                return number;
+            }
+
+            else
+            {
+                return 0;
+            }
         }
 
         public int convertToInt(string placeholder)
@@ -68,10 +178,10 @@ namespace CamcoForm
 
                 if (result != null)
                 {
-                  dataGridView1.Rows.Add(result[i].ShipID, result[i].InvoiceSO, result[i].InvoicePO, result[i].Quantity, result[i].ProductName, result[i].ProductDescription, result[i].QuantityPicked, result[i].QuantityRemaining, result[i].DateScheduled);
+                  decimal totalPrice = result[i].QuantityPicked.GetValueOrDefault() * result[i].ProductPrice.GetValueOrDefault();
+                  dataGridView1.Rows.Add(result[i].ShipID, result[i].InvoiceSO, result[i].InvoicePO, result[i].Quantity, result[i].ProductName, result[i].ProductDescription, result[i].QuantityPicked, result[i].QuantityRemaining, result[i].DateScheduled, result[i].ProductPrice, totalPrice);
                 }
             }
-
         }
 
         public void setCustomerID()
@@ -115,17 +225,14 @@ namespace CamcoForm
             }
         }
 
-        public void editInvoiceTotal()
+        public void calculateInvoiceTotal()
         {
-            using (var DB = new CamcoEntities())
+            decimal InvoiceTotal = 0;
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
-                Invoice result = DB.Invoices.SingleOrDefault(x => x.InvoiceSO == textInvoiceSO.Text);
-
-                if (result != null)
-                {
-                    textInvoiceTotal.Text = result.InvoiceTotal.ToString();
-                }
+                InvoiceTotal = InvoiceTotal + (convertToDecimal(dataGridView1.Rows[i].Cells["TotalPrice"].Value.ToString()));
             }
+            textInvoiceTotal.Text = InvoiceTotal.ToString();
         }
 
         private void printPreviewDialog1_Load(object sender, EventArgs e)
@@ -152,6 +259,33 @@ namespace CamcoForm
         private void textInvoicePO_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnGenerateInvoice_Click(object sender, EventArgs e)
+        {
+
+            /* 
+             When generating invoice, only include shipped items. Older shipped items will not appear in the invoice even if they are in the same sales order.
+             Possible solutions: Two different tables (ShipLineItems and ShipInvoice), add shipped items to both. When creating a new generated invoice, remove old entries from
+             one table (ShipLineItems) but not the other (ShipInvoice). As new items are shipped, the older shipped items will be removed from the Shipping table. Regulate what 
+             is being shipped using a checkbox.
+             Confused on where to store the "records" of the invoice.
+             
+            CHECK IF OK TO NOT STORE SHIPLINEITEMS RECORDS AND ONLY KEEP SHIPINVOICE RECORDS
+             
+             */
+
+            using (var DB = new CamcoEntities())
+            {
+                if ((textInvoiceNumber.Text != null) && (textInvoiceSO.Text != null) && (textInvoicePO.Text != null))
+                {
+                    for (int i = 0; i < dataGridView1.RowCount; i++)
+                    {
+                        var convertedValue = convertShipToShipLine(i);
+                        updateShipLineItemToDB(convertedValue);
+                    }
+                }
+            }
         }
     }
 }

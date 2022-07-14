@@ -14,7 +14,6 @@ namespace CamcoForm
     public partial class NewInvoiceForm : Form
     {
         private bool editMode = false;
-        public bool failure = true;
 
 
         public NewInvoiceForm()
@@ -49,6 +48,7 @@ namespace CamcoForm
             public bool commit;
             public string InvoicePO;
             public string productDescription;
+            public decimal salesPrice;
         }
 
         public Picking convertToDB(int i)
@@ -60,6 +60,7 @@ namespace CamcoForm
             placeholder.InvoicePO = textPONumber.Text;
             /* placeholder.Commit = Convert.ToBoolean(dataGridView1.Rows[i].Cells[5].Value);*/
             placeholder.ProductDescription = dataGridView1.Rows[i].Cells[2].Value.ToString();
+            placeholder.ProductPrice = convertToDecimal(dataGridView1.Rows[i].Cells[3].Value.ToString());
             
             return placeholder;
         }
@@ -887,6 +888,35 @@ namespace CamcoForm
             return addedItem;
         }
 
+        public void addExistingRow(SalesItem salesRow, int i)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                int intSO = convertToInt(textSONumber.Text);
+                Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName == salesRow.DisplayName);
+
+                List<InvoiceLineItem> lineResult = DB.InvoiceLineItems.Where(x => x.InvoiceSO == intSO).ToList();
+
+                if (lineResult != null)
+                {
+                    decimal totalPrice = lineResult[i].ProductPrice.GetValueOrDefault() * (decimal)(lineResult[i].ProductQuantity);
+                    dataGridView1.Rows.Add(lineResult[i].ProductQuantity, lineResult[i].ProductName, lineResult[i].ProductDescription, lineResult[i].ProductPrice, lineResult[i].ProductExtension);
+
+                    string sInvoiceTotal = textInvoiceTotal.Text;
+                    decimal dInvoiceTotal = convertToDecimal(sInvoiceTotal);
+                    dInvoiceTotal = dInvoiceTotal + totalPrice;
+                    string sCompleteInvoiceTotal = dInvoiceTotal.ToString();
+                    textInvoiceTotal.Text = sCompleteInvoiceTotal;
+               }
+
+                else
+                {
+                    string error = "Error: invalid product name or quantity.";
+                    MessageBox.Show(error);
+                }
+            }
+        }
+
         public void AddRow(SalesItem salesRow)
         {
             using (var DB = new CamcoEntities())
@@ -900,7 +930,7 @@ namespace CamcoForm
                     dataGridView1.Rows.Add(salesRow.quantity, salesRow.DisplayName, result.ProductDescription, result.SalesPrice, totalPrice);
 
                     string sInvoiceTotal = textInvoiceTotal.Text;
-                    decimal dInvoiceTotal = decimal.Parse(sInvoiceTotal);
+                    decimal dInvoiceTotal = convertToDecimal(sInvoiceTotal);
                     dInvoiceTotal = dInvoiceTotal + totalPrice;
                     string sCompleteInvoiceTotal = dInvoiceTotal.ToString();
                     textInvoiceTotal.Text = sCompleteInvoiceTotal;
@@ -1038,6 +1068,7 @@ namespace CamcoForm
                 textSONumber.Text = result.InvoiceSO;
             }
         }
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -1347,6 +1378,7 @@ namespace CamcoForm
             var POFailure = CheckRequired(textPONumber.Text);
             var SOFailure = CheckRequired(textSONumber.Text);
             var dateFailure = CheckRequired(textDate.Text);
+            bool closeForm = false;
 
             if ((custFailure == false) && (POFailure == false) && (SOFailure == false) && (dateFailure == false))
             {
@@ -1372,7 +1404,7 @@ namespace CamcoForm
 
                     removeOldInvoiceDB();
                     updateInvoiceDB(secondValueToUpdate);
-                    failure = false;
+                    closeForm = true;
                 }
 
                 if (checkedRow == true && editMode == false)
@@ -1383,6 +1415,7 @@ namespace CamcoForm
                         updateLineDB(valueToUpdate);
                         var pickingItems = convertToDB(i);
                         updatePickDB(pickingItems);
+                        closeForm = true;
                     }
 
                     var secondValueToUpdate = convertInvoiceToDB();
@@ -1393,12 +1426,12 @@ namespace CamcoForm
                     }
 
                     updateInvoiceDB(secondValueToUpdate);
-                    failure = false;
+                    
                 }
 
-                else
+                if (checkedRow == false)
                 {
-                    string message = "Check all columns.";
+                    string message = "Please check all columns.";
                     MessageBox.Show(message);
                 }
             }
@@ -1409,7 +1442,7 @@ namespace CamcoForm
                 MessageBox.Show(error);
             }
 
-            if (failure == false)
+            if (closeForm == true)
             {
                 this.Close();
             }

@@ -33,6 +33,10 @@
             this.labelPONumber = new System.Windows.Forms.Label();
             this.textPONumber = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textInvoiceTotal = new System.Windows.Forms.TextBox();
+            this.btnCommit = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnVoid = new System.Windows.Forms.Button();
             this.InvoiceSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InvoicePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,10 +46,7 @@
             this.Commit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PickID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textInvoiceTotal = new System.Windows.Forms.TextBox();
-            this.btnCommit = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnVoid = new System.Windows.Forms.Button();
+            this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +85,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.InvoiceSO,
@@ -94,23 +97,64 @@
             this.QuantityRemaining,
             this.Commit,
             this.ProductDescription,
-            this.PickID});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 127);
+            this.PickID,
+            this.ProductPrice});
+            this.dataGridView1.Location = new System.Drawing.Point(41, 127);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(740, 264);
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(711, 264);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
+            // 
+            // textInvoiceTotal
+            // 
+            this.textInvoiceTotal.Location = new System.Drawing.Point(603, 76);
+            this.textInvoiceTotal.Name = "textInvoiceTotal";
+            this.textInvoiceTotal.Size = new System.Drawing.Size(100, 20);
+            this.textInvoiceTotal.TabIndex = 5;
+            // 
+            // btnCommit
+            // 
+            this.btnCommit.Location = new System.Drawing.Point(628, 415);
+            this.btnCommit.Name = "btnCommit";
+            this.btnCommit.Size = new System.Drawing.Size(75, 23);
+            this.btnCommit.TabIndex = 6;
+            this.btnCommit.Text = "Commit";
+            this.btnCommit.UseVisualStyleBackColor = true;
+            this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(713, 415);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 7;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnVoid
+            // 
+            this.btnVoid.Location = new System.Drawing.Point(677, 98);
+            this.btnVoid.Name = "btnVoid";
+            this.btnVoid.Size = new System.Drawing.Size(75, 23);
+            this.btnVoid.TabIndex = 8;
+            this.btnVoid.Text = "Void Pick";
+            this.btnVoid.UseVisualStyleBackColor = true;
+            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // InvoiceSO
             // 
             this.InvoiceSO.HeaderText = "InvoiceSO";
             this.InvoiceSO.Name = "InvoiceSO";
             this.InvoiceSO.ReadOnly = true;
+            this.InvoiceSO.Visible = false;
             // 
             // InvoicePO
             // 
             this.InvoicePO.HeaderText = "InvoicePO";
             this.InvoicePO.Name = "InvoicePO";
+            this.InvoicePO.Visible = false;
             // 
             // Quantity
             // 
@@ -152,42 +196,10 @@
             this.PickID.Name = "PickID";
             this.PickID.Visible = false;
             // 
-            // textInvoiceTotal
+            // ProductPrice
             // 
-            this.textInvoiceTotal.Location = new System.Drawing.Point(603, 76);
-            this.textInvoiceTotal.Name = "textInvoiceTotal";
-            this.textInvoiceTotal.Size = new System.Drawing.Size(100, 20);
-            this.textInvoiceTotal.TabIndex = 5;
-            // 
-            // btnCommit
-            // 
-            this.btnCommit.Location = new System.Drawing.Point(628, 415);
-            this.btnCommit.Name = "btnCommit";
-            this.btnCommit.Size = new System.Drawing.Size(75, 23);
-            this.btnCommit.TabIndex = 6;
-            this.btnCommit.Text = "Commit";
-            this.btnCommit.UseVisualStyleBackColor = true;
-            this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(713, 415);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnVoid
-            // 
-            this.btnVoid.Location = new System.Drawing.Point(677, 98);
-            this.btnVoid.Name = "btnVoid";
-            this.btnVoid.Size = new System.Drawing.Size(75, 23);
-            this.btnVoid.TabIndex = 8;
-            this.btnVoid.Text = "Void Pick";
-            this.btnVoid.UseVisualStyleBackColor = true;
-            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
+            this.ProductPrice.HeaderText = "ProductPrice";
+            this.ProductPrice.Name = "ProductPrice";
             // 
             // PickInvoice
             // 
@@ -222,6 +234,7 @@
         private System.Windows.Forms.TextBox textInvoiceTotal;
         private System.Windows.Forms.Button btnCommit;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnVoid;
         private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceSO;
         private System.Windows.Forms.DataGridViewTextBoxColumn InvoicePO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
@@ -231,6 +244,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Commit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn PickID;
-        private System.Windows.Forms.Button btnVoid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductPrice;
     }
 }

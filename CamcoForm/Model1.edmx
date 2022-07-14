@@ -86,6 +86,7 @@
           <Property Name="Commit" Type="bit" />
           <Property Name="InvoicePO" Type="varchar" MaxLength="50" />
           <Property Name="ProductDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductPrice" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
@@ -146,6 +147,37 @@
           <Property Name="DateScheduled" Type="date" />
           <Property Name="Finished" Type="bit" />
         </EntityType>
+        <EntityType Name="ShipInvoice">
+          <Key>
+            <PropertyRef Name="ShipInvoiceID" />
+          </Key>
+          <Property Name="ShipInvoiceID" Type="int" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="int" />
+          <Property Name="InvoiceSO" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvoicePO" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="SalesPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProductExtension" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="ShipLineItems">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="int" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvoiceSO" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvoicePO" Type="nvarchar" MaxLength="50" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="QuantityPicked" Type="int" />
+          <Property Name="QuantityRemaining" Type="int" />
+          <Property Name="SalesPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProductExtension" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DateScheduled" Type="date" />
+        </EntityType>
         <EntityType Name="Shipping">
           <Key>
             <PropertyRef Name="ShipID" />
@@ -160,6 +192,8 @@
           <Property Name="DateScheduled" Type="nvarchar" MaxLength="50" />
           <Property Name="PackingList" Type="bit" />
           <Property Name="InvoicePO" Type="varchar" MaxLength="50" />
+          <Property Name="ProductPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProductExtension" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Vendors">
           <Key>
@@ -184,6 +218,8 @@
           <EntitySet Name="PurchaseOrderLineItems" EntityType="Self.PurchaseOrderLineItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Received" EntityType="Self.Received" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Receiving" EntityType="Self.Receiving" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShipInvoice" EntityType="Self.ShipInvoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShipLineItems" EntityType="Self.ShipLineItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shipping" EntityType="Self.Shipping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -273,6 +309,8 @@
           <EntitySet Name="Receivings" EntityType="CamcoModel.Receiving" />
           <EntitySet Name="PurchaseOrderLineItems" EntityType="CamcoModel.PurchaseOrderLineItem" />
           <EntitySet Name="Receiveds" EntityType="CamcoModel.Received" />
+          <EntitySet Name="ShipLineItems" EntityType="CamcoModel.ShipLineItem" />
+          <EntitySet Name="ShipInvoices" EntityType="CamcoModel.ShipInvoice" />
         </EntityContainer>
         <EntityType Name="Kit">
           <Key>
@@ -298,6 +336,7 @@
           <Property Name="InvoicePO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DateScheduled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductPrice" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Shipping">
           <Key>
@@ -313,6 +352,8 @@
           <Property Name="PackingList" Type="Boolean" />
           <Property Name="InvoicePO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProductPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProductExtension" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
@@ -372,6 +413,37 @@
           <Property Name="DateScheduled" Type="DateTime" Precision="0" />
           <Property Name="PackingList" Type="Boolean" />
           <Property Name="ProductDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ShipLineItem">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceSO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvoicePO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QuantityPicked" Type="Int32" />
+          <Property Name="QuantityRemaining" Type="Int32" />
+          <Property Name="SalesPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProductExtension" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DateScheduled" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="ShipInvoice">
+          <Key>
+            <PropertyRef Name="ShipInvoiceID" />
+          </Key>
+          <Property Name="ShipInvoiceID" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="Int32" />
+          <Property Name="InvoiceSO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvoicePO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="SalesPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProductExtension" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -467,6 +539,7 @@
           <EntitySetMapping Name="Pickings">
             <EntityTypeMapping TypeName="CamcoModel.Picking">
               <MappingFragment StoreEntitySet="Picking">
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
                 <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
                 <ScalarProperty Name="DateScheduled" ColumnName="DateScheduled" />
                 <ScalarProperty Name="InvoicePO" ColumnName="InvoicePO" />
@@ -483,6 +556,8 @@
           <EntitySetMapping Name="Shippings">
             <EntityTypeMapping TypeName="CamcoModel.Shipping">
               <MappingFragment StoreEntitySet="Shipping">
+                <ScalarProperty Name="ProductExtension" ColumnName="ProductExtension" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
                 <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
                 <ScalarProperty Name="InvoicePO" ColumnName="InvoicePO" />
                 <ScalarProperty Name="PackingList" ColumnName="PackingList" />
@@ -556,6 +631,39 @@
                 <ScalarProperty Name="PurchasePO" ColumnName="PurchasePO" />
                 <ScalarProperty Name="PurchaseSO" ColumnName="PurchaseSO" />
                 <ScalarProperty Name="ReceivedID" ColumnName="ReceivedID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShipLineItems">
+            <EntityTypeMapping TypeName="CamcoModel.ShipLineItem">
+              <MappingFragment StoreEntitySet="ShipLineItems">
+                <ScalarProperty Name="DateScheduled" ColumnName="DateScheduled" />
+                <ScalarProperty Name="ProductExtension" ColumnName="ProductExtension" />
+                <ScalarProperty Name="SalesPrice" ColumnName="SalesPrice" />
+                <ScalarProperty Name="QuantityRemaining" ColumnName="QuantityRemaining" />
+                <ScalarProperty Name="QuantityPicked" ColumnName="QuantityPicked" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="InvoicePO" ColumnName="InvoicePO" />
+                <ScalarProperty Name="InvoiceSO" ColumnName="InvoiceSO" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShipInvoices">
+            <EntityTypeMapping TypeName="CamcoModel.ShipInvoice">
+              <MappingFragment StoreEntitySet="ShipInvoice">
+                <ScalarProperty Name="ProductExtension" ColumnName="ProductExtension" />
+                <ScalarProperty Name="SalesPrice" ColumnName="SalesPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="InvoicePO" ColumnName="InvoicePO" />
+                <ScalarProperty Name="InvoiceSO" ColumnName="InvoiceSO" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="ShipInvoiceID" ColumnName="ShipInvoiceID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

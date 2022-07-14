@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvoiceForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnNewInvoice = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnInventory = new System.Windows.Forms.Button();
@@ -54,12 +57,13 @@
             this.invoicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.camcoDataSet9 = new CamcoForm.CamcoDataSet9();
             this.invoicesTableAdapter1 = new CamcoForm.CamcoDataSet9TableAdapters.InvoicesTableAdapter();
-            this.btnRefreshInvoice = new System.Windows.Forms.Button();
             this.textEnterSO = new System.Windows.Forms.TextBox();
             this.btnEnterSO = new System.Windows.Forms.Button();
             this.btnPickInvoice = new System.Windows.Forms.Button();
             this.btnShipInvoice = new System.Windows.Forms.Button();
             this.btnDeleteInvoice = new System.Windows.Forms.Button();
+            this.btnOpenInvoice = new System.Windows.Forms.Button();
+            this.btnShippedInvoice = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,7 +75,7 @@
             // 
             // btnNewInvoice
             // 
-            this.btnNewInvoice.Location = new System.Drawing.Point(235, 68);
+            this.btnNewInvoice.Location = new System.Drawing.Point(192, 68);
             this.btnNewInvoice.Name = "btnNewInvoice";
             this.btnNewInvoice.Size = new System.Drawing.Size(118, 30);
             this.btnNewInvoice.TabIndex = 0;
@@ -238,6 +242,16 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.invoiceIDDataGridViewTextBoxColumn,
@@ -248,9 +262,26 @@
             this.invoiceSODataGridViewTextBoxColumn,
             this.customerNameDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.invoicesBindingSource;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(222, 163);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(742, 355);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -318,16 +349,6 @@
             // 
             this.invoicesTableAdapter1.ClearBeforeFill = true;
             // 
-            // btnRefreshInvoice
-            // 
-            this.btnRefreshInvoice.Location = new System.Drawing.Point(400, 68);
-            this.btnRefreshInvoice.Name = "btnRefreshInvoice";
-            this.btnRefreshInvoice.Size = new System.Drawing.Size(118, 30);
-            this.btnRefreshInvoice.TabIndex = 4;
-            this.btnRefreshInvoice.Text = "Refresh Invoices";
-            this.btnRefreshInvoice.UseVisualStyleBackColor = true;
-            this.btnRefreshInvoice.Click += new System.EventHandler(this.btnRefreshInvoice_Click);
-            // 
             // textEnterSO
             // 
             this.textEnterSO.Location = new System.Drawing.Point(722, 115);
@@ -347,7 +368,7 @@
             // 
             // btnPickInvoice
             // 
-            this.btnPickInvoice.Location = new System.Drawing.Point(571, 68);
+            this.btnPickInvoice.Location = new System.Drawing.Point(493, 68);
             this.btnPickInvoice.Name = "btnPickInvoice";
             this.btnPickInvoice.Size = new System.Drawing.Size(118, 30);
             this.btnPickInvoice.TabIndex = 7;
@@ -357,7 +378,7 @@
             // 
             // btnShipInvoice
             // 
-            this.btnShipInvoice.Location = new System.Drawing.Point(722, 68);
+            this.btnShipInvoice.Location = new System.Drawing.Point(650, 68);
             this.btnShipInvoice.Name = "btnShipInvoice";
             this.btnShipInvoice.Size = new System.Drawing.Size(118, 30);
             this.btnShipInvoice.TabIndex = 8;
@@ -367,7 +388,7 @@
             // 
             // btnDeleteInvoice
             // 
-            this.btnDeleteInvoice.Location = new System.Drawing.Point(881, 68);
+            this.btnDeleteInvoice.Location = new System.Drawing.Point(801, 68);
             this.btnDeleteInvoice.Name = "btnDeleteInvoice";
             this.btnDeleteInvoice.Size = new System.Drawing.Size(118, 30);
             this.btnDeleteInvoice.TabIndex = 9;
@@ -375,18 +396,38 @@
             this.btnDeleteInvoice.UseVisualStyleBackColor = true;
             this.btnDeleteInvoice.Click += new System.EventHandler(this.btnDeleteInvoice_Click);
             // 
+            // btnOpenInvoice
+            // 
+            this.btnOpenInvoice.Location = new System.Drawing.Point(343, 68);
+            this.btnOpenInvoice.Name = "btnOpenInvoice";
+            this.btnOpenInvoice.Size = new System.Drawing.Size(118, 30);
+            this.btnOpenInvoice.TabIndex = 10;
+            this.btnOpenInvoice.Text = "Open Invoice";
+            this.btnOpenInvoice.UseVisualStyleBackColor = true;
+            this.btnOpenInvoice.Click += new System.EventHandler(this.btnOpenInvoice_Click);
+            // 
+            // btnShippedInvoice
+            // 
+            this.btnShippedInvoice.Location = new System.Drawing.Point(952, 68);
+            this.btnShippedInvoice.Name = "btnShippedInvoice";
+            this.btnShippedInvoice.Size = new System.Drawing.Size(118, 30);
+            this.btnShippedInvoice.TabIndex = 11;
+            this.btnShippedInvoice.Text = "View Shipped Invoice";
+            this.btnShippedInvoice.UseVisualStyleBackColor = true;
+            // 
             // InvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1082, 550);
+            this.Controls.Add(this.btnShippedInvoice);
+            this.Controls.Add(this.btnOpenInvoice);
             this.Controls.Add(this.btnDeleteInvoice);
             this.Controls.Add(this.btnShipInvoice);
             this.Controls.Add(this.btnPickInvoice);
             this.Controls.Add(this.btnEnterSO);
             this.Controls.Add(this.textEnterSO);
-            this.Controls.Add(this.btnRefreshInvoice);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnNewInvoice);
@@ -431,12 +472,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn invoicePODataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn invoiceSODataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btnRefreshInvoice;
         private System.Windows.Forms.Button btnInventory;
         private System.Windows.Forms.TextBox textEnterSO;
         private System.Windows.Forms.Button btnEnterSO;
         private System.Windows.Forms.Button btnPickInvoice;
         private System.Windows.Forms.Button btnShipInvoice;
         private System.Windows.Forms.Button btnDeleteInvoice;
+        private System.Windows.Forms.Button btnOpenInvoice;
+        private System.Windows.Forms.Button btnShippedInvoice;
     }
 }

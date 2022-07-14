@@ -24,6 +24,7 @@ namespace CamcoForm
             this.invoicesTableAdapter1.Fill(this.camcoDataSet9.Invoices);
             // TODO: This line of code loads data into the 'camcoInvoices.Invoices' table. You can move, or remove it, as needed.
             this.invoicesTableAdapter.Fill(this.camcoInvoices.Invoices);
+            dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
 
         }
 
@@ -40,41 +41,29 @@ namespace CamcoForm
 
         private void btnEnterSO_Click(object sender, EventArgs e)
         {
+            NewInvoiceForm newForm = new NewInvoiceForm();
+            int textBoxSO = convertToInt(dataGridView1.CurrentRow.Cells[5].Value.ToString());
             using (var DB = new CamcoEntities())
             {
-                Invoice result = DB.Invoices.SingleOrDefault(x => x.InvoiceSO == textEnterSO.Text);
+                string stringSO = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                Invoice invoiceResult = DB.Invoices.SingleOrDefault(x => x.InvoiceSO == stringSO);
 
-                if (result != null)
+                if (invoiceResult != null)
                 {
-                    NewInvoiceForm frm = new NewInvoiceForm();
-                    
-                    frm.setAddress(result.CustomerID);
-                    frm.setDetails(result.InvoiceSO);
-                    frm.editModeBool();
-                    /* need to add datagridview rows */
-                    using (var DB2 = new CamcoEntities())
+                    newForm.setAddress(invoiceResult.CustomerID);
+                    newForm.setDetails(stringSO);
+                    newForm.editModeBool();
+
+                    List<InvoiceLineItem> lineResult = DB.InvoiceLineItems.Where(x => x.InvoiceSO == textBoxSO).ToList();
+
+                    if (lineResult != null)
                     {
-                        int textBoxSO = frm.convertToInt(frm.getSO());
-                        /* access InvoiceLineItems DB to add rows to DGV in NewInvoiceForm */
-                        List<InvoiceLineItem> result2 = DB.InvoiceLineItems.Where(c => c.InvoiceSO == textBoxSO).ToList();
-
-                        if (result != null)
+                        for (int i = 0; i < lineResult.Count; i++)
                         {
-                            /* where i used frm.removelinedb */
-                            for (int i = 0; i < result2.Count; i++)
-                            {
-                                var addToDGV = frm.createSalesItem(result2[i].ProductQuantity, result2[i].ProductName);
-                                frm.AddRow(addToDGV);
-                            }
+                            var addToDGV = newForm.createSalesItem(lineResult[i].ProductQuantity, lineResult[i].ProductName);
+                            newForm.addExistingRow(addToDGV, i);
                         }
-                        var newForm = new NewInvoiceForm();
-                        frm.Show();
                     }
-                }
-                else
-                {
-                    string message = "The SO you have entered is invalid or does not exist.";
-                    MessageBox.Show(message);
                 }
             }
         }
@@ -99,6 +88,7 @@ namespace CamcoForm
                         newForm.setRemainingDGV(i);
                         newForm.setProductDescription(i);
                         newForm.setProductPickID(i);
+                        newForm.setProductPrice(i);
                     }
                 }
 
@@ -119,7 +109,7 @@ namespace CamcoForm
             newForm.setCustomerID();
             newForm.editRichBill();
             newForm.editRichShip();
-            newForm.editInvoiceTotal();
+            
 
             using (var DB = new CamcoEntities())
             {
@@ -210,6 +200,36 @@ namespace CamcoForm
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnOpenInvoice_Click(object sender, EventArgs e)
+        {
+            NewInvoiceForm newForm = new NewInvoiceForm();
+            int textBoxSO = convertToInt(dataGridView1.CurrentRow.Cells[5].Value.ToString());
+            using (var DB = new CamcoEntities())
+            {
+                string stringSO = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                Invoice invoiceResult = DB.Invoices.SingleOrDefault(x => x.InvoiceSO == stringSO);
+
+                if (invoiceResult != null)
+                {
+                    newForm.setAddress(invoiceResult.CustomerID);
+                    newForm.setDetails(stringSO);
+                    newForm.editModeBool();
+
+                    List<InvoiceLineItem> lineResult = DB.InvoiceLineItems.Where(x => x.InvoiceSO == textBoxSO).ToList();
+
+                    if (lineResult != null)
+                    {
+                        for (int i = 0; i < lineResult.Count; i++)
+                        {
+                            var addToDGV = newForm.createSalesItem(lineResult[i].ProductQuantity, lineResult[i].ProductName);
+                            newForm.addExistingRow(addToDGV, i);
+                        }
+                    }
+                }
+            }
+            newForm.Show();
         }
     }
 }

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VendorForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnInventory = new System.Windows.Forms.Button();
             this.BtnPurchases = new System.Windows.Forms.Button();
             this.BtnInvoices = new System.Windows.Forms.Button();
             this.BtnVendors = new System.Windows.Forms.Button();
@@ -54,7 +55,6 @@
             this.vendorsTableAdapter = new CamcoForm.CamcoVendorsTableAdapters.VendorsTableAdapter();
             this.BtnEditVendor = new System.Windows.Forms.Button();
             this.BtnDeleteVendor = new System.Windows.Forms.Button();
-            this.BtnInventory = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -79,6 +79,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(186, 538);
             this.panel1.TabIndex = 1;
+            // 
+            // BtnInventory
+            // 
+            this.BtnInventory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnInventory.FlatAppearance.BorderSize = 0;
+            this.BtnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnInventory.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold);
+            this.BtnInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.BtnInventory.Image = ((System.Drawing.Image)(resources.GetObject("BtnInventory.Image")));
+            this.BtnInventory.Location = new System.Drawing.Point(0, 354);
+            this.BtnInventory.Name = "BtnInventory";
+            this.BtnInventory.Size = new System.Drawing.Size(186, 42);
+            this.BtnInventory.TabIndex = 4;
+            this.BtnInventory.Text = "Inventory";
+            this.BtnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnInventory.UseVisualStyleBackColor = true;
             // 
             // BtnPurchases
             // 
@@ -210,6 +226,8 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.vendorIDDataGridViewTextBoxColumn,
@@ -223,6 +241,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(206, 144);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(702, 382);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -314,22 +333,6 @@
             this.BtnDeleteVendor.Text = "Delete Vendor";
             this.BtnDeleteVendor.UseVisualStyleBackColor = true;
             this.BtnDeleteVendor.Click += new System.EventHandler(this.BtnDeleteVendor_Click);
-            // 
-            // BtnInventory
-            // 
-            this.BtnInventory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnInventory.FlatAppearance.BorderSize = 0;
-            this.BtnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnInventory.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold);
-            this.BtnInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.BtnInventory.Image = ((System.Drawing.Image)(resources.GetObject("BtnInventory.Image")));
-            this.BtnInventory.Location = new System.Drawing.Point(0, 354);
-            this.BtnInventory.Name = "BtnInventory";
-            this.BtnInventory.Size = new System.Drawing.Size(186, 42);
-            this.BtnInventory.TabIndex = 4;
-            this.BtnInventory.Text = "Inventory";
-            this.BtnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnInventory.UseVisualStyleBackColor = true;
             // 
             // VendorForm
             // 

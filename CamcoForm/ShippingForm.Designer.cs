@@ -44,6 +44,9 @@
             this.labelInvoiceSO = new System.Windows.Forms.Label();
             this.textInvoiceTotal = new System.Windows.Forms.TextBox();
             this.labelInvoiceTotal = new System.Windows.Forms.Label();
+            this.btnGenerateInvoice = new System.Windows.Forms.Button();
+            this.textInvoiceNumber = new System.Windows.Forms.TextBox();
+            this.labelInvoiceNumber = new System.Windows.Forms.Label();
             this.ShipID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InvoiceSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InvoicePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,13 +56,18 @@
             this.QuantityPicked = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantityRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateScheduled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Finished = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Invoice = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ShipID,
@@ -71,22 +79,25 @@
             this.QuantityPicked,
             this.QuantityRemaining,
             this.DateScheduled,
-            this.Finished});
-            this.dataGridView1.Location = new System.Drawing.Point(31, 185);
+            this.ProductPrice,
+            this.TotalPrice,
+            this.Invoice});
+            this.dataGridView1.Location = new System.Drawing.Point(94, 185);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(845, 339);
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(703, 339);
             this.dataGridView1.TabIndex = 0;
             // 
             // textInvoiceSO
             // 
-            this.textInvoiceSO.Location = new System.Drawing.Point(232, 57);
+            this.textInvoiceSO.Location = new System.Drawing.Point(360, 57);
             this.textInvoiceSO.Name = "textInvoiceSO";
             this.textInvoiceSO.Size = new System.Drawing.Size(100, 20);
             this.textInvoiceSO.TabIndex = 1;
             // 
             // textCustomerID
             // 
-            this.textCustomerID.Location = new System.Drawing.Point(585, 57);
+            this.textCustomerID.Location = new System.Drawing.Point(715, 41);
             this.textCustomerID.Name = "textCustomerID";
             this.textCustomerID.Size = new System.Drawing.Size(119, 20);
             this.textCustomerID.TabIndex = 2;
@@ -94,7 +105,7 @@
             // 
             // textInvoicePO
             // 
-            this.textInvoicePO.Location = new System.Drawing.Point(94, 57);
+            this.textInvoicePO.Location = new System.Drawing.Point(231, 57);
             this.textInvoicePO.Name = "textInvoicePO";
             this.textInvoicePO.Size = new System.Drawing.Size(100, 20);
             this.textInvoicePO.TabIndex = 3;
@@ -163,7 +174,7 @@
             // labelInvoicePO
             // 
             this.labelInvoicePO.AutoSize = true;
-            this.labelInvoicePO.Location = new System.Drawing.Point(91, 41);
+            this.labelInvoicePO.Location = new System.Drawing.Point(228, 41);
             this.labelInvoicePO.Name = "labelInvoicePO";
             this.labelInvoicePO.Size = new System.Drawing.Size(60, 13);
             this.labelInvoicePO.TabIndex = 9;
@@ -172,7 +183,7 @@
             // labelInvoiceSO
             // 
             this.labelInvoiceSO.AutoSize = true;
-            this.labelInvoiceSO.Location = new System.Drawing.Point(229, 41);
+            this.labelInvoiceSO.Location = new System.Drawing.Point(357, 41);
             this.labelInvoiceSO.Name = "labelInvoiceSO";
             this.labelInvoiceSO.Size = new System.Drawing.Size(60, 13);
             this.labelInvoiceSO.TabIndex = 10;
@@ -180,19 +191,46 @@
             // 
             // textInvoiceTotal
             // 
-            this.textInvoiceTotal.Location = new System.Drawing.Point(372, 57);
+            this.textInvoiceTotal.Location = new System.Drawing.Point(495, 57);
             this.textInvoiceTotal.Name = "textInvoiceTotal";
+            this.textInvoiceTotal.ReadOnly = true;
             this.textInvoiceTotal.Size = new System.Drawing.Size(104, 20);
             this.textInvoiceTotal.TabIndex = 11;
             // 
             // labelInvoiceTotal
             // 
             this.labelInvoiceTotal.AutoSize = true;
-            this.labelInvoiceTotal.Location = new System.Drawing.Point(369, 41);
+            this.labelInvoiceTotal.Location = new System.Drawing.Point(492, 41);
             this.labelInvoiceTotal.Name = "labelInvoiceTotal";
             this.labelInvoiceTotal.Size = new System.Drawing.Size(69, 13);
             this.labelInvoiceTotal.TabIndex = 12;
             this.labelInvoiceTotal.Text = "Invoice Total";
+            // 
+            // btnGenerateInvoice
+            // 
+            this.btnGenerateInvoice.Location = new System.Drawing.Point(633, 530);
+            this.btnGenerateInvoice.Name = "btnGenerateInvoice";
+            this.btnGenerateInvoice.Size = new System.Drawing.Size(111, 45);
+            this.btnGenerateInvoice.TabIndex = 13;
+            this.btnGenerateInvoice.Text = "Generate Invoice";
+            this.btnGenerateInvoice.UseVisualStyleBackColor = true;
+            this.btnGenerateInvoice.Click += new System.EventHandler(this.btnGenerateInvoice_Click);
+            // 
+            // textInvoiceNumber
+            // 
+            this.textInvoiceNumber.Location = new System.Drawing.Point(94, 57);
+            this.textInvoiceNumber.Name = "textInvoiceNumber";
+            this.textInvoiceNumber.Size = new System.Drawing.Size(104, 20);
+            this.textInvoiceNumber.TabIndex = 14;
+            // 
+            // labelInvoiceNumber
+            // 
+            this.labelInvoiceNumber.AutoSize = true;
+            this.labelInvoiceNumber.Location = new System.Drawing.Point(91, 41);
+            this.labelInvoiceNumber.Name = "labelInvoiceNumber";
+            this.labelInvoiceNumber.Size = new System.Drawing.Size(82, 13);
+            this.labelInvoiceNumber.TabIndex = 15;
+            this.labelInvoiceNumber.Text = "Invoice Number";
             // 
             // ShipID
             // 
@@ -206,12 +244,14 @@
             this.InvoiceSO.HeaderText = "InvoiceSO";
             this.InvoiceSO.Name = "InvoiceSO";
             this.InvoiceSO.ReadOnly = true;
+            this.InvoiceSO.Visible = false;
             // 
             // InvoicePO
             // 
             this.InvoicePO.HeaderText = "InvoicePO";
             this.InvoicePO.Name = "InvoicePO";
             this.InvoicePO.ReadOnly = true;
+            this.InvoicePO.Visible = false;
             // 
             // Quantity
             // 
@@ -247,17 +287,29 @@
             this.DateScheduled.HeaderText = "DateScheduled";
             this.DateScheduled.Name = "DateScheduled";
             // 
-            // Finished
+            // ProductPrice
             // 
-            this.Finished.HeaderText = "Finished";
-            this.Finished.Name = "Finished";
-            this.Finished.Visible = false;
+            this.ProductPrice.HeaderText = "ProductPrice";
+            this.ProductPrice.Name = "ProductPrice";
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.HeaderText = "TotalPrice";
+            this.TotalPrice.Name = "TotalPrice";
+            // 
+            // Invoice
+            // 
+            this.Invoice.HeaderText = "Invoice";
+            this.Invoice.Name = "Invoice";
             // 
             // ShippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(888, 600);
+            this.ClientSize = new System.Drawing.Size(888, 592);
+            this.Controls.Add(this.labelInvoiceNumber);
+            this.Controls.Add(this.textInvoiceNumber);
+            this.Controls.Add(this.btnGenerateInvoice);
             this.Controls.Add(this.labelInvoiceTotal);
             this.Controls.Add(this.textInvoiceTotal);
             this.Controls.Add(this.labelInvoiceSO);
@@ -274,7 +326,7 @@
             this.MaximizeBox = false;
             this.Name = "ShippingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ShippingForm";
+            this.Text = "-";
             this.Load += new System.EventHandler(this.ShippingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -299,6 +351,9 @@
         private System.Windows.Forms.Label labelInvoiceSO;
         private System.Windows.Forms.TextBox textInvoiceTotal;
         private System.Windows.Forms.Label labelInvoiceTotal;
+        private System.Windows.Forms.Button btnGenerateInvoice;
+        private System.Windows.Forms.TextBox textInvoiceNumber;
+        private System.Windows.Forms.Label labelInvoiceNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShipID;
         private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceSO;
         private System.Windows.Forms.DataGridViewTextBoxColumn InvoicePO;
@@ -308,6 +363,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityPicked;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityRemaining;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateScheduled;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Finished;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Invoice;
     }
 }
