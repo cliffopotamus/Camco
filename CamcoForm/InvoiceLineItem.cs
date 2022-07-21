@@ -24,5 +24,6 @@ namespace CamcoForm
         public int InvoiceSO { get; set; }
         public string ProductName { get; set; }
         public string InvoicePO { get; set; }
+        public string Kit { get; set; }
     }
 }

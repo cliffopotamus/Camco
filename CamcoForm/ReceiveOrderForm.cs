@@ -174,6 +174,22 @@ namespace CamcoForm
             }
         }
 
+        public void addExistingRow(SalesItem salesRow, int i)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                int intSO = convertToInt(textSO.Text);
+                Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName == salesRow.DisplayName);
+
+                List<PurchaseOrderLineItem> lineResult = DB.PurchaseOrderLineItems.Where(x => x.PurchaseSO == textSO.Text).ToList();
+
+                if (lineResult != null)
+                {
+                    decimal totalPrice = lineResult[i].ProductPrice.GetValueOrDefault() * (decimal)lineResult[i].ProductQuantity;
+                }
+            }
+        }
+
         public Receiving convertReceivingToDB(int i)
         {
             Receiving placeholder = new Receiving();

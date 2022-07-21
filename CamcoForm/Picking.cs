@@ -25,5 +25,6 @@ namespace CamcoForm
         public string DateScheduled { get; set; }
         public string ProductDescription { get; set; }
         public Nullable<decimal> ProductPrice { get; set; }
+        public string Kit { get; set; }
     }
 }

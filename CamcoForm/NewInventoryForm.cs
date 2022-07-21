@@ -947,5 +947,34 @@ namespace CamcoForm
         {
             dataGridView1.Refresh();
         }
+
+        private void BtnCustomers_Click(object sender, EventArgs e)
+        {
+            CustomerForm newForm = new CustomerForm();
+            newForm.Show();
+        }
+
+        private void BtnVendors_Click(object sender, EventArgs e)
+        {
+            VendorForm newForm = new VendorForm();
+            newForm.Show();
+        }
+
+        private void BtnInvoices_Click(object sender, EventArgs e)
+        {
+            InvoiceForm newForm = new InvoiceForm();
+            newForm.Show();
+        }
+
+        private void BtnPurchases_Click(object sender, EventArgs e)
+        {
+            PurchaseForm newForm = new PurchaseForm();
+            newForm.Show();
+        }
+
+        private void BtnInventory_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

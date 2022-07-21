@@ -30,6 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShippingForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ShipID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoicePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityPicked = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateScheduled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Invoice = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Kit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textInvoiceSO = new System.Windows.Forms.TextBox();
             this.textCustomerID = new System.Windows.Forms.TextBox();
             this.textInvoicePO = new System.Windows.Forms.TextBox();
@@ -47,18 +60,6 @@
             this.btnGenerateInvoice = new System.Windows.Forms.Button();
             this.textInvoiceNumber = new System.Windows.Forms.TextBox();
             this.labelInvoiceNumber = new System.Windows.Forms.Label();
-            this.ShipID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoiceSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoicePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityPicked = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateScheduled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Invoice = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,12 +82,89 @@
             this.DateScheduled,
             this.ProductPrice,
             this.TotalPrice,
-            this.Invoice});
+            this.Invoice,
+            this.Kit});
             this.dataGridView1.Location = new System.Drawing.Point(94, 185);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(703, 339);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // ShipID
+            // 
+            this.ShipID.HeaderText = "ShipID";
+            this.ShipID.Name = "ShipID";
+            this.ShipID.ReadOnly = true;
+            this.ShipID.Visible = false;
+            // 
+            // InvoiceSO
+            // 
+            this.InvoiceSO.HeaderText = "InvoiceSO";
+            this.InvoiceSO.Name = "InvoiceSO";
+            this.InvoiceSO.ReadOnly = true;
+            this.InvoiceSO.Visible = false;
+            // 
+            // InvoicePO
+            // 
+            this.InvoicePO.HeaderText = "InvoicePO";
+            this.InvoicePO.Name = "InvoicePO";
+            this.InvoicePO.ReadOnly = true;
+            this.InvoicePO.Visible = false;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            // 
+            // ProductName
+            // 
+            this.ProductName.HeaderText = "ProductName";
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            // 
+            // ProductDescription
+            // 
+            this.ProductDescription.HeaderText = "ProductDescription";
+            this.ProductDescription.Name = "ProductDescription";
+            // 
+            // QuantityPicked
+            // 
+            this.QuantityPicked.HeaderText = "QuantityPicked";
+            this.QuantityPicked.Name = "QuantityPicked";
+            this.QuantityPicked.ReadOnly = true;
+            // 
+            // QuantityRemaining
+            // 
+            this.QuantityRemaining.HeaderText = "QuantityRemaining";
+            this.QuantityRemaining.Name = "QuantityRemaining";
+            this.QuantityRemaining.ReadOnly = true;
+            // 
+            // DateScheduled
+            // 
+            this.DateScheduled.HeaderText = "DateScheduled";
+            this.DateScheduled.Name = "DateScheduled";
+            // 
+            // ProductPrice
+            // 
+            this.ProductPrice.HeaderText = "ProductPrice";
+            this.ProductPrice.Name = "ProductPrice";
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.HeaderText = "TotalPrice";
+            this.TotalPrice.Name = "TotalPrice";
+            // 
+            // Invoice
+            // 
+            this.Invoice.HeaderText = "Invoice";
+            this.Invoice.Name = "Invoice";
+            // 
+            // Kit
+            // 
+            this.Kit.HeaderText = "Kit";
+            this.Kit.Name = "Kit";
+            this.Kit.Visible = false;
             // 
             // textInvoiceSO
             // 
@@ -232,76 +310,6 @@
             this.labelInvoiceNumber.TabIndex = 15;
             this.labelInvoiceNumber.Text = "Invoice Number";
             // 
-            // ShipID
-            // 
-            this.ShipID.HeaderText = "ShipID";
-            this.ShipID.Name = "ShipID";
-            this.ShipID.ReadOnly = true;
-            this.ShipID.Visible = false;
-            // 
-            // InvoiceSO
-            // 
-            this.InvoiceSO.HeaderText = "InvoiceSO";
-            this.InvoiceSO.Name = "InvoiceSO";
-            this.InvoiceSO.ReadOnly = true;
-            this.InvoiceSO.Visible = false;
-            // 
-            // InvoicePO
-            // 
-            this.InvoicePO.HeaderText = "InvoicePO";
-            this.InvoicePO.Name = "InvoicePO";
-            this.InvoicePO.ReadOnly = true;
-            this.InvoicePO.Visible = false;
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            // 
-            // ProductName
-            // 
-            this.ProductName.HeaderText = "ProductName";
-            this.ProductName.Name = "ProductName";
-            this.ProductName.ReadOnly = true;
-            // 
-            // ProductDescription
-            // 
-            this.ProductDescription.HeaderText = "ProductDescription";
-            this.ProductDescription.Name = "ProductDescription";
-            // 
-            // QuantityPicked
-            // 
-            this.QuantityPicked.HeaderText = "QuantityPicked";
-            this.QuantityPicked.Name = "QuantityPicked";
-            this.QuantityPicked.ReadOnly = true;
-            // 
-            // QuantityRemaining
-            // 
-            this.QuantityRemaining.HeaderText = "QuantityRemaining";
-            this.QuantityRemaining.Name = "QuantityRemaining";
-            this.QuantityRemaining.ReadOnly = true;
-            // 
-            // DateScheduled
-            // 
-            this.DateScheduled.HeaderText = "DateScheduled";
-            this.DateScheduled.Name = "DateScheduled";
-            // 
-            // ProductPrice
-            // 
-            this.ProductPrice.HeaderText = "ProductPrice";
-            this.ProductPrice.Name = "ProductPrice";
-            // 
-            // TotalPrice
-            // 
-            this.TotalPrice.HeaderText = "TotalPrice";
-            this.TotalPrice.Name = "TotalPrice";
-            // 
-            // Invoice
-            // 
-            this.Invoice.HeaderText = "Invoice";
-            this.Invoice.Name = "Invoice";
-            // 
             // ShippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,5 +374,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Invoice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kit;
     }
 }

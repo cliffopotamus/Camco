@@ -95,6 +95,7 @@
             this.BtnInventory.Text = "Inventory";
             this.BtnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnInventory.UseVisualStyleBackColor = true;
+            this.BtnInventory.Click += new System.EventHandler(this.BtnInventory_Click);
             // 
             // BtnPurchases
             // 
@@ -111,6 +112,7 @@
             this.BtnPurchases.Text = "Purchases";
             this.BtnPurchases.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnPurchases.UseVisualStyleBackColor = true;
+            this.BtnPurchases.Click += new System.EventHandler(this.BtnPurchases_Click);
             // 
             // BtnInvoices
             // 
@@ -127,6 +129,7 @@
             this.BtnInvoices.Text = "Invoices";
             this.BtnInvoices.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnInvoices.UseVisualStyleBackColor = true;
+            this.BtnInvoices.Click += new System.EventHandler(this.BtnInvoices_Click);
             // 
             // BtnVendors
             // 
@@ -162,6 +165,7 @@
             this.BtnCustomers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCustomers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCustomers.UseVisualStyleBackColor = true;
+            this.BtnCustomers.Click += new System.EventHandler(this.BtnCustomers_Click);
             // 
             // BtnDashboard
             // 

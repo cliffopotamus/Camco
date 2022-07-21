@@ -69,13 +69,14 @@
             this.btnFinish = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.textCustID = new System.Windows.Forms.TextBox();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.textCustID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerNameList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
@@ -244,7 +245,7 @@
             // labelInvoiceTotal
             // 
             this.labelInvoiceTotal.AutoSize = true;
-            this.labelInvoiceTotal.Location = new System.Drawing.Point(574, 406);
+            this.labelInvoiceTotal.Location = new System.Drawing.Point(779, 448);
             this.labelInvoiceTotal.Name = "labelInvoiceTotal";
             this.labelInvoiceTotal.Size = new System.Drawing.Size(72, 13);
             this.labelInvoiceTotal.TabIndex = 22;
@@ -252,10 +253,10 @@
             // 
             // textInvoiceTotal
             // 
-            this.textInvoiceTotal.Location = new System.Drawing.Point(583, 422);
+            this.textInvoiceTotal.Location = new System.Drawing.Point(782, 464);
             this.textInvoiceTotal.Multiline = true;
             this.textInvoiceTotal.Name = "textInvoiceTotal";
-            this.textInvoiceTotal.Size = new System.Drawing.Size(43, 20);
+            this.textInvoiceTotal.Size = new System.Drawing.Size(69, 20);
             this.textInvoiceTotal.TabIndex = 23;
             // 
             // textBillZip
@@ -362,7 +363,7 @@
             // 
             // btnFinish
             // 
-            this.btnFinish.Location = new System.Drawing.Point(646, 418);
+            this.btnFinish.Location = new System.Drawing.Point(722, 490);
             this.btnFinish.Name = "btnFinish";
             this.btnFinish.Size = new System.Drawing.Size(56, 27);
             this.btnFinish.TabIndex = 36;
@@ -372,7 +373,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(722, 418);
+            this.btnCancel.Location = new System.Drawing.Point(808, 490);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(56, 27);
             this.btnCancel.TabIndex = 37;
@@ -397,6 +398,7 @@
             this.Quantity,
             this.Item,
             this.ItemDescription,
+            this.Kit,
             this.UnitPrice,
             this.TotalPrice});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -407,7 +409,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(31, 249);
+            this.dataGridView1.Location = new System.Drawing.Point(31, 246);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -418,11 +420,28 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(546, 258);
+            this.dataGridView1.Size = new System.Drawing.Size(595, 258);
             this.dataGridView1.TabIndex = 38;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(366, 185);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(68, 21);
+            this.btnAdd.TabIndex = 39;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // textCustID
+            // 
+            this.textCustID.Location = new System.Drawing.Point(660, 106);
+            this.textCustID.Name = "textCustID";
+            this.textCustID.Size = new System.Drawing.Size(117, 20);
+            this.textCustID.TabIndex = 40;
             // 
             // Quantity
             // 
@@ -441,6 +460,11 @@
             this.ItemDescription.Name = "ItemDescription";
             this.ItemDescription.ReadOnly = true;
             // 
+            // Kit
+            // 
+            this.Kit.HeaderText = "Kit";
+            this.Kit.Name = "Kit";
+            // 
             // UnitPrice
             // 
             this.UnitPrice.HeaderText = "UnitPrice";
@@ -451,23 +475,6 @@
             this.TotalPrice.HeaderText = "TotalPrice";
             this.TotalPrice.Name = "TotalPrice";
             this.TotalPrice.ReadOnly = true;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(366, 185);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(68, 21);
-            this.btnAdd.TabIndex = 39;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // textCustID
-            // 
-            this.textCustID.Location = new System.Drawing.Point(660, 106);
-            this.textCustID.Name = "textCustID";
-            this.textCustID.Size = new System.Drawing.Size(117, 20);
-            this.textCustID.TabIndex = 40;
             // 
             // NewInvoiceForm
             // 
@@ -561,11 +568,12 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox textCustID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kit;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
-        private System.Windows.Forms.TextBox textCustID;
     }
 }

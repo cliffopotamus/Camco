@@ -50,6 +50,8 @@ namespace CamcoForm
             public decimal salesPrice;
             public decimal productExtension;
             public DateTime dateScheduled;
+            public bool invoice;
+            public string kit;
         }
 
         public ShipLineItem convertShipToShipLine(int i)
@@ -65,19 +67,25 @@ namespace CamcoForm
             shipLine.QuantityRemaining = convertToInt(dataGridView1.Rows[i].Cells["QuantityRemaining"].Value.ToString());
             shipLine.SalesPrice = convertToDecimal(dataGridView1.Rows[i].Cells["ProductPrice"].Value.ToString());
             shipLine.ProductExtension = shipLine.SalesPrice * shipLine.QuantityPicked;
+            shipLine.invoice = Convert.ToBoolean(dataGridView1.Rows[i].Cells["Invoice"].Value);
+            shipLine.DateScheduled = DateTime.Today;
+            if (dataGridView1.Rows[i].Cells["Kit"].Value != null)
+            {
+                shipLine.Kit = dataGridView1.Rows[i].Cells["Kit"].Value.ToString();
+            }
             return shipLine;
         }
 
         public ShipInvoice convertShipToInvoice(int i)
         {
             ShipInvoice newInvoice = new ShipInvoice();
-            newInvoice.InvoiceNumber = textInvoiceNumber.Text;
+            newInvoice.InvoiceNumber = convertToInt(textInvoiceNumber.Text);
             newInvoice.InvoiceSO = textInvoiceSO.Text;
             newInvoice.InvoicePO = textInvoicePO.Text;
             newInvoice.ProductDescription = dataGridView1.Rows[i].Cells["ProductDescription"].Value.ToString();
             newInvoice.ProductName = dataGridView1.Rows[i].Cells["ProductName"].Value.ToString();
             newInvoice.Quantity = convertToInt(dataGridView1.Rows[i].Cells["Quantity"].Value.ToString());
-            newInvoice.SalesPrice = convertToDecimal(dataGridView1.Rows[i].Cells["ProductPrice"].Value.ToString();
+            newInvoice.SalesPrice = convertToDecimal(dataGridView1.Rows[i].Cells["ProductPrice"].Value.ToString());
             newInvoice.ProductExtension = newInvoice.SalesPrice * newInvoice.Quantity;
             return newInvoice;
         }
@@ -114,6 +122,22 @@ namespace CamcoForm
                         DB.SaveChanges();
                     }
                 }
+            }
+        }
+
+        public bool validateDate(string placeholder)
+        {
+            DateTime date;
+            bool success = DateTime.TryParse(placeholder, out date);
+
+            if (success)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
             }
         }
 
@@ -184,6 +208,20 @@ namespace CamcoForm
             }
         }
 
+        public void setKitDescription(int i)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                int intSO = convertToInt(textInvoiceSO.Text);
+                List<Shipping> result = DB.Shippings.Where(x => x.InvoiceSO == intSO).ToList();
+
+                if (result != null)
+                {
+                    dataGridView1.Rows[i].Cells["Kit"].Value = result[i].Kit;
+                }
+            }
+        }
+
         public void setCustomerID()
         {
             using (var DB = new CamcoEntities())
@@ -228,7 +266,7 @@ namespace CamcoForm
         public void calculateInvoiceTotal()
         {
             decimal InvoiceTotal = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 InvoiceTotal = InvoiceTotal + (convertToDecimal(dataGridView1.Rows[i].Cells["TotalPrice"].Value.ToString()));
             }
@@ -263,6 +301,15 @@ namespace CamcoForm
 
         private void btnGenerateInvoice_Click(object sender, EventArgs e)
         {
+            GenerateInvoiceForm newForm = new GenerateInvoiceForm();
+            bool openForm = false;
+            newForm.setPO(textInvoicePO.Text);
+            newForm.setSO(textInvoiceSO.Text);
+            newForm.setInvoiceNumber(textInvoiceNumber.Text);
+            newForm.setCustomerID();
+            newForm.editRichBill();
+            newForm.editRichShip();
+            newForm.setCustomerName();
 
             /* 
              When generating invoice, only include shipped items. Older shipped items will not appear in the invoice even if they are in the same sales order.
@@ -275,16 +322,37 @@ namespace CamcoForm
              
              */
 
+
             using (var DB = new CamcoEntities())
             {
                 if ((textInvoiceNumber.Text != null) && (textInvoiceSO.Text != null) && (textInvoicePO.Text != null))
                 {
+                    removeShipLineItem();
                     for (int i = 0; i < dataGridView1.RowCount; i++)
                     {
-                        var convertedValue = convertShipToShipLine(i);
-                        updateShipLineItemToDB(convertedValue);
+                        bool invoiceCheck = Convert.ToBoolean(dataGridView1.Rows[i].Cells["Invoice"].Value);
+                        if (invoiceCheck == true)
+                        {
+                            var convertedValue = convertShipToShipLine(i);
+                            updateShipLineItemToDB(convertedValue);
+                            var shipInvoiceValue = convertShipToInvoice(i);
+                            updateShipInvoiceToDB(shipInvoiceValue);
+                            newForm.AddRow(i);
+                        }
+                        openForm = true;
                     }
                 }
+
+                else
+                {
+                    string message = "Please fill all text boxes.";
+                    MessageBox.Show(message);
+                }
+            }
+
+            if (openForm == true)
+            {
+                newForm.Show();
             }
         }
     }

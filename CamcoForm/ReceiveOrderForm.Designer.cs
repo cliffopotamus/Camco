@@ -33,17 +33,17 @@
             this.labelSO = new System.Windows.Forms.Label();
             this.labelPO = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnCommit = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.PurchaseSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchasePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReceivedQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RemainingQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Commit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ReceiveID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCommit = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,11 +90,11 @@
             this.PurchasePO,
             this.Quantity,
             this.ProductName,
+            this.ProductDescription,
             this.ReceivedQuantity,
             this.RemainingQuantity,
             this.Commit,
-            this.ReceiveID,
-            this.ProductDescription});
+            this.ReceiveID});
             this.dataGridView1.Location = new System.Drawing.Point(21, 137);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
@@ -102,17 +102,39 @@
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
             // 
+            // btnCommit
+            // 
+            this.btnCommit.Location = new System.Drawing.Point(608, 415);
+            this.btnCommit.Name = "btnCommit";
+            this.btnCommit.Size = new System.Drawing.Size(75, 23);
+            this.btnCommit.TabIndex = 5;
+            this.btnCommit.Text = "Commit";
+            this.btnCommit.UseVisualStyleBackColor = true;
+            this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(713, 415);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // PurchaseSO
             // 
             this.PurchaseSO.HeaderText = "PurchaseSO";
             this.PurchaseSO.Name = "PurchaseSO";
             this.PurchaseSO.ReadOnly = true;
+            this.PurchaseSO.Visible = false;
             // 
             // PurchasePO
             // 
             this.PurchasePO.HeaderText = "PurchasePO";
             this.PurchasePO.Name = "PurchasePO";
             this.PurchasePO.ReadOnly = true;
+            this.PurchasePO.Visible = false;
             // 
             // Quantity
             // 
@@ -125,6 +147,12 @@
             this.ProductName.HeaderText = "ProductName";
             this.ProductName.Name = "ProductName";
             this.ProductName.ReadOnly = true;
+            // 
+            // ProductDescription
+            // 
+            this.ProductDescription.HeaderText = "ProductDescription";
+            this.ProductDescription.Name = "ProductDescription";
+            this.ProductDescription.Visible = false;
             // 
             // ReceivedQuantity
             // 
@@ -147,32 +175,6 @@
             this.ReceiveID.HeaderText = "ReceiveID";
             this.ReceiveID.Name = "ReceiveID";
             this.ReceiveID.Visible = false;
-            // 
-            // ProductDescription
-            // 
-            this.ProductDescription.HeaderText = "ProductDescription";
-            this.ProductDescription.Name = "ProductDescription";
-            this.ProductDescription.Visible = false;
-            // 
-            // btnCommit
-            // 
-            this.btnCommit.Location = new System.Drawing.Point(608, 415);
-            this.btnCommit.Name = "btnCommit";
-            this.btnCommit.Size = new System.Drawing.Size(75, 23);
-            this.btnCommit.TabIndex = 5;
-            this.btnCommit.Text = "Commit";
-            this.btnCommit.UseVisualStyleBackColor = true;
-            this.btnCommit.Click += new System.EventHandler(this.btnCommit_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(713, 415);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // ReceiveOrderForm
             // 
@@ -208,10 +210,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PurchasePO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ReceivedQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn RemainingQuantity;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Commit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ReceiveID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductDescription;
     }
 }

@@ -49,6 +49,7 @@ namespace CamcoForm
             public string InvoicePO;
             public string productDescription;
             public decimal salesPrice;
+            public string kit;
         }
 
         public Picking convertToDB(int i)
@@ -60,8 +61,11 @@ namespace CamcoForm
             placeholder.InvoicePO = textPONumber.Text;
             /* placeholder.Commit = Convert.ToBoolean(dataGridView1.Rows[i].Cells[5].Value);*/
             placeholder.ProductDescription = dataGridView1.Rows[i].Cells[2].Value.ToString();
-            placeholder.ProductPrice = convertToDecimal(dataGridView1.Rows[i].Cells[3].Value.ToString());
-            
+            placeholder.ProductPrice = convertToDecimal(dataGridView1.Rows[i].Cells[4].Value.ToString());
+            if (dataGridView1.Rows[i].Cells["Kit"].Value != null)
+            {
+                placeholder.Kit = dataGridView1.Rows[i].Cells["Kit"].Value.ToString();
+            }
             return placeholder;
         }
 
@@ -900,7 +904,7 @@ namespace CamcoForm
                 if (lineResult != null)
                 {
                     decimal totalPrice = lineResult[i].ProductPrice.GetValueOrDefault() * (decimal)(lineResult[i].ProductQuantity);
-                    dataGridView1.Rows.Add(lineResult[i].ProductQuantity, lineResult[i].ProductName, lineResult[i].ProductDescription, lineResult[i].ProductPrice, lineResult[i].ProductExtension);
+                    dataGridView1.Rows.Add(lineResult[i].ProductQuantity, lineResult[i].ProductName, lineResult[i].ProductDescription, lineResult[i].Kit, lineResult[i].ProductPrice, lineResult[i].ProductExtension);
 
                     string sInvoiceTotal = textInvoiceTotal.Text;
                     decimal dInvoiceTotal = convertToDecimal(sInvoiceTotal);
@@ -927,7 +931,7 @@ namespace CamcoForm
                 if (result != null)
                 {
                     decimal totalPrice = result.SalesPrice.GetValueOrDefault() * salesRow.quantity;
-                    dataGridView1.Rows.Add(salesRow.quantity, salesRow.DisplayName, result.ProductDescription, result.SalesPrice, totalPrice);
+                    dataGridView1.Rows.Add(salesRow.quantity, salesRow.DisplayName, result.ProductDescription, result.Kit, result.SalesPrice, totalPrice);
 
                     string sInvoiceTotal = textInvoiceTotal.Text;
                     decimal dInvoiceTotal = convertToDecimal(sInvoiceTotal);
@@ -950,20 +954,20 @@ namespace CamcoForm
             {
                 if (int.TryParse(e.FormattedValue.ToString(), out number))
                 {
-                    if (dataGridView1.Rows[e.RowIndex].Cells[3].Value != null)
+                    if (dataGridView1.Rows[e.RowIndex].Cells[4].Value != null)
                     {
 
-                        decimal totalPrice = convertToDecimal(dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString()) * convertToInt(e.FormattedValue.ToString());
-                        dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
+                        decimal totalPrice = convertToDecimal(dataGridView1.Rows[e.RowIndex].Cells["UnitPrice"].Value.ToString()) * convertToInt(e.FormattedValue.ToString());
+                        dataGridView1.Rows[e.RowIndex].Cells[5].Value = totalPrice;
                         textInvoiceTotal.Text = dataGridView1.Rows.Cast<DataGridViewRow>().AsEnumerable().Sum(t => Convert.ToDecimal(t.Cells[4].Value)).ToString();
                     }
                 }    
 
-                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex] == dataGridView1.Rows[e.RowIndex].Cells[3])
+                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex] == dataGridView1.Rows[e.RowIndex].Cells[4])
                 {
                     decimal totalPrice = convertToInt(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()) * convertToDecimal(e.FormattedValue.ToString());
-                    dataGridView1.Rows[e.RowIndex].Cells[4].Value = totalPrice;
-                    textInvoiceTotal.Text = dataGridView1.Rows.Cast<DataGridViewRow>().AsEnumerable().Sum(t => Convert.ToDecimal(t.Cells[4].Value)).ToString();
+                    dataGridView1.Rows[e.RowIndex].Cells[5].Value = totalPrice;
+                    textInvoiceTotal.Text = dataGridView1.Rows.Cast<DataGridViewRow>().AsEnumerable().Sum(t => Convert.ToDecimal(t.Cells[5].Value)).ToString();
                 }
             }
 
@@ -974,7 +978,7 @@ namespace CamcoForm
             bool checkFailed = true;
             for (int i = 0; i < dataGridView1.RowCount - 1; i++)
             {
-                if (dataGridView1.Rows[i].Cells[0].Value == null || dataGridView1.Rows[i].Cells[1].Value == null || dataGridView1.Rows[i].Cells[2].Value == null || dataGridView1.Rows[i].Cells[3].Value == null)
+                if (dataGridView1.Rows[i].Cells[0].Value == null || dataGridView1.Rows[i].Cells[1].Value == null || dataGridView1.Rows[i].Cells[2].Value == null || dataGridView1.Rows[i].Cells[4].Value == null)
                 {
                     checkFailed = false;
                 }
@@ -1066,6 +1070,15 @@ namespace CamcoForm
                 Invoice result = DB.Invoices.SingleOrDefault(x => x.InvoiceSO == invoiceSO);
                 textPONumber.Text = result.InvoicePO;
                 textSONumber.Text = result.InvoiceSO;
+            }
+        }
+
+        public void setTotalPrice(int i)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                decimal totalPrice = convertToInt(dataGridView1.Rows[i].Cells["Quantity"].Value.ToString()) * convertToDecimal(dataGridView1.Rows[i].Cells["UnitPrice"].Value.ToString());
+                dataGridView1.Rows[i].Cells["TotalPrice"].Value = totalPrice;
             }
         }
 
@@ -1173,6 +1186,25 @@ namespace CamcoForm
             }
         }
 
+        public bool isUniqueSO(string textSO)
+        {
+            using (var db = new CamcoEntities())
+            {
+                Invoice result = db.Invoices.SingleOrDefault(x => x.InvoiceSO == textSO);
+
+                if (result != null)
+                {
+                    return false;
+                }
+
+                else
+                {
+                    return true;
+                }
+            }
+
+        }
+
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             var result = ValidateCell(e);
@@ -1258,6 +1290,10 @@ namespace CamcoForm
             placeholder.ProductExtension = convertToDecimal(dataGridView1.Rows[i].Cells["TotalPrice"].Value.ToString());
             placeholder.InvoiceSO = convertToInt(textSONumber.Text);
             placeholder.InvoicePO = textPONumber.Text;
+            if (dataGridView1.Rows[i].Cells["Kit"].Value != null)
+            {
+                placeholder.Kit = dataGridView1.Rows[i].Cells["Kit"].Value.ToString();
+            }
             return placeholder;
         }
 
@@ -1371,6 +1407,11 @@ namespace CamcoForm
             editMode = true;
             return editMode;
         }
+
+        public void updateDGV()
+        {
+
+        }
         
         private void btnFinish_Click(object sender, EventArgs e)
         {
@@ -1409,24 +1450,33 @@ namespace CamcoForm
 
                 if (checkedRow == true && editMode == false)
                 {
-                    for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+                    var isUniqueSOValue = isUniqueSO(textSONumber.Text);
+                    if (isUniqueSOValue == true)
                     {
-                        var valueToUpdate = convertLineToDB(i);
-                        updateLineDB(valueToUpdate);
-                        var pickingItems = convertToDB(i);
-                        updatePickDB(pickingItems);
-                        closeForm = true;
+                        for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+                        {
+                            var valueToUpdate = convertLineToDB(i);
+                            updateLineDB(valueToUpdate);
+                            var pickingItems = convertToDB(i);
+                            updatePickDB(pickingItems);
+                            closeForm = true;
+                        }
+
+                        var secondValueToUpdate = convertInvoiceToDB();
+
+                        if (editMode == true)
+                        {
+                            removeOldInvoiceDB();
+                        }
+
+                        updateInvoiceDB(secondValueToUpdate);
                     }
 
-                    var secondValueToUpdate = convertInvoiceToDB();
-
-                    if (editMode == true)
+                    else
                     {
-                        removeOldInvoiceDB();
+                        string error = "Please enter a unique invoice SO number.";
+                        MessageBox.Show(error);
                     }
-
-                    updateInvoiceDB(secondValueToUpdate);
-                    
                 }
 
                 if (checkedRow == false)

@@ -26,5 +26,7 @@ namespace CamcoForm
         public Nullable<decimal> SalesPrice { get; set; }
         public Nullable<decimal> ProductExtension { get; set; }
         public Nullable<System.DateTime> DateScheduled { get; set; }
+        public Nullable<bool> invoice { get; set; }
+        public string Kit { get; set; }
     }
 }

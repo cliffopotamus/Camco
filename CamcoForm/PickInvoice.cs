@@ -30,6 +30,7 @@ namespace CamcoForm
             public bool commit;
             public string InvoicePO;
             public decimal productPrice;
+            public string kit;
         }
 
         public class ShippingModel
@@ -44,6 +45,7 @@ namespace CamcoForm
             public string dateScheduled;
             public string productDescription;
             public decimal productPrice;
+            public string kit;
         }
 
         private bool editQuantity(int quantity)
@@ -86,6 +88,7 @@ namespace CamcoForm
             ship.ProductName = placeholder.ProductName;
             ship.ProductDescription = placeholder.ProductDescription;
             ship.ProductPrice = placeholder.ProductPrice;
+            ship.Kit = placeholder.Kit;
             return ship;
         }
 
@@ -108,6 +111,20 @@ namespace CamcoForm
                     {
                         dataGridView1.Rows[i].Cells[5].Value = result[i].QuantityRemaining;
                     }
+                }
+            }
+        }
+
+        public void setKitDescription(int i)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                int intSO = convertToInt(textSONumber.Text);
+                List<Picking> result = DB.Pickings.Where(x => x.InvoiceSO == intSO).ToList();
+
+                if (result != null)
+                {
+                    dataGridView1.Rows[i].Cells["Kit"].Value = result[i].Kit;
                 }
             }
         }
@@ -183,6 +200,10 @@ namespace CamcoForm
             placeholder.InvoicePO = textPONumber.Text;
             placeholder.ProductDescription = dataGridView1.Rows[i].Cells[7].Value.ToString();
             placeholder.ProductPrice = convertToInt(dataGridView1.Rows[i].Cells[9].Value.ToString());
+            if (dataGridView1.Rows[i].Cells["Kit"].Value != null)
+            {
+                placeholder.Kit = dataGridView1.Rows[i].Cells["Kit"].Value.ToString();
+            }
             return placeholder;
         }
 
@@ -200,6 +221,10 @@ namespace CamcoForm
             placeholder.DateScheduled = DateTime.Today.ToString("MM/dd/yyyy");
             placeholder.ProductDescription = dataGridView1.Rows[i].Cells[7].Value.ToString();
             placeholder.ProductPrice = convertToDecimal(dataGridView1.Rows[i].Cells[9].Value.ToString());
+            if (dataGridView1.Rows[i].Cells["Kit"].Value != null)
+            {
+                placeholder.Kit = dataGridView1.Rows[i].Cells["Kit"].Value.ToString();
+            }
 
             if (placeholder.Commit == true)
             {
@@ -243,7 +268,7 @@ namespace CamcoForm
         {
             using (var DB = new CamcoEntities())
             {
-                    if (placeholder.ProductDescription == "KIT")
+                    if (placeholder.Kit == "KIT")
                     {
                         int pickAmount = (int)(placeholder.QuantityPicked);
                         switch (placeholder.ProductName)
@@ -1116,11 +1141,11 @@ namespace CamcoForm
                                 {
                                     removePickRow(placeholder.PickID);
                                     updatePickDB(placeholder);
-                                SubtractKitComponentFromInventory("2Box", pickAmount);
-                                SubtractKitComponentFromInventory("HFN38", pickAmount * 13);
-                                SubtractKitComponentFromInventory("SAEFW38", pickAmount * 13);
-                                SubtractKitComponentFromInventory("WedgeAnc-38-3", pickAmount * 12);
-                                SubtractKitComponentFromInventory("Mdrill38", pickAmount * 1);
+                                    SubtractKitComponentFromInventory("2Box", pickAmount);
+                                    SubtractKitComponentFromInventory("HFN38", pickAmount * 13);
+                                    SubtractKitComponentFromInventory("SAEFW38", pickAmount * 13);
+                                    SubtractKitComponentFromInventory("WedgeAnc-38-3", pickAmount * 12);
+                                    SubtractKitComponentFromInventory("Mdrill38", pickAmount * 1);
                                 }
 
                                 else
@@ -1189,8 +1214,6 @@ namespace CamcoForm
                 {
                     return false;
                 }
-
-                    
             }
         }
 
@@ -1339,7 +1362,7 @@ namespace CamcoForm
 
                         if (resultInventory != null)
                         {
-                            if (resultShip[i].ProductDescription == "KIT")
+                            if (resultShip[i].Kit == "KIT")
                             {
                                 /* pickAmount might not have the correct amount, possibly used Quantity - QuantityRemaining to get quantitypicked */
                                 int pickAmount = (int)(resultShip[i].QuantityPicked);
@@ -1956,7 +1979,7 @@ namespace CamcoForm
             {
                 int pickID = convertToInt(dataGridView1.Rows[i].Cells[8].Value.ToString());
 
-                if (dataGridView1.Rows[i].Cells[7].Value.ToString() == "KIT")
+                if (dataGridView1.Rows[i].Cells["Kit"].Value != null)
                 {
                     if (dataGridView1.Rows[i].Cells[4].Value == null)
                     {
@@ -2091,6 +2114,11 @@ namespace CamcoForm
                 voidPick(integerSO);
                 resetPickAndShip(integerSO);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

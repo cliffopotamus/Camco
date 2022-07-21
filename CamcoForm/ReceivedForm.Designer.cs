@@ -30,15 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReceivedForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ReceivedID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchaseSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PurchasePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityReceived = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateScheduled = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textPurchaseSO = new System.Windows.Forms.TextBox();
             this.textPurchasePO = new System.Windows.Forms.TextBox();
             this.textCustomerID = new System.Windows.Forms.TextBox();
@@ -51,6 +42,15 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.textVendorName = new System.Windows.Forms.TextBox();
             this.labelVendorName = new System.Windows.Forms.Label();
+            this.ReceivedID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchasePO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityReceived = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateScheduled = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,61 +77,6 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(807, 391);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // ReceivedID
-            // 
-            this.ReceivedID.HeaderText = "ReceivedID";
-            this.ReceivedID.Name = "ReceivedID";
-            this.ReceivedID.ReadOnly = true;
-            this.ReceivedID.Visible = false;
-            // 
-            // PurchaseSO
-            // 
-            this.PurchaseSO.HeaderText = "PurchaseSO";
-            this.PurchaseSO.Name = "PurchaseSO";
-            this.PurchaseSO.ReadOnly = true;
-            // 
-            // PurchasePO
-            // 
-            this.PurchasePO.HeaderText = "PurchasePO";
-            this.PurchasePO.Name = "PurchasePO";
-            this.PurchasePO.ReadOnly = true;
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            // 
-            // ProductName
-            // 
-            this.ProductName.HeaderText = "ProductName";
-            this.ProductName.Name = "ProductName";
-            this.ProductName.ReadOnly = true;
-            // 
-            // ProductDescription
-            // 
-            this.ProductDescription.HeaderText = "ProductDescription";
-            this.ProductDescription.Name = "ProductDescription";
-            this.ProductDescription.ReadOnly = true;
-            // 
-            // QuantityReceived
-            // 
-            this.QuantityReceived.HeaderText = "QuantityReceived";
-            this.QuantityReceived.Name = "QuantityReceived";
-            this.QuantityReceived.ReadOnly = true;
-            // 
-            // QuantityRemaining
-            // 
-            this.QuantityRemaining.HeaderText = "QuantityRemaining";
-            this.QuantityRemaining.Name = "QuantityRemaining";
-            this.QuantityRemaining.ReadOnly = true;
-            // 
-            // DateScheduled
-            // 
-            this.DateScheduled.HeaderText = "DateScheduled";
-            this.DateScheduled.Name = "DateScheduled";
-            this.DateScheduled.ReadOnly = true;
             // 
             // textPurchaseSO
             // 
@@ -229,6 +174,63 @@
             this.labelVendorName.Size = new System.Drawing.Size(72, 13);
             this.labelVendorName.TabIndex = 10;
             this.labelVendorName.Text = "Vendor Name";
+            // 
+            // ReceivedID
+            // 
+            this.ReceivedID.HeaderText = "ReceivedID";
+            this.ReceivedID.Name = "ReceivedID";
+            this.ReceivedID.ReadOnly = true;
+            this.ReceivedID.Visible = false;
+            // 
+            // PurchaseSO
+            // 
+            this.PurchaseSO.HeaderText = "PurchaseSO";
+            this.PurchaseSO.Name = "PurchaseSO";
+            this.PurchaseSO.ReadOnly = true;
+            this.PurchaseSO.Visible = false;
+            // 
+            // PurchasePO
+            // 
+            this.PurchasePO.HeaderText = "PurchasePO";
+            this.PurchasePO.Name = "PurchasePO";
+            this.PurchasePO.ReadOnly = true;
+            this.PurchasePO.Visible = false;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            // 
+            // ProductName
+            // 
+            this.ProductName.HeaderText = "ProductName";
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            // 
+            // ProductDescription
+            // 
+            this.ProductDescription.HeaderText = "ProductDescription";
+            this.ProductDescription.Name = "ProductDescription";
+            this.ProductDescription.ReadOnly = true;
+            // 
+            // QuantityReceived
+            // 
+            this.QuantityReceived.HeaderText = "QuantityReceived";
+            this.QuantityReceived.Name = "QuantityReceived";
+            this.QuantityReceived.ReadOnly = true;
+            // 
+            // QuantityRemaining
+            // 
+            this.QuantityRemaining.HeaderText = "QuantityRemaining";
+            this.QuantityRemaining.Name = "QuantityRemaining";
+            this.QuantityRemaining.ReadOnly = true;
+            // 
+            // DateScheduled
+            // 
+            this.DateScheduled.HeaderText = "DateScheduled";
+            this.DateScheduled.Name = "DateScheduled";
+            this.DateScheduled.ReadOnly = true;
             // 
             // ReceivedForm
             // 

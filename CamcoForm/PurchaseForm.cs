@@ -51,7 +51,6 @@ namespace CamcoForm
             ReceiveOrderForm newForm = new ReceiveOrderForm();
             newForm.setDetails(dataGridView1.CurrentRow.Cells[5].Value.ToString());
             newForm.setPO(dataGridView1.CurrentRow.Cells[6].Value.ToString());
-            
 
             using (var DB = new CamcoEntities())
             {
@@ -66,7 +65,7 @@ namespace CamcoForm
                         newForm.AddRow(addToDGV);
                         newForm.setRemainingDGV(i);
                         newForm.setProductReceivedID(i);
-                        newForm.setProductDescription(i);
+                        newForm.setProductDescription(i); 
                     }
                 }
             }
@@ -76,33 +75,32 @@ namespace CamcoForm
         private void btnOpenPurchaseOrder_Click(object sender, EventArgs e)
         {
             NewPurchaseForm newForm = new NewPurchaseForm();
-            newForm.setPurchaseSO(dataGridView1.CurrentRow.Cells[5].Value.ToString());
-            newForm.editModeBool();
 
             using (var DB = new CamcoEntities())
             {
-
                 string textSO = newForm.getPurchaseSO();
+                int vendID = convertToInt(dataGridView1.CurrentRow.Cells["VendorID"].Value.ToString());
                 List<Receiving> result = DB.Receivings.Where(x => x.PurchaseSO == textSO).ToList();
 
                 if (result != null)
                 {
-                    for (int i = 0; i < result.Count; i++)
+                    newForm.setPurchaseSO(dataGridView1.CurrentRow.Cells[5].Value.ToString());
+                    newForm.editModeBool();
+                    newForm.setAddress(vendID);
+
+                    List<PurchaseOrderLineItem> lineResult = DB.PurchaseOrderLineItems.Where(x => x.PurchaseSO == textSO).ToList();
+
+                    if (lineResult != null)
                     {
-                        var addToDGV = newForm.createSalesItem((int)result[i].Quantity, result[i].ProductName);
-                        newForm.AddRow(addToDGV);
+                        for (int i = 0; i < result.Count; i++)
+                        {
+                            var addToDGV = newForm.createSalesItem((int)lineResult[i].ProductQuantity, lineResult[i].ProductName);
+                            newForm.addExistingRow(addToDGV, i);
+                        }
                     }
-                    newForm.Show();
-                }
-                
-                else
-                {
-                    string error = "No SO available.";
-                    MessageBox.Show(error);
-                       
                 }
             }
-                
+            newForm.Show();
         }
 
         private void btnReceivedOrder_Click(object sender, EventArgs e)
@@ -175,6 +173,69 @@ namespace CamcoForm
                     }
                 }
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            this.purchaseOrderTableAdapter.Fill(this.camcoDataSet12.PurchaseOrder);
+        }
+
+        private void btnOpenPO_Click(object sender, EventArgs e)
+        {
+            NewPurchaseForm newForm = new NewPurchaseForm();
+            int textBoxSO = convertToInt(dataGridView1.CurrentRow.Cells[5].Value.ToString());
+
+            using (var DB = new CamcoEntities())
+            {
+                string stringSO = textBoxSO.ToString();
+                PurchaseOrder purchaseResult = DB.PurchaseOrders.SingleOrDefault(x => x.PurchaseSO == stringSO);
+
+                if (purchaseResult != null)
+                {
+                    newForm.setAddress(purchaseResult.VendorID);
+                    newForm.setDetails(stringSO);
+                    newForm.editModeBool();
+
+                    List<PurchaseOrderLineItem> lineResult = DB.PurchaseOrderLineItems.Where(x => x.PurchaseSO == stringSO).ToList();
+
+                    if (lineResult != null)
+                    {
+                        for (int i = 0; i < lineResult.Count; i++)
+                        {
+                            var addToDGV = newForm.createSalesItem((int)lineResult[i].ProductQuantity, lineResult[i].ProductName);
+                            newForm.addExistingRow(addToDGV, i);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BtnCustomers_Click(object sender, EventArgs e)
+        {
+            CustomerForm customerForm = new CustomerForm();
+            customerForm.Show();
+        }
+
+        private void BtnVendors_Click(object sender, EventArgs e)
+        {
+            VendorForm newForm = new VendorForm();
+            newForm.Show();
+        }
+
+        private void BtnInvoices_Click(object sender, EventArgs e)
+        {
+            InvoiceForm newForm = new InvoiceForm();
+            newForm.Show();
+        }
+
+        private void BtnPurchases_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void BtnInventory_Click(object sender, EventArgs e)
+        {
+            NewInventoryForm newForm = new NewInventoryForm();
+            newForm.Show();
         }
     }
 }

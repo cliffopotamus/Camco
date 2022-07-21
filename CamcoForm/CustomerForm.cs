@@ -107,7 +107,8 @@ namespace CamcoForm
 
         private void btnInventory_Click(object sender, EventArgs e)
         {
-
+            NewInventoryForm newForm = new NewInventoryForm();
+            newForm.Show();
         }
     }
 }

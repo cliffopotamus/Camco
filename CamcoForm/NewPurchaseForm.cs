@@ -787,6 +787,35 @@ namespace CamcoForm
             }
         }
 
+        public void addExistingRow(SalesItem salesRow, int i)
+        {
+            using (var DB = new CamcoEntities())
+            {
+                int intSO = convertToInt(textSONumber.Text);
+                Inventory result = DB.Inventories.SingleOrDefault(x => x.ProductName == salesRow.DisplayName);
+
+                List<PurchaseOrderLineItem> lineResult = DB.PurchaseOrderLineItems.Where(x => x.PurchaseSO == textSONumber.Text).ToList();
+
+                if (lineResult != null)
+                {
+                    decimal totalPrice = lineResult[i].ProductPrice.GetValueOrDefault() * (decimal)lineResult[i].ProductQuantity;
+                    dataGridView1.Rows.Add(lineResult[i].ProductQuantity, lineResult[i].ProductName, lineResult[i].ProductDescription, lineResult[i].ProductPrice, totalPrice);
+
+                    string sInvoiceTotal = textTotalPrice.Text;
+                    decimal dInvoiceTotal = convertToDecimal(sInvoiceTotal);
+                    dInvoiceTotal = dInvoiceTotal + totalPrice;
+                    string sCompleteInvoiceTotal = dInvoiceTotal.ToString();
+                    textTotalPrice.Text = sCompleteInvoiceTotal;
+                }
+
+                else
+                {
+                    string error = "Error: invalid product name or quantity.";
+                    MessageBox.Show(error);
+                }
+            }
+        }
+
         public void EditRow(SalesItem salesRow, DataGridViewCellValidatingEventArgs e)
         {
             int number;

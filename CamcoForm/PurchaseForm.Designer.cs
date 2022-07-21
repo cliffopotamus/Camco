@@ -56,6 +56,9 @@
             this.purchaseOrderTableAdapter = new CamcoForm.CamcoDataSet12TableAdapters.PurchaseOrderTableAdapter();
             this.btnOpenPurchaseOrder = new System.Windows.Forms.Button();
             this.btnReceivedOrder = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnOpenPO = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -95,6 +98,7 @@
             this.BtnInventory.Text = "Inventory";
             this.BtnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnInventory.UseVisualStyleBackColor = true;
+            this.BtnInventory.Click += new System.EventHandler(this.BtnInventory_Click);
             // 
             // BtnPurchases
             // 
@@ -111,6 +115,7 @@
             this.BtnPurchases.Text = "Purchases";
             this.BtnPurchases.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnPurchases.UseVisualStyleBackColor = true;
+            this.BtnPurchases.Click += new System.EventHandler(this.BtnPurchases_Click);
             // 
             // BtnInvoices
             // 
@@ -127,6 +132,7 @@
             this.BtnInvoices.Text = "Invoices";
             this.BtnInvoices.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnInvoices.UseVisualStyleBackColor = true;
+            this.BtnInvoices.Click += new System.EventHandler(this.BtnInvoices_Click);
             // 
             // BtnVendors
             // 
@@ -144,6 +150,7 @@
             this.BtnVendors.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnVendors.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnVendors.UseVisualStyleBackColor = true;
+            this.BtnVendors.Click += new System.EventHandler(this.BtnVendors_Click);
             // 
             // BtnCustomers
             // 
@@ -161,6 +168,7 @@
             this.BtnCustomers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCustomers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCustomers.UseVisualStyleBackColor = true;
+            this.BtnCustomers.Click += new System.EventHandler(this.BtnCustomers_Click);
             // 
             // BtnDashboard
             // 
@@ -346,12 +354,42 @@
             this.btnReceivedOrder.UseVisualStyleBackColor = true;
             this.btnReceivedOrder.Click += new System.EventHandler(this.btnReceivedOrder_Click);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(979, 144);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 8;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnOpenPO
+            // 
+            this.btnOpenPO.Location = new System.Drawing.Point(805, 141);
+            this.btnOpenPO.Name = "btnOpenPO";
+            this.btnOpenPO.Size = new System.Drawing.Size(106, 23);
+            this.btnOpenPO.TabIndex = 9;
+            this.btnOpenPO.Text = "Open Purchase";
+            this.btnOpenPO.UseVisualStyleBackColor = true;
+            this.btnOpenPO.Click += new System.EventHandler(this.btnOpenPO_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(712, 141);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(87, 20);
+            this.textBox1.TabIndex = 10;
+            // 
             // PurchaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1066, 571);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnOpenPO);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnReceivedOrder);
             this.Controls.Add(this.btnOpenPurchaseOrder);
             this.Controls.Add(this.dataGridView1);
@@ -370,6 +408,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.purchaseOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.camcoDataSet12)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -401,5 +440,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn purchasePODataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnOpenPurchaseOrder;
         private System.Windows.Forms.Button btnReceivedOrder;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnOpenPO;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

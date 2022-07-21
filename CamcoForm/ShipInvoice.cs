@@ -15,7 +15,7 @@ namespace CamcoForm
     public partial class ShipInvoice
     {
         public int ShipInvoiceID { get; set; }
-        public string InvoiceNumber { get; set; }
+        public Nullable<int> InvoiceNumber { get; set; }
         public string InvoiceSO { get; set; }
         public string InvoicePO { get; set; }
         public string ProductName { get; set; }
